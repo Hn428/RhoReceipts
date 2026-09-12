@@ -1,13 +1,13 @@
 import "server-only";
 
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, lt, or } from "drizzle-orm";
 
 import { getDb } from "@/lib/db";
 import { receipts, receiptShares } from "@/lib/db/schema";
-import { sendMail } from "@/lib/mail";
+import { sendMail, STALE_CLAIM_MS } from "@/lib/mail";
 import type { ReceiptSnapshot } from "@/lib/receipts";
 
-const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+const emailPattern =/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const appUrl = () => (process.env.APP_URL ?? "http://localhost:3000").replace(/\/$/, "");
 const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (character) => ({
   "&": "&amp;",
@@ -53,14 +53,19 @@ export async function shareReceiptWithInvestor(options: {
     .returning();
 
   if (!claim) {
+    // Retake a failed attempt, or one that crashed mid-send and never finished.
+    const staleBefore = new Date(Date.now() - STALE_CLAIM_MS);
     [claim] = await db
       .update(receiptShares)
-      .set({ status: "sending", error: null })
+      .set({ status: "sending", error: null, claimedAt: new Date() })
       .where(
         and(
           eq(receiptShares.receiptId, receipt.id),
           eq(receiptShares.email, email),
-          eq(receiptShares.status, "failed"),
+          or(
+            eq(receiptShares.status, "failed"),
+            and(eq(receiptShares.status, "sending"), lt(receiptShares.claimedAt, staleBefore)),
+          ),
         ),
       )
       .returning();

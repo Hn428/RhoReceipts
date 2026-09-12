@@ -11,6 +11,7 @@
     "fixtures": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-rho-fixtures.ts",
     "sync": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/sync.ts",
     "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
     "db:reset": "rm -rf \"${PGLITE_DIR:-$HOME/.cache/rho-receipts/pglite}\" && echo \"embedded database removed\"",
     "test": "vitest run",
     "test:watch": "vitest"

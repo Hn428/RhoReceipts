@@ -1,24 +1,30 @@
-# The demo flow: connect → receipt
+# The demo flow: enroll → receipt
 
-Sign in → `/connect` → "Use the sample company" → the receipt at `/r/<slug>`.
+Sign in → `/enroll` → "Use a sample company" → review → **Generate Rho Receipt** →
+the receipt at `/r/<slug>`. The old `/connect` route redirects to `/enroll`.
 
-## Connect (`/connect`)
+## Enroll (`/enroll`)
 
 The token is checked against Rho **before anything is stored** — a bad token is an
 error on the form, never a saved connection that fails later. Rho's 401 and 403
 become specific messages (revoked or expired; missing scope). Once accepted the
-token is encrypted with the connection id bound in, the ledger is imported, and
-the first receipt is issued. Reconnecting the same company updates its row.
+token is encrypted with the connection id bound in and the ledger is imported.
 
-"Use the sample company" connects the fixture ledger with the server's mock
-token. The browser never sees a token either way.
+Import stops short of generating anything. `/enroll/<connectionId>` shows what was
+found — accounts, transactions analysed, customers identified — and the founder
+chooses to generate the first receipt. A founder account owns one company; a
+second connection is rejected.
+
+"Use a sample company" connects a fixture ledger with the server's mock token.
+The browser never sees a token either way.
 
 ## The receipt (`/r/<slug>`)
 
-**A snapshot, not a live view.** Issuing runs ledger → classification → metrics
-and freezes the result. The page renders only from that snapshot and does no
-arithmetic, so the numbers an investor audits can't change after they're shared.
-"Issue a fresh receipt" on the dashboard re-syncs and issues a new one.
+**A snapshot, not a live view.** Issuing runs ledger → classification → metrics,
+researches the paying customers, and freezes the result. The page renders only from that
+snapshot and does no arithmetic, so the numbers an investor audits can't change
+after they're shared. "Generate new receipt" on the dashboard re-syncs and issues
+a new one.
 
 **Access is the link.** Slugs carry 72 bits of randomness, and the page sets
 `noindex, nofollow`. Anyone with the URL can view it; no one can guess it.
@@ -36,7 +42,8 @@ an email:
 
 Sharing the same receipt with the same email again sends nothing
 ("already shared"). A failed send is recorded and can be retried from the same
-form. A direct share is one-time: it doesn't enroll the email in monthly
+form, and so can a send left marked "sending" for over five minutes — the sign
+of a crash mid-send. A direct share is one-time: it doesn't enroll the email in monthly
 updates, which stay opt-in and appear separately in the portfolio.
 
 **Every line opens to its evidence**, using native `<details>` — no client
@@ -71,8 +78,6 @@ older receipts, which is how this was caught.
 
 ## Not yet built
 
-- **Customer verification (Tavily).** The customer rows already carry grade chips;
-  a "verified company" chip slots in beside them. Needs a `TAVILY_API_KEY`.
 - A copy-link button, and a way to revoke a shared receipt. Revoking a direct
   share removes it from the investor's portfolio, but anyone holding the link
   can still open it.

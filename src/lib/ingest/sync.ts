@@ -14,6 +14,7 @@
  */
 
 import { and, eq, inArray, sql } from "drizzle-orm";
+import type { AnyPgColumn } from "drizzle-orm/pg-core";
 
 import { getDb, type Database } from "@/lib/db";
 import type { Connection } from "@/lib/db/schema";
@@ -70,6 +71,23 @@ function chunked<T>(items: T[], size = CHUNK): T[][] {
   for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size));
   return out;
 }
+
+async function collect<T>(items: AsyncIterable<T>): Promise<T[]> {
+  const out: T[] = [];
+  for await (const item of items) out.push(item);
+  return out;
+}
+
+/**
+ * Last occurrence wins. A multi-row upsert that names the same key twice fails
+ * outright, so a page boundary that repeats a row must not reach the database.
+ */
+function uniqueBy<T>(items: T[], key: (item: T) => string): T[] {
+  return [...new Map(items.map((item) => [key(item), item])).values()];
+}
+
+/** The incoming value for a column in a multi-row upsert. */
+const excluded = (column: AnyPgColumn) => sql.raw(`excluded."${column.name}"`);
 
 const parseDate = (value: string | null | undefined): Date | null =>
   value ? new Date(value) : null;
@@ -213,44 +231,57 @@ export async function syncConnection(
 
     let newWatermark = connection.syncedThrough ?? null;
 
+    // Every write below is a multi-row statement. Against hosted Postgres each
+    // query is a network round trip, so per-row writes made a sync take seconds.
+
     // ---------------------------------------------------------- accounts
-    for await (const account of client.allAccounts()) {
-      const [row] = await db
+    const accounts = uniqueBy(await collect(client.allAccounts()), (account) => account.id);
+    const observedAt = new Date();
+    for (const batch of chunked(accounts)) {
+      const rows = await db
         .insert(rhoAccounts)
-        .values({
-          connectionId,
-          rhoAccountId: account.id,
-          accountType: account.account_type,
-          accountName: account.account_name ?? null,
-          accountNumberLast4: account.account_number_last_4 ?? null,
-          routingNumberLast4: account.routing_number_last_4 ?? null,
-          balanceMinor: account.balance.amount,
-          currency: account.balance.currency,
-          balanceObservedAt: new Date(),
-          payload: account,
-        })
+        .values(
+          batch.map((account) => ({
+            connectionId,
+            rhoAccountId: account.id,
+            accountType: account.account_type,
+            accountName: account.account_name ?? null,
+            accountNumberLast4: account.account_number_last_4 ?? null,
+            routingNumberLast4: account.routing_number_last_4 ?? null,
+            balanceMinor: account.balance.amount,
+            currency: account.balance.currency,
+            balanceObservedAt: observedAt,
+            payload: account,
+          })),
+        )
         .onConflictDoUpdate({
           target: [rhoAccounts.connectionId, rhoAccounts.rhoAccountId],
           set: {
-            accountType: account.account_type,
-            accountName: account.account_name ?? null,
-            balanceMinor: account.balance.amount,
-            currency: account.balance.currency,
-            balanceObservedAt: new Date(),
-            payload: account,
-            updatedAt: new Date(),
+            accountType: excluded(rhoAccounts.accountType),
+            accountName: excluded(rhoAccounts.accountName),
+            balanceMinor: excluded(rhoAccounts.balanceMinor),
+            currency: excluded(rhoAccounts.currency),
+            balanceObservedAt: excluded(rhoAccounts.balanceObservedAt),
+            payload: excluded(rhoAccounts.payload),
+            updatedAt: observedAt,
           },
         })
-        .returning();
+        .returning({
+          id: rhoAccounts.id,
+          balanceMinor: rhoAccounts.balanceMinor,
+          currency: rhoAccounts.currency,
+        });
 
       // One observation per sync: balances are point-in-time, and runway needs
       // to know what cash looked like historically, not just today.
-      await db.insert(accountBalanceSnapshots).values({
-        accountId: row.id,
-        balanceMinor: account.balance.amount,
-        currency: account.balance.currency,
-      });
-      stats.accounts += 1;
+      await db.insert(accountBalanceSnapshots).values(
+        rows.map((row) => ({
+          accountId: row.id,
+          balanceMinor: row.balanceMinor,
+          currency: row.currency,
+        })),
+      );
+      stats.accounts += rows.length;
     }
 
     // ------------------------------------------------------ transactions
@@ -270,7 +301,6 @@ export async function syncConnection(
       { id: string; contentHash: string }
     >();
     for (const batch of chunked(fetched.map((t) => t.id))) {
-      if (batch.length === 0) continue;
       const rows = await db
         .select({
           id: rhoTransactions.id,
@@ -353,45 +383,56 @@ export async function syncConnection(
       stats.transactionsInserted += inserted.length;
     }
 
-    for (const { rowId, txn, hash } of changed) {
-      const [{ maxVersion }] = await db
+    for (const batch of chunked(changed)) {
+      const latest = await db
         .select({
-          maxVersion: sql<number>`coalesce(max(${rhoTransactionVersions.version}), 0)`,
+          transactionId: rhoTransactionVersions.transactionId,
+          maxVersion: sql<number>`max(${rhoTransactionVersions.version})`,
         })
         .from(rhoTransactionVersions)
-        .where(eq(rhoTransactionVersions.transactionId, rowId));
+        .where(inArray(rhoTransactionVersions.transactionId, batch.map((c) => c.rowId)))
+        .groupBy(rhoTransactionVersions.transactionId);
+      const maxVersionById = new Map(latest.map((row) => [row.transactionId, Number(row.maxVersion)]));
 
-      await db
-        .update(rhoTransactions)
-        .set({
+      // Each row gets different values, so these can't share one statement;
+      // they run concurrently across the connection pool instead.
+      const now = new Date();
+      await Promise.all(
+        batch.map(({ rowId, txn, hash }) =>
+          db
+            .update(rhoTransactions)
+            .set({
+              status: txn.status,
+              amountMinor: txn.amount.amount,
+              postedAt: parseDate(txn.posted_at),
+              memo: txn.memo,
+              note: txn.note,
+              counterpartyName: txn.counterparty_name,
+              payload: txn,
+              contentHash: hash,
+              lastSeenAt: now,
+              updatedAt: now,
+            })
+            .where(eq(rhoTransactions.id, rowId)),
+        ),
+      );
+
+      await db.insert(rhoTransactionVersions).values(
+        batch.map(({ rowId, txn, hash }) => ({
+          transactionId: rowId,
+          syncRunId: run.id,
+          version: (maxVersionById.get(rowId) ?? 0) + 1,
           status: txn.status,
           amountMinor: txn.amount.amount,
           postedAt: parseDate(txn.posted_at),
-          memo: txn.memo,
-          note: txn.note,
-          counterpartyName: txn.counterparty_name,
           payload: txn,
           contentHash: hash,
-          lastSeenAt: new Date(),
-          updatedAt: new Date(),
-        })
-        .where(eq(rhoTransactions.id, rowId));
-
-      await db.insert(rhoTransactionVersions).values({
-        transactionId: rowId,
-        syncRunId: run.id,
-        version: Number(maxVersion) + 1,
-        status: txn.status,
-        amountMinor: txn.amount.amount,
-        postedAt: parseDate(txn.posted_at),
-        payload: txn,
-        contentHash: hash,
-      });
-      stats.transactionsUpdated += 1;
+        })),
+      );
+      stats.transactionsUpdated += batch.length;
     }
 
     for (const batch of chunked(unchangedIds)) {
-      if (batch.length === 0) continue;
       await db
         .update(rhoTransactions)
         .set({ lastSeenAt: new Date() })
@@ -400,90 +441,99 @@ export async function syncConnection(
     stats.transactionsUnchanged = unchangedIds.length;
 
     // --------------------------------------------------------- customers
-    for await (const customer of client.allInvoicingCustomers({
-      include_deleted: "true",
-    })) {
+    const customers = uniqueBy(
+      await collect(client.allInvoicingCustomers({ include_deleted: "true" })),
+      (customer) => customer.id,
+    );
+    for (const batch of chunked(customers)) {
       await db
         .insert(rhoCustomers)
-        .values({
-          connectionId,
-          rhoCustomerId: customer.id,
-          legalName: customer.legal_name,
-          email: customer.email ?? null,
-          emailDomain: emailDomain(customer.email),
-          totalRevenueMinor: customer.total_revenue?.amount ?? null,
-          currency: customer.total_revenue?.currency ?? null,
-          deletedAt: parseDate(customer.deleted_at),
-          payload: customer,
-          contentHash: contentHash(customer),
-        })
-        .onConflictDoUpdate({
-          target: [rhoCustomers.connectionId, rhoCustomers.rhoCustomerId],
-          set: {
+        .values(
+          batch.map((customer) => ({
+            connectionId,
+            rhoCustomerId: customer.id,
             legalName: customer.legal_name,
             email: customer.email ?? null,
             emailDomain: emailDomain(customer.email),
             totalRevenueMinor: customer.total_revenue?.amount ?? null,
+            currency: customer.total_revenue?.currency ?? null,
             deletedAt: parseDate(customer.deleted_at),
             payload: customer,
             contentHash: contentHash(customer),
+          })),
+        )
+        .onConflictDoUpdate({
+          target: [rhoCustomers.connectionId, rhoCustomers.rhoCustomerId],
+          set: {
+            legalName: excluded(rhoCustomers.legalName),
+            email: excluded(rhoCustomers.email),
+            emailDomain: excluded(rhoCustomers.emailDomain),
+            totalRevenueMinor: excluded(rhoCustomers.totalRevenueMinor),
+            deletedAt: excluded(rhoCustomers.deletedAt),
+            payload: excluded(rhoCustomers.payload),
+            contentHash: excluded(rhoCustomers.contentHash),
             updatedAt: new Date(),
           },
         });
-      stats.customersUpserted += 1;
+      stats.customersUpserted += batch.length;
     }
 
     // ---------------------------------------------------------- invoices
-    for await (const invoice of client.allInvoicingInvoices()) {
-      const [row] = await db
+    const invoices = uniqueBy(await collect(client.allInvoicingInvoices()), (invoice) => invoice.id);
+    for (const batch of chunked(invoices)) {
+      const rows = await db
         .insert(rhoInvoices)
-        .values({
-          connectionId,
-          rhoInvoiceId: invoice.id,
-          invoiceNumber: invoice.invoice_number ?? null,
-          status: invoice.status,
-          rhoCustomerId: invoice.customer.id,
-          totalMinor: invoice.total.amount,
-          currency: invoice.total.currency,
-          issuedAt: parseDate(invoice.date),
-          dueAt: parseDate(invoice.due_date),
-          payload: invoice,
-          contentHash: contentHash(invoice),
-        })
-        .onConflictDoUpdate({
-          target: [rhoInvoices.connectionId, rhoInvoices.rhoInvoiceId],
-          set: {
+        .values(
+          batch.map((invoice) => ({
+            connectionId,
+            rhoInvoiceId: invoice.id,
+            invoiceNumber: invoice.invoice_number ?? null,
             status: invoice.status,
+            rhoCustomerId: invoice.customer.id,
             totalMinor: invoice.total.amount,
+            currency: invoice.total.currency,
             issuedAt: parseDate(invoice.date),
             dueAt: parseDate(invoice.due_date),
             payload: invoice,
             contentHash: contentHash(invoice),
+          })),
+        )
+        .onConflictDoUpdate({
+          target: [rhoInvoices.connectionId, rhoInvoices.rhoInvoiceId],
+          set: {
+            status: excluded(rhoInvoices.status),
+            totalMinor: excluded(rhoInvoices.totalMinor),
+            issuedAt: excluded(rhoInvoices.issuedAt),
+            dueAt: excluded(rhoInvoices.dueAt),
+            payload: excluded(rhoInvoices.payload),
+            contentHash: excluded(rhoInvoices.contentHash),
             updatedAt: new Date(),
           },
         })
-        .returning({ id: rhoInvoices.id });
-      stats.invoicesUpserted += 1;
+        .returning({ id: rhoInvoices.id, rhoInvoiceId: rhoInvoices.rhoInvoiceId });
+      stats.invoicesUpserted += rows.length;
 
       // Payments are fully derived from the invoice payload, so replacing them
       // wholesale keeps them consistent without a diffing pass.
       await db
         .delete(rhoInvoicePayments)
-        .where(eq(rhoInvoicePayments.invoiceId, row.id));
+        .where(inArray(rhoInvoicePayments.invoiceId, rows.map((row) => row.id)));
 
-      if (invoice.payments.length > 0) {
-        await db.insert(rhoInvoicePayments).values(
-          invoice.payments.map((p) => ({
-            invoiceId: row.id,
-            connectionId,
-            paymentType: p.type,
-            externalMethod: p.external_method ?? null,
-            paidAt: parseDate(p.paid_at),
-            rhoTransactionId: p.transaction_id ?? null,
-          })),
-        );
-        stats.invoicePayments += invoice.payments.length;
+      const invoiceIdByRhoId = new Map(rows.map((row) => [row.rhoInvoiceId, row.id]));
+      const payments = batch.flatMap((invoice) =>
+        invoice.payments.map((p) => ({
+          invoiceId: invoiceIdByRhoId.get(invoice.id)!,
+          connectionId,
+          paymentType: p.type,
+          externalMethod: p.external_method ?? null,
+          paidAt: parseDate(p.paid_at),
+          rhoTransactionId: p.transaction_id ?? null,
+        })),
+      );
+      for (const paymentBatch of chunked(payments)) {
+        await db.insert(rhoInvoicePayments).values(paymentBatch);
       }
+      stats.invoicePayments += payments.length;
     }
 
     await db

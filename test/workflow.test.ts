@@ -7,6 +7,7 @@ import * as schema from "@/lib/db/schema";
 import { seedDemo } from "@/lib/demo/seed";
 import { connectionForOwner, saveConnection } from "@/lib/ingest/sync";
 import { getReceiptBySlug, issueReceipt, receiptsFor } from "@/lib/receipts";
+import { STALE_CLAIM_MS } from "@/lib/mail";
 import { receiptsSharedWithInvestor, shareReceiptWithInvestor } from "@/lib/receipts/sharing";
 import { cachedCustomerResearch } from "@/lib/research";
 import { reportsSharedWithInvestor } from "@/lib/reports";
@@ -36,6 +37,16 @@ describe("demo, private delivery and frozen research", () => {
     expect(demo.every((company) => company.delivered === 1)).toBe(true);
   });
 
+  it("enables row-level security on every public table", async () => {
+    const { rows } = await client.query<{ relname: string; relrowsecurity: boolean }>(
+      `select c.relname, c.relrowsecurity from pg_class c
+       join pg_namespace n on n.oid = c.relnamespace
+       where n.nspname = 'public' and c.relkind = 'r'`,
+    );
+    expect(rows.length).toBeGreaterThanOrEqual(19);
+    expect(rows.filter((row) => !row.relrowsecurity).map((row) => row.relname)).toEqual([]);
+  });
+
   it("repeated setup reuses snapshots and never duplicates delivery", async () => {
     const before = await state.db!.select().from(schema.receipts);
     const repeated = await seedDemo("http://localhost:3000");
@@ -43,6 +54,77 @@ describe("demo, private delivery and frozen research", () => {
     expect(await state.db!.select().from(schema.receipts)).toHaveLength(before.length);
     expect(await state.db!.select().from(schema.reportDeliveries)).toHaveLength(2);
   }, 30_000);
+
+  it("resyncs in batches without duplicating payments and versions a changed transaction", async () => {
+    const db = state.db!;
+    const { connectionId } = demo[0];
+    const paymentPairs = async () => (await db
+      .select()
+      .from(schema.rhoInvoicePayments)
+      .where(eq(schema.rhoInvoicePayments.connectionId, connectionId)))
+      .map((p) => `${p.invoiceId}:${p.rhoTransactionId}:${p.paidAt?.toISOString()}`)
+      .sort();
+    const [target] = await db
+      .select()
+      .from(schema.rhoTransactions)
+      .where(eq(schema.rhoTransactions.connectionId, connectionId))
+      .limit(1);
+    const accounts = await db.select().from(schema.rhoAccounts);
+    const snapshotsBefore = (await db.select().from(schema.accountBalanceSnapshots)).length;
+    const transactionsBefore = (await db.select().from(schema.rhoTransactions)).length;
+    const invoicesBefore = (await db.select().from(schema.rhoInvoices)).length;
+    const customersBefore = (await db.select().from(schema.rhoCustomers)).length;
+    const pairsBefore = await paymentPairs();
+    expect(pairsBefore.length).toBeGreaterThan(0);
+
+    // A stale hash makes the next sync treat this row as changed at the source.
+    await db.update(schema.rhoTransactions).set({ contentHash: "stale" }).where(eq(schema.rhoTransactions.id, target.id));
+    await seedDemo("http://localhost:3000");
+
+    const [resynced] = await db.select().from(schema.rhoTransactions).where(eq(schema.rhoTransactions.id, target.id));
+    expect(resynced.contentHash).toBe(target.contentHash);
+    const versions = await db
+      .select()
+      .from(schema.rhoTransactionVersions)
+      .where(eq(schema.rhoTransactionVersions.transactionId, target.id));
+    expect(versions.map((v) => v.version).sort()).toEqual([1, 2]);
+
+    expect(await paymentPairs()).toEqual(pairsBefore);
+    expect(await db.select().from(schema.rhoAccounts)).toHaveLength(accounts.length);
+    // Seeding syncs each company twice: the import, then again before the monthly report.
+    expect(await db.select().from(schema.accountBalanceSnapshots)).toHaveLength(snapshotsBefore + 2 * accounts.length);
+    expect(await db.select().from(schema.rhoTransactions)).toHaveLength(transactionsBefore);
+    expect(await db.select().from(schema.rhoInvoices)).toHaveLength(invoicesBefore);
+    expect(await db.select().from(schema.rhoCustomers)).toHaveLength(customersBefore);
+  }, 60_000);
+
+  it("retries failed and crashed monthly deliveries, but not one still in flight", async () => {
+    const [report] = await state.db!
+      .select()
+      .from(schema.monthlyReports)
+      .where(eq(schema.monthlyReports.connectionId, demo[0].connectionId));
+    const mark = (status: string, claimedAt: Date) => state.db!
+      .update(schema.reportDeliveries)
+      .set({ status, claimedAt })
+      .where(eq(schema.reportDeliveries.reportId, report.id));
+    const deliveredToFirstCompany = async () => (await seedDemo("http://localhost:3000"))[0].delivered;
+
+    await mark("failed", new Date());
+    expect(await deliveredToFirstCompany()).toBe(1);
+
+    await mark("sending", new Date());
+    expect(await deliveredToFirstCompany()).toBe(0);
+
+    await mark("sending", new Date(Date.now() - STALE_CLAIM_MS - 1_000));
+    expect(await deliveredToFirstCompany()).toBe(1);
+
+    const [row] = await state.db!
+      .select()
+      .from(schema.reportDeliveries)
+      .where(eq(schema.reportDeliveries.reportId, report.id));
+    expect(row.status).toBe("sent");
+    expect(await state.db!.select().from(schema.reportDeliveries)).toHaveLength(2);
+  }, 60_000);
 
   it("allows one company per founder while permitting a credential refresh", async () => {
     const original = await connectionForOwner(demo[0].ownerId);
@@ -106,6 +188,28 @@ describe("demo, private delivery and frozen research", () => {
       ownerId: demo[1].ownerId,
       email: "direct@example.test",
     })).rejects.toThrow("Receipt not found");
+  });
+
+  it("retakes a share that crashed mid-send, but not one still in flight", async () => {
+    const company = demo[0];
+    const slug = company.receipt.split("/").at(-1)!;
+    const receipt = await getReceiptBySlug(slug);
+    const claim = (email: string, claimedAt: Date) => state.db!.insert(schema.receiptShares).values({
+      receiptId: receipt!.id,
+      connectionId: company.connectionId,
+      ownerId: company.ownerId,
+      email,
+      claimedAt,
+    });
+
+    await claim("in-flight@example.test", new Date());
+    expect(await shareReceiptWithInvestor({ slug, ownerId: company.ownerId, email: "in-flight@example.test" }))
+      .toBe("already_sent");
+
+    await claim("crashed@example.test", new Date(Date.now() - STALE_CLAIM_MS - 1_000));
+    expect(await shareReceiptWithInvestor({ slug, ownerId: company.ownerId, email: "crashed@example.test" }))
+      .toBe("sent");
+    expect((await receiptsSharedWithInvestor("crashed@example.test")).map((shared) => shared.slug)).toEqual([slug]);
   });
 
   it("shows investors only receipts delivered to their currently authorized email", async () => {

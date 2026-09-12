@@ -466,6 +466,8 @@ export const receiptShares = pgTable(
     transport: text("transport"),
     sentAt: timestamp("sent_at", { withTimezone: true }),
     error: text("error"),
+    /** When the current send attempt started; a stale "sending" claim can be retaken. */
+    claimedAt: timestamp("claimed_at", { withTimezone: true }).notNull().defaultNow(),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [
@@ -543,6 +545,8 @@ export const reportDeliveries = pgTable(
     transport: text("transport").notNull(),
     error: text("error"),
     sentAt: timestamp("sent_at", { withTimezone: true }).notNull().defaultNow(),
+    /** When the current send attempt started; a stale "sending" claim can be retaken. */
+    claimedAt: timestamp("claimed_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [uniqueIndex("report_deliveries_unique").on(t.reportId, t.email)],
 );

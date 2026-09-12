@@ -64,6 +64,20 @@
       "when": 1789252867062,
       "tag": "0008_sharp_the_spike",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1789254152337,
+      "tag": "0009_delivery_claimed_at",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1789254358745,
+      "tag": "0010_enable_rls",
+      "breakpoints": true
     }
   ]
 }

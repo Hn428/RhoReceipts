@@ -5,9 +5,10 @@ Rho API → raw ledger tables in Postgres. Run `npm run dev`, then `npm run sync
 ## Database
 
 No Postgres server required in development. `DATABASE_URL` unset gives you
-**PGlite** — real Postgres compiled to WASM, running out of `.pglite/`. Set
-`DATABASE_URL` and the same Drizzle schema runs against Neon, Supabase, RDS, or a
-local server with no code change. Identical dialect, identical migrations.
+**PGlite** — real Postgres compiled to WASM, running out of
+`~/.cache/rho-receipts/pglite`. Set `DATABASE_URL` and the same Drizzle schema
+runs against hosted Postgres with no code change. Identical dialect, identical
+migrations. The hosted database is Supabase — see [database.md](database.md).
 
 ```bash
 npm run db:generate   # regenerate SQL migrations after a schema change

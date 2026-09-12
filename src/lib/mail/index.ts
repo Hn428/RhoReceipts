@@ -9,6 +9,12 @@
 
 import "server-only";
 
+/**
+ * Senders claim a row before sending. A claim still marked "sending" after this
+ * long is treated as a crash mid-send and can be retaken.
+ */
+export const STALE_CLAIM_MS = 5 * 60 * 1000;
+
 export interface MailMessage {
   to: string;
   subject: string;

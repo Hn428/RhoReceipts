@@ -111,7 +111,8 @@ Engine in `src/lib/metrics/monthly.ts` (13 tests, including cash reconstructed t
 - Founder manages **investor recipients** from the dashboard.
 - One report per company per month, stored as a snapshot with its own link.
 - **Automatic:** a cron route runs on the 1st and is idempotent — re-running never
-  double-sends. The dashboard also has "Send now" for the demo.
+  double-sends, but does retry failed or crashed deliveries. The dashboard also has
+  "Send now" for the demo.
 - **Delivery:** development prints the email and records it in a delivery log shown on the
   dashboard, the same approach as sign-in links. A real mail provider is a transport swap.
 
@@ -150,10 +151,11 @@ reports and delivery records. The walkthrough is in [DEMO.md](DEMO.md).
 
 ### Validation of R4–R7
 
-149 tests pass, including in-memory Postgres migrations, complete demo imports,
-repeat delivery prevention, research caching, private investor access,
-and immutable snapshots. Typecheck, lint and the Webpack production build
-pass. Default Turbopack build hit an environment socket-permission error.
+151 tests pass, including in-memory Postgres migrations, complete demo imports,
+repeat delivery prevention, research caching, private investor access, receipt
+sharing, and immutable snapshots. Monthly deliveries and receipt shares retry
+on the next run when they failed or were left mid-send by a crash (after five
+minutes), without re-sending one still in flight. Typecheck, lint and the default production build pass.
 The complete browser flow now passes: new-founder sign-in, Acme enrollment and
 generation, simulated customer research and payment history, investor recipient creation,
 monthly delivery, and repeat-send idempotency. Live Tavily credentials and
@@ -173,9 +175,26 @@ ledger-derived figures, immutable snapshots, server actions and disclosure rules
 - Use Inter-style UI typography, mono financial figures, off-white surfaces, charcoal
   text, verified green and hairline borders from the demo design system.
 
-### R9 — Production Postgres — **NEXT**
+### R9 — Production Postgres (Supabase) — **DONE**
 Move from embedded PGlite to hosted Postgres, run migrations against a staging database,
 and verify enrollment, receipt snapshots, research caching and idempotent delivery.
+
+- Pooler-safe client (`prepare: false`), `npm run db:migrate` through the session
+  pooler, and RLS on every table so Supabase's Data API exposes nothing. Setup in
+  [database.md](database.md).
+- Verified on Supabase (us-east-1, Postgres 17): all 11 migrations applied; 19 tables
+  with RLS, and an `anon` probe sees 0 rows. In the browser, through the transaction
+  pooler: founder sign-in, Acme enrollment (523 transactions), a receipt with the
+  pinned figures, research cached (8 rows), a direct share, and a repeat share
+  (different casing) that sends nothing. Also a monthly send, a second send with
+  no duplicate, and investor sign-in showing both the share and the update. One
+  email per action; no server errors.
+- **Fixed: import and "Send now" took 12–15s against the hosted database.** Accounts,
+  customers, invoices and payments were written one query at a time, at ~25ms per
+  round trip. All sync writes are now multi-row statements. Measured from a laptop to
+  us-east-1: sync 10.4s → 0.8s, full refresh 10.5s → 1.1s, new Northstar enrollment
+  (674 transactions) 2.4s, "Send now" 1.7s. Deploy functions in the database's region
+  (`iad1` for us-east-1) to cut round-trip time further.
 
 ### R10 — Investor portfolio dashboard — **DONE**
 Add an authenticated investor view based on the Figma Portfolio screen. Investors

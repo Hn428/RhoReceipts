@@ -5,7 +5,8 @@
  * real Postgres server; leave it unset and you get PGlite, which is Postgres
  * compiled to WASM running out of a local directory. Identical SQL dialect,
  * identical Drizzle schema, no setup. Development never blocks on infra, and
- * moving to Neon/Supabase/RDS is one environment variable.
+ * moving to hosted Postgres is one environment variable. Production uses
+ * Supabase — see docs/database.md.
  */
 
 import { drizzle as drizzleNode } from "drizzle-orm/postgres-js";
@@ -56,7 +57,9 @@ export function getDb(): Database {
   let db: Database;
 
   if (url) {
-    const client = postgres(url, { max: 5 });
+    // Supabase's transaction pooler (port 6543) hands each transaction a
+    // different server connection, so prepared statements can't be reused.
+    const client = postgres(url, { max: 5, prepare: false });
     db = drizzleNode(client, { schema }) as unknown as Database;
   } else {
     // PGlite creates the data directory but not its parents, and ~/.cache does

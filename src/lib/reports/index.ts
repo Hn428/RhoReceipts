@@ -4,14 +4,15 @@
  * Every step is safe to repeat. The report for a month is created once and
  * then reused, never rebuilt — so a re-run can't change numbers investors have
  * already seen. Each delivery is claimed in the database before the email is
- * sent, so two runs racing each other still send each investor one email.
+ * sent, so two runs racing each other still send each investor one email. A
+ * re-run retries deliveries that failed or were left mid-send by a crash.
  */
 
 import "server-only";
 
 import { randomBytes } from "node:crypto";
 
-import { and, desc, eq, inArray } from "drizzle-orm";
+import { and, desc, eq, inArray, lt, or } from "drizzle-orm";
 
 import { getDb } from "@/lib/db";
 import {
@@ -22,7 +23,7 @@ import {
   reportDeliveries,
 } from "@/lib/db/schema";
 import { getOwnedConnection, syncConnection } from "@/lib/ingest/sync";
-import { sendMail, type MailMessage } from "@/lib/mail";
+import { sendMail, STALE_CLAIM_MS, type MailMessage } from "@/lib/mail";
 import type { CustomerRevenue } from "@/lib/metrics";
 import { buildMonthlyReport, type Change, type ReportFlag } from "@/lib/metrics/monthly";
 import { money, type Money } from "@/lib/money";
@@ -197,12 +198,31 @@ export async function sendMonthlyReport(options: {
   let alreadyDelivered = 0;
   let failed = 0;
 
+  const staleBefore = new Date(Date.now() - STALE_CLAIM_MS);
+
   for (const recipient of recipients) {
-    const [claim] = await db
+    let [claim] = await db
       .insert(reportDeliveries)
       .values({ reportId: row.id, email: recipient.email, status: "sending", transport: "pending" })
       .onConflictDoNothing()
       .returning();
+    if (!claim) {
+      // Retake a failed delivery, or one that crashed mid-send and never finished.
+      [claim] = await db
+        .update(reportDeliveries)
+        .set({ status: "sending", error: null, claimedAt: new Date() })
+        .where(
+          and(
+            eq(reportDeliveries.reportId, row.id),
+            eq(reportDeliveries.email, recipient.email),
+            or(
+              eq(reportDeliveries.status, "failed"),
+              and(eq(reportDeliveries.status, "sending"), lt(reportDeliveries.claimedAt, staleBefore)),
+            ),
+          ),
+        )
+        .returning();
+    }
     if (!claim) {
       alreadyDelivered += 1;
       continue;
@@ -215,7 +235,7 @@ export async function sendMonthlyReport(options: {
       });
       await db
         .update(reportDeliveries)
-        .set({ status: "sent", transport: result.transport, sentAt: new Date() })
+        .set({ status: "sent", transport: result.transport, sentAt: new Date(), error: null })
         .where(eq(reportDeliveries.id, claim.id));
       delivered += 1;
     } catch (error) {
