@@ -96,10 +96,17 @@ thin HTTP client over that same route rather than a direct import — dev and pr
 cannot drift, and it sidesteps module resolution, since path aliases are the
 bundler's job and not bare Node's.
 
+## Tokens and ownership
+
+- **Tokens are encrypted at rest.** `connections.tokenCiphertext` holds the token under
+  envelope encryption, bound to the connection's id, so a ciphertext copied to another
+  row won't decrypt. `tokenRef` (the name of an environment variable) remains only as a
+  fallback for connections seeded from the environment. No token is ever stored in
+  plaintext. See [foundations.md](foundations.md).
+- **Every connection has an owner.** `connections.ownerId` scopes the whole ledger to
+  one founder, and a founder owns one connection.
+
 ## Not done yet
 
-- Tokens. `connections.tokenRef` names an environment variable; `tokenCiphertext`
-  is the column Phase 0's envelope encryption will fill. **No token is ever written
-  to the database in plaintext**, but real encryption is still outstanding.
-- Auth and multi-tenancy. A connection has no owner yet.
-- Retries and rate-limit backoff on the Rho client.
+- Retries and rate-limit backoff on the Rho client. A transient Rho error or rate
+  limit fails the whole sync, which is recorded in `sync_runs` and can be re-run.

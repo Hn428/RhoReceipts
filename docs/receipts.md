@@ -29,6 +29,13 @@ a new one.
 **Access is the link.** Slugs carry 72 bits of randomness, and the page sets
 `noindex, nofollow`. Anyone with the URL can view it; no one can guess it.
 
+**Copy link.** The owner's share panel shows the receipt's full link with a
+**Copy link** button. The link is built from the request's host, so it matches the
+address the founder is using (`127.0.0.1` under `npm run demo`). If the clipboard
+API is unavailable, the link is selected instead so it can be copied by hand. A
+copied link opens the receipt but doesn't add it to anyone's portfolio; only
+**Share** does that.
+
 ### Sharing with an investor
 
 The founder who owns a receipt sees **Share this receipt** on its page. Entering
@@ -78,6 +85,5 @@ older receipts, which is how this was caught.
 
 ## Not yet built
 
-- A copy-link button, and a way to revoke a shared receipt. Revoking a direct
-  share removes it from the investor's portfolio, but anyone holding the link
-  can still open it.
+- A way to revoke a shared receipt. Revoking a direct share would remove it from
+  the investor's portfolio, but anyone holding the link could still open it.

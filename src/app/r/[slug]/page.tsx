@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 
 import { auth } from "@/auth";
@@ -28,6 +29,7 @@ import {
   TransactionRows,
 } from "./parts";
 import { shareReceipt } from "./actions";
+import { CopyLink } from "./copy-link";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -54,6 +56,11 @@ export default async function ReceiptPage({ params, searchParams }: Props) {
   if (!receipt) notFound();
   const session = await auth();
   const canShare = session?.user?.id === receipt.ownerId;
+  // Built from the request so the copied link matches the host the founder is using.
+  const requestHeaders = await headers();
+  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host");
+  const protocol = requestHeaders.get("x-forwarded-proto") ?? "http";
+  const receiptUrl = host ? `${protocol}://${host}/r/${receipt.slug}` : `/r/${receipt.slug}`;
 
   const s = receipt.snapshot;
   const { transactions } = s;
@@ -140,6 +147,13 @@ export default async function ReceiptPage({ params, searchParams }: Props) {
               {share === "already_sent" && <p role="status" className="mt-3 text-xs text-ink-soft">This receipt was already shared with that email.</p>}
               {share === "email" && <p role="alert" className="mt-3 text-xs text-flagged">Enter a valid investor email address.</p>}
               {share === "failed" && <p role="alert" className="mt-3 text-xs text-flagged">The receipt could not be shared. Try again.</p>}
+              <div className="mt-4 flex flex-col gap-3 border-t border-rule pt-4 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <p className="text-sm font-semibold text-ink">Private link</p>
+                  <p className="mt-1 text-xs leading-5 text-ink-faint">Anyone with this link can open the receipt. It won&apos;t appear in their portfolio.</p>
+                </div>
+                <CopyLink url={receiptUrl} />
+              </div>
             </div>
           )}
         </header>

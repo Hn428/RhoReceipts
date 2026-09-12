@@ -75,9 +75,12 @@ Auth.js v5 with passwordless email. No passwords are stored, which removes a
 whole class of breach from a product whose premise is that a founder trusts it
 with bank data.
 
-In development the sign-in link is **printed to the terminal** rather than
-emailed, so auth works with no SMTP credentials and nothing leaves the machine.
-Swap `consoleEmailProvider` in `src/auth.ts` for a real transport before shipping.
+The sign-in link is **printed to the terminal** rather than emailed, so auth works
+with no mail credentials and nothing leaves the machine. Receipt shares and monthly
+updates print the same way (`src/lib/mail`). This is deliberate while the app runs
+locally. A hosted deployment would need a real transport first, since no one could
+sign in: `consoleEmailProvider` in `src/auth.ts` and `sendMail` are the two places
+to swap.
 
 Verified end to end: CSRF → magic link → callback → database session →
 `/dashboard` renders for the signed-in founder, and redirects to `/signin` when
@@ -90,11 +93,13 @@ not.
 rewrites the module graph enough to break Node's `fs` path handling — it
 surfaces as `CREATE SCHEMA` failing with a `path`/`URL` type error.
 
-## Still outstanding
+## Multi-tenancy
 
-- Rho client retry and rate-limit backoff.
-- A real email transport.
 Multi-tenancy is closed: `connections.ownerId` scopes every ledger row to a
 founder, since all ledger tables hang off a connection. Verified with two signed-in
 users — the second sees none of the first's connections, and requesting the first's
 connection by id returns 404 rather than 403, so it does not confirm the id exists.
+
+## Still outstanding
+
+- Rho client retry and rate-limit backoff (see [ingestion.md](ingestion.md)).

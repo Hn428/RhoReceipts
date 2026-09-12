@@ -208,10 +208,12 @@ monthly mail. The compact tables show MRR, runway and growth with evidence links
   the delivery is idempotent and appears in the investor portfolio.
 - Add `Portfolio` to investor navigation; founder controls remain on `/dashboard`.
 
-### R11 — Deployment and cron rehearsal — **REMINDER**
-After Postgres is connected, deploy a staging build and run the monthly cron twice to
-verify authentication, report reuse and duplicate-delivery prevention in the hosted
-environment.
+### R11 — Deployment and cron rehearsal — **SKIPPED FOR NOW**
+The app runs locally against Supabase, and mail stays terminal-printed. If it's ever
+deployed: add an email provider first (sign-in is impossible without one). Then set
+`ENCRYPTION_KEY`, `APP_URL`, `RHO_API_BASE_URL` and `CRON_SECRET` in the hosting
+environment, and run the monthly cron twice to verify authentication, report reuse and
+duplicate-delivery prevention.
 
 ### Deferred integrations
 
