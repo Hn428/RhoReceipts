@@ -22,7 +22,6 @@ import { sql } from "drizzle-orm";
 import type { CustomerResearch } from "@/lib/research/customer";
 import {
   bigint,
-  boolean,
   index,
   integer,
   jsonb,
@@ -53,8 +52,8 @@ const timestamps = {
 };
 
 /**
- * A connected Rho credential. The product supports several per founder
- * ("connect one or more Rho accounts"), so every ledger row is scoped to one.
+ * A connected Rho credential. Each founder owns exactly one company
+ * connection, and every ledger row is scoped to it.
  */
 export const connections = pgTable(
   "connections",
@@ -340,13 +339,6 @@ export const syncRuns = pgTable(
 );
 
 export type Connection = typeof connections.$inferSelect;
-/** Founder-editable presentation lives apart from financial snapshots. */
-export const profileSettings = pgTable("profile_settings", {
-  connectionId: uuid("connection_id").primaryKey().references(() => connections.id, { onDelete: "cascade" }),
-  description: text("description").notNull().default(""),
-  logoUrl: text("logo_url"),
-  isPublic: boolean("is_public").notNull().default(false),
-});
 /** Reusable research; issued receipts keep their own immutable copy. */
 export const customerResearchCache = pgTable("customer_research_cache", {
   key: text("key").primaryKey(),
@@ -452,6 +444,33 @@ export const receipts = pgTable(
   (t) => [
     uniqueIndex("receipts_slug_idx").on(t.slug),
     index("receipts_connection_idx").on(t.connectionId, t.createdAt),
+  ],
+);
+
+/** One immutable receipt explicitly shared with one investor email. */
+export const receiptShares = pgTable(
+  "receipt_shares",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    receiptId: uuid("receipt_id")
+      .notNull()
+      .references(() => receipts.id, { onDelete: "cascade" }),
+    connectionId: uuid("connection_id")
+      .notNull()
+      .references(() => connections.id, { onDelete: "cascade" }),
+    ownerId: text("owner_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    email: text("email").notNull(),
+    status: text("status").notNull().default("sending"),
+    transport: text("transport"),
+    sentAt: timestamp("sent_at", { withTimezone: true }),
+    error: text("error"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    uniqueIndex("receipt_shares_unique").on(t.receiptId, t.email),
+    index("receipt_shares_email_idx").on(t.email, t.createdAt),
   ],
 );
 

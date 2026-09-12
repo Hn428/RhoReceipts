@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ["127.0.0.1"],
   /**
    * Database drivers touch the filesystem directly (PGlite opens a data
    * directory; postgres.js opens sockets). Bundling them rewrites the module

@@ -5,11 +5,8 @@
 > **We turn financial activity into portable investor trust.**
 
 A founder enrolls their bank ledger once. Receipts derives the numbers investors ask for,
-checks that the customers behind them are real, and publishes a verified profile the
-founder shares — then keeps investors updated with a monthly receipt, automatically.
-
-The contrast is the product: an enrolled startup's figures open to the transactions behind
-them; an unenrolled one's are whatever the founder typed into a spreadsheet.
+checks that the customers behind them are real, and privately shares frozen receipts with
+investors the founder chooses — then keeps those investors updated automatically.
 
 ## Architecture: four layers
 
@@ -18,7 +15,7 @@ them; an unenrolled one's are whatever the founder typed into a spreadsheet.
 | **1. Financial data** | Mock Rho API + a mock Rho dashboard, clearly labelled as a simulation | Done |
 | **2. Verification engine** | Deterministic classification and metrics | Done |
 | **3. External trust** | Tavily customer web-presence research; labelled demo simulation | Done; authoritative registration verification remains unconfirmed |
-| **4. Distribution** | Public verified profile, investor discovery, monthly investor receipts | Done |
+| **4. Distribution** | Private investor portfolio and monthly investor receipts | Done |
 
 No multi-agent system. The differentiation is the evidence, not the machinery.
 
@@ -30,14 +27,12 @@ No multi-agent system. The differentiation is the evidence, not the machinery.
 2. **Founder enrollment** — the founder opts in: connected accounts, transactions analysed,
    customers identified, then **Generate Rho Receipt**. Voluntary enrollment is what gives
    the badge meaning.
-3. **Public verified profile** — the page the founder shares. Headline figures, a paying
+3. **Verified receipt** — the private page the founder shares. Headline figures, a paying
    customers table with verification status, and every figure opens to its receipts.
-4. **Investor discovery** — three startups side by side. Two verified, one not. Opening the
-   unverified one shows "founder reported" and "unavailable" where evidence would be.
-5. **Monthly investor receipt** — sent automatically to the investors a founder chooses.
+4. **Monthly investor receipt** — sent automatically to the investors a founder chooses.
    Month-over-month changes, new verified customers, and anything that needs a look.
 
-**Founder flow:** mock Rho → enroll → metrics computed → customers researched → profile
+**Founder flow:** mock Rho → enroll → metrics computed → customers researched → receipt
 generated → shared → monthly receipts continue automatically.
 
 **Investor flow:** opens the link from a deck → sees the badge → clicks a figure → sees the
@@ -45,13 +40,13 @@ transactions → clicks a customer → sees payment history and external verific
 
 ## Product rules
 
-1. **Founders cannot edit financial figures.** They can edit a description, logo, whether
-   the profile is listed publicly, and which investors receive monthly receipts. Every
-   figure comes from the engine. Enforced structurally: profile settings and financial
-   snapshots live in separate tables, and no write path reaches a snapshot.
-2. **"Rho Receipts" is this project's name, not a Rho product.** Every page that shows the
+1. **One company per founder account.** Setup disappears after connection, and the founder
+   dashboard becomes that company's complete receipt history.
+2. **Founders cannot edit financial figures.** They can only choose which investors receive
+   monthly receipts. Every figure comes from the engine, and no write path reaches a snapshot.
+3. **"Rho Receipts" is this project's name, not a Rho product.** Every page that shows the
    badge says so. The badge must never read as an official Rho certification.
-3. **Simulated data is labelled as simulated.** The mock Rho environment and the sample
+4. **Simulated data is labelled as simulated.** The mock Rho environment and the sample
    companies say so wherever they appear. Customer research on fictional companies is
    simulated too — see the Tavily note below.
 
@@ -78,20 +73,19 @@ transactions → clicks a customer → sees payment history and external verific
 | Ingestion | Idempotent, versioned sync from the mock Rho API. `docs/ingestion.md` |
 | Classification | Cash perimeter, graded attribution, related-party detection. `docs/metrics.md` |
 | Metric engine | MRR, ARR, burn, runway, growth, concentration, each with evidence. `docs/metrics.md` |
-| Public profile v1 | Snapshot receipts at `/r/<slug>` with full drill-down. `docs/receipts.md` |
+| Private receipt v1 | Snapshot receipts at `/r/<slug>` with full drill-down. `docs/receipts.md` |
 
 ## Delivery milestones
 
-### R1 — Multi-company data layer and the mock Rho dashboard  *(screen 1)* — **DONE**
-Northstar verified byte-identical after the generator refactor. Acme AI: MRR $53,251, +31.0% over 3 months, 12.3 months runway, top customer 31.6%. Mock Rho at `/mock-rho`. BetaWorks moves to R5.
+### R1 — Demo company data and the mock Rho dashboard  *(screen 1)* — **DONE**
+Northstar verified byte-identical after the generator refactor. Acme AI: MRR $53,251, +31.0% over 3 months, 12.3 months runway, top customer 31.6%. Mock Rho at `/mock-rho`.
 
-Screens 1, 4 and 5 all need more than one company, and the monthly receipt needs cases the
-current data doesn't contain.
+The demo includes two separately owned companies so founder isolation and investor portfolio
+access can be shown, while each founder account owns only one company.
 - Generator produces one ledger per company profile. **Northstar Labs stays byte-identical**
   — its figures are pinned by the test suite.
 - **Acme AI** becomes the headline company: faster growth, higher burn, a concentration
   risk, a customer who first paid in the reporting month, and an overdue invoice.
-- **BetaWorks** has no bank data at all — only founder-reported figures.
 - Mock API serves each company by its own token.
 - **Mock Rho dashboard** at `/mock-rho`: accounts, balances, and transactions grouped the
   way a banking app would show them, under a "Mock Rho Banking Environment" banner.
@@ -106,6 +100,8 @@ current data doesn't contain.
   is +0.5%) and moves to the drill-down.
 - Figures carry evidence captions: "from 18 settled customer payments".
 - "Not an official Rho product" disclosure wherever the badge appears.
+- Setup disappears after the first company is connected; direct attempts to connect a second
+  company are rejected, and the dashboard lists that company's full receipt history.
 
 ### R3 — Monthly investor receipts  *(screen 5)* — **DONE**
 Engine in `src/lib/metrics/monthly.ts` (13 tests, including cash reconstructed two independent ways). Recipients and Send now on the dashboard; report at `/m/<slug>`; cron at `/api/cron/monthly-receipts` (vercel.json, 1st of month, `CRON_SECRET` required in production). Verified: 4 sends → 1 email. Mail prints to the console until a provider is wired.
@@ -127,6 +123,8 @@ smoke test against Tavily's own site returned five sources and a matching-domain
 Verified verdict. That test exposed overly restrictive search wording; searches
 now use the name and domain, with a new cache version for future receipts.
 Registration is explicitly unconfirmed; web search alone is not legal certification.
+The receipt presents a billing-domain match, supporting Tavily sources and legal
+registration as separate signals so a web result cannot imply a registry check.
 - Research each paying customer: web presence, domain, registration footprint. Results are
   cached with their evidence so a verdict doesn't change on reload.
 - Statuses: **Verified**, **Needs review**, **Flagged** (related party, or no footprint).
@@ -136,38 +134,71 @@ Registration is explicitly unconfirmed; web search alone is not legal certificat
   Tavily path runs for real companies.
 - Needs `TAVILY_API_KEY`.
 
-### R5 — Investor discovery  *(screen 4)* — **DONE**
-`/discover` shows the latest receipt for each opted-in connection, with reporting
-month and simulation labels. `/discover/betaworks` contains only labelled illustrative claims.
-- `/discover` lists profiles founders marked public, plus BetaWorks.
-- The comparison: bank-derived vs founder reported, calculated vs unavailable, transaction
-  evidence available vs unavailable — shown as a side-by-side, not explained in prose.
+### R5 — Investor discovery — **REMOVED**
+Public company discovery, comparison, and BetaWorks were removed. Companies appear only in
+the authenticated portfolios of investors who received a receipt and remain authorized.
 
-### R6 — Founder profile controls — **DONE**
-Separate `profile_settings` table; owner-checked writes accept only description,
-HTTPS logo URL, and listing choice. Existing profiles default to unlisted.
-New receipts capture presentation settings without changing old snapshots.
-- Description, logo, public/private listing. Recipients arrive in R3.
-- Visibility model: **public** profiles appear in discovery; **private** ones are unlisted
-  and reachable only by link. Investors don't need accounts.
+### R6 — Founder profile controls — **REMOVED**
+Description, logo, and public-listing controls were removed. The founder dashboard manages
+receipt issuance and explicit investor recipients only.
 
 ### R7 — Demo readiness — **DONE**
 `npm run demo` prepares a separate database and starts the app. Repeat setup reuses
 reports and delivery records. The walkthrough is in [DEMO.md](DEMO.md).
 - One command seeds every company, founder and report so the demo starts from a known state.
-- A written demo script following the contrast: BetaWorks first, then Acme AI.
+- A written demo script covering the founder and private investor flows.
 
 ### Validation of R4–R7
 
-147 tests pass, including in-memory Postgres migrations, complete demo imports,
-repeat delivery prevention, research caching, cross-owner settings rejection,
-unlisting and immutable snapshots. Typecheck, lint and the Webpack production build
+149 tests pass, including in-memory Postgres migrations, complete demo imports,
+repeat delivery prevention, research caching, private investor access,
+and immutable snapshots. Typecheck, lint and the Webpack production build
 pass. Default Turbopack build hit an environment socket-permission error.
 The complete browser flow now passes: new-founder sign-in, Acme enrollment and
-generation, simulated customer research and payment history, founder settings,
-discovery opt-in/out, preserved shared snapshots, investor recipient creation,
+generation, simulated customer research and payment history, investor recipient creation,
 monthly delivery, and repeat-send idempotency. Live Tavily credentials and
 matching-domain verification have also passed a smoke test.
+
+## Next milestones
+
+### R8 — Figma UI refactor — **DONE**
+Adapt the approved Figma Make demo to the working Next.js product while preserving
+ledger-derived figures, immutable snapshots, server actions and disclosure rules.
+
+- Landing design → `/`.
+- Bank dashboard design → `/mock-rho/[company]`.
+- Founder setup design → `/enroll` and `/enroll/[connectionId]`.
+- Company profile and evidence designs → `/r/[slug]` and its drilldowns.
+- Monthly receipt design → `/m/[slug]`.
+- Use Inter-style UI typography, mono financial figures, off-white surfaces, charcoal
+  text, verified green and hairline borders from the demo design system.
+
+### R9 — Production Postgres — **NEXT**
+Move from embedded PGlite to hosted Postgres, run migrations against a staging database,
+and verify enrollment, receipt snapshots, research caching and idempotent delivery.
+
+### R10 — Investor portfolio dashboard — **DONE**
+Add an authenticated investor view based on the Figma Portfolio screen. Investors
+see exact receipts shared directly with their signed-in email plus monthly reports
+delivered to it. One-time receipt sharing does not subscribe the investor to future
+monthly mail. The compact tables show MRR, runway and growth with evidence links.
+
+- Add investor sign-in and role-aware routing while keeping founder ownership checks.
+- Model explicit investor-to-company access from receipt recipients.
+- Let a founder share any immutable receipt with an email directly from that receipt;
+  the delivery is idempotent and appears in the investor portfolio.
+- Add `Portfolio` to investor navigation; founder controls remain on `/dashboard`.
+
+### R11 — Deployment and cron rehearsal — **REMINDER**
+After Postgres is connected, deploy a staging build and run the monthly cron twice to
+verify authentication, report reuse and duplicate-delivery prevention in the hosted
+environment.
+
+### Deferred integrations
+
+- Keep terminal-printed magic links and receipt mail during the current build phase.
+- Live Rho API verification is deferred while API access is unavailable; the mock API
+  remains the demo source.
 
 ## Cut from the previous plan
 

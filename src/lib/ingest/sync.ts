@@ -13,7 +13,7 @@
  *   re-read. Re-reading is free precisely because the sync is idempotent.
  */
 
-import { and, desc, eq, inArray, sql } from "drizzle-orm";
+import { and, eq, inArray, sql } from "drizzle-orm";
 
 import { getDb, type Database } from "@/lib/db";
 import type { Connection } from "@/lib/db/schema";
@@ -116,8 +116,8 @@ function resolveToken(connection: Connection): string {
 /**
  * Stores a founder's Rho connection with its token encrypted.
  *
- * Reconnecting the same company updates the existing row rather than creating
- * a duplicate, so pasting a fresh token after the old one expires just works.
+ * A founder can own only one connection. Reconnecting that company updates the
+ * existing row, while attempting to connect another company is rejected.
  * The id is generated here so the ciphertext can be bound to it in the same
  * insert — there is never a moment where the row exists without its token.
  */
@@ -128,15 +128,13 @@ export async function saveConnection(
   const [existing] = await db
     .select()
     .from(connections)
-    .where(
-      and(
-        eq(connections.ownerId, input.ownerId),
-        eq(connections.label, input.label),
-      ),
-    )
+    .where(eq(connections.ownerId, input.ownerId))
     .limit(1);
 
   if (existing) {
+    if (existing.label !== input.label) {
+      throw new Error("This founder already has a company connected.");
+    }
     const [updated] = await db
       .update(connections)
       .set({
@@ -534,16 +532,18 @@ export async function syncConnection(
   }
 }
 
-/** Every connection belonging to one founder, newest first. */
-export async function listConnections(
+/** The single company connected by a founder, if setup is complete. */
+export async function connectionForOwner(
   ownerId: string,
   db: Database = getDb(),
-): Promise<Connection[]> {
-  return db
+): Promise<Connection | null> {
+  const [connection] = await db
     .select()
     .from(connections)
     .where(eq(connections.ownerId, ownerId))
-    .orderBy(desc(connections.createdAt));
+    .orderBy(connections.createdAt)
+    .limit(1);
+  return connection ?? null;
 }
 
 /**

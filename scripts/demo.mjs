@@ -19,7 +19,7 @@ const demoEnv = { ...process.env, ...credentials, DATABASE_URL: "", TAVILY_API_K
 const seeded = spawnSync(process.execPath, ["--conditions=react-server", "--import=tsx", "scripts/demo-seed.ts"], { env: demoEnv, stdio: "inherit" });
 if (seeded.status !== 0) process.exit(seeded.status ?? 1);
 if (!process.argv.includes("--seed-only")) {
-  console.log(`Open ${demoEnv.APP_URL}/discover. Founder sign-in links print here. Ctrl+C stops the demo.`);
+  console.log(`Open ${demoEnv.APP_URL}. Founder and investor sign-in links print here. Ctrl+C stops the demo.`);
   const child = spawn(process.execPath, ["node_modules/next/dist/bin/next", "dev", "--hostname", "127.0.0.1", "--port", port], { env: demoEnv, stdio: "inherit" });
   for (const signal of ["SIGINT", "SIGTERM"]) process.on(signal, () => child.kill(signal));
   child.on("exit", (code) => process.exit(code ?? 0));

@@ -45,18 +45,16 @@ export default async function MonthlyReceiptPage({ params }: Props) {
   ];
 
   return (
-    <main className="flex-1 px-3 py-10 sm:px-6 md:py-16">
-      <article className="perforated mx-auto flex max-w-[40rem] flex-col gap-9 rounded-[2px] bg-paper px-5 py-10 shadow-[0_1px_0_var(--rule),0_24px_48px_-28px_rgb(0_0_0/0.3)] sm:px-8 md:px-11">
-        <header className="flex flex-col gap-3 border-b border-rule pb-7">
-          <p className="text-[0.7rem] font-medium uppercase tracking-[0.16em] text-ink-soft">
-            Monthly receipt · Issued {day(s.asOf)}
-          </p>
-          <h1 className="font-display text-[2.4rem] leading-[1.04] md:text-[3rem]">
-            {s.companyName}
-            <span className="block text-ink-soft">{s.period.label}</span>
-          </h1>
+    <main className="flex-1 px-4 py-10 sm:px-6 md:py-14">
+      <article className="mx-auto flex max-w-5xl flex-col gap-9 rounded-lg border border-rule bg-paper px-5 py-8 shadow-[0_24px_60px_-48px_rgb(0_0_0/0.4)] sm:px-8 md:px-10">
+        <header className="flex flex-col gap-5 border-b border-rule pb-7">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-ink-faint">{s.companyName} · Monthly receipt</p>
+            <span className="rounded-full bg-verified-wash px-2.5 py-1 text-[0.64rem] font-semibold uppercase tracking-wide text-verified">Verified by Rho Receipts</span>
+          </div>
+          <h1 className="font-display text-[2.4rem] font-semibold leading-[1.04] tracking-[-0.04em] md:text-[3rem]">{s.period.label}</h1>
           <p className="text-sm text-ink-soft">
-            Compared with {s.previousPeriod.label}. Every figure is computed from bank records.
+            Monthly financial update derived from transaction activity. Issued {day(s.asOf)} and compared with {s.previousPeriod.label}.
           </p>
           {s.isDemo && (
             <p className="self-start rounded-[2px] border border-dashed border-rule-strong px-3 py-1.5 text-xs text-ink-soft">
@@ -66,19 +64,18 @@ export default async function MonthlyReceiptPage({ params }: Props) {
         </header>
 
         <section aria-label="Changes this month">
-          <div aria-hidden="true" className="grid grid-cols-[1fr_6.5rem_6.5rem] gap-3 border-b border-rule pb-1.5 text-[0.68rem] uppercase tracking-[0.12em] text-ink-faint">
-            <span />
-            <span className="text-right">{s.previousPeriod.label.split(" ")[0]}</span>
+          <div aria-hidden="true" className="grid grid-cols-[1fr_5.5rem_5.5rem_4.5rem] gap-2 border-b border-rule bg-sunken px-3 py-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.09em] text-ink-faint sm:grid-cols-[1fr_8rem_8rem_6rem] sm:gap-3">
+            <span>Metric</span>
             <span className="text-right">{s.period.label.split(" ")[0]}</span>
+            <span className="text-right">{s.previousPeriod.label.split(" ")[0]}</span>
+            <span className="text-right">Change</span>
           </div>
           {rows.map((row) => (
-            <div key={row.label} className="grid grid-cols-[1fr_6.5rem_6.5rem] items-baseline gap-3 border-b border-rule py-3.5">
-              <span className="flex flex-col">
-                <span className="text-[0.95rem] text-ink">{row.label}</span>
-                {row.change && <span className="figures text-xs text-ink-faint">{row.change}</span>}
-              </span>
+            <div key={row.label} className="grid grid-cols-[1fr_5.5rem_5.5rem_4.5rem] items-baseline gap-2 border-b border-rule px-3 py-4 sm:grid-cols-[1fr_8rem_8rem_6rem] sm:gap-3">
+              <span className="text-[0.9rem] font-medium text-ink">{row.label}</span>
+              <span className="figures text-right text-base font-medium text-ink">{row.after}</span>
               <span className="figures text-right text-sm text-ink-faint">{row.before}</span>
-              <span className="figures text-right text-lg text-ink">{row.after}</span>
+              <span className={`figures text-right text-xs ${row.change && row.label === "MRR" ? "text-verified" : row.change && row.label === "Net burn" ? "text-inferred" : "text-ink-faint"}`}>{row.change ?? "—"}</span>
             </div>
           ))}
           {s.growth3Month !== null && (
@@ -89,33 +86,36 @@ export default async function MonthlyReceiptPage({ params }: Props) {
           )}
         </section>
 
+        {(s.newCustomers.length > 0 || s.missedCustomers.length > 0) && <section className="flex flex-col gap-5">
+          <h2 className="text-lg font-semibold tracking-[-0.02em]">What changed this month</h2>
         {s.newCustomers.length > 0 && (
-          <section className="flex flex-col gap-2">
-            <h2 className="text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ink-soft">New customers</h2>
+          <div className="flex flex-col gap-2">
+            <h3 className="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-verified">New customers</h3>
             {s.newCustomers.map((c) => (
               <div key={c.customerName} className="flex items-baseline justify-between gap-3 text-sm">
                 <span>{c.customerName}</span>
                 <span className="figures">{whole(c.amount)}</span>
               </div>
             ))}
-          </section>
+          </div>
         )}
 
         {s.missedCustomers.length > 0 && (
-          <section className="flex flex-col gap-2">
-            <h2 className="text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ink-soft">No payment this month</h2>
+          <div className="flex flex-col gap-2">
+            <h3 className="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-inferred">No payment this month</h3>
             {s.missedCustomers.map((c) => (
               <div key={c.customerName} className="flex items-baseline justify-between gap-3 text-sm">
                 <span>{c.customerName}</span>
                 <span className="figures text-ink-faint">{whole(c.previousAmount)} last month</span>
               </div>
             ))}
-          </section>
+          </div>
         )}
+        </section>}
 
         {s.flags.length > 0 && (
-          <section className="flex flex-col gap-2 rounded-[2px] border border-inferred/35 bg-inferred-wash px-4 py-3.5">
-            <h2 className="text-[0.7rem] font-medium uppercase tracking-[0.14em] text-inferred">Worth a look</h2>
+          <section className="flex flex-col gap-2 rounded-lg border border-inferred/35 bg-inferred-wash px-5 py-4">
+            <h2 className="text-sm font-semibold text-inferred">Investor watch</h2>
             <ul className="flex list-disc flex-col gap-1.5 pl-4 text-sm leading-relaxed text-ink marker:text-inferred">
               {s.flags.map((flag, i) => (
                 <li key={i}>{describeFlag(flag)}</li>

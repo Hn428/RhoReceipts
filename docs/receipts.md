@@ -23,6 +23,22 @@ arithmetic, so the numbers an investor audits can't change after they're shared.
 **Access is the link.** Slugs carry 72 bits of randomness, and the page sets
 `noindex, nofollow`. Anyone with the URL can view it; no one can guess it.
 
+### Sharing with an investor
+
+The founder who owns a receipt sees **Share this receipt** on its page. Entering
+an email:
+
+- records a `receipt_shares` row for that exact receipt and the normalized
+  (trimmed, lowercased) email,
+- sends the receipt link through the configured mail transport, and
+- adds the receipt to that investor's portfolio (`/investor`) under
+  "Receipts shared with you" once the email is sent.
+
+Sharing the same receipt with the same email again sends nothing
+("already shared"). A failed send is recorded and can be retried from the same
+form. A direct share is one-time: it doesn't enroll the email in monthly
+updates, which stay opt-in and appear separately in the portfolio.
+
 **Every line opens to its evidence**, using native `<details>` — no client
 JavaScript, keyboard-accessible by default.
 
@@ -57,4 +73,6 @@ older receipts, which is how this was caught.
 
 - **Customer verification (Tavily).** The customer rows already carry grade chips;
   a "verified company" chip slots in beside them. Needs a `TAVILY_API_KEY`.
-- A copy-link button, and a way to revoke a shared receipt.
+- A copy-link button, and a way to revoke a shared receipt. Revoking a direct
+  share removes it from the investor's portfolio, but anyone holding the link
+  can still open it.

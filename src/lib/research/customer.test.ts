@@ -28,10 +28,18 @@ describe("customer research", () => {
     expect(fetcher).not.toHaveBeenCalled();
   });
   it("verifies matching name on billing domain and retains evidence", async () => {
-    const fetcher = fetcherFor([result()]);
+    const fetcher = fetcherFor([
+      result("https://news.example/story", "Real Widgets funding"),
+      result(),
+    ]);
     const research = await researchCustomer(subject, { apiKey: "secret", fetcher });
     expect(research.status).toBe("Verified");
-    expect(research.evidence).toHaveLength(1);
+    expect(research.officialDomainMatch).toBe(true);
+    expect(research.evidence).toHaveLength(2);
+    expect(research.evidence.map(({ kind, sourceDomain }) => ({ kind, sourceDomain }))).toEqual([
+      { kind: "billing_domain", sourceDomain: "realwidgets.com" },
+      { kind: "supporting", sourceDomain: "news.example" },
+    ]);
     expect(research.registration).toContain("not been independently confirmed");
     const [url, init] = fetcher.mock.calls[0];
     expect(url).toBe("https://api.tavily.com/search");
@@ -43,7 +51,10 @@ describe("customer research", () => {
   });
   it("requires the name, not just a domain hit", async () => {
     const fetcher = fetcherFor([{ ...result(), title: "Domain for sale", content: "Buy this domain" }]);
-    expect((await researchCustomer(subject, { apiKey: "secret", fetcher })).status).toBe("Needs review");
+    expect(await researchCustomer(subject, { apiKey: "secret", fetcher })).toMatchObject({
+      status: "Needs review", officialDomainMatch: false,
+      evidence: [{ kind: "billing_domain", sourceDomain: "realwidgets.com" }],
+    });
   });
   it("flags a completed empty search without claiming nonexistence", async () => {
     expect(await researchCustomer(subject, { apiKey: "secret", fetcher: fetcherFor([]) })).toMatchObject({ status: "Flagged", provider: "tavily" });

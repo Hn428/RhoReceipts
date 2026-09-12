@@ -84,12 +84,14 @@ export function AttributionChip({
 
 /** One itemised line on the receipt that unfolds into its evidence. */
 export function MetricLine({
+  id,
   label,
   figure,
   unit,
   note,
   children,
 }: {
+  id?: string;
   label: string;
   figure: string;
   /** A quiet suffix such as "/mo". */
@@ -98,7 +100,7 @@ export function MetricLine({
   children: ReactNode;
 }) {
   return (
-    <details className="border-b border-rule">
+    <details id={id} className="scroll-mt-20 border-b border-rule">
       <summary className="flex items-baseline gap-3 py-4 hover:bg-sunken/60 md:-mx-3 md:px-3">
         <Chevron />
         <span className="flex min-w-0 flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-3">
@@ -312,6 +314,24 @@ export function PayingCustomerRow({
 }) {
   const first = transactions[customer.transactionIds[0]];
   const related = historyIds.some((id) => transactions[id]?.relatedParty);
+  const evidence = research?.evidence.map((item) => {
+    let sourceDomain = item.sourceDomain;
+    if (!sourceDomain) {
+      try { sourceDomain = new URL(item.url).hostname.toLowerCase().replace(/^www\./, ""); }
+      catch { sourceDomain = "Source"; }
+    }
+    const domain = research.domain?.toLowerCase().replace(/^www\./, "");
+    const kind = item.kind ?? (domain && (sourceDomain === domain || sourceDomain.endsWith(`.${domain}`))
+      ? "billing_domain" : "supporting");
+    return { ...item, kind, sourceDomain };
+  }) ?? [];
+  const domainEvidence = evidence.filter((item) => item.kind === "billing_domain");
+  const supportingEvidence = evidence.filter((item) => item.kind === "supporting");
+  // Tavily receipts issued before source classification used Verified only for this exact match.
+  const officialDomainMatch = research?.officialDomainMatch ??
+    (research?.provider === "tavily" && research.status === "Verified");
+  const verdict = related ? "Flagged" : research?.provider === "simulated" && research.status === "Verified"
+    ? "Simulated match" : research?.status === "Verified" ? "Web match" : research?.status ?? "Needs review";
   return (
     <details className="border-b border-rule/70 last:border-b-0">
       <summary className="grid grid-cols-[auto_1fr_auto] items-baseline gap-x-2.5 gap-y-1 py-3 sm:grid-cols-[auto_1fr_7.5rem_9rem] sm:gap-x-3">
@@ -320,9 +340,8 @@ export function PayingCustomerRow({
         <span className="figures whitespace-nowrap text-right text-sm text-ink">{whole(customer.amount)}</span>
         <span className="col-start-2 flex flex-wrap items-center gap-1.5 sm:col-start-auto">
           <Chip tone={related || research?.status === "Flagged" ? "flagged" : research?.status === "Verified" ? "verified" : "inferred"}>
-            {related ? "Flagged" : research?.status ?? "Needs review"}
+            {verdict}
           </Chip>
-          {research?.provider === "simulated" && <span className="text-[0.65rem] text-ink-faint">Simulated</span>}
         </span>
       </summary>
       <div className="flex flex-col gap-2 pb-4 pl-5">
@@ -330,15 +349,29 @@ export function PayingCustomerRow({
           <p className="font-medium text-ink">External customer research{research?.provider === "simulated" ? " · simulated" : ""}</p>
           <p>{research?.reason ?? (customer.customerId ? "External research was not included when this receipt was issued." : "An aggregated or unattributed payment cannot identify an individual customer for research.")}</p>
           {research && <>
-            {research.domain && <p>Billing domain: {research.domain}</p>}
+            <dl className="my-3 grid gap-px overflow-hidden rounded-[2px] border border-rule bg-rule sm:grid-cols-3">
+              <div className="bg-paper p-2.5">
+                <dt className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-ink-faint">Billing-domain match</dt>
+                <dd className="mt-1 font-medium text-ink">{research.provider === "simulated" ? "Simulated" : officialDomainMatch ? "Name + domain matched" : "Not established"}</dd>
+                {research.domain && <dd className="mt-0.5 break-all text-ink-faint">{research.domain}</dd>}
+              </div>
+              <div className="bg-paper p-2.5">
+                <dt className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-ink-faint">Supporting sources</dt>
+                <dd className="mt-1 font-medium text-ink">{research.provider === "simulated" ? "No live search" : `${supportingEvidence.length} retained`}</dd>
+                <dd className="mt-0.5 text-ink-faint">Separate from the billing domain</dd>
+              </div>
+              <div className="bg-paper p-2.5">
+                <dt className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-ink-faint">Legal registration</dt>
+                <dd className="mt-1 font-medium text-ink">Not checked</dd>
+                <dd className="mt-0.5 text-ink-faint">No registry adapter</dd>
+              </div>
+            </dl>
             <p>{research.registration}</p>
             <p>Checked {dayShort(research.checkedAt)} · {research.provider === "tavily" ? "Tavily web search" : research.provider === "simulated" ? "Demo fixture, no live search" : "External check unavailable"}</p>
-            {research.evidence.length > 0 && <ul className="mt-2 flex flex-col gap-2">
-              {research.evidence.map((item, index) => <li key={`${item.url}-${index}`}>
-                <a href={item.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">{item.title}</a>
-                <p>{item.excerpt}</p>
-              </li>)}
-            </ul>}
+            {evidence.length > 0 && <div className="mt-3 flex flex-col gap-3">
+              {domainEvidence.length > 0 && <EvidenceSources label="Billing-domain evidence" items={domainEvidence} />}
+              {supportingEvidence.length > 0 && <EvidenceSources label="Supporting web sources" items={supportingEvidence} />}
+            </div>}
           </>}
         </div>
         <span><AttributionChip attribution={customer.attribution} />{related && <Chip tone="flagged">Related party</Chip>}</span>
@@ -347,4 +380,23 @@ export function PayingCustomerRow({
       </div>
     </details>
   );
+}
+
+function EvidenceSources({
+  label,
+  items,
+}: {
+  label: string;
+  items: { title: string; url: string; excerpt: string; sourceDomain?: string }[];
+}) {
+  return <section>
+    <h5 className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-ink-faint">{label}</h5>
+    <ul className="mt-1.5 flex flex-col gap-2">
+      {items.map((item, index) => <li key={`${item.url}-${index}`} className="border-l-2 border-rule-strong pl-2.5">
+        <a href={item.url} target="_blank" rel="noopener noreferrer" className="font-medium text-ink underline underline-offset-2">{item.title}</a>
+        <p className="font-mono text-[0.62rem] text-ink-faint">{item.sourceDomain}</p>
+        <p>{item.excerpt}</p>
+      </li>)}
+    </ul>
+  </section>;
 }

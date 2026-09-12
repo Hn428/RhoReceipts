@@ -50,6 +50,20 @@
       "when": 1789242577753,
       "tag": "0006_graceful_morgan_stark",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1789250597111,
+      "tag": "0007_curved_mandroid",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1789252867062,
+      "tag": "0008_sharp_the_spike",
+      "breakpoints": true
     }
   ]
 }

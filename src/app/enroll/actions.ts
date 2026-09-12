@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { auth } from "@/auth";
-import { saveConnection, syncConnection } from "@/lib/ingest/sync";
+import { connectionForOwner, saveConnection, syncConnection } from "@/lib/ingest/sync";
 import { issueReceipt } from "@/lib/receipts";
 import { RhoApiError, RhoClient } from "@/lib/rho/client";
 import { companyBySlug } from "@/lib/rho/mock/store";
@@ -31,8 +31,8 @@ function companyNameFrom(accounts: RhoAccount[]): string {
  * Step one of enrollment: connect and import the ledger.
  *
  * Deliberately stops short of generating anything. The founder sees what was
- * found and chooses to publish — voluntary enrollment is what gives the badge
- * its meaning.
+ * found and chooses to generate the first receipt — voluntary enrollment is
+ * what gives the badge its meaning.
  */
 export async function importLedger(
   _previous: ImportState,
@@ -41,6 +41,9 @@ export async function importLedger(
   const session = await auth();
   if (!session?.user?.id) redirect("/signin");
   const ownerId = session.user.id;
+  if (await connectionForOwner(ownerId)) {
+    return { status: "error", message: "Your company is already connected. Open the dashboard to view its receipts." };
+  }
 
   // A sample company is chosen by slug; its token never touches the browser.
   const sampleSlug = formData.get("sample");
@@ -120,7 +123,7 @@ export async function importLedger(
   redirect(`/enroll/${connectionId}`);
 }
 
-/** Step two: the founder chooses to publish. */
+/** Step two: the founder chooses to generate the first immutable receipt. */
 export async function generateReceipt(formData: FormData) {
   const session = await auth();
   if (!session?.user?.id) redirect("/signin");

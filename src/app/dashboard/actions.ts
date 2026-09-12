@@ -11,21 +11,6 @@ import { getDb } from "@/lib/db";
 import { investorRecipients } from "@/lib/db/schema";
 import { issueReceipt } from "@/lib/receipts";
 import { sendMonthlyReport } from "@/lib/reports";
-import { profileInput, saveProfileSettings } from "@/lib/profiles";
-
-export async function updateProfile(formData: FormData) {
-  const { connection, ownerId } = await ownedConnectionFrom(formData);
-  const parsed = profileInput.safeParse({
-    description: String(formData.get("description") ?? ""),
-    logoUrl: String(formData.get("logoUrl") ?? ""),
-    isPublic: formData.get("isPublic") === "on",
-  });
-  if (!parsed.success) redirect("/dashboard?error=profile");
-  await saveProfileSettings(connection.id, ownerId, parsed.data);
-  revalidatePath("/dashboard");
-  revalidatePath("/discover");
-  redirect("/dashboard?saved=profile");
-}
 
 /** Pulls the latest activity from Rho, then issues a new receipt from it. */
 export async function issueFreshReceipt(formData: FormData) {

@@ -44,16 +44,17 @@ export default async function ReviewPage({
   ];
 
   return (
-    <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-8 px-6 py-14 md:py-20">
+    <main className="mx-auto grid w-full max-w-6xl flex-1 gap-10 px-6 py-12 md:grid-cols-[1.15fr_0.85fr] md:py-16">
+      <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-3">
-        <p className="text-[0.72rem] uppercase tracking-[0.14em] text-ink-faint">Step 2 of 3 · Review</p>
-        <h1 className="font-display text-4xl leading-[1.08] md:text-5xl">{summary.companyName}</h1>
+        <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-verified">Founder setup · Review</p>
+        <h1 className="font-display text-4xl font-semibold leading-[1.04] tracking-[-0.04em] md:text-5xl">{summary.companyName}</h1>
         <p className="max-w-[52ch] text-base leading-relaxed text-ink-soft">
           Here is what Rho Receipts found in your bank records
           {summary.firstTransactionAt && summary.lastTransactionAt
             ? `, from ${day(summary.firstTransactionAt)} to ${day(summary.lastTransactionAt)}`
             : ""}
-          . Nothing has been published yet.
+          . No receipt has been generated yet.
         </p>
         {summary.isDemo && (
           <p className="self-start rounded-[2px] border border-dashed border-rule-strong px-3 py-1.5 text-xs text-ink-soft">
@@ -62,7 +63,7 @@ export default async function ReviewPage({
         )}
       </div>
 
-      <section className="perforated rounded-[2px] bg-paper px-6 py-7 shadow-[0_1px_0_var(--rule),0_12px_32px_-18px_rgb(0_0_0/0.25)] md:px-8">
+      <section className="rounded-lg border border-rule bg-paper px-6 py-7 md:px-8">
         <dl className="flex flex-col">
           {figures.map((f) => (
             <div key={f.label} className="flex items-baseline gap-3 border-b border-rule py-3.5 last:border-b-0">
@@ -77,10 +78,12 @@ export default async function ReviewPage({
         </dl>
       </section>
 
-      <div className="flex flex-col gap-4">
+      </div>
+      <aside className="flex h-fit flex-col gap-5 rounded-lg border border-rule bg-paper p-6 md:sticky md:top-20">
+        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-ink-faint">Ready to generate</p>
         <p className="max-w-[56ch] text-sm leading-relaxed text-ink-soft">
           Generating computes MRR, net burn, runway, growth and customer concentration from these
-          records and publishes them as a shareable profile. You won&apos;t be able to edit the figures —
+          records and freezes them in a private receipt. You won&apos;t be able to edit the figures —
           that&apos;s what makes them worth trusting.
         </p>
         {error === "generate" && (
@@ -97,7 +100,7 @@ export default async function ReviewPage({
             Not now
           </Link>
         </form>
-      </div>
+      </aside>
     </main>
   );
 }

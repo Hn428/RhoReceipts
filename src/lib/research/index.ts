@@ -11,7 +11,7 @@ import { researchCustomer, type ResearchSubject } from "./customer";
 export async function cachedCustomerResearch(connectionId: string, subject: ResearchSubject) {
   const db = getDb();
   const now = new Date();
-  const key = createHash("sha256").update(JSON.stringify({ version: 2, connectionId, ...subject })).digest("hex");
+  const key = createHash("sha256").update(JSON.stringify({ version: 3, connectionId, ...subject })).digest("hex");
   const [cached] = await db.select().from(customerResearchCache).where(and(
     eq(customerResearchCache.key, key), gt(customerResearchCache.expiresAt, now),
   )).limit(1);

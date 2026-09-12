@@ -5,7 +5,6 @@ import { users, investorRecipients } from "@/lib/db/schema";
 import { runMigrations } from "@/lib/db/migrate";
 import { saveConnection, syncConnection } from "@/lib/ingest/sync";
 import { latestReceiptFor } from "@/lib/receipts";
-import { saveProfileSettings } from "@/lib/profiles";
 import { sendMonthlyReport } from "@/lib/reports";
 import { mockCompanies } from "@/lib/rho/mock/store";
 import { GET as accounts } from "@/app/api/mock/rho/v1/accounts/route";
@@ -47,7 +46,6 @@ export async function seedDemo(appUrl: string) {
       });
       const sync = await syncConnection(connection.id, { trigger: "demo", fullRefresh: true });
       if (sync.status !== "succeeded") throw new Error(`Demo import failed for ${company.meta.company}`);
-      await saveProfileSettings(connection.id, ownerId, { description: company.meta.description, logoUrl: "", isPublic: true });
       await db.insert(investorRecipients).values({ connectionId: connection.id, ownerId, email: "investor@example.test", name: "Demo investor" }).onConflictDoNothing();
       const report = await sendMonthlyReport({ connectionId: connection.id, ownerId, asOf: new Date(company.meta.anchor), trigger: "manual" });
       const receipt = await latestReceiptFor(connection.id, ownerId);

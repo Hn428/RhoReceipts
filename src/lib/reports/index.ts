@@ -276,6 +276,54 @@ export async function reportsFor(connectionId: string, ownerId: string) {
   }));
 }
 
+/**
+ * The newest receipt actually delivered to each company that currently grants
+ * this investor access. Both conditions matter: removing a recipient revokes
+ * portfolio access, and an unsent report never appears as though it was shared.
+ */
+export async function reportsSharedWithInvestor(email: string) {
+  const normalizedEmail = email.trim().toLowerCase();
+  if (!normalizedEmail) return [];
+
+  const db = getDb();
+  const grants = await db
+    .select({ connectionId: investorRecipients.connectionId })
+    .from(investorRecipients)
+    .where(eq(investorRecipients.email, normalizedEmail));
+  if (grants.length === 0) return [];
+
+  const reports = await db
+    .select()
+    .from(monthlyReports)
+    .where(inArray(monthlyReports.connectionId, grants.map((grant) => grant.connectionId)))
+    .orderBy(desc(monthlyReports.periodKey), desc(monthlyReports.createdAt));
+  if (reports.length === 0) return [];
+
+  const deliveries = await db
+    .select({ reportId: reportDeliveries.reportId })
+    .from(reportDeliveries)
+    .where(
+      and(
+        inArray(reportDeliveries.reportId, reports.map((report) => report.id)),
+        eq(reportDeliveries.email, normalizedEmail),
+        eq(reportDeliveries.status, "sent"),
+      ),
+    );
+  const deliveredReportIds = new Set(deliveries.map((delivery) => delivery.reportId));
+  const newestByConnection = new Map<string, (typeof reports)[number]>();
+
+  for (const report of reports) {
+    if (deliveredReportIds.has(report.id) && !newestByConnection.has(report.connectionId)) {
+      newestByConnection.set(report.connectionId, report);
+    }
+  }
+
+  return [...newestByConnection.values()].map((report) => ({
+    ...report,
+    snapshot: report.snapshot as ReportSnapshot,
+  }));
+}
+
 export async function recipientsFor(connectionId: string, ownerId: string) {
   return getDb()
     .select()

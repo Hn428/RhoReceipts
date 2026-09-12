@@ -16,7 +16,16 @@ export interface CustomerResearch {
   domain: string | null;
   reason: string;
   registration: string;
-  evidence: { title: string; url: string; excerpt: string }[];
+  /** True only when both the customer name and billing domain match one result. */
+  officialDomainMatch?: boolean;
+  evidence: {
+    title: string;
+    url: string;
+    excerpt: string;
+    /** Optional so receipts issued before source classification still render. */
+    kind?: "billing_domain" | "supporting";
+    sourceDomain?: string;
+  }[];
 }
 
 const responseSchema = z.object({
@@ -76,15 +85,22 @@ export async function researchCustomer(
     const parsed = responseSchema.parse(await response.json());
     const evidence = parsed.results.flatMap((result) => {
       const url = safeEvidenceUrl(result.url);
-      return url ? [{ title: result.title.slice(0, 300), url, excerpt: result.content.slice(0, 800) }] : [];
+      if (!url) return [];
+      const sourceDomain = new URL(url).hostname.toLowerCase().replace(/^www\./, "");
+      const kind = sourceDomain === domain || sourceDomain.endsWith(`.${domain}`)
+        ? "billing_domain" as const : "supporting" as const;
+      return [{
+        title: result.title.slice(0, 300), url, excerpt: result.content.slice(0, 800),
+        kind, sourceDomain,
+      }];
     });
     const name = normalizedName(subject.name).replace(/\s+(inc|llc|ltd|corp|corporation)$/, "");
     const matched = name.length >= 3 && evidence.some((result) => {
-      const host = new URL(result.url).hostname.toLowerCase();
-      return (host === domain || host.endsWith(`.${domain}`)) &&
+      return result.kind === "billing_domain" &&
         (` ${normalizedName(`${result.title} ${result.excerpt}`)} `).includes(` ${name} `);
     });
-    return { ...base, provider: "tavily", evidence,
+    evidence.sort((a, b) => Number(b.kind === "billing_domain") - Number(a.kind === "billing_domain"));
+    return { ...base, provider: "tavily", evidence, officialDomainMatch: matched,
       status: matched ? "Verified" : parsed.results.length === 0 ? "Flagged" : "Needs review",
       reason: matched ? "A search result on the billing domain matches the customer name. This verifies web presence only, not legal identity or payment legitimacy."
         : parsed.results.length === 0 ? "The search returned no public footprint. This is a review flag, not proof the customer does not exist."

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { auth } from "@/auth";
 import { abs } from "@/lib/money";
 import { getReceiptBySlug } from "@/lib/receipts";
 import {
@@ -26,8 +27,12 @@ import {
   Tick,
   TransactionRows,
 } from "./parts";
+import { shareReceipt } from "./actions";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ share?: string }>;
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -42,10 +47,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ReceiptPage({ params }: Props) {
+export default async function ReceiptPage({ params, searchParams }: Props) {
   const { slug } = await params;
+  const { share } = await searchParams;
   const receipt = await getReceiptBySlug(slug);
   if (!receipt) notFound();
+  const session = await auth();
+  const canShare = session?.user?.id === receipt.ownerId;
 
   const s = receipt.snapshot;
   const { transactions } = s;
@@ -72,8 +80,8 @@ export default async function ReceiptPage({ params }: Props) {
   const flagCount = s.relatedParties.length + inferred.length + aggregated.length;
 
   return (
-    <main className="flex-1 px-3 py-10 sm:px-6 md:py-16">
-      <article className="perforated mx-auto flex max-w-[46rem] flex-col gap-10 rounded-[2px] bg-paper px-5 py-10 shadow-[0_1px_0_var(--rule),0_24px_48px_-28px_rgb(0_0_0/0.3)] sm:px-8 md:px-12 md:py-14">
+    <main className="flex-1 px-4 py-10 sm:px-6 md:py-14">
+      <article className="mx-auto flex max-w-6xl flex-col gap-10 rounded-lg border border-rule bg-paper px-5 py-8 shadow-[0_24px_60px_-48px_rgb(0_0_0/0.4)] sm:px-8 md:px-10 md:py-10">
         {/* ------------------------------------------------------ header */}
         <header className="flex flex-col gap-6 border-b border-rule pb-9">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -84,15 +92,9 @@ export default async function ReceiptPage({ params }: Props) {
           </div>
 
           <div className="flex flex-col gap-3">
-            {s.profile?.logoUrl && (
-              // The browser loads founder-supplied logos; no server-side image fetch.
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={s.profile.logoUrl} alt={`${s.companyName} logo`} referrerPolicy="no-referrer" className="h-14 w-14 rounded object-contain" />
-            )}
-            <h1 className="font-display text-[2.6rem] leading-[1.02] tracking-[-0.015em] md:text-[3.4rem]">
+            <h1 className="font-display text-[2.6rem] font-semibold leading-[1.02] tracking-[-0.045em] md:text-[3.4rem]">
               {s.companyName}
             </h1>
-            {s.profile?.description && <p className="text-sm leading-relaxed text-ink-soft">{s.profile.description}<span className="block text-xs text-ink-faint">Founder-provided description</span></p>}
             <p className="max-w-[54ch] text-[0.98rem] leading-relaxed text-ink-soft">
               Figures for <span className="text-ink">{s.reportingPeriod.label}</span>, computed
               from {plural(s.source.transactionCount, "bank transaction")} across{" "}
@@ -102,7 +104,7 @@ export default async function ReceiptPage({ params }: Props) {
           </div>
 
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <span className="inline-flex items-center gap-2 rounded-[2px] border border-verified/40 bg-verified-wash px-2.5 py-1.5 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-verified">
+            <span className="inline-flex items-center gap-2 rounded-full bg-verified-wash px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-verified">
               <Tick /> Verified by Rho Receipts
             </span>
             <span className="text-xs text-ink-faint">
@@ -120,15 +122,42 @@ export default async function ReceiptPage({ params }: Props) {
               a synthetic ledger built for demonstration, not from a real bank account.
             </p>
           )}
+
+          {canShare && (
+            <div className="rounded-lg border border-rule bg-sunken px-4 py-4 sm:px-5">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-sm font-semibold text-ink">Share this receipt</p>
+                  <p className="mt-1 text-xs leading-5 text-ink-faint">The investor receives this exact frozen receipt and it appears in their portfolio.</p>
+                </div>
+                <form action={shareReceipt} className="flex w-full gap-2 sm:max-w-md">
+                  <input type="hidden" name="slug" value={receipt.slug} />
+                  <input name="email" type="email" required aria-label="Investor email" placeholder="investor@fund.com" className="min-w-0 flex-1 rounded border border-rule-strong bg-paper px-3 py-2 text-sm" />
+                  <button type="submit" className="rounded bg-ink px-4 py-2 text-sm font-semibold text-paper hover:opacity-90">Share</button>
+                </form>
+              </div>
+              {share === "sent" && <p role="status" className="mt-3 text-xs text-verified">Receipt shared. The email was sent through the configured mail transport.</p>}
+              {share === "already_sent" && <p role="status" className="mt-3 text-xs text-ink-soft">This receipt was already shared with that email.</p>}
+              {share === "email" && <p role="alert" className="mt-3 text-xs text-flagged">Enter a valid investor email address.</p>}
+              {share === "failed" && <p role="alert" className="mt-3 text-xs text-flagged">The receipt could not be shared. Try again.</p>}
+            </div>
+          )}
         </header>
+
+        <div className="grid overflow-hidden rounded-lg border border-rule bg-paper sm:grid-cols-2 lg:grid-cols-5 lg:divide-x lg:divide-rule">
+          <ProfileMetric label="MRR" value={whole(m.mrr.value)} note={`${percent(m.growthRate.value, { signed: true })} MoM`} href="#mrr-evidence" />
+          <ProfileMetric label="Net burn" value={whole(m.netBurn.value)} note="per month" href="#burn-evidence" />
+          <ProfileMetric label="Runway" value={m.runwayMonths.value === null ? "Not burning" : `${m.runwayMonths.value} mo`} note="at current rate" href="#runway-evidence" />
+          <ProfileMetric label="3-mo growth" value={percent((growth3 ?? m.growthRate).value, { signed: true })} note="revenue" href="#growth-evidence" positive />
+          <ProfileMetric label="Top customer" value={percent(m.concentration.value.topCustomerShare)} note="of revenue" href="#concentration-evidence" />
+        </div>
 
         {/* ---------------------------------------------------- figures */}
         <section aria-labelledby="figures" className="flex flex-col">
-          <h2 id="figures" className="sr-only">
-            Figures
-          </h2>
+          <div className="mb-3"><p className="text-xs font-semibold uppercase tracking-[0.12em] text-ink-faint">Evidence drilldowns</p><h2 id="figures" className="mt-1 text-xl font-semibold tracking-[-0.02em]">Audit every figure</h2></div>
 
           <MetricLine
+            id="mrr-evidence"
             label="Monthly recurring revenue"
             note={`from ${plural(m.mrr.transactionIds.length, "settled payment")}`}
             figure={whole(m.mrr.value)}
@@ -153,6 +182,7 @@ export default async function ReceiptPage({ params }: Props) {
           </MetricLine>
 
           <MetricLine
+            id="burn-evidence"
             label="Net burn"
             note={
               prepayments
@@ -199,6 +229,7 @@ export default async function ReceiptPage({ params }: Props) {
           </MetricLine>
 
           <MetricLine
+            id="runway-evidence"
             label="Runway"
             note={`at ${whole(s.averageMonthlyBurn)} a month`}
             figure={m.runwayMonths.value === null ? "Not burning" : `${m.runwayMonths.value} months`}
@@ -226,6 +257,7 @@ export default async function ReceiptPage({ params }: Props) {
           </MetricLine>
 
           <MetricLine
+            id="growth-evidence"
             label={growth3 ? "Revenue growth, 3 months" : "Growth, month over month"}
             note={
               growth3 && threeBack
@@ -265,6 +297,7 @@ export default async function ReceiptPage({ params }: Props) {
           </MetricLine>
 
           <MetricLine
+            id="concentration-evidence"
             label="Largest customer"
             note={
               m.concentration.value.topCustomerName
@@ -314,7 +347,7 @@ export default async function ReceiptPage({ params }: Props) {
             >
               <span>Customer</span>
               <span className="text-right">This month</span>
-              <span>Verification</span>
+              <span>Web presence</span>
             </div>
             {s.mrrCustomers.map((customer) => {
               const key = customer.customerId ?? customer.customerName;
@@ -468,6 +501,14 @@ export default async function ReceiptPage({ params }: Props) {
       </article>
     </main>
   );
+}
+
+function ProfileMetric({ label, value, note, href, positive = false }: { label: string; value: string; note: string; href: string; positive?: boolean }) {
+  return <a href={href} className="group border-b border-rule p-5 last:border-b-0 hover:bg-sunken sm:[&:nth-child(4)]:border-b-0 lg:border-b-0">
+    <p className="text-[0.64rem] font-semibold uppercase tracking-[0.1em] text-ink-faint">{label}</p>
+    <p className={`figures mt-2 text-xl font-medium ${positive ? "text-verified" : "text-ink"}`}>{value}</p>
+    <p className="mt-1 flex items-center justify-between gap-2 text-xs text-ink-faint"><span>{note}</span><span className="text-verified opacity-0 group-hover:opacity-100">View evidence</span></p>
+  </a>;
 }
 
 function AccountTable({

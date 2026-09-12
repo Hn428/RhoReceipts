@@ -1,24 +1,20 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
+import { SiteNav } from "./site-nav";
+import { auth } from "@/auth";
+import { connectionForOwner } from "@/lib/ingest/sync";
+import { isViewRole, VIEW_ROLE_COOKIE } from "@/lib/view-role";
 
-const plexSans = IBM_Plex_Sans({
-  variable: "--font-plex-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
 });
 
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -27,13 +23,20 @@ export const metadata: Metadata = {
     "Verified startup metrics derived from real bank transactions, traceable to the ledger.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const storedRole = (await cookies()).get(VIEW_ROLE_COOKIE)?.value;
+  const role = isViewRole(storedRole) ? storedRole : undefined;
+  const session = await auth();
+  const hasCompany = role !== "investor" && session?.user?.id
+    ? Boolean(await connectionForOwner(session.user.id))
+    : false;
   return (
     <html
       lang="en"
-      className={`${plexSans.variable} ${plexMono.variable} ${newsreader.variable} h-full`}
+      className={`${inter.variable} ${jetbrainsMono.variable} h-full`}
     >
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <SiteNav role={role} hasCompany={hasCompany} />
         {children}
       </body>
     </html>

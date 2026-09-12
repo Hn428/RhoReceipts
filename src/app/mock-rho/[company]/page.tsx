@@ -87,8 +87,19 @@ export default async function MockRhoDashboard({ params, searchParams }: Props) 
         ledger for the Rho Receipts demo · Not affiliated with or operated by Rho
       </div>
 
+      <div className="flex flex-1">
+        <aside className="hidden w-56 shrink-0 flex-col border-r border-[var(--bank-line)] bg-[var(--bank-surface)] px-4 py-6 lg:flex">
+          <div className="flex items-center gap-3 border-b border-[var(--bank-line)] pb-5"><span className="flex h-9 w-9 items-center justify-center rounded-md bg-[var(--bank-ink)] font-semibold text-white">{company.meta.short_name[0]}</span><div><p className="text-sm font-semibold">{company.meta.short_name}</p><p className="text-xs text-[var(--bank-faint)]">Business account</p></div></div>
+          <nav aria-label="Mock bank" className="mt-5 flex flex-col gap-1 text-sm">
+            {[["Overview","▦"],["Accounts","◫"],["Transactions","↕"],["Transfers","⇄"],["Payments","◎"],["Team","◻"]].map(([label, icon], index) => <span key={label} className={`rounded-md px-3 py-2 ${index === 0 ? "bg-[var(--bank-accent-wash)] font-medium text-[var(--bank-accent)]" : "text-[var(--bank-muted)]"}`}><span className="mr-2 inline-block w-4">{icon}</span>{label}</span>)}
+          </nav>
+          <div className="mt-auto rounded-lg border border-[var(--bank-line)] bg-[var(--bank-bg)] p-4"><p className="text-xs font-semibold">Rho Receipts</p><p className="mt-1 text-xs leading-5 text-[var(--bank-muted)]">Generate a private verified receipt.</p><Link href={`/enroll?company=${slug}`} className="mt-3 block rounded-md bg-[var(--bank-accent)] px-3 py-2 text-center text-xs font-medium text-white">Generate receipt →</Link></div>
+        </aside>
+
+        <div className="flex min-w-0 flex-1 flex-col">
+
       <header className="border-b border-[var(--bank-line)] bg-[var(--bank-surface)]">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
+        <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-4">
           <div className="flex items-center gap-6">
             <span className="text-sm font-semibold tracking-tight">Mock Rho</span>
             <nav aria-label="Companies" className="flex gap-1">
@@ -104,16 +115,21 @@ export default async function MockRhoDashboard({ params, searchParams }: Props) 
               ))}
             </nav>
           </div>
-          <Link
-            href={`/enroll?company=${slug}`}
-            className="rounded-md bg-[var(--bank-accent)] px-3.5 py-2 text-sm font-medium text-white hover:opacity-90 dark:text-[var(--bank-bg)]"
-          >
-            Enroll in Rho Receipts →
-          </Link>
+          <div className="flex items-center gap-2">
+            <span className="cursor-default select-none px-3 py-2 text-sm text-[var(--bank-muted)]">
+              Rho Receipts
+            </span>
+            <Link
+              href={`/enroll?company=${slug}`}
+              className="rounded-md bg-[var(--bank-accent)] px-3.5 py-2 text-sm font-medium text-white hover:opacity-90 dark:text-[var(--bank-bg)]"
+            >
+              Enroll →
+            </Link>
+          </div>
         </div>
       </header>
 
-      <main className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-8">
+      <main className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-8">
         <div className="flex flex-col gap-1">
           <h1 className="text-2xl font-semibold tracking-tight">{company.meta.company}</h1>
           <p className="text-sm text-[var(--bank-muted)]">
@@ -248,6 +264,8 @@ export default async function MockRhoDashboard({ params, searchParams }: Props) 
           </aside>
         </div>
       </main>
+        </div>
+      </div>
     </div>
   );
 }

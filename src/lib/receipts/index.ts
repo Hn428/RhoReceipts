@@ -2,7 +2,7 @@
  * Issuing and loading receipts.
  *
  * Issuing runs the full pipeline — ledger rows, classification, metrics — and
- * freezes the result as a JSON snapshot. The public page renders only from
+ * freezes the result as a JSON snapshot. The private receipt page renders only from
  * that snapshot. It performs no arithmetic and reads no live ledger rows, so
  * what an investor audits is exactly what was issued.
  */
@@ -34,7 +34,6 @@ import { money, type Money } from "@/lib/money";
 import { formatPeriod, parsePeriodKey } from "@/lib/period";
 import { cachedCustomerResearch } from "@/lib/research";
 import type { CustomerResearch } from "@/lib/research/customer";
-import { getProfileSettings } from "@/lib/profiles";
 
 /** Bump when classification or metric rules change in a way that moves numbers. */
 export const ENGINE_VERSION = "2026.09.3";
@@ -289,7 +288,6 @@ export async function issueReceipt(options: {
   }
 
   const companyName = companyNameFrom(connection.label);
-  const profile = await getProfileSettings(connection.id);
   const isDemo = connection.baseUrl.includes("/api/mock/rho/");
   const customerResearch: Record<string, CustomerResearch> = {};
   // Small batches cap concurrent external requests while keeping enrollment responsive.
@@ -309,7 +307,6 @@ export async function issueReceipt(options: {
   const snapshot: ReceiptSnapshot = {
     version: 1,
     companyName,
-    profile: { description: profile.description, logoUrl: profile.logoUrl },
     isDemo: connection.baseUrl.includes("/api/mock/rho/"),
     asOf: asOf.toISOString(),
     engineVersion: ENGINE_VERSION,
@@ -397,4 +394,19 @@ export async function latestReceiptFor(connectionId: string, ownerId: string) {
     .orderBy(desc(receipts.createdAt))
     .limit(1);
   return row ?? null;
+}
+
+/** Every immutable receipt issued for the founder's single company, newest first. */
+export async function receiptsFor(connectionId: string, ownerId: string) {
+  return getDb()
+    .select({
+      slug: receipts.slug,
+      companyName: receipts.companyName,
+      asOf: receipts.asOf,
+      engineVersion: receipts.engineVersion,
+      createdAt: receipts.createdAt,
+    })
+    .from(receipts)
+    .where(and(eq(receipts.connectionId, connectionId), eq(receipts.ownerId, ownerId)))
+    .orderBy(desc(receipts.createdAt));
 }
