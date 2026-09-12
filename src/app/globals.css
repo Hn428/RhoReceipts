@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
+/*
+ * Rho Receipts — design tokens.
+ *
+ * The receipt is a document of record sitting on a desk: a cool grey ground,
+ * paper on top, ink, and three evidence states an auditor would recognise —
+ * verified (a tick), inferred (a pencil note), flagged (a red query). Neutrals
+ * lean slightly toward the verified teal so the palette reads as one system.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  color-scheme: light dark;
+  --desk: #eef1ef;
+  --paper: #fbfcfb;
+  --sunken: #f1f4f2;
+  --ink: #111816;
+  --ink-soft: #55615d;
+  --ink-faint: #7f8b87;
+  --rule: #d8dfdc;
+  --rule-strong: #b9c4c0;
+  --verified: #0b6b57;
+  --verified-wash: #e1eee9;
+  --inferred: #8f6219;
+  --inferred-wash: #f3ebdb;
+  --flagged: #a0392a;
+  --flagged-wash: #f5e3df;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --desk: #0a0f0e;
+    --paper: #131a18;
+    --sunken: #0e1412;
+    --ink: #e4ebe8;
+    --ink-soft: #9ba8a3;
+    --ink-faint: #6e7c77;
+    --rule: #252f2c;
+    --rule-strong: #36433f;
+    --verified: #4cc0a2;
+    --verified-wash: #10302a;
+    --inferred: #d8a64c;
+    --inferred-wash: #32281a;
+    --flagged: #e6836f;
+    --flagged-wash: #3a211c;
   }
 }
 
+@theme inline {
+  --color-desk: var(--desk);
+  --color-paper: var(--paper);
+  --color-sunken: var(--sunken);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-verified: var(--verified);
+  --color-verified-wash: var(--verified-wash);
+  --color-inferred: var(--inferred);
+  --color-inferred-wash: var(--inferred-wash);
+  --color-flagged: var(--flagged);
+  --color-flagged-wash: var(--flagged-wash);
+
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", monospace;
+  --font-display: var(--font-newsreader), Georgia, "Times New Roman", serif;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--desk);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid var(--verified);
+  outline-offset: 2px;
+}
+
+/* Figures line up in columns everywhere they appear. */
+.figures {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Perforated edges. Small circles in the desk colour overlap the paper's top
+ * and bottom edges — the one deliberate flourish on the page.
+ */
+.perforated {
+  position: relative;
+}
+.perforated::before,
+.perforated::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: radial-gradient(circle, var(--desk) 5px, transparent 5.5px) 0 0 /
+    18px 12px repeat-x;
+  pointer-events: none;
+}
+.perforated::before {
+  top: -6px;
+}
+.perforated::after {
+  bottom: -6px;
+}
+
+/* Disclosure rows: a custom chevron replaces the browser's marker. */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details > summary .chevron {
+  transition: transform 160ms ease;
+}
+details[open] > summary .chevron {
+  transform: rotate(90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  details > summary .chevron {
+    transition: none;
+  }
 }
