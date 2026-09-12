@@ -1,16 +1,15 @@
-import { checkAuth, isResponse, json, paginate, sortBy } from "@/lib/rho/mock/http";
-import { customers } from "@/lib/rho/mock/store";
+import { authorize, isResponse, json, paginate, sortBy } from "@/lib/rho/mock/http";
 
 /** GET /invoicing/customers */
 export async function GET(req: Request) {
-  const denied = checkAuth(req);
-  if (denied) return denied;
+  const company = authorize(req);
+  if (isResponse(company)) return company;
 
   const p = new URL(req.url).searchParams;
   const search = p.get("search")?.toLowerCase() ?? null;
   const includeDeleted = p.get("include_deleted") === "true";
 
-  const filtered = customers.filter((c) => {
+  const filtered = company.customers.filter((c) => {
     if (!includeDeleted && c.deleted_at) return false;
     if (!search) return true;
     return (

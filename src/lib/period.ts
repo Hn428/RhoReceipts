@@ -209,3 +209,33 @@ const MONTH_LABEL = new Intl.DateTimeFormat("en-US", {
 /** "September 2026" — formatted from the key, so the zone cannot skew it. */
 export const formatPeriod = (period: Period): string =>
   MONTH_LABEL.format(new Date(Date.UTC(period.year, period.month - 1, 1)));
+
+/** The calendar date an instant falls on in `timeZone`, as a UTC-midnight day number. */
+function calendarDay(instant: Date, timeZone: string): number {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(instant);
+  const field: Record<string, number> = {};
+  for (const part of parts) {
+    if (part.type !== "literal") field[part.type] = Number(part.value);
+  }
+  return Date.UTC(field.year, field.month - 1, field.day) / 86_400_000;
+}
+
+/**
+ * Whole calendar days from `from` to `to` in the reporting zone.
+ *
+ * "18 days overdue" is a statement about dates on a calendar, not a count of
+ * 24-hour spans — an invoice due on the 25th is one day overdue on the 26th,
+ * whatever the hour.
+ */
+export function calendarDaysBetween(
+  from: Date,
+  to: Date,
+  timeZone: string = DEFAULT_REPORTING_TIME_ZONE,
+): number {
+  return calendarDay(to, timeZone) - calendarDay(from, timeZone);
+}

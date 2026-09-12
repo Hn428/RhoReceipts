@@ -438,3 +438,76 @@ export const receipts = pgTable(
     index("receipts_connection_idx").on(t.connectionId, t.createdAt),
   ],
 );
+
+// ---------------------------------------------------------------------------
+// Monthly investor receipts.
+//
+// Idempotency lives in the schema, not in application code: one report per
+// connection per month, one delivery per recipient per report. A cron that
+// runs twice, or a founder who presses "Send now" after the cron already ran,
+// cannot send anyone the same receipt twice.
+// ---------------------------------------------------------------------------
+
+/** Investors a founder has chosen to send monthly receipts to. */
+export const investorRecipients = pgTable(
+  "investor_recipients",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    connectionId: uuid("connection_id")
+      .notNull()
+      .references(() => connections.id, { onDelete: "cascade" }),
+    ownerId: text("owner_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    email: text("email").notNull(),
+    name: text("name"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [uniqueIndex("investor_recipients_unique").on(t.connectionId, t.email)],
+);
+
+export const monthlyReports = pgTable(
+  "monthly_reports",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    /** The report's own share link. Same unguessability rule as receipts. */
+    slug: text("slug").notNull(),
+    connectionId: uuid("connection_id")
+      .notNull()
+      .references(() => connections.id, { onDelete: "cascade" }),
+    ownerId: text("owner_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    /** "2026-08" — the month reported on. */
+    periodKey: text("period_key").notNull(),
+    companyName: text("company_name").notNull(),
+    /** The full receipt issued alongside, for drill-down. */
+    receiptSlug: text("receipt_slug").notNull(),
+    asOf: timestamp("as_of", { withTimezone: true }).notNull(),
+    engineVersion: text("engine_version").notNull(),
+    trigger: text("trigger").notNull(),
+    snapshot: jsonb("snapshot").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    uniqueIndex("monthly_reports_slug_idx").on(t.slug),
+    uniqueIndex("monthly_reports_period_idx").on(t.connectionId, t.periodKey),
+  ],
+);
+
+export const reportDeliveries = pgTable(
+  "report_deliveries",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    reportId: uuid("report_id")
+      .notNull()
+      .references(() => monthlyReports.id, { onDelete: "cascade" }),
+    email: text("email").notNull(),
+    status: text("status").notNull(),
+    /** "console" in development; a provider name once real mail is wired. */
+    transport: text("transport").notNull(),
+    error: text("error"),
+    sentAt: timestamp("sent_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [uniqueIndex("report_deliveries_unique").on(t.reportId, t.email)],
+);

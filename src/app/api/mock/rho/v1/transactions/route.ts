@@ -1,10 +1,10 @@
-import { checkAuth, isResponse, json, paginate, sortBy } from "@/lib/rho/mock/http";
-import { matchesAny, transactions, withinRange } from "@/lib/rho/mock/store";
+import { authorize, isResponse, json, paginate, sortBy } from "@/lib/rho/mock/http";
+import { matchesAny, withinRange } from "@/lib/rho/mock/store";
 
 /** GET /transactions — https://docs.rho.co/api/v1/openapi/transactions/listtransactions */
 export async function GET(req: Request) {
-  const denied = checkAuth(req);
-  if (denied) return denied;
+  const company = authorize(req);
+  if (isResponse(company)) return company;
 
   const p = new URL(req.url).searchParams;
   const accountIds = p.getAll("account_id");
@@ -17,7 +17,7 @@ export async function GET(req: Request) {
   const minAmount = p.get("min_amount");
   const maxAmount = p.get("max_amount");
 
-  const filtered = transactions.filter((t) => {
+  const filtered = company.transactions.filter((t) => {
     if (!matchesAny(accountIds, t.account_id)) return false;
     if (!matchesAny(accountTypes, t.account_type)) return false;
     if (!matchesAny(types, t.transaction_type)) return false;

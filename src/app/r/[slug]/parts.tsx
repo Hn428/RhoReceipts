@@ -67,7 +67,7 @@ export function AttributionChip({
     case "name_match":
       return (
         <Chip tone="inferred" title="Matched by name only — no invoice backs this revenue">
-          Inferred
+          Needs review
         </Chip>
       );
     case "aggregated":
@@ -85,11 +85,14 @@ export function AttributionChip({
 export function MetricLine({
   label,
   figure,
+  unit,
   note,
   children,
 }: {
   label: string;
   figure: string;
+  /** A quiet suffix such as "/mo". */
+  unit?: string;
   note?: string;
   children: ReactNode;
 }) {
@@ -105,7 +108,10 @@ export function MetricLine({
           aria-hidden="true"
           className="min-w-6 flex-1 -translate-y-1 border-b border-dotted border-rule-strong"
         />
-        <span className="figures whitespace-nowrap text-lg text-ink">{figure}</span>
+        <span className="figures whitespace-nowrap text-lg text-ink">
+          {figure}
+          {unit && <span className="ml-0.5 text-xs text-ink-faint">{unit}</span>}
+        </span>
       </summary>
       <div className="flex flex-col gap-5 pb-7 pt-1 md:pl-[1.4rem]">{children}</div>
     </details>
@@ -285,5 +291,39 @@ export function Sparkline({
         <span>{last.label}</span>
       </figcaption>
     </figure>
+  );
+}
+
+/**
+ * A paying customer: this month's revenue and verification, opening to their
+ * payment history across the last twelve months.
+ */
+export function PayingCustomerRow({
+  customer,
+  historyIds,
+  transactions,
+}: {
+  customer: CustomerRevenue;
+  historyIds: readonly string[];
+  transactions: Record<string, SnapshotTransaction>;
+}) {
+  const first = transactions[customer.transactionIds[0]];
+  const related = historyIds.some((id) => transactions[id]?.relatedParty);
+  return (
+    <details className="border-b border-rule/70 last:border-b-0">
+      <summary className="grid grid-cols-[auto_1fr_auto] items-baseline gap-x-2.5 gap-y-1 py-3 sm:grid-cols-[auto_1fr_7.5rem_9rem] sm:gap-x-3">
+        <Chevron />
+        <span className="min-w-0 text-sm text-ink">{customer.customerName}</span>
+        <span className="figures whitespace-nowrap text-right text-sm text-ink">{whole(customer.amount)}</span>
+        <span className="col-start-2 flex flex-wrap items-center gap-1.5 sm:col-start-auto">
+          <AttributionChip attribution={customer.attribution} />
+          {related && <Chip tone="flagged">Related party</Chip>}
+        </span>
+      </summary>
+      <div className="flex flex-col gap-2 pb-4 pl-5">
+        {first && <p className="max-w-[60ch] text-xs leading-relaxed text-ink-soft">{first.reason}</p>}
+        <TransactionRows ids={historyIds} transactions={transactions} limit={12} />
+      </div>
+    </details>
   );
 }

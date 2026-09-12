@@ -3,6 +3,10 @@
   "seed": 20260912,
   "anchor": "2026-09-12T00:00:00.000Z",
   "company": "Northstar Labs, Inc.",
+  "slug": "northstar-labs",
+  "short_name": "Northstar Labs",
+  "description": "Operations analytics for mid-market logistics and healthcare teams.",
+  "mock_token": "rhobat_mock_northstar_labs_dev_token",
   "period": {
     "first_month": "2025-04",
     "last_month": "2026-09"

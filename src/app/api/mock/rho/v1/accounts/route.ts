@@ -1,14 +1,13 @@
-import { checkAuth, isResponse, json, paginate, sortBy } from "@/lib/rho/mock/http";
-import { accounts } from "@/lib/rho/mock/store";
+import { authorize, isResponse, json, paginate, sortBy } from "@/lib/rho/mock/http";
 
 /** GET /accounts — https://docs.rho.co/api/v1/openapi/accounts/listaccounts */
 export async function GET(req: Request) {
-  const denied = checkAuth(req);
-  if (denied) return denied;
+  const company = authorize(req);
+  if (isResponse(company)) return company;
 
   const params = new URL(req.url).searchParams;
   const sorted = sortBy(
-    accounts,
+    company.accounts,
     params.get("sort_by"),
     params.get("order"),
     {

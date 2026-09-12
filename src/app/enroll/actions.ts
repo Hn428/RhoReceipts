@@ -7,15 +7,16 @@ import { auth } from "@/auth";
 import { saveConnection, syncConnection } from "@/lib/ingest/sync";
 import { issueReceipt } from "@/lib/receipts";
 import { RhoApiError, RhoClient } from "@/lib/rho/client";
+import { companyBySlug } from "@/lib/rho/mock/store";
 import type { RhoAccount } from "@/lib/rho/types";
 
-export type ConnectState =
+export type ImportState =
   | { status: "idle" }
   | { status: "error"; message: string; field?: "token" };
 
 const DEFAULT_BASE_URL = "http://localhost:3000/api/mock/rho/v1";
 
-/** "Northstar Labs — Operating" → "Northstar Labs". */
+/** "Acme AI — Operating" → "Acme AI". */
 function companyNameFrom(accounts: RhoAccount[]): string {
   const named =
     accounts.find((a) => a.account_type === "checking" && a.account_name) ??
@@ -27,32 +28,31 @@ function companyNameFrom(accounts: RhoAccount[]): string {
 }
 
 /**
- * Connects a Rho account, imports its ledger, and issues the first receipt.
+ * Step one of enrollment: connect and import the ledger.
  *
- * The token is checked against Rho before anything is stored, so a bad token
- * produces an error on the form rather than a saved connection that fails
- * later. Once accepted it is encrypted, bound to the connection, and never
- * returned to the browser again.
+ * Deliberately stops short of generating anything. The founder sees what was
+ * found and chooses to publish — voluntary enrollment is what gives the badge
+ * its meaning.
  */
-export async function connectRhoAccount(
-  _previous: ConnectState,
+export async function importLedger(
+  _previous: ImportState,
   formData: FormData,
-): Promise<ConnectState> {
+): Promise<ImportState> {
   const session = await auth();
   if (!session?.user?.id) redirect("/signin");
   const ownerId = session.user.id;
 
-  const useDemo = formData.get("mode") === "demo";
-  const token = useDemo
-    ? process.env.RHO_API_TOKEN
+  // A sample company is chosen by slug; its token never touches the browser.
+  const sampleSlug = formData.get("sample");
+  const sample = typeof sampleSlug === "string" ? companyBySlug(sampleSlug) : null;
+  const token = sample
+    ? sample.meta.mock_token
     : String(formData.get("token") ?? "").trim();
 
   if (!token) {
-    return useDemo
-      ? { status: "error", message: "The sample company isn't configured on this server." }
-      : { status: "error", field: "token", message: "Paste your Rho access token to continue." };
+    return { status: "error", field: "token", message: "Paste your Rho access token to continue." };
   }
-  if (!useDemo && !/^rhobat_[A-Za-z0-9_]{16,}$/.test(token)) {
+  if (!sample && !/^rhobat_[A-Za-z0-9_]{16,}$/.test(token)) {
     return {
       status: "error",
       field: "token",
@@ -63,7 +63,7 @@ export async function connectRhoAccount(
 
   const baseUrl = process.env.RHO_API_BASE_URL ?? DEFAULT_BASE_URL;
 
-  // --- Check the token with Rho before storing anything -------------------
+  // Check the token with Rho before storing anything.
   const accounts: RhoAccount[] = [];
   try {
     for await (const account of new RhoClient({ baseUrl, token }).allAccounts()) {
@@ -75,7 +75,7 @@ export async function connectRhoAccount(
         status: "error",
         field: "token",
         message:
-          "Rho didn't accept this token. It may have been revoked, or expired after 45 days without use — create a new one in Rho and try again.",
+          "Rho didn't accept this token. It may have been revoked, or expired after 45 days without use — create a new one and try again.",
       };
     }
     if (error instanceof RhoApiError && error.status === 403) {
@@ -87,22 +87,14 @@ export async function connectRhoAccount(
       };
     }
     console.error("Rho token check failed", error);
-    return {
-      status: "error",
-      message: "Couldn't reach Rho to check the token. Try again in a moment.",
-    };
+    return { status: "error", message: "Couldn't reach Rho to check the token. Try again in a moment." };
   }
 
   if (accounts.length === 0) {
-    return {
-      status: "error",
-      field: "token",
-      message: "This token works, but it can't see any accounts.",
-    };
+    return { status: "error", field: "token", message: "This token works, but it can't see any accounts." };
   }
 
-  // --- Store, import, issue -----------------------------------------------
-  let slug: string;
+  let connectionId: string;
   try {
     const connection = await saveConnection({
       ownerId,
@@ -110,27 +102,37 @@ export async function connectRhoAccount(
       baseUrl,
       token,
     });
-
-    const result = await syncConnection(connection.id, { trigger: "connect" });
+    const result = await syncConnection(connection.id, { trigger: "enroll" });
     if (result.status === "failed") {
-      console.error("Import failed after connecting", result.error);
+      console.error("Import failed during enrollment", result.error);
       return {
         status: "error",
-        message:
-          "Your account is connected, but importing transactions failed. Try connecting again.",
+        message: "Connected, but importing transactions failed. Try again.",
       };
     }
-
-    ({ slug } = await issueReceipt({ connectionId: connection.id, ownerId }));
+    connectionId = connection.id;
   } catch (error) {
-    console.error("Connect flow failed", error);
-    return {
-      status: "error",
-      message: "Something went wrong while importing your transactions. Try again.",
-    };
+    console.error("Enrollment import failed", error);
+    return { status: "error", message: "Something went wrong while importing. Try again." };
   }
 
   revalidatePath("/dashboard");
-  // Outside the try block: redirect works by throwing.
+  redirect(`/enroll/${connectionId}`);
+}
+
+/** Step two: the founder chooses to publish. */
+export async function generateReceipt(formData: FormData) {
+  const session = await auth();
+  if (!session?.user?.id) redirect("/signin");
+
+  const connectionId = String(formData.get("connectionId") ?? "");
+  let slug: string;
+  try {
+    ({ slug } = await issueReceipt({ connectionId, ownerId: session.user.id }));
+  } catch (error) {
+    console.error("Receipt generation failed", error);
+    redirect(`/enroll/${connectionId}?error=generate`);
+  }
+  revalidatePath("/dashboard");
   redirect(`/r/${slug}`);
 }

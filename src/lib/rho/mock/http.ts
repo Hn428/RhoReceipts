@@ -10,9 +10,7 @@
 
 import type { RhoPage, RhoProblem } from "../types";
 
-/** Dev token. Overridable so nothing real is ever hard-coded. */
-export const MOCK_TOKEN =
-  process.env.RHO_MOCK_TOKEN ?? "rhobat_mock_northstar_labs_dev_token";
+import { companyForToken, type MockCompany } from "./store";
 
 const PROBLEM_BASE = "https://docs.rho.co/problems";
 
@@ -40,8 +38,11 @@ export function json(body: unknown): Response {
   });
 }
 
-/** Returns a 401/403 response when the request is not properly authorized. */
-export function checkAuth(req: Request): Response | null {
+/**
+ * Resolves the bearer token to the company whose ledger it opens, or returns
+ * the 401 the real API would send.
+ */
+export function authorize(req: Request): MockCompany | Response {
   const header = req.headers.get("authorization");
   if (!header?.startsWith("Bearer ")) {
     return problem(
@@ -54,10 +55,11 @@ export function checkAuth(req: Request): Response | null {
   if (!token.startsWith("rhobat_")) {
     return problem(401, "Unauthorized", "Malformed access token.");
   }
-  if (token !== MOCK_TOKEN) {
+  const company = companyForToken(token);
+  if (!company) {
     return problem(401, "Unauthorized", "Unknown or revoked access token.");
   }
-  return null;
+  return company;
 }
 
 // ------------------------------------------------------------------- cursors

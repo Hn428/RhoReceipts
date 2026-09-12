@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import accounts from "@/lib/rho/fixtures/accounts.json";
-import customers from "@/lib/rho/fixtures/customers.json";
-import invoices from "@/lib/rho/fixtures/invoices.json";
-import transactions from "@/lib/rho/fixtures/transactions.json";
+import accounts from "@/lib/rho/fixtures/northstar-labs/accounts.json";
+import customers from "@/lib/rho/fixtures/northstar-labs/customers.json";
+import invoices from "@/lib/rho/fixtures/northstar-labs/invoices.json";
+import transactions from "@/lib/rho/fixtures/northstar-labs/transactions.json";
 import type {
   RhoAccount,
   RhoInvoice,

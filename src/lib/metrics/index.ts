@@ -106,6 +106,11 @@ export interface Receipt {
     transactionIds: string[];
   }[];
   growthRate: MetricValue<number | null>;
+  /**
+   * Change in recognised revenue versus three months earlier. The headline
+   * growth figure: month over month is too noisy to lead with.
+   */
+  growth3Month: MetricValue<number | null>;
   concentration: MetricValue<{
     topCustomerShare: number | null;
     topCustomerName: string | null;
@@ -326,6 +331,17 @@ export function buildReceipt(input: EngineInput): Receipt {
         ) / 1000
       : null;
 
+  // --- Three-month growth -----------------------------------------------------
+  const threeBack = monthlyRevenue.find(
+    (m) => m.periodKey === addMonths(reportingPeriod, -3).key,
+  );
+  const growth3Month =
+    threeBack && !isZero(threeBack.revenue)
+      ? Math.round(
+          ratio(subtract(mrrValue, threeBack.revenue), threeBack.revenue) * 1000,
+        ) / 1000
+      : null;
+
   // --- Concentration over the trailing twelve months -----------------------
   const twelve = monthlyRevenue.slice(-12);
   const twelveEntries = twelve.flatMap((m) => m.byCustomer);
@@ -408,6 +424,16 @@ export function buildReceipt(input: EngineInput): Receipt {
       method: previousMonth
         ? `Change in recognised revenue from ${formatPeriod(previousMonth.period)} to ${formatPeriod(reportingPeriod)}.`
         : "Not enough history to compute a growth rate.",
+    },
+    growth3Month: {
+      value: growth3Month,
+      transactionIds: [
+        ...(currentMonth?.transactionIds ?? []),
+        ...(threeBack?.transactionIds ?? []),
+      ],
+      method: threeBack
+        ? `Change in recognised revenue from ${formatPeriod(threeBack.period)} to ${formatPeriod(reportingPeriod)}.`
+        : "Not enough history to compute three-month growth.",
     },
     concentration: {
       value: {

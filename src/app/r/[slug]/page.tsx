@@ -18,6 +18,7 @@ import {
   Chevron,
   Chip,
   CustomerLine,
+  PayingCustomerRow,
   Method,
   MetricLine,
   Sparkline,
@@ -57,6 +58,14 @@ export default async function ReceiptPage({ params }: Props) {
   const burnIn = m.netBurn.transactionIds.filter((id) => (transactions[id]?.amount.minor ?? 0) > 0);
   const burnOut = m.netBurn.transactionIds.filter((id) => (transactions[id]?.amount.minor ?? 0) < 0);
 
+  // Older snapshots predate three-month growth; they fall back to month over month.
+  const growth3 = s.metrics.growth3Month ?? null;
+  const threeBack = s.revenueHistory.length >= 4 ? s.revenueHistory[s.revenueHistory.length - 4] : null;
+  // Twelve months of payments per customer, for the payment-history view.
+  const history = new Map(
+    m.concentration.value.customers.map((c) => [c.customerId ?? c.customerName, c.transactionIds]),
+  );
+
   const inferred = s.mrrCustomers.filter((c) => c.attribution === "name_match");
   const aggregated = s.mrrCustomers.filter((c) => c.attribution === "aggregated");
   const invoicedCount = s.mrrCustomers.filter((c) => c.attribution === "invoice").length;
@@ -94,6 +103,10 @@ export default async function ReceiptPage({ params }: Props) {
               Read-only bank connection · nothing entered by hand
             </span>
           </div>
+          <p className="-mt-3 text-[0.7rem] leading-relaxed text-ink-faint">
+            Rho Receipts is an independent project, not a Rho product. This badge is not a
+            certification from Rho.
+          </p>
 
           {s.isDemo && (
             <p className="rounded-[2px] border border-dashed border-rule-strong px-3 py-2 text-xs leading-relaxed text-ink-soft">
@@ -111,7 +124,7 @@ export default async function ReceiptPage({ params }: Props) {
 
           <MetricLine
             label="Monthly recurring revenue"
-            note={`${plural(s.mrrCustomers.length, "source")} · ${invoicedCount} invoiced`}
+            note={`from ${plural(m.mrr.transactionIds.length, "settled payment")}`}
             figure={whole(m.mrr.value)}
           >
             <Method>{m.mrr.method}</Method>
@@ -134,25 +147,6 @@ export default async function ReceiptPage({ params }: Props) {
           </MetricLine>
 
           <MetricLine
-            label="Growth, month over month"
-            note={s.previousPeriod ? `vs ${s.previousPeriod.label}` : undefined}
-            figure={percent(m.growthRate.value, { signed: true })}
-          >
-            <Method>{m.growthRate.method}</Method>
-            {s.previousPeriod && (
-              <dl className="grid max-w-sm grid-cols-[1fr_auto] gap-x-6 gap-y-1.5 text-sm">
-                <dt className="text-ink-soft">{s.previousPeriod.label}</dt>
-                <dd className="figures text-right">{whole(s.previousPeriod.revenue)}</dd>
-                <dt className="text-ink-soft">{s.reportingPeriod.label}</dt>
-                <dd className="figures text-right">{whole(m.mrr.value)}</dd>
-              </dl>
-            )}
-            <Sparkline
-              points={s.revenueHistory.map((p) => ({ label: p.label, minor: p.revenue.minor }))}
-            />
-          </MetricLine>
-
-          <MetricLine
             label="Net burn"
             note={
               prepayments
@@ -160,6 +154,7 @@ export default async function ReceiptPage({ params }: Props) {
                 : plural(m.netBurn.transactionIds.length, "transaction")
             }
             figure={whole(m.netBurn.value)}
+            unit="/mo"
           >
             <Method>{m.netBurn.method}</Method>
             {prepayments && (
@@ -225,8 +220,51 @@ export default async function ReceiptPage({ params }: Props) {
           </MetricLine>
 
           <MetricLine
+            label={growth3 ? "Revenue growth, 3 months" : "Growth, month over month"}
+            note={
+              growth3 && threeBack
+                ? `since ${threeBack.label}`
+                : s.previousPeriod
+                  ? `vs ${s.previousPeriod.label}`
+                  : undefined
+            }
+            figure={percent((growth3 ?? m.growthRate).value, { signed: true })}
+          >
+            <Method>{(growth3 ?? m.growthRate).method}</Method>
+            <dl className="grid max-w-sm grid-cols-[1fr_auto] gap-x-6 gap-y-1.5 text-sm">
+              {growth3 && threeBack && (
+                <>
+                  <dt className="text-ink-soft">{threeBack.label}</dt>
+                  <dd className="figures text-right">{whole(threeBack.revenue)}</dd>
+                </>
+              )}
+              {s.previousPeriod && (
+                <>
+                  <dt className="text-ink-soft">{s.previousPeriod.label}</dt>
+                  <dd className="figures text-right">{whole(s.previousPeriod.revenue)}</dd>
+                </>
+              )}
+              <dt className="text-ink">{s.reportingPeriod.label}</dt>
+              <dd className="figures text-right text-ink">{whole(m.mrr.value)}</dd>
+            </dl>
+            {growth3 && (
+              <p className="text-xs text-ink-faint">
+                Month over month:{" "}
+                <span className="figures text-ink-soft">{percent(m.growthRate.value, { signed: true })}</span>
+              </p>
+            )}
+            <Sparkline
+              points={s.revenueHistory.map((p) => ({ label: p.label, minor: p.revenue.minor }))}
+            />
+          </MetricLine>
+
+          <MetricLine
             label="Largest customer"
-            note={m.concentration.value.topCustomerName ?? undefined}
+            note={
+              m.concentration.value.topCustomerName
+                ? `${m.concentration.value.topCustomerName} · of revenue`
+                : undefined
+            }
             figure={percent(m.concentration.value.topCustomerShare)}
           >
             <Method>
@@ -250,6 +288,40 @@ export default async function ReceiptPage({ params }: Props) {
               ))}
             </ul>
           </MetricLine>
+        </section>
+
+        {/* ------------------------------------------ paying customers */}
+        <section aria-labelledby="customers" className="flex flex-col gap-4">
+          <div className="flex flex-col gap-1.5">
+            <h2 id="customers" className="font-display text-2xl">
+              Paying customers
+            </h2>
+            <p className="max-w-[58ch] text-sm leading-relaxed text-ink-soft">
+              {plural(invoicedCount, "customer")} confirmed by invoice in {s.reportingPeriod.label}.
+              Open a customer to see their payment history.
+            </p>
+          </div>
+          <div className="flex flex-col">
+            <div
+              aria-hidden="true"
+              className="hidden grid-cols-[1fr_7.5rem_9rem] gap-3 border-b border-rule pb-1.5 pl-[1.35rem] text-[0.68rem] font-medium uppercase tracking-[0.12em] text-ink-faint sm:grid"
+            >
+              <span>Customer</span>
+              <span className="text-right">This month</span>
+              <span>Verification</span>
+            </div>
+            {s.mrrCustomers.map((customer) => {
+              const key = customer.customerId ?? customer.customerName;
+              return (
+                <PayingCustomerRow
+                  key={key}
+                  customer={customer}
+                  historyIds={history.get(key) ?? customer.transactionIds}
+                  transactions={transactions}
+                />
+              );
+            })}
+          </div>
         </section>
 
         {/* --------------------------------------------- closer look */}
@@ -286,7 +358,7 @@ export default async function ReceiptPage({ params }: Props) {
               {inferred.map((c) => (
                 <FlagLine
                   key={c.customerName}
-                  chip={<Chip tone="inferred">Inferred</Chip>}
+                  chip={<Chip tone="inferred">Needs review</Chip>}
                   title={c.customerName}
                   body={
                     <>
@@ -371,6 +443,10 @@ export default async function ReceiptPage({ params }: Props) {
             <li>
               The reporting month is the last complete one. A month still in progress would make
               burn look lower and runway longer than they are.
+            </li>
+            <li>
+              Rho Receipts is an independent project built around the Rho ecosystem. It is not a
+              Rho product, and the badge is not a certification from Rho.
             </li>
             <li>
               This receipt is a snapshot from {day(s.asOf)}. Later bank activity doesn&apos;t change

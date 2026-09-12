@@ -1,0 +1,54 @@
+[
+  {
+    "id": "acc_checking_main",
+    "account_type": "checking",
+    "balance": {
+      "amount": 64423000,
+      "currency": "USD"
+    },
+    "account_name": "Acme AI — Operating",
+    "account_number_last_4": "2290",
+    "routing_number_last_4": "0021"
+  },
+  {
+    "id": "acc_savings_reserve",
+    "account_type": "savings",
+    "balance": {
+      "amount": 2852800,
+      "currency": "USD"
+    },
+    "account_name": "Acme AI — Reserve",
+    "account_number_last_4": "6614",
+    "routing_number_last_4": "0021"
+  },
+  {
+    "id": "acc_treasury_mmf",
+    "account_type": "investment",
+    "balance": {
+      "amount": 30390765,
+      "currency": "USD"
+    },
+    "account_name": "Acme AI — Treasury",
+    "account_number_last_4": "3087"
+  },
+  {
+    "id": "acc_credit_card",
+    "account_type": "credit",
+    "balance": {
+      "amount": -2992800,
+      "currency": "USD"
+    },
+    "account_name": "Acme AI — Corporate Card",
+    "account_number_last_4": "7731"
+  },
+  {
+    "id": "acc_rewards",
+    "account_type": "rewards",
+    "balance": {
+      "amount": 759600,
+      "currency": "USD"
+    },
+    "account_name": "Acme AI — Rewards",
+    "account_number_last_4": "0002"
+  }
+]

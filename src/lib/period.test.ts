@@ -4,6 +4,7 @@ import {
   DEFAULT_REPORTING_TIME_ZONE,
   PeriodError,
   addMonths,
+  calendarDaysBetween,
   completeTrailingMonths,
   contains,
   formatPeriod,
@@ -155,5 +156,26 @@ describe("arithmetic and keys", () => {
 describe("fixture anchor", () => {
   it("places the dataset's last transaction in September 2026", () => {
     expect(periodForInstant(new Date("2026-09-11T16:38:00Z"), NY).key).toBe("2026-09");
+  });
+});
+
+describe("calendar days", () => {
+  it("counts dates, not 24-hour spans", () => {
+    // 23:30 on the 25th to 00:30 on the 26th is one calendar day, one hour apart.
+    expect(
+      calendarDaysBetween(new Date("2026-08-26T03:30:00Z"), new Date("2026-08-26T04:30:00Z"), NY),
+    ).toBe(1);
+  });
+
+  it("is zero within the same day and negative going backwards", () => {
+    const due = new Date("2026-08-25T15:00:00Z");
+    expect(calendarDaysBetween(due, new Date("2026-08-25T23:00:00Z"), NY)).toBe(0);
+    expect(calendarDaysBetween(due, new Date("2026-08-20T15:00:00Z"), NY)).toBe(-5);
+  });
+
+  it("spans a DST change without losing a day", () => {
+    expect(
+      calendarDaysBetween(new Date("2026-03-07T17:00:00Z"), new Date("2026-03-09T16:00:00Z"), NY),
+    ).toBe(2);
   });
 });

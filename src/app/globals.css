@@ -135,3 +135,48 @@ details[open] > summary .chevron {
     transition: none;
   }
 }
+
+/*
+ * The mock bank. A deliberately different product: a generic banking app, so
+ * the demo reads as "data source" and "verification layer" being separate
+ * systems. It borrows no Rho branding.
+ */
+.bank {
+  --bank-bg: #f4f6f9;
+  --bank-surface: #ffffff;
+  --bank-ink: #18212d;
+  --bank-muted: #5d6978;
+  --bank-faint: #8a95a3;
+  --bank-line: #e2e6ec;
+  --bank-accent: #2c55c9;
+  --bank-accent-wash: #e8eefc;
+  --bank-in: #147a4b;
+  --bank-warn: #b45309;
+  --bank-warn-wash: #fdf3e2;
+  background: var(--bank-bg);
+  color: var(--bank-ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  .bank {
+    --bank-bg: #0d1117;
+    --bank-surface: #151b23;
+    --bank-ink: #e6ebf1;
+    --bank-muted: #9aa5b3;
+    --bank-faint: #6c7785;
+    --bank-line: #262e39;
+    --bank-accent: #7ea2ff;
+    --bank-accent-wash: #1a2640;
+    --bank-in: #4cc38a;
+    --bank-warn: #f0a84a;
+    --bank-warn-wash: #33260f;
+  }
+}
+
+.bank-banner {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--bank-warn-wash) 0 10px,
+    transparent 10px 20px
+  );
+}

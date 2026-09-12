@@ -1,15 +1,15 @@
-import { checkAuth, isResponse, json, paginate } from "@/lib/rho/mock/http";
-import { invoices, matchesAny, withinRange } from "@/lib/rho/mock/store";
+import { authorize, isResponse, json, paginate } from "@/lib/rho/mock/http";
+import { matchesAny, withinRange } from "@/lib/rho/mock/store";
 
 /** GET /invoicing/invoices */
 export async function GET(req: Request) {
-  const denied = checkAuth(req);
-  if (denied) return denied;
+  const company = authorize(req);
+  if (isResponse(company)) return company;
 
   const p = new URL(req.url).searchParams;
   const statuses = p.getAll("status");
 
-  const filtered = invoices.filter((inv) => {
+  const filtered = company.invoices.filter((inv) => {
     if (!matchesAny(statuses, inv.status)) return false;
     if (!withinRange(inv.date, p.get("date_after"), p.get("date_before"))) {
       return false;

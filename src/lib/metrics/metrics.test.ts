@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import accounts from "@/lib/rho/fixtures/accounts.json";
-import customers from "@/lib/rho/fixtures/customers.json";
-import invoices from "@/lib/rho/fixtures/invoices.json";
-import meta from "@/lib/rho/fixtures/meta.json";
-import transactions from "@/lib/rho/fixtures/transactions.json";
+import accounts from "@/lib/rho/fixtures/northstar-labs/accounts.json";
+import customers from "@/lib/rho/fixtures/northstar-labs/customers.json";
+import invoices from "@/lib/rho/fixtures/northstar-labs/invoices.json";
+import meta from "@/lib/rho/fixtures/northstar-labs/meta.json";
+import transactions from "@/lib/rho/fixtures/northstar-labs/transactions.json";
 import { classifyLedger } from "@/lib/classify";
 import { format, money } from "@/lib/money";
 import type {
@@ -237,5 +237,14 @@ describe("prepayments in the reporting month", () => {
     expect(receipt.prepaymentsInPeriod.value.minor).toBe(9_600_000);
     expect(receipt.prepaymentsInPeriod.transactionIds).toHaveLength(1);
     expect(receipt.prepaymentsInPeriod.method).toContain("August 2026");
+  });
+});
+
+describe("three-month growth", () => {
+  it("compares the reporting month with three months earlier", () => {
+    // Northstar: May 2026 $128,552 → August 2026 $135,006.
+    expect(receipt.growth3Month.value).toBe(0.05);
+    expect(receipt.growth3Month.method).toContain("May 2026");
+    expect(receipt.growth3Month.method).toContain("August 2026");
   });
 });

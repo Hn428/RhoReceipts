@@ -34,7 +34,7 @@ import { money, type Money } from "@/lib/money";
 import { formatPeriod, parsePeriodKey } from "@/lib/period";
 
 /** Bump when classification or metric rules change in a way that moves numbers. */
-export const ENGINE_VERSION = "2026.09.2";
+export const ENGINE_VERSION = "2026.09.3";
 
 const CASH_ACCOUNT_TYPES = new Set(["checking", "savings", "investment"]);
 
@@ -85,6 +85,8 @@ export interface ReceiptSnapshot {
     cashOnHand: MetricValue<Money>;
     runwayMonths: MetricValue<number | null>;
     growthRate: MetricValue<number | null>;
+    /** Absent on receipts issued before engine 2026.09.3. */
+    growth3Month?: MetricValue<number | null>;
     concentration: MetricValue<{
       topCustomerShare: number | null;
       topCustomerName: string | null;
@@ -123,20 +125,19 @@ export class ReceiptError extends Error {
 const label = (key: string) => formatPeriod(parsePeriodKey(key));
 
 /** "Northstar Labs (mock)" → "Northstar Labs". */
-const companyNameFrom = (connectionLabel: string) =>
+export const companyNameFrom = (connectionLabel: string) =>
   connectionLabel.replace(/\s*\(mock\)\s*$/i, "").trim();
 
-export async function issueReceipt(options: {
-  connectionId: string;
-  ownerId: string;
-  asOf?: Date;
-}): Promise<{ slug: string }> {
+/**
+ * Loads an owned connection's imported ledger and classifies it.
+ *
+ * Enrollment and issuing both go through here, so the counts a founder reviews
+ * before generating a receipt are computed from exactly the rows the receipt
+ * will be built from.
+ */
+export async function loadClassifiedLedger(connectionId: string, ownerId: string) {
   const db = getDb();
-  const connection = await getOwnedConnection(
-    options.connectionId,
-    options.ownerId,
-    db,
-  );
+  const connection = await getOwnedConnection(connectionId, ownerId, db);
   if (!connection) throw new ReceiptError("Connection not found.");
 
   const [accountRows, transactionRows, invoiceRows, customerRows] =
@@ -159,12 +160,81 @@ export async function issueReceipt(options: {
   // Stored payloads are the Rho wire objects verbatim, so the pipeline runs
   // on exactly what the bank returned.
   const accounts = accountRows.map((row) => row.payload);
-  const { classifications, byTransactionId } = classifyLedger({
+  const invoices = invoiceRows.map((row) => row.payload);
+  const classified = classifyLedger({
     accounts,
     transactions: transactionRows.map((row) => row.payload),
-    invoices: invoiceRows.map((row) => row.payload),
+    invoices,
     customers: customerRows.map((row) => row.payload),
   });
+
+  return { db, connection, accounts, invoices, transactionRows, invoiceRows, customerRows, ...classified };
+}
+
+export interface EnrollmentSummary {
+  connectionId: string;
+  companyName: string;
+  isDemo: boolean;
+  accountCount: number;
+  transactionCount: number;
+  firstTransactionAt: string | null;
+  lastTransactionAt: string | null;
+  /** Distinct customers whose payments count as revenue. */
+  customersIdentified: number;
+  /** Of those, how many are confirmed by a Rho invoice. */
+  customersInvoiced: number;
+  /** Bank rows linked to a paid invoice. */
+  paymentsMatchedToInvoices: number;
+  lastSyncedAt: Date | null;
+}
+
+/** What the founder reviews before choosing to generate a receipt. */
+export async function enrollmentSummary(
+  connectionId: string,
+  ownerId: string,
+): Promise<EnrollmentSummary> {
+  const ledger = await loadClassifiedLedger(connectionId, ownerId);
+  const revenue = ledger.classifications.filter(
+    (c) => c.countsAsRevenue && c.amount.minor > 0 && c.customerId,
+  );
+  const customers = new Set(revenue.map((c) => c.customerId));
+  const invoiced = new Set(
+    revenue.filter((c) => c.attribution === "invoice").map((c) => c.customerId),
+  );
+  const dates = ledger.transactionRows
+    .map((row) => row.payload.initiated_at)
+    .sort();
+
+  return {
+    connectionId: ledger.connection.id,
+    companyName: companyNameFrom(ledger.connection.label),
+    isDemo: ledger.connection.baseUrl.includes("/api/mock/rho/"),
+    accountCount: ledger.accounts.length,
+    transactionCount: ledger.transactionRows.length,
+    firstTransactionAt: dates[0] ?? null,
+    lastTransactionAt: dates.at(-1) ?? null,
+    customersIdentified: customers.size,
+    customersInvoiced: invoiced.size,
+    paymentsMatchedToInvoices: ledger.classifications.filter((c) => c.attribution === "invoice").length,
+    lastSyncedAt: ledger.connection.lastSyncedAt,
+  };
+}
+
+export async function issueReceipt(options: {
+  connectionId: string;
+  ownerId: string;
+  asOf?: Date;
+}): Promise<{ slug: string }> {
+  const {
+    db,
+    connection,
+    accounts,
+    transactionRows,
+    invoiceRows,
+    customerRows,
+    classifications,
+    byTransactionId,
+  } = await loadClassifiedLedger(options.connectionId, options.ownerId);
 
   const currency = accounts[0]?.balance.currency ?? "USD";
   const asOf = options.asOf ?? new Date();
@@ -249,6 +319,7 @@ export async function issueReceipt(options: {
       cashOnHand: receipt.cashOnHand,
       runwayMonths: receipt.runwayMonths,
       growthRate: receipt.growthRate,
+      growth3Month: receipt.growth3Month,
       concentration: receipt.concentration,
     },
     prepaymentsInPeriod: receipt.prepaymentsInPeriod,
