@@ -24,7 +24,7 @@ const schema = z.object({
     .default("development"),
 
   /** Unset means embedded PGlite in PGLITE_DIR. */
-  DATABASE_URL: z.string().url().optional(),
+  DATABASE_URL: z.preprocess((value) => value === "" ? undefined : value, z.string().url().optional()),
   /** Defaults to ~/.cache/rho-receipts/pglite — deliberately outside any synced folder. */
   PGLITE_DIR: z.string().optional(),
 
@@ -37,6 +37,7 @@ const schema = z.object({
     .startsWith("rhobat_", { message: 'must start with "rhobat_"' })
     .optional(),
   RHO_MOCK_TOKEN: z.string().optional(),
+  TAVILY_API_KEY: z.preprocess((value) => value === "" ? undefined : value, z.string().min(1).optional()),
 
   ENCRYPTION_KEY: base64Bytes(32),
   AUTH_SECRET: z.string().min(16),

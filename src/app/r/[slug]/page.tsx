@@ -84,9 +84,15 @@ export default async function ReceiptPage({ params }: Props) {
           </div>
 
           <div className="flex flex-col gap-3">
+            {s.profile?.logoUrl && (
+              // The browser loads founder-supplied logos; no server-side image fetch.
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={s.profile.logoUrl} alt={`${s.companyName} logo`} referrerPolicy="no-referrer" className="h-14 w-14 rounded object-contain" />
+            )}
             <h1 className="font-display text-[2.6rem] leading-[1.02] tracking-[-0.015em] md:text-[3.4rem]">
               {s.companyName}
             </h1>
+            {s.profile?.description && <p className="text-sm leading-relaxed text-ink-soft">{s.profile.description}<span className="block text-xs text-ink-faint">Founder-provided description</span></p>}
             <p className="max-w-[54ch] text-[0.98rem] leading-relaxed text-ink-soft">
               Figures for <span className="text-ink">{s.reportingPeriod.label}</span>, computed
               from {plural(s.source.transactionCount, "bank transaction")} across{" "}
@@ -318,6 +324,7 @@ export default async function ReceiptPage({ params }: Props) {
                   customer={customer}
                   historyIds={history.get(key) ?? customer.transactionIds}
                   transactions={transactions}
+                  research={s.customerResearch?.[key]}
                 />
               );
             })}

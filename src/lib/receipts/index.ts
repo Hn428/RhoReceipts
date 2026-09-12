@@ -32,6 +32,9 @@ import {
 } from "@/lib/metrics";
 import { money, type Money } from "@/lib/money";
 import { formatPeriod, parsePeriodKey } from "@/lib/period";
+import { cachedCustomerResearch } from "@/lib/research";
+import type { CustomerResearch } from "@/lib/research/customer";
+import { getProfileSettings } from "@/lib/profiles";
 
 /** Bump when classification or metric rules change in a way that moves numbers. */
 export const ENGINE_VERSION = "2026.09.3";
@@ -60,6 +63,7 @@ export interface SnapshotTransaction {
 export interface ReceiptSnapshot {
   version: 1;
   companyName: string;
+  profile?: { description: string; logoUrl: string | null };
   /** Issued from the synthetic fixture company rather than a real bank. */
   isDemo: boolean;
   asOf: string;
@@ -107,6 +111,8 @@ export interface ReceiptSnapshot {
   }[];
   /** Revenue for the reporting month, broken down by customer. */
   mrrCustomers: CustomerRevenue[];
+  /** Absent on receipts issued before external research was introduced. */
+  customerResearch?: Record<string, CustomerResearch>;
   /** Up to twelve months of recognised revenue, oldest first. */
   revenueHistory: { periodKey: string; label: string; revenue: Money }[];
   excluded: ExcludedGroup[];
@@ -142,13 +148,14 @@ export async function loadClassifiedLedger(connectionId: string, ownerId: string
 
   const [accountRows, transactionRows, invoiceRows, customerRows] =
     await Promise.all([
-      db.select().from(rhoAccounts).where(eq(rhoAccounts.connectionId, connection.id)),
+      db.select().from(rhoAccounts).where(eq(rhoAccounts.connectionId, connection.id)).orderBy(rhoAccounts.rhoAccountId),
       db
         .select()
         .from(rhoTransactions)
-        .where(eq(rhoTransactions.connectionId, connection.id)),
-      db.select().from(rhoInvoices).where(eq(rhoInvoices.connectionId, connection.id)),
-      db.select().from(rhoCustomers).where(eq(rhoCustomers.connectionId, connection.id)),
+        .where(eq(rhoTransactions.connectionId, connection.id))
+        .orderBy(rhoTransactions.rhoTransactionId, rhoTransactions.rhoAccountId),
+      db.select().from(rhoInvoices).where(eq(rhoInvoices.connectionId, connection.id)).orderBy(rhoInvoices.rhoInvoiceId),
+      db.select().from(rhoCustomers).where(eq(rhoCustomers.connectionId, connection.id)).orderBy(rhoCustomers.rhoCustomerId),
     ]);
 
   if (transactionRows.length === 0) {
@@ -282,10 +289,27 @@ export async function issueReceipt(options: {
   }
 
   const companyName = companyNameFrom(connection.label);
+  const profile = await getProfileSettings(connection.id);
+  const isDemo = connection.baseUrl.includes("/api/mock/rho/");
+  const customerResearch: Record<string, CustomerResearch> = {};
+  // Small batches cap concurrent external requests while keeping enrollment responsive.
+  const payingCustomers = (reportingMonth?.byCustomer ?? []).filter((customer) => customer.customerId);
+  for (let i = 0; i < payingCustomers.length; i += 3) {
+    await Promise.all(payingCustomers.slice(i, i + 3).map(async (customer) => {
+      const row = customerRows.find((row) => row.rhoCustomerId === customer.customerId);
+      customerResearch[customer.customerId!] = await cachedCustomerResearch(connection.id, {
+        name: row?.legalName ?? customer.customerName,
+        domain: row?.emailDomain ?? null,
+        relatedParty: classifications.some((item) => item.customerId === customer.customerId && item.relatedParty),
+        isDemo,
+      });
+    }));
+  }
 
   const snapshot: ReceiptSnapshot = {
     version: 1,
     companyName,
+    profile: { description: profile.description, logoUrl: profile.logoUrl },
     isDemo: connection.baseUrl.includes("/api/mock/rho/"),
     asOf: asOf.toISOString(),
     engineVersion: ENGINE_VERSION,
@@ -328,6 +352,7 @@ export async function issueReceipt(options: {
     averageMonthlyBurn: receipt.averageMonthlyBurn,
     trailingBurn: receipt.trailingBurn.map((m) => ({ ...m, label: label(m.periodKey) })),
     mrrCustomers: reportingMonth?.byCustomer ?? [],
+    customerResearch,
     revenueHistory: receipt.monthlyRevenue.slice(-12).map((m) => ({
       periodKey: m.periodKey,
       label: label(m.periodKey),

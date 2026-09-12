@@ -19,8 +19,10 @@
  */
 
 import { sql } from "drizzle-orm";
+import type { CustomerResearch } from "@/lib/research/customer";
 import {
   bigint,
+  boolean,
   index,
   integer,
   jsonb,
@@ -338,6 +340,20 @@ export const syncRuns = pgTable(
 );
 
 export type Connection = typeof connections.$inferSelect;
+/** Founder-editable presentation lives apart from financial snapshots. */
+export const profileSettings = pgTable("profile_settings", {
+  connectionId: uuid("connection_id").primaryKey().references(() => connections.id, { onDelete: "cascade" }),
+  description: text("description").notNull().default(""),
+  logoUrl: text("logo_url"),
+  isPublic: boolean("is_public").notNull().default(false),
+});
+/** Reusable research; issued receipts keep their own immutable copy. */
+export const customerResearchCache = pgTable("customer_research_cache", {
+  key: text("key").primaryKey(),
+  connectionId: uuid("connection_id").notNull().references(() => connections.id, { onDelete: "cascade" }),
+  result: jsonb("result").$type<CustomerResearch>().notNull(),
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+});
 export type RhoTransactionRow = typeof rhoTransactions.$inferSelect;
 export type SyncRun = typeof syncRuns.$inferSelect;
 

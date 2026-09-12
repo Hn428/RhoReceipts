@@ -36,6 +36,20 @@
       "when": 1789241097961,
       "tag": "0004_monthly_receipts",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1789242396624,
+      "tag": "0005_flowery_rocket_raccoon",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1789242577753,
+      "tag": "0006_graceful_morgan_stark",
+      "breakpoints": true
     }
   ]
 }

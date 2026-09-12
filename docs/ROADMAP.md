@@ -17,8 +17,8 @@ them; an unenrolled one's are whatever the founder typed into a spreadsheet.
 |---|---|---|
 | **1. Financial data** | Mock Rho API + a mock Rho dashboard, clearly labelled as a simulation | Done |
 | **2. Verification engine** | Deterministic classification and metrics | Done |
-| **3. External trust** | Tavily research on each paying customer | To build |
-| **4. Distribution** | Public verified profile, investor discovery, monthly investor receipts | Profile and monthly receipts done; discovery to build |
+| **3. External trust** | Tavily customer web-presence research; labelled demo simulation | Done; authoritative registration verification remains unconfirmed |
+| **4. Distribution** | Public verified profile, investor discovery, monthly investor receipts | Done |
 
 No multi-agent system. The differentiation is the evidence, not the machinery.
 
@@ -80,7 +80,7 @@ transactions → clicks a customer → sees payment history and external verific
 | Metric engine | MRR, ARR, burn, runway, growth, concentration, each with evidence. `docs/metrics.md` |
 | Public profile v1 | Snapshot receipts at `/r/<slug>` with full drill-down. `docs/receipts.md` |
 
-## To build, in order
+## Delivery milestones
 
 ### R1 — Multi-company data layer and the mock Rho dashboard  *(screen 1)* — **DONE**
 Northstar verified byte-identical after the generator refactor. Acme AI: MRR $53,251, +31.0% over 3 months, 12.3 months runway, top customer 31.6%. Mock Rho at `/mock-rho`. BetaWorks moves to R5.
@@ -119,7 +119,14 @@ Engine in `src/lib/metrics/monthly.ts` (13 tests, including cash reconstructed t
 - **Delivery:** development prints the email and records it in a delivery log shown on the
   dashboard, the same approach as sign-in links. A real mail provider is a transport swap.
 
-### R4 — External trust layer (Tavily)  *(screen 3's verification column)*
+### R4 — External trust layer (Tavily)  *(screen 3's verification column)* — **DONE**
+Research runs at issuance, uses a connection-scoped 30-day cache, and is frozen into
+the receipt. Provider failure is Needs review; related parties take priority. The
+live adapter and failure paths are tested with controlled responses. A live-key
+smoke test against Tavily's own site returned five sources and a matching-domain
+Verified verdict. That test exposed overly restrictive search wording; searches
+now use the name and domain, with a new cache version for future receipts.
+Registration is explicitly unconfirmed; web search alone is not legal certification.
 - Research each paying customer: web presence, domain, registration footprint. Results are
   cached with their evidence so a verdict doesn't change on reload.
 - Statuses: **Verified**, **Needs review**, **Flagged** (related party, or no footprint).
@@ -129,19 +136,38 @@ Engine in `src/lib/metrics/monthly.ts` (13 tests, including cash reconstructed t
   Tavily path runs for real companies.
 - Needs `TAVILY_API_KEY`.
 
-### R5 — Investor discovery  *(screen 4)*
+### R5 — Investor discovery  *(screen 4)* — **DONE**
+`/discover` shows the latest receipt for each opted-in connection, with reporting
+month and simulation labels. `/discover/betaworks` contains only labelled illustrative claims.
 - `/discover` lists profiles founders marked public, plus BetaWorks.
 - The comparison: bank-derived vs founder reported, calculated vs unavailable, transaction
   evidence available vs unavailable — shown as a side-by-side, not explained in prose.
 
-### R6 — Founder profile controls
+### R6 — Founder profile controls — **DONE**
+Separate `profile_settings` table; owner-checked writes accept only description,
+HTTPS logo URL, and listing choice. Existing profiles default to unlisted.
+New receipts capture presentation settings without changing old snapshots.
 - Description, logo, public/private listing. Recipients arrive in R3.
 - Visibility model: **public** profiles appear in discovery; **private** ones are unlisted
   and reachable only by link. Investors don't need accounts.
 
-### R7 — Demo readiness
+### R7 — Demo readiness — **DONE**
+`npm run demo` prepares a separate database and starts the app. Repeat setup reuses
+reports and delivery records. The walkthrough is in [DEMO.md](DEMO.md).
 - One command seeds every company, founder and report so the demo starts from a known state.
 - A written demo script following the contrast: BetaWorks first, then Acme AI.
+
+### Validation of R4–R7
+
+147 tests pass, including in-memory Postgres migrations, complete demo imports,
+repeat delivery prevention, research caching, cross-owner settings rejection,
+unlisting and immutable snapshots. Typecheck, lint and the Webpack production build
+pass. Default Turbopack build hit an environment socket-permission error.
+The complete browser flow now passes: new-founder sign-in, Acme enrollment and
+generation, simulated customer research and payment history, founder settings,
+discovery opt-in/out, preserved shared snapshots, investor recipient creation,
+monthly delivery, and repeat-send idempotency. Live Tavily credentials and
+matching-domain verification have also passed a smoke test.
 
 ## Cut from the previous plan
 

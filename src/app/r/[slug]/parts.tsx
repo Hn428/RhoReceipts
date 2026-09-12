@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import type { CustomerRevenue } from "@/lib/metrics";
 import type { SnapshotTransaction } from "@/lib/receipts";
+import type { CustomerResearch } from "@/lib/research/customer";
 import { dayShort, signed, whole, year } from "@/lib/receipts/format";
 
 export function Chevron() {
@@ -302,10 +303,12 @@ export function PayingCustomerRow({
   customer,
   historyIds,
   transactions,
+  research,
 }: {
   customer: CustomerRevenue;
   historyIds: readonly string[];
   transactions: Record<string, SnapshotTransaction>;
+  research?: CustomerResearch;
 }) {
   const first = transactions[customer.transactionIds[0]];
   const related = historyIds.some((id) => transactions[id]?.relatedParty);
@@ -316,11 +319,29 @@ export function PayingCustomerRow({
         <span className="min-w-0 text-sm text-ink">{customer.customerName}</span>
         <span className="figures whitespace-nowrap text-right text-sm text-ink">{whole(customer.amount)}</span>
         <span className="col-start-2 flex flex-wrap items-center gap-1.5 sm:col-start-auto">
-          <AttributionChip attribution={customer.attribution} />
-          {related && <Chip tone="flagged">Related party</Chip>}
+          <Chip tone={related || research?.status === "Flagged" ? "flagged" : research?.status === "Verified" ? "verified" : "inferred"}>
+            {related ? "Flagged" : research?.status ?? "Needs review"}
+          </Chip>
+          {research?.provider === "simulated" && <span className="text-[0.65rem] text-ink-faint">Simulated</span>}
         </span>
       </summary>
       <div className="flex flex-col gap-2 pb-4 pl-5">
+        <div className="rounded-[2px] border border-rule bg-sunken/40 p-3 text-xs leading-relaxed text-ink-soft">
+          <p className="font-medium text-ink">External customer research{research?.provider === "simulated" ? " · simulated" : ""}</p>
+          <p>{research?.reason ?? (customer.customerId ? "External research was not included when this receipt was issued." : "An aggregated or unattributed payment cannot identify an individual customer for research.")}</p>
+          {research && <>
+            {research.domain && <p>Billing domain: {research.domain}</p>}
+            <p>{research.registration}</p>
+            <p>Checked {dayShort(research.checkedAt)} · {research.provider === "tavily" ? "Tavily web search" : research.provider === "simulated" ? "Demo fixture, no live search" : "External check unavailable"}</p>
+            {research.evidence.length > 0 && <ul className="mt-2 flex flex-col gap-2">
+              {research.evidence.map((item, index) => <li key={`${item.url}-${index}`}>
+                <a href={item.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">{item.title}</a>
+                <p>{item.excerpt}</p>
+              </li>)}
+            </ul>}
+          </>}
+        </div>
+        <span><AttributionChip attribution={customer.attribution} />{related && <Chip tone="flagged">Related party</Chip>}</span>
         {first && <p className="max-w-[60ch] text-xs leading-relaxed text-ink-soft">{first.reason}</p>}
         <TransactionRows ids={historyIds} transactions={transactions} limit={12} />
       </div>

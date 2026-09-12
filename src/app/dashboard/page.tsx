@@ -6,20 +6,21 @@ import { listConnections } from "@/lib/ingest/sync";
 import { latestReceiptFor } from "@/lib/receipts";
 import { recipientsFor, reportsFor } from "@/lib/reports";
 import { day } from "@/lib/receipts/format";
+import { getProfileSettings } from "@/lib/profiles";
 
-import { addRecipient, issueFreshReceipt, removeRecipient, sendReportNow } from "./actions";
+import { addRecipient, issueFreshReceipt, removeRecipient, sendReportNow, updateProfile } from "./actions";
 
 export const metadata = { title: "Dashboard · Rho Receipts" };
 
 export default async function DashboardPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string }>;
+  searchParams: Promise<{ error?: string; saved?: string }>;
 }) {
   const session = await auth();
   if (!session?.user?.id) redirect("/signin");
   const ownerId = session.user.id;
-  const { error } = await searchParams;
+  const { error, saved } = await searchParams;
 
   const connections = await listConnections(ownerId);
   const withReceipts = await Promise.all(
@@ -28,6 +29,7 @@ export default async function DashboardPage({
       receipt: await latestReceiptFor(connection.id, ownerId),
       recipients: await recipientsFor(connection.id, ownerId),
       reports: await reportsFor(connection.id, ownerId),
+      profile: await getProfileSettings(connection.id),
     })),
   );
 
@@ -53,6 +55,8 @@ export default async function DashboardPage({
         </div>
       </header>
 
+      {saved === "profile" && <p role="status" className="text-sm text-verified">Profile settings saved.</p>}
+      {error === "profile" && <p role="alert" className="text-sm text-flagged">Use a description of at most 500 characters and a valid HTTPS logo URL.</p>}
       {error === "email" && (
         <p role="alert" className="rounded-[3px] border border-flagged/40 bg-flagged-wash px-3 py-2 text-sm text-flagged">
           That email address doesn&apos;t look right. Check it and add the investor again.
@@ -88,7 +92,7 @@ export default async function DashboardPage({
       ) : (
         <section className="flex flex-col gap-4">
           <ul className="flex flex-col border-t border-rule">
-            {withReceipts.map(({ connection, receipt, recipients, reports }) => (
+            {withReceipts.map(({ connection, receipt, recipients, reports, profile }) => (
               <li key={connection.id} className="flex flex-col gap-4 border-b border-rule py-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
                 <div className="flex flex-col gap-1">
                   <span className="font-display text-xl">{connection.label.replace(/\s*\(mock\)$/i, "")}</span>
@@ -125,6 +129,19 @@ export default async function DashboardPage({
                     </Link>
                   )}
                 </div>
+                <form action={updateProfile} className="flex w-full flex-col gap-3 border-t border-dashed border-rule pt-5">
+                  <input type="hidden" name="connectionId" value={connection.id} />
+                  <h2 className="text-sm font-medium">Profile settings</h2>
+                  <label className="flex flex-col gap-1 text-sm">Description
+                    <textarea name="description" maxLength={500} defaultValue={profile.description} rows={3} className="rounded border border-rule-strong bg-paper p-2" />
+                  </label>
+                  <label className="flex flex-col gap-1 text-sm">Logo URL
+                    <input name="logoUrl" type="url" placeholder="https://…" defaultValue={profile.logoUrl ?? ""} className="rounded border border-rule-strong bg-paper p-2" />
+                  </label>
+                  <label className="flex items-center gap-2 text-sm"><input name="isPublic" type="checkbox" defaultChecked={profile.isPublic} />List publicly in investor discovery</label>
+                  <p className="text-xs leading-relaxed text-ink-faint">Unlisted profiles are still accessible to anyone with their link. Description and logo changes appear in discovery immediately and on your next receipt. Financial figures are calculated from bank records.</p>
+                  <button type="submit" className="self-start rounded border border-rule-strong px-3 py-2 text-sm hover:bg-paper">Save profile settings</button>
+                </form>
                 {receipt && (
                   <div className="grid gap-6 border-t border-dashed border-rule pt-5 sm:basis-full sm:grid-cols-2">
                     <div className="flex flex-col gap-2.5">
@@ -191,6 +208,7 @@ export default async function DashboardPage({
             ))}
           </ul>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <Link href="/discover" className="text-ink-soft hover:underline">Investor discovery</Link>
             <Link href="/enroll" className="text-ink-soft underline-offset-4 hover:text-ink hover:underline">
               Enroll another company
             </Link>
