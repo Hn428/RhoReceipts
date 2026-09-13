@@ -46,8 +46,10 @@ export async function importLedger(
   }
 
   // A sample company is chosen by slug; its token never touches the browser.
+  // Token-only companies aren't samples: they connect by pasting their token.
   const sampleSlug = formData.get("sample");
-  const sample = typeof sampleSlug === "string" ? companyBySlug(sampleSlug) : null;
+  const listed = typeof sampleSlug === "string" ? companyBySlug(sampleSlug) : null;
+  const sample = listed && !listed.meta.token_only ? listed : null;
   const token = sample
     ? sample.meta.mock_token
     : String(formData.get("token") ?? "").trim();

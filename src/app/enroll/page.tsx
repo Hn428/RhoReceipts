@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 
 import { auth } from "@/auth";
 import { connectionForOwner } from "@/lib/ingest/sync";
-import { mockCompanies } from "@/lib/rho/mock/store";
+import { listedCompanies } from "@/lib/rho/mock/store";
 
 import { EnrollForm } from "./enroll-form";
 
@@ -58,7 +58,7 @@ export default async function EnrollPage({
         <div className="rounded-lg border border-rule bg-paper px-6 py-8 shadow-[0_18px_45px_-34px_rgb(0_0_0/0.35)] md:px-8">
           <EnrollForm
             preselected={company}
-            samples={mockCompanies.map((c) => ({
+            samples={listedCompanies.map((c) => ({
               slug: c.meta.slug,
               name: c.meta.short_name,
               description: c.meta.description,

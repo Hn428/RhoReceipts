@@ -38,6 +38,10 @@ const schema = z.object({
     .optional(),
   RHO_MOCK_TOKEN: z.string().optional(),
   TAVILY_API_KEY: z.preprocess((value) => value === "" ? undefined : value, z.string().min(1).optional()),
+  /** Judges Tavily evidence. Unset falls back to deterministic string rules. */
+  OPENAI_API_KEY: z.preprocess((value) => value === "" ? undefined : value, z.string().min(1).optional()),
+  /** Sol at low reasoning effort by default; gpt-5.6-luna is about 20× cheaper. */
+  OPENAI_RESEARCH_MODEL: z.preprocess((value) => value === "" ? undefined : value, z.string().default("gpt-5.6-sol")),
 
   ENCRYPTION_KEY: base64Bytes(32),
   AUTH_SECRET: z.string().min(16),

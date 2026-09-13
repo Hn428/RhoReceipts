@@ -28,6 +28,20 @@ import acmeInvoices from "../fixtures/acme-ai/invoices.json";
 import acmeMeta from "../fixtures/acme-ai/meta.json";
 import acmeTransactions from "../fixtures/acme-ai/transactions.json";
 
+import quiverleafAccounts from "../fixtures/quiverleaf-ai/accounts.json";
+import quiverleafCards from "../fixtures/quiverleaf-ai/cards.json";
+import quiverleafCustomers from "../fixtures/quiverleaf-ai/customers.json";
+import quiverleafInvoices from "../fixtures/quiverleaf-ai/invoices.json";
+import quiverleafMeta from "../fixtures/quiverleaf-ai/meta.json";
+import quiverleafTransactions from "../fixtures/quiverleaf-ai/transactions.json";
+
+import lanternfishAccounts from "../fixtures/lanternfish-analytics/accounts.json";
+import lanternfishCards from "../fixtures/lanternfish-analytics/cards.json";
+import lanternfishCustomers from "../fixtures/lanternfish-analytics/customers.json";
+import lanternfishInvoices from "../fixtures/lanternfish-analytics/invoices.json";
+import lanternfishMeta from "../fixtures/lanternfish-analytics/meta.json";
+import lanternfishTransactions from "../fixtures/lanternfish-analytics/transactions.json";
+
 export interface FixtureMeta {
   generator: string;
   seed: number;
@@ -39,6 +53,13 @@ export interface FixtureMeta {
   description: string;
   /** Not a secret: it only opens this simulated ledger on the mock API. */
   mock_token: string;
+  /**
+   * The customers are real businesses used for illustration, so research on them
+   * runs live. The ledger is still synthetic; no relationship is implied.
+   */
+  real_customers?: boolean;
+  /** Connected only by pasting its token; never listed as a sample company. */
+  token_only?: boolean;
   period: { first_month: string; last_month: string };
   counts: Record<string, number>;
   opening_balances: Record<string, number>;
@@ -81,7 +102,26 @@ export const mockCompanies: readonly MockCompany[] = [
     customers: northstarCustomers,
     invoices: northstarInvoices,
   }),
+  company({
+    meta: quiverleafMeta,
+    accounts: quiverleafAccounts,
+    transactions: quiverleafTransactions,
+    cards: quiverleafCards,
+    customers: quiverleafCustomers,
+    invoices: quiverleafInvoices,
+  }),
+  company({
+    meta: lanternfishMeta,
+    accounts: lanternfishAccounts,
+    transactions: lanternfishTransactions,
+    cards: lanternfishCards,
+    customers: lanternfishCustomers,
+    invoices: lanternfishInvoices,
+  }),
 ];
+
+/** Offered as one-click sample companies. Token-only companies are connected by token. */
+export const listedCompanies: readonly MockCompany[] = mockCompanies.filter((c) => !c.meta.token_only);
 
 /** Each token opens exactly one company's ledger, like a real Rho token. */
 export function companyForToken(token: string): MockCompany | null {
@@ -90,6 +130,16 @@ export function companyForToken(token: string): MockCompany | null {
 
 export function companyBySlug(slug: string): MockCompany | null {
   return mockCompanies.find((c) => c.meta.slug === slug) ?? null;
+}
+
+/**
+ * The sample company a mock connection was made from. Connections store a label
+ * derived from the account names ("Acme AI"), or the legal name when seeded.
+ */
+export function companyByName(name: string): MockCompany | null {
+  const wanted = name.replace(/\s*\(mock\)\s*$/i, "").trim().toLowerCase();
+  return mockCompanies.find((c) =>
+    c.meta.short_name.toLowerCase() === wanted || c.meta.company.toLowerCase() === wanted) ?? null;
 }
 
 /** Matches `?foo=a&foo=b`; an empty filter list means "no filter". */

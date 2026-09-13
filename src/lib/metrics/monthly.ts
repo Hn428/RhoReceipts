@@ -44,7 +44,10 @@ export type ReportFlag =
     }
   | { kind: "concentration"; customerName: string; share: number }
   | { kind: "needs_review"; customerName: string; amount: Money }
-  | { kind: "related_party"; customerName: string; moneyIn: Money; moneyOut: Money };
+  | { kind: "related_party"; customerName: string; moneyIn: Money; moneyOut: Money }
+  /** External research flagged the customer's identity (no footprint, founder's domain, parked site). */
+  | { kind: "research_flagged"; customerName: string; reason: string; simulated: boolean }
+  | { kind: "adverse_news"; customerName: string; headline: string | null; simulated: boolean };
 
 export interface MonthlyReport {
   period: { key: string; label: string };
