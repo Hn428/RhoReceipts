@@ -7,6 +7,12 @@ import { day, percent, whole } from "@/lib/receipts/format";
 
 type Props = { params: Promise<{ slug: string }> };
 
+const RESEARCH_TONE = {
+  Verified: "border-verified/35 bg-verified-wash text-verified",
+  "Needs review": "border-inferred/35 bg-inferred-wash text-inferred",
+  Flagged: "border-flagged/35 bg-flagged-wash text-flagged",
+} as const;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const report = await getReportBySlug(slug);
@@ -84,6 +90,13 @@ export default async function MonthlyReceiptPage({ params }: Props) {
               <span className="figures text-ink-soft">{percent(s.growth3Month, { signed: true })}</span>
             </p>
           )}
+          {s.research && (
+            <p className="pt-1.5 text-xs text-ink-faint">
+              Revenue from customers whose web presence checks out:{" "}
+              <span className="figures text-ink-soft">{percent(s.research.verifiedShare)}</span>
+              {s.research.simulated ? " (simulated research on fictional customers)" : ""}
+            </p>
+          )}
         </section>
 
         {(s.newCustomers.length > 0 || s.missedCustomers.length > 0) && <section className="flex flex-col gap-5">
@@ -93,7 +106,14 @@ export default async function MonthlyReceiptPage({ params }: Props) {
             <h3 className="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-verified">New customers</h3>
             {s.newCustomers.map((c) => (
               <div key={c.customerName} className="flex items-baseline justify-between gap-3 text-sm">
-                <span>{c.customerName}</span>
+                <span className="flex flex-wrap items-center gap-2">
+                  {c.customerName}
+                  {c.researchStatus && (
+                    <span className={`rounded-[2px] border px-1.5 py-px font-mono text-[0.62rem] uppercase tracking-[0.06em] ${RESEARCH_TONE[c.researchStatus]}`}>
+                      {c.researchStatus === "Verified" && s.research?.simulated ? "Simulated match" : c.researchStatus}
+                    </span>
+                  )}
+                </span>
                 <span className="figures">{whole(c.amount)}</span>
               </div>
             ))}

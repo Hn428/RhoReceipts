@@ -64,15 +64,15 @@ export default async function InvestorPortfolioPage() {
                 <p className="mt-1 text-xs text-ink-faint">Each row is the exact frozen receipt selected by its founder.</p>
               </div>
               <div className="overflow-hidden rounded-b-lg border-x border-b border-rule bg-paper">
-                <div className="hidden grid-cols-[minmax(15rem,1.4fr)_repeat(3,minmax(8rem,1fr))_auto] border-b border-rule bg-sunken px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-ink-faint md:grid">
-                  <span>Company</span><span>MRR</span><span>Runway</span><span>Growth</span><span>Receipt</span>
+                <div className="hidden grid-cols-[minmax(15rem,1.4fr)_repeat(4,minmax(7rem,1fr))_auto] gap-4 border-b border-rule bg-sunken px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-ink-faint lg:grid">
+                  <span>Company</span><span>MRR</span><span>Runway</span><span>Growth</span><span>Verified revenue</span><span>Receipt</span>
                 </div>
                 {sharedReceipts.map((receipt) => {
                   const metrics = receipt.snapshot.metrics;
                   const growth = metrics.growth3Month ?? metrics.growthRate;
                   return (
-                    <article key={receipt.shareId} className="grid gap-5 border-b border-rule px-5 py-6 last:border-b-0 md:grid-cols-[minmax(15rem,1.4fr)_repeat(3,minmax(8rem,1fr))_auto] md:items-center">
-                      <div className="flex min-w-0 items-center gap-3">
+                    <article key={receipt.shareId} className="grid grid-cols-2 gap-5 border-b border-rule px-5 py-6 last:border-b-0 lg:grid-cols-[minmax(15rem,1.4fr)_repeat(4,minmax(7rem,1fr))_auto] lg:items-center lg:gap-4">
+                      <div className="col-span-2 flex min-w-0 items-center gap-3 lg:col-span-1">
                         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-ink font-semibold text-paper">{receipt.companyName[0]}</span>
                         <div className="min-w-0">
                           <h3 className="font-semibold text-ink">{receipt.companyName}</h3>
@@ -82,7 +82,8 @@ export default async function InvestorPortfolioPage() {
                       <Metric label="MRR" value={whole(metrics.mrr.value)} />
                       <Metric label="Runway" value={metrics.runwayMonths.value === null ? "Not burning" : `${metrics.runwayMonths.value} months`} />
                       <Metric label="3-month growth" value={percent(growth.value, { signed: true })} positive={growth.value !== null && growth.value > 0} />
-                      <div className="md:text-right">
+                      <VerifiedRevenue research={receipt.snapshot.researchCoverage} />
+                      <div className="col-span-2 lg:col-span-1 lg:text-right">
                         <Link href={`/r/${receipt.slug}`} className="inline-block rounded bg-ink px-3 py-2 text-xs font-semibold text-paper hover:opacity-90">Open receipt</Link>
                       </div>
                     </article>
@@ -99,14 +100,14 @@ export default async function InvestorPortfolioPage() {
                 <p className="mt-1 text-xs text-ink-faint">Updates delivered by founders who added this email to monthly delivery.</p>
               </div>
               <div className="overflow-hidden rounded-b-lg border-x border-b border-rule bg-paper">
-                <div className="hidden grid-cols-[minmax(15rem,1.4fr)_repeat(3,minmax(8rem,1fr))_auto] border-b border-rule bg-sunken px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-ink-faint md:grid">
-                  <span>Company</span><span>MRR</span><span>Runway</span><span>Growth</span><span>Update</span>
+                <div className="hidden grid-cols-[minmax(15rem,1.4fr)_repeat(4,minmax(7rem,1fr))_auto] gap-4 border-b border-rule bg-sunken px-5 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-ink-faint lg:grid">
+                  <span>Company</span><span>MRR</span><span>Runway</span><span>Growth</span><span>Verified revenue</span><span>Update</span>
                 </div>
                 {reports.map((report) => {
                   const snapshot = report.snapshot;
                   return (
-                    <article key={report.id} className="grid gap-5 border-b border-rule px-5 py-6 last:border-b-0 md:grid-cols-[minmax(15rem,1.4fr)_repeat(3,minmax(8rem,1fr))_auto] md:items-center">
-                      <div className="flex min-w-0 items-center gap-3">
+                    <article key={report.id} className="grid grid-cols-2 gap-5 border-b border-rule px-5 py-6 last:border-b-0 lg:grid-cols-[minmax(15rem,1.4fr)_repeat(4,minmax(7rem,1fr))_auto] lg:items-center lg:gap-4">
+                      <div className="col-span-2 flex min-w-0 items-center gap-3 lg:col-span-1">
                         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-ink font-semibold text-paper">{report.companyName[0]}</span>
                         <div className="min-w-0">
                           <h3 className="font-semibold text-ink">{report.companyName}</h3>
@@ -116,7 +117,8 @@ export default async function InvestorPortfolioPage() {
                       <Metric label="MRR" value={whole(snapshot.mrr.current)} />
                       <Metric label="Runway" value={snapshot.runwayMonths.current === null ? "Not burning" : `${snapshot.runwayMonths.current} months`} />
                       <Metric label="3-month growth" value={percent(snapshot.growth3Month, { signed: true })} positive={snapshot.growth3Month !== null && snapshot.growth3Month > 0} />
-                      <div className="flex flex-wrap gap-3 md:justify-end">
+                      <VerifiedRevenue research={snapshot.research} />
+                      <div className="col-span-2 flex flex-wrap gap-3 lg:col-span-1 lg:justify-end">
                         <Link href={`/m/${report.slug}`} className="rounded bg-ink px-3 py-2 text-xs font-semibold text-paper hover:opacity-90">Monthly receipt</Link>
                         <Link href={`/r/${report.receiptSlug}`} className="self-center text-xs font-medium text-verified hover:underline">Evidence</Link>
                       </div>
@@ -130,16 +132,27 @@ export default async function InvestorPortfolioPage() {
       )}
 
       <footer className="mt-5 text-xs leading-5 text-ink-faint">
-        Direct shares grant access to one receipt. Monthly access follows the founder&apos;s current investor list. Rho Receipts is an independent project, not a Rho product or certification.
+        Direct shares grant access to one receipt. Monthly access follows the founder&apos;s current investor list. Verified revenue is the share of the month&apos;s revenue from customers whose website or billing domain names them; it confirms web presence, not legal identity. Rho Receipts is an independent project, not a Rho product or certification.
       </footer>
     </main>
+  );
+}
+
+/** Share of the month's revenue from customers whose web presence checks out. */
+function VerifiedRevenue({ research }: { research?: { verifiedShare: number | null; simulated: boolean } }) {
+  return (
+    <div>
+      <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-ink-faint lg:hidden">Verified revenue</p>
+      <p className="figures mt-1 text-lg font-medium text-ink">{research ? percent(research.verifiedShare) : "—"}</p>
+      <p className="text-[0.68rem] text-ink-faint">{research ? (research.simulated ? "Simulated research" : "Web presence checked") : "Not researched"}</p>
+    </div>
   );
 }
 
 function Metric({ label, value, positive = false }: { label: string; value: string; positive?: boolean }) {
   return (
     <div>
-      <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-ink-faint md:hidden">{label}</p>
+      <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-ink-faint lg:hidden">{label}</p>
       <p className={`figures mt-1 text-lg font-medium ${positive ? "text-verified" : "text-ink"}`}>{value}</p>
     </div>
   );
