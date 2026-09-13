@@ -1,0 +1,347 @@
+[
+  {
+    "id": "cus_0001",
+    "legal_name": "Corvus Systems, Inc.",
+    "email": "ap@corvussystems.com",
+    "address": {
+      "address1": "7021 Harbor St",
+      "address2": "Suite 866",
+      "city": "Austin",
+      "state": "TX",
+      "zip_code": "91573",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 37700000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00149",
+    "created_at": "2025-03-26T15:53:00.000Z",
+    "updated_at": "2026-09-08T15:42:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0002",
+    "legal_name": "Meridian Health Group LLC",
+    "email": "billing@meridianhealthgrp.com",
+    "address": {
+      "address1": "9080 Market St",
+      "address2": "",
+      "city": "Chicago",
+      "state": "IL",
+      "zip_code": "71120",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 19760000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00148",
+    "created_at": "2025-03-30T15:01:00.000Z",
+    "updated_at": "2026-09-06T15:42:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0003",
+    "legal_name": "Ferry Logistics Co.",
+    "email": "accounts@ferrylogistics.com",
+    "address": {
+      "address1": "9569 Grand St",
+      "address2": "",
+      "city": "Newark",
+      "state": "NJ",
+      "zip_code": "11640",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 6800000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00063",
+    "created_at": "2025-04-02T15:13:00.000Z",
+    "updated_at": "2026-01-09T15:56:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0004",
+    "legal_name": "Atlas Freight Partners",
+    "email": "finance@atlasfreight.com",
+    "address": {
+      "address1": "563 Market St",
+      "address2": "",
+      "city": "Memphis",
+      "state": "TN",
+      "zip_code": "67104",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 19200000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00140",
+    "created_at": "2025-08-06T15:38:00.000Z",
+    "updated_at": "2026-08-13T15:08:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0005",
+    "legal_name": "Bellweather Foods Inc.",
+    "email": "ap@bellweatherfoods.com",
+    "address": {
+      "address1": "8115 Market St",
+      "address2": "",
+      "city": "Portland",
+      "state": "OR",
+      "zip_code": "29056",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 7200000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00141",
+    "created_at": "2025-05-10T15:12:00.000Z",
+    "updated_at": "2026-08-15T15:23:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0006",
+    "legal_name": "Kestrel Robotics",
+    "email": "ap@kestrelrobotics.io",
+    "address": {
+      "address1": "8536 Lincoln St",
+      "address2": "",
+      "city": "Boston",
+      "state": "MA",
+      "zip_code": "83697",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 11680000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00150",
+    "created_at": "2025-06-01T15:44:00.000Z",
+    "updated_at": "2026-09-09T15:00:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0007",
+    "legal_name": "Pinnacle Dental Partners",
+    "email": "billing@pinnacledental.com",
+    "address": {
+      "address1": "3852 Harbor St",
+      "address2": "",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip_code": "48051",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 3840000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00143",
+    "created_at": "2025-09-13T15:52:00.000Z",
+    "updated_at": "2026-08-19T15:11:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0008",
+    "legal_name": "Orchid Bio Sciences",
+    "email": "ap@orchidbio.com",
+    "address": {
+      "address1": "5588 Grand St",
+      "address2": "",
+      "city": "San Diego",
+      "state": "CA",
+      "zip_code": "11977",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 5940000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00144",
+    "created_at": "2025-10-16T15:59:00.000Z",
+    "updated_at": "2026-08-22T15:24:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0009",
+    "legal_name": "Tanager Media Group",
+    "email": "finance@tanagermedia.com",
+    "address": {
+      "address1": "4452 Market St",
+      "address2": "",
+      "city": "Brooklyn",
+      "state": "NY",
+      "zip_code": "52140",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 3190000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00151",
+    "created_at": "2025-11-01T15:19:00.000Z",
+    "updated_at": "2026-09-09T15:27:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0010",
+    "legal_name": "Vireo Energy Solutions",
+    "email": "ap@vireoenergy.com",
+    "address": {
+      "address1": "7872 Harbor St",
+      "address2": "Suite 581",
+      "city": "Denver",
+      "state": "CO",
+      "zip_code": "25491",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 8800000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00142",
+    "created_at": "2026-01-07T15:28:00.000Z",
+    "updated_at": "2026-08-17T15:34:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0011",
+    "legal_name": "Halcyon Legal LLP",
+    "email": "accounts@halcyonlegal.com",
+    "address": {
+      "address1": "8071 Grand St",
+      "address2": "",
+      "city": "Seattle",
+      "state": "WA",
+      "zip_code": "40254",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 2460000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00146",
+    "created_at": "2026-03-16T15:02:00.000Z",
+    "updated_at": "2026-08-27T15:51:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0012",
+    "legal_name": "Sandpiper Retail Group",
+    "email": "ap@sandpiperretail.com",
+    "address": {
+      "address1": "3179 Chestnut St",
+      "address2": "",
+      "city": "Atlanta",
+      "state": "GA",
+      "zip_code": "60322",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 3750000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00152",
+    "created_at": "2026-04-02T15:11:00.000Z",
+    "updated_at": "2026-09-11T15:32:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0013",
+    "legal_name": "Quill & Stone LLC",
+    "email": "dana@quillandstone.co",
+    "address": {
+      "address1": "1186 Harbor St",
+      "address2": "",
+      "city": "Austin",
+      "state": "TX",
+      "zip_code": "40317",
+      "country": "US"
+    },
+    "note": "Advisory partner — see Dana",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 12750000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00147",
+    "created_at": "2025-06-29T15:12:00.000Z",
+    "updated_at": "2026-09-03T15:05:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0014",
+    "legal_name": "Cobalt Holdings Group",
+    "email": "admin@cobaltholdingsgrp.net",
+    "address": {
+      "address1": "3630 Lincoln St",
+      "address2": "Suite 126",
+      "city": "Dover",
+      "state": "DE",
+      "zip_code": "16789",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 0,
+      "currency": "USD"
+    },
+    "last_invoice_id": null,
+    "created_at": "2026-09-12T00:00:00.000Z",
+    "updated_at": "2026-09-12T00:00:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0015",
+    "legal_name": "Northgate Logistics",
+    "email": "ap@northgatelogistics.com",
+    "address": {
+      "address1": "8633 Harbor St",
+      "address2": "",
+      "city": "Columbus",
+      "state": "OH",
+      "zip_code": "92612",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 1125000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00145",
+    "created_at": "2026-06-20T15:41:00.000Z",
+    "updated_at": "2026-08-26T15:47:00.000Z",
+    "deleted_at": null
+  }
+]

@@ -1,0 +1,166 @@
+[
+  {
+    "id": "card_0001",
+    "name": "Dana Whitfield — Corporate",
+    "last_4": "4200",
+    "type": "physical",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_founder",
+      "first_name": "Dana",
+      "last_name": "Whitfield"
+    },
+    "spending_limit": {
+      "amount": 2500000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 325900,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 52200,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "1100 Congress Ave, Suite 400",
+      "city": "Austin",
+      "subdivision": "TX",
+      "postal_code": "78701",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  },
+  {
+    "id": "card_0002",
+    "name": "Marcus Olegun — Corporate",
+    "last_4": "4337",
+    "type": "virtual",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_cofounder",
+      "first_name": "Marcus",
+      "last_name": "Olegun"
+    },
+    "spending_limit": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 257600,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 48000,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "1100 Congress Ave, Suite 400",
+      "city": "Austin",
+      "subdivision": "TX",
+      "postal_code": "78701",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  },
+  {
+    "id": "card_0003",
+    "name": "Priya Raman — Corporate",
+    "last_4": "4474",
+    "type": "virtual",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_ops",
+      "first_name": "Priya",
+      "last_name": "Raman"
+    },
+    "spending_limit": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 425500,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 23600,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "1100 Congress Ave, Suite 400",
+      "city": "Austin",
+      "subdivision": "TX",
+      "postal_code": "78701",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  },
+  {
+    "id": "card_0004",
+    "name": "Sam Okafor — Corporate",
+    "last_4": "4611",
+    "type": "virtual",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_eng",
+      "first_name": "Sam",
+      "last_name": "Okafor"
+    },
+    "spending_limit": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 158300,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 52600,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "1100 Congress Ave, Suite 400",
+      "city": "Austin",
+      "subdivision": "TX",
+      "postal_code": "78701",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  }
+]

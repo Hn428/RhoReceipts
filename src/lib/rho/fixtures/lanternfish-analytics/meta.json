@@ -1,0 +1,30 @@
+{
+  "generator": "scripts/generate-rho-fixtures.ts",
+  "seed": 20250815,
+  "anchor": "2026-09-12T00:00:00.000Z",
+  "company": "Lanternfish Analytics, Inc.",
+  "slug": "lanternfish-analytics",
+  "short_name": "Lanternfish Analytics",
+  "description": "Demand forecasting for direct-to-consumer retail brands.",
+  "mock_token": "rhobat_mock_lanternfish_analytics_dev_token",
+  "real_customers": true,
+  "token_only": true,
+  "period": {
+    "first_month": "2025-04",
+    "last_month": "2026-09"
+  },
+  "counts": {
+    "accounts": 5,
+    "transactions": 561,
+    "cards": 4,
+    "customers": 8,
+    "invoices": 74
+  },
+  "opening_balances": {
+    "acc_checking_main": 21000000,
+    "acc_savings_reserve": 6000000,
+    "acc_treasury_mmf": 0,
+    "acc_credit_card": 0,
+    "acc_rewards": 0
+  }
+}

@@ -1,0 +1,1 @@
+DROP TABLE "profile_settings" CASCADE;
