@@ -1,0 +1,186 @@
+[
+  {
+    "id": "cus_0201",
+    "legal_name": "Notion Labs, Inc.",
+    "email": "billing@notion.so",
+    "address": {
+      "address1": "8333 Grand St",
+      "address2": "",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip_code": "86478",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 16100000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00066",
+    "created_at": "2025-05-29T15:49:00.000Z",
+    "updated_at": "2026-09-05T15:55:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0202",
+    "legal_name": "Figma, Inc.",
+    "email": "ap@figma.com",
+    "address": {
+      "address1": "8878 Lincoln St",
+      "address2": "",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip_code": "93816",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 8680000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00067",
+    "created_at": "2025-08-01T15:15:00.000Z",
+    "updated_at": "2026-09-07T15:35:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0203",
+    "legal_name": "Vercel Inc.",
+    "email": "billing@vercel.com",
+    "address": {
+      "address1": "5298 Oak St",
+      "address2": "",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip_code": "94793",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 5760000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00068",
+    "created_at": "2025-10-07T15:30:00.000Z",
+    "updated_at": "2026-09-09T15:57:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0204",
+    "legal_name": "Retool, Inc.",
+    "email": "ap@retool.com",
+    "address": {
+      "address1": "4330 Oak St",
+      "address2": "Suite 150",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip_code": "47376",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 3120000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00060",
+    "created_at": "2025-12-21T15:16:00.000Z",
+    "updated_at": "2026-07-27T15:56:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0205",
+    "legal_name": "Linear Orbit, Inc.",
+    "email": "finance@linear.app",
+    "address": {
+      "address1": "1291 Chestnut St",
+      "address2": "",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip_code": "16953",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 2240000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00064",
+    "created_at": "2026-02-10T15:04:00.000Z",
+    "updated_at": "2026-08-13T15:04:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0206",
+    "legal_name": "Canva Pty Ltd",
+    "email": "accounts@canva.com",
+    "address": {
+      "address1": "1118 Lincoln St",
+      "address2": "",
+      "city": "Sydney",
+      "state": "NSW",
+      "zip_code": "56165",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 2240000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00065",
+    "created_at": "2026-05-13T15:55:00.000Z",
+    "updated_at": "2026-08-16T15:34:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0207",
+    "legal_name": "Pitch Software GmbH",
+    "email": "billing@pitch.com",
+    "address": {
+      "address1": "812 Chestnut St",
+      "address2": "",
+      "city": "Berlin",
+      "state": "BE",
+      "zip_code": "46850",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 1400000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00026",
+    "created_at": "2025-07-11T15:59:00.000Z",
+    "updated_at": "2026-01-20T15:28:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0208",
+    "legal_name": "Webflow, Inc.",
+    "email": "finance@webflow.com",
+    "address": {
+      "address1": "1180 Oak St",
+      "address2": "Suite 850",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip_code": "97541",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 0,
+      "currency": "USD"
+    },
+    "last_invoice_id": null,
+    "created_at": "2026-09-12T00:00:00.000Z",
+    "updated_at": "2026-09-12T00:00:00.000Z",
+    "deleted_at": null
+  }
+]

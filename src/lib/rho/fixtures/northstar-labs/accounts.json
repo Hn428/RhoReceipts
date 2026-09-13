@@ -1,0 +1,54 @@
+[
+  {
+    "id": "acc_checking_main",
+    "account_type": "checking",
+    "balance": {
+      "amount": 43034100,
+      "currency": "USD"
+    },
+    "account_name": "Northstar Labs — Operating",
+    "account_number_last_4": "4417",
+    "routing_number_last_4": "0021"
+  },
+  {
+    "id": "acc_savings_reserve",
+    "account_type": "savings",
+    "balance": {
+      "amount": 5308800,
+      "currency": "USD"
+    },
+    "account_name": "Northstar Labs — Reserve",
+    "account_number_last_4": "8830",
+    "routing_number_last_4": "0021"
+  },
+  {
+    "id": "acc_treasury_mmf",
+    "account_type": "investment",
+    "balance": {
+      "amount": 128764076,
+      "currency": "USD"
+    },
+    "account_name": "Northstar Labs — Treasury",
+    "account_number_last_4": "5512"
+  },
+  {
+    "id": "acc_credit_card",
+    "account_type": "credit",
+    "balance": {
+      "amount": -2904500,
+      "currency": "USD"
+    },
+    "account_name": "Northstar Labs — Corporate Card",
+    "account_number_last_4": "9074"
+  },
+  {
+    "id": "acc_rewards",
+    "account_type": "rewards",
+    "balance": {
+      "amount": 687700,
+      "currency": "USD"
+    },
+    "account_name": "Northstar Labs — Rewards",
+    "account_number_last_4": "0001"
+  }
+]

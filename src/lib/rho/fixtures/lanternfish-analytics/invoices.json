@@ -1,0 +1,5034 @@
+[
+  {
+    "id": "inv_00001",
+    "invoice_number": "LF-1001",
+    "status": "paid",
+    "date": "2025-03-26T15:59:00.000Z",
+    "due_date": "2025-04-25T15:59:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 950000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 950000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 950000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-04-04T15:59:00.000Z",
+        "transaction_id": "txn_000001"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-03-26T15:59:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-03-27T15:59:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-04-04T15:59:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00001",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-04-05T15:59:00.000Z",
+    "created_at": "2025-03-26T15:59:00.000Z",
+    "updated_at": "2025-04-04T15:59:00.000Z"
+  },
+  {
+    "id": "inv_00002",
+    "invoice_number": "LF-1002",
+    "status": "paid",
+    "date": "2025-04-29T15:12:00.000Z",
+    "due_date": "2025-05-29T15:12:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 950000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 950000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 950000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-05-04T15:12:00.000Z",
+        "transaction_id": "txn_000025"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-04-29T15:12:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-04-30T15:12:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-05-04T15:12:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00002",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-05-05T15:12:00.000Z",
+    "created_at": "2025-04-29T15:12:00.000Z",
+    "updated_at": "2025-05-04T15:12:00.000Z"
+  },
+  {
+    "id": "inv_00003",
+    "invoice_number": "LF-1003",
+    "status": "paid",
+    "date": "2025-04-28T15:02:00.000Z",
+    "due_date": "2025-05-28T15:02:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-05-07T15:02:00.000Z",
+        "transaction_id": "txn_000026"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-04-28T15:02:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-04-29T15:02:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-05-07T15:02:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00003",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-05-08T15:02:00.000Z",
+    "created_at": "2025-04-28T15:02:00.000Z",
+    "updated_at": "2025-05-07T15:02:00.000Z"
+  },
+  {
+    "id": "inv_00004",
+    "invoice_number": "LF-1004",
+    "status": "paid",
+    "date": "2025-05-27T15:44:00.000Z",
+    "due_date": "2025-06-26T15:44:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 950000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 950000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 950000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-06-04T15:44:00.000Z",
+        "transaction_id": "txn_000052"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-05-27T15:44:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-05-28T15:44:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-06-04T15:44:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00004",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-06-05T15:44:00.000Z",
+    "created_at": "2025-05-27T15:44:00.000Z",
+    "updated_at": "2025-06-04T15:44:00.000Z"
+  },
+  {
+    "id": "inv_00005",
+    "invoice_number": "LF-1005",
+    "status": "paid",
+    "date": "2025-05-29T15:46:00.000Z",
+    "due_date": "2025-06-28T15:46:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-06-06T15:46:00.000Z",
+        "transaction_id": "txn_000053"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-05-29T15:46:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-05-30T15:46:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-06-06T15:46:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00005",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-06-07T15:46:00.000Z",
+    "created_at": "2025-05-29T15:46:00.000Z",
+    "updated_at": "2025-06-06T15:46:00.000Z"
+  },
+  {
+    "id": "inv_00006",
+    "invoice_number": "LF-1006",
+    "status": "paid",
+    "date": "2025-06-29T15:21:00.000Z",
+    "due_date": "2025-07-29T15:21:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 950000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 950000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 950000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-07-04T15:21:00.000Z",
+        "transaction_id": "txn_000083"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-06-29T15:21:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-06-30T15:21:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-07-04T15:21:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00006",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-07-05T15:21:00.000Z",
+    "created_at": "2025-06-29T15:21:00.000Z",
+    "updated_at": "2025-07-04T15:21:00.000Z"
+  },
+  {
+    "id": "inv_00007",
+    "invoice_number": "LF-1007",
+    "status": "paid",
+    "date": "2025-06-29T15:33:00.000Z",
+    "due_date": "2025-07-29T15:33:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-07-06T15:33:00.000Z",
+        "transaction_id": "txn_000084"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-06-29T15:33:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-06-30T15:33:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-07-06T15:33:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00007",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-07-07T15:33:00.000Z",
+    "created_at": "2025-06-29T15:33:00.000Z",
+    "updated_at": "2025-07-06T15:33:00.000Z"
+  },
+  {
+    "id": "inv_00008",
+    "invoice_number": "LF-1008",
+    "status": "paid",
+    "date": "2025-07-05T15:10:00.000Z",
+    "due_date": "2025-08-04T15:10:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-07-09T15:10:00.000Z",
+        "transaction_id": "txn_000085"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-07-05T15:10:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-07-06T15:10:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-07-09T15:10:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00008",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-07-10T15:10:00.000Z",
+    "created_at": "2025-07-05T15:10:00.000Z",
+    "updated_at": "2025-07-09T15:10:00.000Z"
+  },
+  {
+    "id": "inv_00009",
+    "invoice_number": "LF-1009",
+    "status": "paid",
+    "date": "2025-07-31T15:21:00.000Z",
+    "due_date": "2025-08-30T15:21:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 950000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 950000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 950000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-08-04T15:21:00.000Z",
+        "transaction_id": "txn_000110"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-07-31T15:21:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-08-01T15:21:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-08-04T15:21:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00009",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-08-05T15:21:00.000Z",
+    "created_at": "2025-07-31T15:21:00.000Z",
+    "updated_at": "2025-08-04T15:21:00.000Z"
+  },
+  {
+    "id": "inv_00010",
+    "invoice_number": "LF-1010",
+    "status": "paid",
+    "date": "2025-07-28T15:12:00.000Z",
+    "due_date": "2025-08-27T15:12:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-08-06T15:12:00.000Z",
+        "transaction_id": "txn_000111"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-07-28T15:12:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-07-29T15:12:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-08-06T15:12:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00010",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-08-07T15:12:00.000Z",
+    "created_at": "2025-07-28T15:12:00.000Z",
+    "updated_at": "2025-08-06T15:12:00.000Z"
+  },
+  {
+    "id": "inv_00011",
+    "invoice_number": "LF-1011",
+    "status": "paid",
+    "date": "2025-08-03T15:26:00.000Z",
+    "due_date": "2025-09-02T15:26:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-08-09T15:26:00.000Z",
+        "transaction_id": "txn_000112"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-08-03T15:26:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-08-04T15:26:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-08-09T15:26:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00011",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-08-10T15:26:00.000Z",
+    "created_at": "2025-08-03T15:26:00.000Z",
+    "updated_at": "2025-08-09T15:26:00.000Z"
+  },
+  {
+    "id": "inv_00012",
+    "invoice_number": "LF-1012",
+    "status": "paid",
+    "date": "2025-08-07T15:47:00.000Z",
+    "due_date": "2025-09-06T15:47:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0305"
+    },
+    "total": {
+      "amount": 5400000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Annual Subscription",
+        "unit_price": {
+          "amount": 450000,
+          "currency": "USD"
+        },
+        "quantity": 12,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 5400000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-08-15T15:47:00.000Z",
+        "transaction_id": "txn_000113"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-08-07T15:47:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-08-08T15:47:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@bombas.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-08-15T15:47:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00012",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-08-16T15:47:00.000Z",
+    "created_at": "2025-08-07T15:47:00.000Z",
+    "updated_at": "2025-08-15T15:47:00.000Z"
+  },
+  {
+    "id": "inv_00013",
+    "invoice_number": "LF-1013",
+    "status": "paid",
+    "date": "2025-08-30T15:23:00.000Z",
+    "due_date": "2025-09-29T15:23:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 950000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 950000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 950000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-09-04T15:23:00.000Z",
+        "transaction_id": "txn_000140"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-08-30T15:23:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-08-31T15:23:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-09-04T15:23:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00013",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-09-05T15:23:00.000Z",
+    "created_at": "2025-08-30T15:23:00.000Z",
+    "updated_at": "2025-09-04T15:23:00.000Z"
+  },
+  {
+    "id": "inv_00014",
+    "invoice_number": "LF-1014",
+    "status": "paid",
+    "date": "2025-09-04T15:43:00.000Z",
+    "due_date": "2025-10-04T15:43:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-09-07T15:43:00.000Z",
+        "transaction_id": "txn_000141"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-09-04T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-09-05T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-09-07T15:43:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00014",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-09-08T15:43:00.000Z",
+    "created_at": "2025-09-04T15:43:00.000Z",
+    "updated_at": "2025-09-07T15:43:00.000Z"
+  },
+  {
+    "id": "inv_00015",
+    "invoice_number": "LF-1015",
+    "status": "paid",
+    "date": "2025-08-31T15:50:00.000Z",
+    "due_date": "2025-09-30T15:50:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-09-09T15:50:00.000Z",
+        "transaction_id": "txn_000142"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-08-31T15:50:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-09-01T15:50:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-09-09T15:50:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00015",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-09-10T15:50:00.000Z",
+    "created_at": "2025-08-31T15:50:00.000Z",
+    "updated_at": "2025-09-09T15:50:00.000Z"
+  },
+  {
+    "id": "inv_00016",
+    "invoice_number": "LF-1016",
+    "status": "paid",
+    "date": "2025-09-06T15:37:00.000Z",
+    "due_date": "2025-10-06T15:37:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-09-12T15:37:00.000Z",
+        "transaction_id": "txn_000143"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-09-06T15:37:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-09-07T15:37:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-09-12T15:37:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00016",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-09-13T15:37:00.000Z",
+    "created_at": "2025-09-06T15:37:00.000Z",
+    "updated_at": "2025-09-12T15:37:00.000Z"
+  },
+  {
+    "id": "inv_00017",
+    "invoice_number": "LF-1017",
+    "status": "paid",
+    "date": "2025-10-01T15:05:00.000Z",
+    "due_date": "2025-10-31T15:05:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 950000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 950000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 950000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-10-06T15:05:00.000Z",
+        "transaction_id": "txn_000168"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-10-01T15:05:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-10-02T15:05:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-10-06T15:05:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00017",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-10-07T15:05:00.000Z",
+    "created_at": "2025-10-01T15:05:00.000Z",
+    "updated_at": "2025-10-06T15:05:00.000Z"
+  },
+  {
+    "id": "inv_00018",
+    "invoice_number": "LF-1018",
+    "status": "paid",
+    "date": "2025-09-29T15:22:00.000Z",
+    "due_date": "2025-10-29T15:22:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-10-06T15:22:00.000Z",
+        "transaction_id": "txn_000169"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-09-29T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-09-30T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-10-06T15:22:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00018",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-10-07T15:22:00.000Z",
+    "created_at": "2025-09-29T15:22:00.000Z",
+    "updated_at": "2025-10-06T15:22:00.000Z"
+  },
+  {
+    "id": "inv_00019",
+    "invoice_number": "LF-1019",
+    "status": "paid",
+    "date": "2025-10-02T15:48:00.000Z",
+    "due_date": "2025-11-01T15:48:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-10-09T15:48:00.000Z",
+        "transaction_id": "txn_000170"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-10-02T15:48:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-10-03T15:48:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-10-09T15:48:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00019",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-10-10T15:48:00.000Z",
+    "created_at": "2025-10-02T15:48:00.000Z",
+    "updated_at": "2025-10-09T15:48:00.000Z"
+  },
+  {
+    "id": "inv_00020",
+    "invoice_number": "LF-1020",
+    "status": "paid",
+    "date": "2025-10-09T15:55:00.000Z",
+    "due_date": "2025-11-08T15:55:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-10-12T15:55:00.000Z",
+        "transaction_id": "txn_000171"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-10-09T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-10-10T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-10-12T15:55:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00020",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-10-13T15:55:00.000Z",
+    "created_at": "2025-10-09T15:55:00.000Z",
+    "updated_at": "2025-10-12T15:55:00.000Z"
+  },
+  {
+    "id": "inv_00021",
+    "invoice_number": "LF-1021",
+    "status": "paid",
+    "date": "2025-10-30T15:47:00.000Z",
+    "due_date": "2025-11-29T15:47:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 950000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 950000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 950000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-11-04T15:47:00.000Z",
+        "transaction_id": "txn_000202"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-10-30T15:47:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-10-31T15:47:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-11-04T15:47:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00021",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-11-05T15:47:00.000Z",
+    "created_at": "2025-10-30T15:47:00.000Z",
+    "updated_at": "2025-11-04T15:47:00.000Z"
+  },
+  {
+    "id": "inv_00022",
+    "invoice_number": "LF-1022",
+    "status": "paid",
+    "date": "2025-11-02T15:43:00.000Z",
+    "due_date": "2025-12-02T15:43:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-11-06T15:43:00.000Z",
+        "transaction_id": "txn_000203"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-11-02T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-03T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-11-06T15:43:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00022",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-11-07T15:43:00.000Z",
+    "created_at": "2025-11-02T15:43:00.000Z",
+    "updated_at": "2025-11-06T15:43:00.000Z"
+  },
+  {
+    "id": "inv_00023",
+    "invoice_number": "LF-1023",
+    "status": "paid",
+    "date": "2025-11-03T15:03:00.000Z",
+    "due_date": "2025-12-03T15:03:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-11-09T15:03:00.000Z",
+        "transaction_id": "txn_000204"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-11-03T15:03:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-04T15:03:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-11-09T15:03:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00023",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-11-10T15:03:00.000Z",
+    "created_at": "2025-11-03T15:03:00.000Z",
+    "updated_at": "2025-11-09T15:03:00.000Z"
+  },
+  {
+    "id": "inv_00024",
+    "invoice_number": "LF-1024",
+    "status": "paid",
+    "date": "2025-11-09T15:09:00.000Z",
+    "due_date": "2025-12-09T15:09:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-11-12T15:09:00.000Z",
+        "transaction_id": "txn_000205"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-11-09T15:09:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-10T15:09:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-11-12T15:09:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00024",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-11-13T15:09:00.000Z",
+    "created_at": "2025-11-09T15:09:00.000Z",
+    "updated_at": "2025-11-12T15:09:00.000Z"
+  },
+  {
+    "id": "inv_00025",
+    "invoice_number": "LF-1025",
+    "status": "paid",
+    "date": "2025-11-12T15:22:00.000Z",
+    "due_date": "2025-12-12T15:22:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0306"
+    },
+    "total": {
+      "amount": 290000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 290000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 290000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-11-18T15:22:00.000Z",
+        "transaction_id": "txn_000206"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-11-12T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-13T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@parachutehome.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-11-18T15:22:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00025",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-11-19T15:22:00.000Z",
+    "created_at": "2025-11-12T15:22:00.000Z",
+    "updated_at": "2025-11-18T15:22:00.000Z"
+  },
+  {
+    "id": "inv_00026",
+    "invoice_number": "LF-1026",
+    "status": "paid",
+    "date": "2025-11-27T15:32:00.000Z",
+    "due_date": "2025-12-27T15:32:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 950000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 950000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 950000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-04T15:32:00.000Z",
+        "transaction_id": "txn_000234"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-11-27T15:32:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-28T15:32:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-04T15:32:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00026",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-05T15:32:00.000Z",
+    "created_at": "2025-11-27T15:32:00.000Z",
+    "updated_at": "2025-12-04T15:32:00.000Z"
+  },
+  {
+    "id": "inv_00027",
+    "invoice_number": "LF-1027",
+    "status": "paid",
+    "date": "2025-11-27T15:16:00.000Z",
+    "due_date": "2025-12-27T15:16:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-06T15:16:00.000Z",
+        "transaction_id": "txn_000235"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-11-27T15:16:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-28T15:16:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-06T15:16:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00027",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-07T15:16:00.000Z",
+    "created_at": "2025-11-27T15:16:00.000Z",
+    "updated_at": "2025-12-06T15:16:00.000Z"
+  },
+  {
+    "id": "inv_00028",
+    "invoice_number": "LF-1028",
+    "status": "paid",
+    "date": "2025-12-06T15:43:00.000Z",
+    "due_date": "2026-01-05T15:43:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-09T15:43:00.000Z",
+        "transaction_id": "txn_000236"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-06T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-12-07T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-09T15:43:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00028",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-10T15:43:00.000Z",
+    "created_at": "2025-12-06T15:43:00.000Z",
+    "updated_at": "2025-12-09T15:43:00.000Z"
+  },
+  {
+    "id": "inv_00029",
+    "invoice_number": "LF-1029",
+    "status": "paid",
+    "date": "2025-12-07T15:38:00.000Z",
+    "due_date": "2026-01-06T15:38:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-12T15:38:00.000Z",
+        "transaction_id": "txn_000237"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-07T15:38:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-12-08T15:38:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-12T15:38:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00029",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-13T15:38:00.000Z",
+    "created_at": "2025-12-07T15:38:00.000Z",
+    "updated_at": "2025-12-12T15:38:00.000Z"
+  },
+  {
+    "id": "inv_00030",
+    "invoice_number": "LF-1030",
+    "status": "paid",
+    "date": "2025-12-15T15:28:00.000Z",
+    "due_date": "2026-01-14T15:28:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0306"
+    },
+    "total": {
+      "amount": 290000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 290000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 290000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-18T15:28:00.000Z",
+        "transaction_id": "txn_000238"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-15T15:28:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-12-16T15:28:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@parachutehome.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-18T15:28:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00030",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-19T15:28:00.000Z",
+    "created_at": "2025-12-15T15:28:00.000Z",
+    "updated_at": "2025-12-18T15:28:00.000Z"
+  },
+  {
+    "id": "inv_00031",
+    "invoice_number": "LF-1031",
+    "status": "paid",
+    "date": "2025-12-29T15:25:00.000Z",
+    "due_date": "2026-01-28T15:25:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 1200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 1200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-04T15:25:00.000Z",
+        "transaction_id": "txn_000265"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-29T15:25:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-12-30T15:25:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-04T15:25:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00031",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-05T15:25:00.000Z",
+    "created_at": "2025-12-29T15:25:00.000Z",
+    "updated_at": "2026-01-04T15:25:00.000Z"
+  },
+  {
+    "id": "inv_00032",
+    "invoice_number": "LF-1032",
+    "status": "paid",
+    "date": "2026-01-03T15:36:00.000Z",
+    "due_date": "2026-02-02T15:36:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-06T15:36:00.000Z",
+        "transaction_id": "txn_000266"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-03T15:36:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-04T15:36:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-06T15:36:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00032",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-07T15:36:00.000Z",
+    "created_at": "2026-01-03T15:36:00.000Z",
+    "updated_at": "2026-01-06T15:36:00.000Z"
+  },
+  {
+    "id": "inv_00033",
+    "invoice_number": "LF-1033",
+    "status": "paid",
+    "date": "2026-01-01T15:02:00.000Z",
+    "due_date": "2026-01-31T15:02:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-09T15:02:00.000Z",
+        "transaction_id": "txn_000267"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-01T15:02:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-02T15:02:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-09T15:02:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00033",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-10T15:02:00.000Z",
+    "created_at": "2026-01-01T15:02:00.000Z",
+    "updated_at": "2026-01-09T15:02:00.000Z"
+  },
+  {
+    "id": "inv_00034",
+    "invoice_number": "LF-1034",
+    "status": "paid",
+    "date": "2026-01-03T15:30:00.000Z",
+    "due_date": "2026-02-02T15:30:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-12T15:30:00.000Z",
+        "transaction_id": "txn_000268"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-03T15:30:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-04T15:30:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-12T15:30:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00034",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-13T15:30:00.000Z",
+    "created_at": "2026-01-03T15:30:00.000Z",
+    "updated_at": "2026-01-12T15:30:00.000Z"
+  },
+  {
+    "id": "inv_00035",
+    "invoice_number": "LF-1035",
+    "status": "paid",
+    "date": "2026-01-08T15:23:00.000Z",
+    "due_date": "2026-02-07T15:23:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0306"
+    },
+    "total": {
+      "amount": 290000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 290000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 290000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-18T15:23:00.000Z",
+        "transaction_id": "txn_000269"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-08T15:23:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-09T15:23:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@parachutehome.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-18T15:23:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00035",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-19T15:23:00.000Z",
+    "created_at": "2026-01-08T15:23:00.000Z",
+    "updated_at": "2026-01-18T15:23:00.000Z"
+  },
+  {
+    "id": "inv_00036",
+    "invoice_number": "LF-1036",
+    "status": "paid",
+    "date": "2026-01-25T15:46:00.000Z",
+    "due_date": "2026-02-24T15:46:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 1200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 1200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-04T15:46:00.000Z",
+        "transaction_id": "txn_000298"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-25T15:46:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-26T15:46:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-04T15:46:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00036",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-05T15:46:00.000Z",
+    "created_at": "2026-01-25T15:46:00.000Z",
+    "updated_at": "2026-02-04T15:46:00.000Z"
+  },
+  {
+    "id": "inv_00037",
+    "invoice_number": "LF-1037",
+    "status": "paid",
+    "date": "2026-01-30T15:17:00.000Z",
+    "due_date": "2026-03-01T15:17:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-06T15:17:00.000Z",
+        "transaction_id": "txn_000299"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-30T15:17:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-31T15:17:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-06T15:17:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00037",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-07T15:17:00.000Z",
+    "created_at": "2026-01-30T15:17:00.000Z",
+    "updated_at": "2026-02-06T15:17:00.000Z"
+  },
+  {
+    "id": "inv_00038",
+    "invoice_number": "LF-1038",
+    "status": "paid",
+    "date": "2026-02-02T15:23:00.000Z",
+    "due_date": "2026-03-04T15:23:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-09T15:23:00.000Z",
+        "transaction_id": "txn_000300"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-02T15:23:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-02-03T15:23:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-09T15:23:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00038",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-10T15:23:00.000Z",
+    "created_at": "2026-02-02T15:23:00.000Z",
+    "updated_at": "2026-02-09T15:23:00.000Z"
+  },
+  {
+    "id": "inv_00039",
+    "invoice_number": "LF-1039",
+    "status": "paid",
+    "date": "2026-02-04T15:01:00.000Z",
+    "due_date": "2026-03-06T15:01:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-12T15:01:00.000Z",
+        "transaction_id": "txn_000301"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-04T15:01:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-02-05T15:01:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-12T15:01:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00039",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-13T15:01:00.000Z",
+    "created_at": "2026-02-04T15:01:00.000Z",
+    "updated_at": "2026-02-12T15:01:00.000Z"
+  },
+  {
+    "id": "inv_00040",
+    "invoice_number": "LF-1040",
+    "status": "paid",
+    "date": "2026-02-08T15:41:00.000Z",
+    "due_date": "2026-03-10T15:41:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0306"
+    },
+    "total": {
+      "amount": 290000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 290000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 290000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-18T15:41:00.000Z",
+        "transaction_id": "txn_000302"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-08T15:41:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-02-09T15:41:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@parachutehome.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-18T15:41:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00040",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-19T15:41:00.000Z",
+    "created_at": "2026-02-08T15:41:00.000Z",
+    "updated_at": "2026-02-18T15:41:00.000Z"
+  },
+  {
+    "id": "inv_00041",
+    "invoice_number": "LF-1041",
+    "status": "paid",
+    "date": "2026-02-25T15:40:00.000Z",
+    "due_date": "2026-03-27T15:40:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 1200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 1200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-04T15:40:00.000Z",
+        "transaction_id": "txn_000331"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-25T15:40:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-02-26T15:40:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-04T15:40:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00041",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-05T15:40:00.000Z",
+    "created_at": "2026-02-25T15:40:00.000Z",
+    "updated_at": "2026-03-04T15:40:00.000Z"
+  },
+  {
+    "id": "inv_00042",
+    "invoice_number": "LF-1042",
+    "status": "paid",
+    "date": "2026-02-25T15:39:00.000Z",
+    "due_date": "2026-03-27T15:39:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-06T15:39:00.000Z",
+        "transaction_id": "txn_000332"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-25T15:39:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-02-26T15:39:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-06T15:39:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00042",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-07T15:39:00.000Z",
+    "created_at": "2026-02-25T15:39:00.000Z",
+    "updated_at": "2026-03-06T15:39:00.000Z"
+  },
+  {
+    "id": "inv_00043",
+    "invoice_number": "LF-1043",
+    "status": "paid",
+    "date": "2026-03-04T15:54:00.000Z",
+    "due_date": "2026-04-03T15:54:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-09T15:54:00.000Z",
+        "transaction_id": "txn_000333"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-04T15:54:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-05T15:54:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-09T15:54:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00043",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-10T15:54:00.000Z",
+    "created_at": "2026-03-04T15:54:00.000Z",
+    "updated_at": "2026-03-09T15:54:00.000Z"
+  },
+  {
+    "id": "inv_00044",
+    "invoice_number": "LF-1044",
+    "status": "paid",
+    "date": "2026-03-02T15:53:00.000Z",
+    "due_date": "2026-04-01T15:53:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-12T15:53:00.000Z",
+        "transaction_id": "txn_000334"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-02T15:53:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-03T15:53:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-12T15:53:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00044",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-13T15:53:00.000Z",
+    "created_at": "2026-03-02T15:53:00.000Z",
+    "updated_at": "2026-03-12T15:53:00.000Z"
+  },
+  {
+    "id": "inv_00045",
+    "invoice_number": "LF-1045",
+    "status": "paid",
+    "date": "2026-03-12T15:57:00.000Z",
+    "due_date": "2026-04-11T15:57:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0306"
+    },
+    "total": {
+      "amount": 290000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 290000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 290000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-18T15:57:00.000Z",
+        "transaction_id": "txn_000335"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-12T15:57:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-13T15:57:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@parachutehome.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-18T15:57:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00045",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-19T15:57:00.000Z",
+    "created_at": "2026-03-12T15:57:00.000Z",
+    "updated_at": "2026-03-18T15:57:00.000Z"
+  },
+  {
+    "id": "inv_00046",
+    "invoice_number": "LF-1046",
+    "status": "paid",
+    "date": "2026-03-28T15:10:00.000Z",
+    "due_date": "2026-04-27T15:10:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 1200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 1200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-04T15:10:00.000Z",
+        "transaction_id": "txn_000364"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-28T15:10:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-29T15:10:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-04T15:10:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00046",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-05T15:10:00.000Z",
+    "created_at": "2026-03-28T15:10:00.000Z",
+    "updated_at": "2026-04-04T15:10:00.000Z"
+  },
+  {
+    "id": "inv_00047",
+    "invoice_number": "LF-1047",
+    "status": "paid",
+    "date": "2026-03-28T15:22:00.000Z",
+    "due_date": "2026-04-27T15:22:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-06T15:22:00.000Z",
+        "transaction_id": "txn_000365"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-28T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-29T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-06T15:22:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00047",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-07T15:22:00.000Z",
+    "created_at": "2026-03-28T15:22:00.000Z",
+    "updated_at": "2026-04-06T15:22:00.000Z"
+  },
+  {
+    "id": "inv_00048",
+    "invoice_number": "LF-1048",
+    "status": "paid",
+    "date": "2026-04-04T15:29:00.000Z",
+    "due_date": "2026-05-04T15:29:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-10T15:29:00.000Z",
+        "transaction_id": "txn_000366"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-04T15:29:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-05T15:29:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-10T15:29:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00048",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-11T15:29:00.000Z",
+    "created_at": "2026-04-04T15:29:00.000Z",
+    "updated_at": "2026-04-10T15:29:00.000Z"
+  },
+  {
+    "id": "inv_00049",
+    "invoice_number": "LF-1049",
+    "status": "paid",
+    "date": "2026-04-05T15:33:00.000Z",
+    "due_date": "2026-05-05T15:33:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-12T15:33:00.000Z",
+        "transaction_id": "txn_000367"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-05T15:33:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-06T15:33:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-12T15:33:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00049",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-13T15:33:00.000Z",
+    "created_at": "2026-04-05T15:33:00.000Z",
+    "updated_at": "2026-04-12T15:33:00.000Z"
+  },
+  {
+    "id": "inv_00050",
+    "invoice_number": "LF-1050",
+    "status": "paid",
+    "date": "2026-04-09T15:23:00.000Z",
+    "due_date": "2026-05-09T15:23:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0306"
+    },
+    "total": {
+      "amount": 290000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 290000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 290000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-18T15:23:00.000Z",
+        "transaction_id": "txn_000368"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-09T15:23:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-10T15:23:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@parachutehome.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-18T15:23:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00050",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-19T15:23:00.000Z",
+    "created_at": "2026-04-09T15:23:00.000Z",
+    "updated_at": "2026-04-18T15:23:00.000Z"
+  },
+  {
+    "id": "inv_00051",
+    "invoice_number": "LF-1051",
+    "status": "paid",
+    "date": "2026-04-28T15:36:00.000Z",
+    "due_date": "2026-05-28T15:36:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 1200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 1200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-04T15:36:00.000Z",
+        "transaction_id": "txn_000400"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-28T15:36:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-29T15:36:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-04T15:36:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00051",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-05T15:36:00.000Z",
+    "created_at": "2026-04-28T15:36:00.000Z",
+    "updated_at": "2026-05-04T15:36:00.000Z"
+  },
+  {
+    "id": "inv_00052",
+    "invoice_number": "LF-1052",
+    "status": "paid",
+    "date": "2026-05-01T15:40:00.000Z",
+    "due_date": "2026-05-31T15:40:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-06T15:40:00.000Z",
+        "transaction_id": "txn_000401"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-05-01T15:40:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-05-02T15:40:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-06T15:40:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00052",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-07T15:40:00.000Z",
+    "created_at": "2026-05-01T15:40:00.000Z",
+    "updated_at": "2026-05-06T15:40:00.000Z"
+  },
+  {
+    "id": "inv_00053",
+    "invoice_number": "LF-1053",
+    "status": "paid",
+    "date": "2026-05-03T15:55:00.000Z",
+    "due_date": "2026-06-02T15:55:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-09T15:55:00.000Z",
+        "transaction_id": "txn_000402"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-05-03T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-05-04T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-09T15:55:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00053",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-10T15:55:00.000Z",
+    "created_at": "2026-05-03T15:55:00.000Z",
+    "updated_at": "2026-05-09T15:55:00.000Z"
+  },
+  {
+    "id": "inv_00054",
+    "invoice_number": "LF-1054",
+    "status": "paid",
+    "date": "2026-05-05T15:51:00.000Z",
+    "due_date": "2026-06-04T15:51:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-12T15:51:00.000Z",
+        "transaction_id": "txn_000403"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-05-05T15:51:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-05-06T15:51:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-12T15:51:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00054",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-13T15:51:00.000Z",
+    "created_at": "2026-05-05T15:51:00.000Z",
+    "updated_at": "2026-05-12T15:51:00.000Z"
+  },
+  {
+    "id": "inv_00055",
+    "invoice_number": "LF-1055",
+    "status": "paid",
+    "date": "2026-05-28T15:23:00.000Z",
+    "due_date": "2026-06-27T15:23:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 1200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 1200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-04T15:23:00.000Z",
+        "transaction_id": "txn_000432"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-05-28T15:23:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-05-29T15:23:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-04T15:23:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00055",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-05T15:23:00.000Z",
+    "created_at": "2026-05-28T15:23:00.000Z",
+    "updated_at": "2026-06-04T15:23:00.000Z"
+  },
+  {
+    "id": "inv_00056",
+    "invoice_number": "LF-1056",
+    "status": "paid",
+    "date": "2026-06-02T15:51:00.000Z",
+    "due_date": "2026-07-02T15:51:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-06T15:51:00.000Z",
+        "transaction_id": "txn_000433"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-02T15:51:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-03T15:51:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-06T15:51:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00056",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-07T15:51:00.000Z",
+    "created_at": "2026-06-02T15:51:00.000Z",
+    "updated_at": "2026-06-06T15:51:00.000Z"
+  },
+  {
+    "id": "inv_00057",
+    "invoice_number": "LF-1057",
+    "status": "paid",
+    "date": "2026-06-04T15:21:00.000Z",
+    "due_date": "2026-07-04T15:21:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-09T15:21:00.000Z",
+        "transaction_id": "txn_000434"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-04T15:21:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-05T15:21:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-09T15:21:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00057",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-10T15:21:00.000Z",
+    "created_at": "2026-06-04T15:21:00.000Z",
+    "updated_at": "2026-06-09T15:21:00.000Z"
+  },
+  {
+    "id": "inv_00058",
+    "invoice_number": "LF-1058",
+    "status": "paid",
+    "date": "2026-06-04T15:02:00.000Z",
+    "due_date": "2026-07-04T15:02:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-12T15:02:00.000Z",
+        "transaction_id": "txn_000435"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-04T15:02:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-05T15:02:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-12T15:02:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00058",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-13T15:02:00.000Z",
+    "created_at": "2026-06-04T15:02:00.000Z",
+    "updated_at": "2026-06-12T15:02:00.000Z"
+  },
+  {
+    "id": "inv_00059",
+    "invoice_number": "LF-1059",
+    "status": "paid",
+    "date": "2026-06-12T15:41:00.000Z",
+    "due_date": "2026-07-12T15:41:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0307"
+    },
+    "total": {
+      "amount": 220000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 220000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 220000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-22T15:41:00.000Z",
+        "transaction_id": "txn_000436"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-12T15:41:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-13T15:41:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@outdoorvoices.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-22T15:41:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00059",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-23T15:41:00.000Z",
+    "created_at": "2026-06-12T15:41:00.000Z",
+    "updated_at": "2026-06-22T15:41:00.000Z"
+  },
+  {
+    "id": "inv_00060",
+    "invoice_number": "LF-1060",
+    "status": "paid",
+    "date": "2026-06-30T15:06:00.000Z",
+    "due_date": "2026-07-30T15:06:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 1200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 1200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-04T15:06:00.000Z",
+        "transaction_id": "txn_000467"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-30T15:06:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-01T15:06:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-04T15:06:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00060",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-05T15:06:00.000Z",
+    "created_at": "2026-06-30T15:06:00.000Z",
+    "updated_at": "2026-07-04T15:06:00.000Z"
+  },
+  {
+    "id": "inv_00061",
+    "invoice_number": "LF-1061",
+    "status": "paid",
+    "date": "2026-07-01T15:05:00.000Z",
+    "due_date": "2026-07-31T15:05:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-06T15:05:00.000Z",
+        "transaction_id": "txn_000468"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-01T15:05:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-02T15:05:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-06T15:05:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00061",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-07T15:05:00.000Z",
+    "created_at": "2026-07-01T15:05:00.000Z",
+    "updated_at": "2026-07-06T15:05:00.000Z"
+  },
+  {
+    "id": "inv_00062",
+    "invoice_number": "LF-1062",
+    "status": "paid",
+    "date": "2026-06-29T15:20:00.000Z",
+    "due_date": "2026-07-29T15:20:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-09T15:20:00.000Z",
+        "transaction_id": "txn_000469"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-29T15:20:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-30T15:20:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-09T15:20:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00062",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-10T15:20:00.000Z",
+    "created_at": "2026-06-29T15:20:00.000Z",
+    "updated_at": "2026-07-09T15:20:00.000Z"
+  },
+  {
+    "id": "inv_00063",
+    "invoice_number": "LF-1063",
+    "status": "paid",
+    "date": "2026-07-05T15:09:00.000Z",
+    "due_date": "2026-08-04T15:09:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-12T15:09:00.000Z",
+        "transaction_id": "txn_000470"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-05T15:09:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-06T15:09:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-12T15:09:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00063",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-13T15:09:00.000Z",
+    "created_at": "2026-07-05T15:09:00.000Z",
+    "updated_at": "2026-07-12T15:09:00.000Z"
+  },
+  {
+    "id": "inv_00064",
+    "invoice_number": "LF-1064",
+    "status": "paid",
+    "date": "2026-07-19T15:22:00.000Z",
+    "due_date": "2026-08-18T15:22:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0307"
+    },
+    "total": {
+      "amount": 220000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 220000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 220000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-22T15:22:00.000Z",
+        "transaction_id": "txn_000471"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-19T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-20T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@outdoorvoices.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-22T15:22:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00064",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-23T15:22:00.000Z",
+    "created_at": "2026-07-19T15:22:00.000Z",
+    "updated_at": "2026-07-22T15:22:00.000Z"
+  },
+  {
+    "id": "inv_00065",
+    "invoice_number": "LF-1065",
+    "status": "paid",
+    "date": "2026-07-30T15:33:00.000Z",
+    "due_date": "2026-08-29T15:33:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 1200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 1200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-04T15:33:00.000Z",
+        "transaction_id": "txn_000503"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-30T15:33:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-31T15:33:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-04T15:33:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00065",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-05T15:33:00.000Z",
+    "created_at": "2026-07-30T15:33:00.000Z",
+    "updated_at": "2026-08-04T15:33:00.000Z"
+  },
+  {
+    "id": "inv_00066",
+    "invoice_number": "LF-1066",
+    "status": "paid",
+    "date": "2026-07-30T15:56:00.000Z",
+    "due_date": "2026-08-29T15:56:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-06T15:56:00.000Z",
+        "transaction_id": "txn_000504"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-30T15:56:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-31T15:56:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-06T15:56:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00066",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-07T15:56:00.000Z",
+    "created_at": "2026-07-30T15:56:00.000Z",
+    "updated_at": "2026-08-06T15:56:00.000Z"
+  },
+  {
+    "id": "inv_00067",
+    "invoice_number": "LF-1067",
+    "status": "paid",
+    "date": "2026-08-06T15:39:00.000Z",
+    "due_date": "2026-09-05T15:39:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-09T15:39:00.000Z",
+        "transaction_id": "txn_000505"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-06T15:39:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-07T15:39:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-09T15:39:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00067",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-10T15:39:00.000Z",
+    "created_at": "2026-08-06T15:39:00.000Z",
+    "updated_at": "2026-08-09T15:39:00.000Z"
+  },
+  {
+    "id": "inv_00068",
+    "invoice_number": "LF-1068",
+    "status": "paid",
+    "date": "2026-08-08T15:42:00.000Z",
+    "due_date": "2026-09-07T15:42:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-12T15:42:00.000Z",
+        "transaction_id": "txn_000506"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-08T15:42:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-09T15:42:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-12T15:42:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00068",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-13T15:42:00.000Z",
+    "created_at": "2026-08-08T15:42:00.000Z",
+    "updated_at": "2026-08-12T15:42:00.000Z"
+  },
+  {
+    "id": "inv_00069",
+    "invoice_number": "LF-1069",
+    "status": "paid",
+    "date": "2026-08-10T15:15:00.000Z",
+    "due_date": "2026-09-09T15:15:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0305"
+    },
+    "total": {
+      "amount": 5400000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Annual Subscription",
+        "unit_price": {
+          "amount": 450000,
+          "currency": "USD"
+        },
+        "quantity": 12,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 5400000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-15T15:15:00.000Z",
+        "transaction_id": "txn_000507"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-10T15:15:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-11T15:15:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@bombas.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-15T15:15:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00069",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-16T15:15:00.000Z",
+    "created_at": "2026-08-10T15:15:00.000Z",
+    "updated_at": "2026-08-15T15:15:00.000Z"
+  },
+  {
+    "id": "inv_00070",
+    "invoice_number": "LF-1070",
+    "status": "paid",
+    "date": "2026-08-19T15:34:00.000Z",
+    "due_date": "2026-09-18T15:34:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0307"
+    },
+    "total": {
+      "amount": 220000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 220000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 220000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-22T15:34:00.000Z",
+        "transaction_id": "txn_000508"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-19T15:34:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-20T15:34:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@outdoorvoices.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-22T15:34:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00070",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-23T15:34:00.000Z",
+    "created_at": "2026-08-19T15:34:00.000Z",
+    "updated_at": "2026-08-22T15:34:00.000Z"
+  },
+  {
+    "id": "inv_00071",
+    "invoice_number": "LF-1071",
+    "status": "paid",
+    "date": "2026-08-30T15:14:00.000Z",
+    "due_date": "2026-09-29T15:14:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0301"
+    },
+    "total": {
+      "amount": 1200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 1200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-09-04T15:14:00.000Z",
+        "transaction_id": "txn_000538"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-30T15:14:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-31T15:14:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@allbirds.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-09-04T15:14:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00071",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-09-05T15:14:00.000Z",
+    "created_at": "2026-08-30T15:14:00.000Z",
+    "updated_at": "2026-09-04T15:14:00.000Z"
+  },
+  {
+    "id": "inv_00072",
+    "invoice_number": "LF-1072",
+    "status": "paid",
+    "date": "2026-08-28T15:18:00.000Z",
+    "due_date": "2026-09-27T15:18:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0302"
+    },
+    "total": {
+      "amount": 780000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 780000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 780000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-09-06T15:18:00.000Z",
+        "transaction_id": "txn_000539"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-28T15:18:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-29T15:18:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@warbyparker.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-09-06T15:18:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00072",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-09-07T15:18:00.000Z",
+    "created_at": "2026-08-28T15:18:00.000Z",
+    "updated_at": "2026-09-06T15:18:00.000Z"
+  },
+  {
+    "id": "inv_00073",
+    "invoice_number": "LF-1073",
+    "status": "paid",
+    "date": "2026-09-05T15:55:00.000Z",
+    "due_date": "2026-10-05T15:55:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0303"
+    },
+    "total": {
+      "amount": 540000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 540000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 540000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-09-08T15:55:00.000Z",
+        "transaction_id": "txn_000540"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-09-05T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-09-06T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@glossier.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-09-08T15:55:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00073",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-09-09T15:55:00.000Z",
+    "created_at": "2026-09-05T15:55:00.000Z",
+    "updated_at": "2026-09-08T15:55:00.000Z"
+  },
+  {
+    "id": "inv_00074",
+    "invoice_number": "LF-1074",
+    "status": "paid",
+    "date": "2026-09-03T15:30:00.000Z",
+    "due_date": "2026-10-03T15:30:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0304"
+    },
+    "total": {
+      "amount": 360000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Lanternfish Forecast — Monthly Subscription",
+        "unit_price": {
+          "amount": 360000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 360000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-09-11T15:30:00.000Z",
+        "transaction_id": "txn_000541"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-09-03T15:30:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-09-04T15:30:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@brooklinen.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-09-11T15:30:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00074",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-09-12T15:30:00.000Z",
+    "created_at": "2026-09-03T15:30:00.000Z",
+    "updated_at": "2026-09-11T15:30:00.000Z"
+  }
+]
