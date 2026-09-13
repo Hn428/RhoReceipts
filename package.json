@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "demo": "node scripts/demo.mjs",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node init && next dev",
+    "build": "node init && next build",
+    "start": "node init && next start",
     "lint": "eslint",
     "fixtures": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-rho-fixtures.ts",
     "sync": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/sync.ts",

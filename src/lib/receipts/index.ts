@@ -21,6 +21,7 @@ import {
   rhoCustomers,
   rhoInvoices,
   rhoTransactions,
+  users,
 } from "@/lib/db/schema";
 import { getOwnedConnection } from "@/lib/ingest/sync";
 import {
@@ -30,10 +31,13 @@ import {
   type MetricValue,
   type RelatedParty,
 } from "@/lib/metrics";
-import { money, type Money } from "@/lib/money";
-import { formatPeriod, parsePeriodKey } from "@/lib/period";
-import { cachedCustomerResearch } from "@/lib/research";
+import { abs, add, money, type Money } from "@/lib/money";
+import { formatPeriod, parsePeriodKey, periodForInstant } from "@/lib/period";
+import { companyByName } from "@/lib/rho/mock/store";
+import { cachedCustomerResearch, cachedVendorResearch } from "@/lib/research";
+import { summarizeCoverage, type ResearchCoverage } from "@/lib/research/coverage";
 import type { CustomerResearch } from "@/lib/research/customer";
+import type { VendorResearch } from "@/lib/research/vendor";
 
 /** Bump when classification or metric rules change in a way that moves numbers. */
 export const ENGINE_VERSION = "2026.09.3";
@@ -112,12 +116,52 @@ export interface ReceiptSnapshot {
   mrrCustomers: CustomerRevenue[];
   /** Absent on receipts issued before external research was introduced. */
   customerResearch?: Record<string, CustomerResearch>;
+  /**
+   * A sample company whose customers are real businesses used for illustration:
+   * research on them ran live, but the ledger and the relationships are invented.
+   */
+  illustrativeCustomers?: boolean;
+  /** Share of this month's revenue by research status. Absent before multi-signal research. */
+  researchCoverage?: ResearchCoverage;
+  /** The largest vendors in the burn months, with a live web check. Absent before vendor research. */
+  vendors?: VendorLine[];
   /** Up to twelve months of recognised revenue, oldest first. */
   revenueHistory: { periodKey: string; label: string; revenue: Money }[];
   excluded: ExcludedGroup[];
   relatedParties: RelatedParty[];
   /** Every transaction referenced anywhere above, keyed by Rho id. */
   transactions: Record<string, SnapshotTransaction>;
+}
+
+export interface VendorLine {
+  name: string;
+  /** Spend across the burn months, from checking and cards, as a positive amount. */
+  spend: Money;
+  transactionIds: string[];
+  research: VendorResearch;
+}
+
+const VENDORS_RESEARCHED = 8;
+
+/**
+ * How many customers or vendors are researched at once. One customer is four
+ * Tavily calls (~0.2s each) and a model call (~6s), so the model sets the pace.
+ * Eight keeps bursts well inside Tavily's and OpenAI's per-minute limits while
+ * most receipts research every customer in a single round.
+ */
+const RESEARCH_CONCURRENCY = 8;
+
+/**
+ * Runs `task` over `items`, at most `limit` at a time. Unlike fixed batches, a
+ * slot is refilled as soon as it frees up, so one slow call doesn't hold back
+ * the items queued behind it.
+ */
+async function inPool<T>(items: readonly T[], limit: number, task: (item: T) => Promise<void>): Promise<void> {
+  let next = 0;
+  const worker = async () => {
+    while (next < items.length) await task(items[next++]);
+  };
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
 }
 
 export class ReceiptError extends Error {
@@ -289,20 +333,79 @@ export async function issueReceipt(options: {
 
   const companyName = companyNameFrom(connection.label);
   const isDemo = connection.baseUrl.includes("/api/mock/rho/");
+  // Some sample companies bill real businesses, so their customers can be researched
+  // live. The rest have fictional customers, whose research must be simulated.
+  const illustrativeCustomers = isDemo && Boolean(companyByName(connection.label)?.meta.real_customers);
+  const simulateResearch = isDemo && !illustrativeCustomers;
+
+  // ----------------------------------------------------------- research
+  // Everyone behind this month's revenue, the five largest over twelve months,
+  // and anyone with an overdue invoice: the customers an investor asks about.
+  const overdueCustomerIds = new Set(
+    invoiceRows
+      .filter((row) => !["paid", "cancelled"].includes(row.status) && row.dueAt && row.dueAt < asOf)
+      .map((row) => row.rhoCustomerId),
+  );
+  const researchIds = [...new Set([
+    ...(reportingMonth?.byCustomer ?? []).map((c) => c.customerId),
+    ...receipt.concentration.value.customers.slice(0, 5).map((c) => c.customerId),
+    ...overdueCustomerIds,
+  ])].filter((id): id is string => Boolean(id));
+
+  const [owner] = await db.select({ email: users.email }).from(users).where(eq(users.id, options.ownerId)).limit(1);
+  const founderDomain = owner?.email?.split("@")[1] ?? null;
+  const invoicedCustomerIds = new Set(
+    classifications.filter((c) => c.attribution === "invoice" && c.customerId).map((c) => c.customerId),
+  );
+
   const customerResearch: Record<string, CustomerResearch> = {};
-  // Small batches cap concurrent external requests while keeping enrollment responsive.
-  const payingCustomers = (reportingMonth?.byCustomer ?? []).filter((customer) => customer.customerId);
-  for (let i = 0; i < payingCustomers.length; i += 3) {
-    await Promise.all(payingCustomers.slice(i, i + 3).map(async (customer) => {
-      const row = customerRows.find((row) => row.rhoCustomerId === customer.customerId);
-      customerResearch[customer.customerId!] = await cachedCustomerResearch(connection.id, {
-        name: row?.legalName ?? customer.customerName,
-        domain: row?.emailDomain ?? null,
-        relatedParty: classifications.some((item) => item.customerId === customer.customerId && item.relatedParty),
-        isDemo,
-      });
-    }));
+  const researchCustomers = () => inPool(researchIds, RESEARCH_CONCURRENCY, async (customerId) => {
+    const row = customerRows.find((r) => r.rhoCustomerId === customerId);
+    if (!row) return;
+    customerResearch[customerId] = await cachedCustomerResearch(connection.id, {
+      name: row.legalName,
+      domain: row.emailDomain,
+      relatedParty: classifications.some((item) => item.customerId === customerId && item.relatedParty),
+      isDemo: simulateResearch,
+      founderDomain,
+      invoiced: invoicedCustomerIds.has(customerId),
+      overdueInvoice: overdueCustomerIds.has(customerId),
+    });
+  });
+
+  // The largest vendors behind the burn months, checked live on the web. Card
+  // purchases count too: they're outside cash burn until the bill is paid, but
+  // they're where much of the money actually goes.
+  const burnIds = new Set(receipt.trailingBurn.flatMap((month) => month.transactionIds));
+  const burnMonths = new Set(receipt.trailingBurn.map((month) => month.periodKey));
+  const cardAccountIds = new Set(accounts.filter((a) => a.account_type === "credit").map((a) => a.id));
+  const spendByVendor = new Map<string, { name: string; spend: Money; transactionIds: string[] }>();
+  for (const item of classifications) {
+    if (item.amount.minor >= 0) continue;
+    const cashSpend = burnIds.has(item.rhoTransactionId) && item.cashClass === "operating_expense";
+    const cardSpend = item.cashClass === "non_cash" && cardAccountIds.has(item.accountId) &&
+      item.postedAt !== null && burnMonths.has(periodForInstant(item.postedAt).key);
+    if (!cashSpend && !cardSpend) continue;
+    const name = payloadById.get(item.rhoTransactionId)?.counterparty_name?.trim();
+    // The bank itself (fees, card settlement) isn't a vendor worth checking.
+    if (!name || /^rho\b/i.test(name)) continue;
+    const vendor = spendByVendor.get(name) ?? { name, spend: money(0, currency), transactionIds: [] };
+    vendor.spend = add(vendor.spend, abs(item.amount));
+    vendor.transactionIds.push(item.rhoTransactionId);
+    spendByVendor.set(name, vendor);
   }
+  const largestVendors = [...spendByVendor.values()]
+    .sort((a, b) => b.spend.minor - a.spend.minor || a.name.localeCompare(b.name))
+    .slice(0, VENDORS_RESEARCHED);
+  const vendorResearch = new Map<string, VendorResearch>();
+  const researchVendors = () => inPool(largestVendors, RESEARCH_CONCURRENCY, async (vendor) => {
+    vendorResearch.set(vendor.name, await cachedVendorResearch(connection.id, vendor.name));
+  });
+
+  // Customers and vendors are independent, so they're researched at the same time.
+  await Promise.all([researchCustomers(), researchVendors()]);
+  const researchCoverage = summarizeCoverage(reportingMonth?.byCustomer ?? [], customerResearch, currency);
+  const vendors: VendorLine[] = largestVendors.map((vendor) => ({ ...vendor, research: vendorResearch.get(vendor.name)! }));
 
   const snapshot: ReceiptSnapshot = {
     version: 1,
@@ -350,6 +453,9 @@ export async function issueReceipt(options: {
     trailingBurn: receipt.trailingBurn.map((m) => ({ ...m, label: label(m.periodKey) })),
     mrrCustomers: reportingMonth?.byCustomer ?? [],
     customerResearch,
+    ...(illustrativeCustomers ? { illustrativeCustomers: true } : {}),
+    researchCoverage,
+    vendors,
     revenueHistory: receipt.monthlyRevenue.slice(-12).map((m) => ({
       periodKey: m.periodKey,
       label: label(m.periodKey),

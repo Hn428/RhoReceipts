@@ -14,7 +14,7 @@ investors the founder chooses — then keeps those investors updated automatical
 |---|---|---|
 | **1. Financial data** | Mock Rho API + a mock Rho dashboard, clearly labelled as a simulation | Done |
 | **2. Verification engine** | Deterministic classification and metrics | Done |
-| **3. External trust** | Tavily customer web-presence research; labelled demo simulation | Done; authoritative registration verification remains unconfirmed |
+| **3. External trust** | Tavily customer checks (website, search, registry sites, news) and live vendor checks; labelled demo simulation | Done; registration is a web search, not a registry API |
 | **4. Distribution** | Private investor portfolio and monthly investor receipts | Done |
 
 No multi-agent system. The differentiation is the evidence, not the machinery.
@@ -117,23 +117,42 @@ Engine in `src/lib/metrics/monthly.ts` (13 tests, including cash reconstructed t
   dashboard, the same approach as sign-in links. A real mail provider is a transport swap.
 
 ### R4 — External trust layer (Tavily)  *(screen 3's verification column)* — **DONE**
-Research runs at issuance, uses a connection-scoped 30-day cache, and is frozen into
-the receipt. Provider failure is Needs review; related parties take priority. The
-live adapter and failure paths are tested with controlled responses. A live-key
-smoke test against Tavily's own site returned five sources and a matching-domain
-Verified verdict. That test exposed overly restrictive search wording; searches
-now use the name and domain, with a new cache version for future receipts.
-Registration is explicitly unconfirmed; web search alone is not legal certification.
-The receipt presents a billing-domain match, supporting Tavily sources and legal
-registration as separate signals so a web result cannot imply a registry check.
-- Research each paying customer: web presence, domain, registration footprint. Results are
-  cached with their evidence so a verdict doesn't change on reload.
-- Statuses: **Verified**, **Needs review**, **Flagged** (related party, or no footprint).
-- **Sample companies use simulated research, labelled as such.** Their customers are
-  fictional. A live web search on "Corvus Systems" either finds nothing or finds an
-  unrelated real company with the same name — both would be wrong on screen. The live
-  Tavily path runs for real companies.
-- Needs `TAVILY_API_KEY`.
+Research runs at issuance, is cached per connection for 30 days, and is frozen into the
+receipt. Details in [DEMO.md](DEMO.md#external-research).
+
+- **Four checks per customer:** homepage extract, name + domain search, registry-site
+  search (OpenCorporates, SEC, Companies House), and 12 months of news with adverse
+  terms called out. Status comes from deterministic rules; Tavily supplies sources.
+- **Evidence judging:** with `OPENAI_API_KEY`, an OpenAI model (default `gpt-5.6-sol`, low
+  effort) reads the evidence: same legal entity, on-domain identification, whether news
+  is about this company and adverse. Each positive answer cites a quote that code verifies
+  against the source before it counts. Without a key, or on failure, string rules decide.
+- **Speed:** customers and vendors are researched together, eight at a time. Measured on
+  Quiverleaf (7 live customers, 8 vendors): 10.9s, down from 21.5s with the earlier batches of
+  three. The model call (~6s) sets the pace; Tavily calls take ~0.2s. Cached results make
+  repeat issuance and "Send now" fast for 30 days.
+- **Flagged** for related parties, the founder's own domain, a parked domain, or no
+  footprint at all. **Verified** when the homepage or a result on the billing domain names
+  the company. Adverse news is reported beside the status.
+- **Coverage:** everyone behind the month's revenue, the top five over twelve months, and
+  anyone with an overdue invoice.
+- **Surfaced** as the month's revenue split by status on the receipt, flags in Worth a closer
+  look and the monthly report, and verified revenue in the investor portfolio.
+- **Vendors:** the eight largest payees in the burn months, card purchases included, are
+  searched live, even for sample companies, since vendors are real businesses.
+- **Live research on sample data:** Quiverleaf AI and Lanternfish Analytics are fictional
+  startups with real, illustrative customers, enrolled into Supabase through `/enroll`. All 14
+  researched customers were judged by OpenAI with no fallbacks: 13 verified, with real adverse
+  news for Vercel, Webflow, Allbirds and Glossier, and registry look-alikes (UK and Australian
+  entities) rejected.
+- **Sample customers stay simulated,** driven by the ledger: invoiced verify, uninvoiced
+  have no footprint, overdue invoices come with simulated layoff news.
+- Live smoke test (Sep 2026): Stripe and Anthropic both Verified with registry listings
+  (Companies House, SEC). Anthropic correctly surfaced adverse news about litigation.
+  It also caught a matching bug ("PBC" wasn't treated as a legal suffix), now fixed and
+  tested.
+- Registration is still a web search of registry sites, not a registry API. Domain age
+  isn't checked.
 
 ### R5 — Investor discovery — **REMOVED**
 Public company discovery, comparison, and BetaWorks were removed. Companies appear only in
