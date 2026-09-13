@@ -30,9 +30,11 @@ import { money, type Money } from "@/lib/money";
 import {
   ENGINE_VERSION,
   companyNameFrom,
+  getReceiptBySlug,
   issueReceipt,
   loadClassifiedLedger,
 } from "@/lib/receipts";
+import { RESEARCH_FLAG_REASONS, type CustomerResearch } from "@/lib/research/customer";
 import { percent, whole } from "@/lib/receipts/format";
 
 const CASH_ACCOUNT_TYPES = new Set(["checking", "savings", "investment"]);
@@ -54,9 +56,14 @@ export interface ReportSnapshot {
     previous: { name: string | null; share: number | null };
   };
   growth3Month: number | null;
-  newCustomers: Pick<CustomerRevenue, "customerName" | "amount" | "attribution">[];
+  newCustomers: (Pick<CustomerRevenue, "customerName" | "amount" | "attribution"> & {
+    /** Absent on reports created before multi-signal research. */
+    researchStatus?: CustomerResearch["status"];
+  })[];
   missedCustomers: { customerName: string; previousAmount: Money }[];
   flags: ReportFlag[];
+  /** Copied from the receipt issued with this report. Absent before multi-signal research. */
+  research?: { verifiedShare: number | null; simulated: boolean };
 }
 
 export interface SendResult {
@@ -129,6 +136,10 @@ export async function sendMonthlyReport(options: {
       ownerId: options.ownerId,
       asOf,
     });
+    // The receipt just issued already researched this month's customers; read it
+    // rather than researching again, so the report and its evidence agree.
+    const issued = await getReceiptBySlug(receiptSlug);
+    const research = issued?.snapshot.customerResearch ?? {};
     const companyName = companyNameFrom(connection.label);
     const snapshot: ReportSnapshot = {
       version: 1,
@@ -144,16 +155,23 @@ export async function sendMonthlyReport(options: {
       runwayMonths: report.runwayMonths,
       topCustomer: report.topCustomer,
       growth3Month: report.receipt.growth3Month.value,
-      newCustomers: report.newCustomers.map(({ customerName, amount, attribution }) => ({
+      newCustomers: report.newCustomers.map(({ customerId, customerName, amount, attribution }) => ({
         customerName,
         amount,
         attribution,
+        ...(customerId && research[customerId] ? { researchStatus: research[customerId].status } : {}),
       })),
       missedCustomers: report.missedCustomers.map(({ customerName, previousAmount }) => ({
         customerName,
         previousAmount,
       })),
-      flags: report.flags,
+      flags: [...report.flags, ...researchFlags(research, ledger.customerRows)],
+      ...(issued?.snapshot.researchCoverage ? {
+        research: {
+          verifiedShare: issued.snapshot.researchCoverage.verifiedShare,
+          simulated: issued.snapshot.researchCoverage.simulated,
+        },
+      } : {}),
     };
 
     const inserted = await db
@@ -258,6 +276,30 @@ export async function sendMonthlyReport(options: {
     failed,
     recipients: recipients.length,
   };
+}
+
+/**
+ * Research findings worth a line in the report. Related parties are already
+ * flagged from the ledger, so only the identity flags research adds appear here.
+ */
+function researchFlags(
+  research: Record<string, CustomerResearch>,
+  customerRows: { rhoCustomerId: string; legalName: string }[],
+): ReportFlag[] {
+  const names = new Map(customerRows.map((row) => [row.rhoCustomerId, row.legalName]));
+  const flags: ReportFlag[] = [];
+  for (const [customerId, result] of Object.entries(research)) {
+    const customerName = names.get(customerId) ?? "Unknown customer";
+    const simulated = result.provider === "simulated";
+    const identity = (result.flags ?? []).filter((flag) => flag !== "related_party" && flag !== "adverse_news");
+    if (identity.length) {
+      flags.push({ kind: "research_flagged", customerName, simulated, reason: identity.map((flag) => RESEARCH_FLAG_REASONS[flag]).join(" ") });
+    }
+    if (result.flags?.includes("adverse_news")) {
+      flags.push({ kind: "adverse_news", customerName, simulated, headline: result.signals?.news.sources[0]?.title ?? null });
+    }
+  }
+  return flags.sort((a, b) => a.customerName.localeCompare(b.customerName));
 }
 
 /** Every enrolled connection — one with at least one published receipt. */
@@ -366,6 +408,12 @@ export function describeFlag(flag: ReportFlag): string {
       return `${flag.customerName} is ${percent(flag.share)} of revenue.`;
     case "needs_review":
       return `${flag.customerName}: ${whole(flag.amount)} of revenue has no invoice behind it.`;
+    case "research_flagged":
+      return `${flag.customerName}: ${flag.simulated ? "simulated research — " : ""}${flag.reason}`;
+    case "adverse_news":
+      return flag.simulated
+        ? `${flag.customerName}: simulated news reports layoffs at this customer.`
+        : `${flag.customerName}: recent news mentions adverse terms${flag.headline ? ` — "${flag.headline}"` : ""}.`;
     case "related_party":
       return `${flag.customerName} both pays the company and is paid by it (${whole(flag.moneyIn)} in, ${whole(money(-flag.moneyOut.minor, flag.moneyOut.currency))} out).`;
   }

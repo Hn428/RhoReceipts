@@ -1,0 +1,166 @@
+[
+  {
+    "id": "card_0001",
+    "name": "Imani Castellanos — Corporate",
+    "last_4": "4200",
+    "type": "physical",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_founder",
+      "first_name": "Imani",
+      "last_name": "Castellanos"
+    },
+    "spending_limit": {
+      "amount": 2500000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 383300,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 70400,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "548 Market St, Suite 3100",
+      "city": "San Francisco",
+      "subdivision": "CA",
+      "postal_code": "94104",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  },
+  {
+    "id": "card_0002",
+    "name": "Felix Haugen — Corporate",
+    "last_4": "4337",
+    "type": "virtual",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_cofounder",
+      "first_name": "Felix",
+      "last_name": "Haugen"
+    },
+    "spending_limit": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 793500,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 71000,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "548 Market St, Suite 3100",
+      "city": "San Francisco",
+      "subdivision": "CA",
+      "postal_code": "94104",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  },
+  {
+    "id": "card_0003",
+    "name": "Ruth Adeyemi — Corporate",
+    "last_4": "4474",
+    "type": "virtual",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_ops",
+      "first_name": "Ruth",
+      "last_name": "Adeyemi"
+    },
+    "spending_limit": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 673500,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 71700,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "548 Market St, Suite 3100",
+      "city": "San Francisco",
+      "subdivision": "CA",
+      "postal_code": "94104",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  },
+  {
+    "id": "card_0004",
+    "name": "Omar Lindqvist — Corporate",
+    "last_4": "4611",
+    "type": "virtual",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_eng",
+      "first_name": "Omar",
+      "last_name": "Lindqvist"
+    },
+    "spending_limit": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 689400,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 28600,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "548 Market St, Suite 3100",
+      "city": "San Francisco",
+      "subdivision": "CA",
+      "postal_code": "94104",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  }
+]

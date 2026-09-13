@@ -19,14 +19,17 @@ import {
 import {
   Chevron,
   Chip,
+  CoverageSummary,
   CustomerLine,
   PayingCustomerRow,
   Method,
   MetricLine,
+  ResearchChip,
   Sparkline,
   SubHeading,
   Tick,
   TransactionRows,
+  VendorChecks,
 } from "./parts";
 import { shareReceipt } from "./actions";
 import { CopyLink } from "./copy-link";
@@ -84,7 +87,27 @@ export default async function ReceiptPage({ params, searchParams }: Props) {
   const inferred = s.mrrCustomers.filter((c) => c.attribution === "name_match");
   const aggregated = s.mrrCustomers.filter((c) => c.attribution === "aggregated");
   const invoicedCount = s.mrrCustomers.filter((c) => c.attribution === "invoice").length;
-  const flagCount = s.relatedParties.length + inferred.length + aggregated.length;
+  const namedCount = s.mrrCustomers.filter((c) => c.customerId).length;
+
+  // Research findings for "Worth a closer look". Related parties already have a
+  // line of their own, so only the identity flags research adds are listed.
+  const research = s.customerResearch ?? {};
+  const customerIdsByName = new Map(
+    [...s.mrrCustomers, ...m.concentration.value.customers].map((c) => [c.customerName, c.customerId]),
+  );
+  const researchFlagged = Object.entries(research).flatMap(([customerId, r]) => {
+    const identity = (r.flags ?? []).filter((flag) => flag !== "related_party" && flag !== "adverse_news");
+    return identity.length ? [{ customerId, research: r }] : [];
+  });
+  const inferredIds = new Set(inferred.map((c) => c.customerId));
+  const adverseNews = Object.entries(research).filter(([, r]) => r.flags?.includes("adverse_news"));
+  const vendorsNotFound = (s.vendors ?? []).filter((v) => v.research.outcome === "not_found");
+  const nameFor = (customerId: string) =>
+    research[customerId]?.name ??
+    [...customerIdsByName].find(([, id]) => id === customerId)?.[0] ??
+    "Customer";
+  const flagCount = s.relatedParties.length + inferred.length + aggregated.length +
+    researchFlagged.filter((f) => !inferredIds.has(f.customerId)).length + adverseNews.length + vendorsNotFound.length;
 
   return (
     <main className="flex-1 px-4 py-10 sm:px-6 md:py-14">
@@ -127,6 +150,13 @@ export default async function ReceiptPage({ params, searchParams }: Props) {
             <p className="rounded-[2px] border border-dashed border-rule-strong px-3 py-2 text-xs leading-relaxed text-ink-soft">
               <span className="font-medium text-ink">Sample company.</span> These figures come from
               a synthetic ledger built for demonstration, not from a real bank account.
+              {s.illustrativeCustomers && (
+                <>
+                  {" "}Its customers and vendors are real businesses named for illustration only: every
+                  payment, invoice and relationship shown is invented, and no business relationship
+                  with them is implied. Research on them ran live against the public web.
+                </>
+              )}
             </p>
           )}
 
@@ -228,6 +258,7 @@ export default async function ReceiptPage({ params, searchParams }: Props) {
               <SubHeading aside={signed(s.operatingIn)}>Money in</SubHeading>
               <TransactionRows ids={burnIn} transactions={transactions} sort="size" />
             </div>
+            {s.vendors && s.vendors.length > 0 && <VendorChecks vendors={s.vendors} transactions={transactions} />}
           </MetricLine>
 
           <MetricLine
@@ -329,7 +360,10 @@ export default async function ReceiptPage({ params, searchParams }: Props) {
             <ul className="flex flex-col gap-2.5">
               {m.concentration.value.customers.slice(0, 8).map((c) => (
                 <li key={c.customerId ?? c.customerName} className="grid grid-cols-[minmax(0,11rem)_1fr_3.5rem] items-center gap-3 text-sm">
-                  <span className="truncate text-ink">{c.customerName}</span>
+                  <span className="flex min-w-0 items-center gap-1.5">
+                    <span className="truncate text-ink">{c.customerName}</span>
+                    {c.customerId && research[c.customerId] && <ResearchChip research={research[c.customerId]} />}
+                  </span>
                   <span className="h-1.5 bg-sunken">
                     <span
                       className="block h-full bg-verified"
@@ -350,18 +384,22 @@ export default async function ReceiptPage({ params, searchParams }: Props) {
               Paying customers
             </h2>
             <p className="max-w-[58ch] text-sm leading-relaxed text-ink-soft">
-              {plural(invoicedCount, "customer")} confirmed by invoice in {s.reportingPeriod.label}.
-              Open a customer to see their payment history.
+              {/* Count the same customers the research split below counts, so the two agree. */}
+              {plural(namedCount, "paying customer")} in {s.reportingPeriod.label},{" "}
+              {invoicedCount === namedCount ? "all" : invoicedCount} confirmed by invoice
+              {aggregated.length > 0 ? ", plus payment-processor payouts that can't be split by customer" : ""}.
+              Open a customer to see their payment history and what external research found.
             </p>
           </div>
+          {s.researchCoverage && <CoverageSummary coverage={s.researchCoverage} period={s.reportingPeriod.label} />}
           <div className="flex flex-col">
             <div
               aria-hidden="true"
-              className="hidden grid-cols-[1fr_7.5rem_9rem] gap-3 border-b border-rule pb-1.5 pl-[1.35rem] text-[0.68rem] font-medium uppercase tracking-[0.12em] text-ink-faint sm:grid"
+              className="hidden grid-cols-[1fr_7.5rem_11rem] gap-3 border-b border-rule pb-1.5 pl-[1.35rem] text-[0.68rem] font-medium uppercase tracking-[0.12em] text-ink-faint sm:grid"
             >
               <span>Customer</span>
               <span className="text-right">This month</span>
-              <span>Web presence</span>
+              <span>Verification</span>
             </div>
             {s.mrrCustomers.map((customer) => {
               const key = customer.customerId ?? customer.customerName;
@@ -409,19 +447,65 @@ export default async function ReceiptPage({ params, searchParams }: Props) {
                   transactions={transactions}
                 />
               ))}
-              {inferred.map((c) => (
+              {inferred.map((c) => {
+                const found = c.customerId ? researchFlagged.find((f) => f.customerId === c.customerId) : undefined;
+                return (
+                  <FlagLine
+                    key={c.customerName}
+                    chip={<>
+                      <Chip tone="inferred">No invoice</Chip>
+                      {found && <ResearchChip research={found.research} />}
+                    </>}
+                    title={c.customerName}
+                    body={
+                      <>
+                        <span className="figures text-ink">{whole(c.amount)}</span> this month counted as
+                        revenue because the bank description matches a customer on file, but no invoice
+                        backs it.{found && <> {found.research.provider === "simulated" ? "Simulated research: " : "External research: "}{found.research.reason}</>}
+                      </>
+                    }
+                    ids={c.transactionIds}
+                    transactions={transactions}
+                  />
+                );
+              })}
+              {researchFlagged.filter((f) => !inferredIds.has(f.customerId)).map(({ customerId, research: r }) => (
                 <FlagLine
-                  key={c.customerName}
-                  chip={<Chip tone="inferred">Needs review</Chip>}
-                  title={c.customerName}
+                  key={`research-${customerId}`}
+                  chip={<ResearchChip research={r} />}
+                  title={nameFor(customerId)}
+                  body={<>{r.provider === "simulated" ? "Simulated research: " : "External research: "}{r.reason}</>}
+                  ids={history.get(customerId) ?? []}
+                  transactions={transactions}
+                />
+              ))}
+              {adverseNews.map(([customerId, r]) => (
+                <FlagLine
+                  key={`news-${customerId}`}
+                  chip={<Chip tone="flagged">News</Chip>}
+                  title={nameFor(customerId)}
                   body={
                     <>
-                      <span className="figures text-ink">{whole(c.amount)}</span> this month counted as
-                      revenue because the bank description matches a customer on file, but no invoice
-                      backs it.
+                      {r.signals?.news.detail}
+                      {r.signals?.news.sources[0] && <> Latest: <span className="text-ink">&ldquo;{r.signals.news.sources[0].title}&rdquo;</span>. Open the customer above for sources.</>}
                     </>
                   }
-                  ids={c.transactionIds}
+                  ids={history.get(customerId) ?? []}
+                  transactions={transactions}
+                />
+              ))}
+              {vendorsNotFound.map((vendor) => (
+                <FlagLine
+                  key={`vendor-${vendor.name}`}
+                  chip={<Chip tone="inferred">Vendor not found</Chip>}
+                  title={vendor.name}
+                  body={
+                    <>
+                      <span className="figures text-ink">{whole(vendor.spend)}</span> paid across the burn
+                      months. {vendor.research.detail}
+                    </>
+                  }
+                  ids={vendor.transactionIds}
                   transactions={transactions}
                 />
               ))}
@@ -494,6 +578,20 @@ export default async function ReceiptPage({ params, searchParams }: Props) {
               Each figure is computed by fixed rules in code, and every line above opens to the
               transactions that produced it.
             </li>
+            {s.researchCoverage && (
+              <li>
+                Customers were researched when this receipt was issued: their homepage, search results on
+                their billing domain, company-registry sites and the last year of news, through Tavily.
+                An OpenAI model judges that evidence when configured, citing a quote that code checks
+                against the source; otherwise fixed matching rules do. Code, not the model, sets each
+                status, and a match confirms web presence, not legal identity. {s.researchCoverage.simulated
+                  ? "This sample company's customers are fictional, so their research is simulated; its vendors were checked live. "
+                  : s.illustrativeCustomers
+                    ? "This sample company's customers are real businesses named for illustration, so they were researched live; the payments and relationships are invented. "
+                    : ""}
+                One-line company summaries are generated text and never affect a figure or verdict.
+              </li>
+            )}
             <li>
               The reporting month is the last complete one. A month still in progress would make
               burn look lower and runway longer than they are.

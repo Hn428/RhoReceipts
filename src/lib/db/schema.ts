@@ -20,6 +20,7 @@
 
 import { sql } from "drizzle-orm";
 import type { CustomerResearch } from "@/lib/research/customer";
+import type { VendorResearch } from "@/lib/research/vendor";
 import {
   bigint,
   index,
@@ -343,7 +344,8 @@ export type Connection = typeof connections.$inferSelect;
 export const customerResearchCache = pgTable("customer_research_cache", {
   key: text("key").primaryKey(),
   connectionId: uuid("connection_id").notNull().references(() => connections.id, { onDelete: "cascade" }),
-  result: jsonb("result").$type<CustomerResearch>().notNull(),
+  /** Customer and vendor results share the cache; the key says which. */
+  result: jsonb("result").$type<CustomerResearch | VendorResearch>().notNull(),
   expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
 });
 export type RhoTransactionRow = typeof rhoTransactions.$inferSelect;

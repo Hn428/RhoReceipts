@@ -1,0 +1,30 @@
+{
+  "generator": "scripts/generate-rho-fixtures.ts",
+  "seed": 20250601,
+  "anchor": "2026-09-12T00:00:00.000Z",
+  "company": "Quiverleaf AI, Inc.",
+  "slug": "quiverleaf-ai",
+  "short_name": "Quiverleaf AI",
+  "description": "Procurement copilot that audits software spend for product and engineering teams.",
+  "mock_token": "rhobat_mock_quiverleaf_ai_dev_token",
+  "real_customers": true,
+  "token_only": true,
+  "period": {
+    "first_month": "2025-04",
+    "last_month": "2026-09"
+  },
+  "counts": {
+    "accounts": 5,
+    "transactions": 506,
+    "cards": 4,
+    "customers": 8,
+    "invoices": 69
+  },
+  "opening_balances": {
+    "acc_checking_main": 14000000,
+    "acc_savings_reserve": 4000000,
+    "acc_treasury_mmf": 0,
+    "acc_credit_card": 0,
+    "acc_rewards": 0
+  }
+}

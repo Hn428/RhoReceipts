@@ -1,0 +1,4681 @@
+[
+  {
+    "id": "inv_00001",
+    "invoice_number": "QL-1001",
+    "status": "paid",
+    "date": "2025-05-29T15:49:00.000Z",
+    "due_date": "2025-06-28T15:49:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 800000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 800000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 800000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-06-05T15:49:00.000Z",
+        "transaction_id": "txn_000049"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-05-29T15:49:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-05-30T15:49:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-06-05T15:49:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00001",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-06-06T15:49:00.000Z",
+    "created_at": "2025-05-29T15:49:00.000Z",
+    "updated_at": "2025-06-05T15:49:00.000Z"
+  },
+  {
+    "id": "inv_00002",
+    "invoice_number": "QL-1002",
+    "status": "paid",
+    "date": "2025-06-26T15:54:00.000Z",
+    "due_date": "2025-07-26T15:54:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 800000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 800000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 800000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-07-05T15:54:00.000Z",
+        "transaction_id": "txn_000072"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-06-26T15:54:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-06-27T15:54:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-07-05T15:54:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00002",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-07-06T15:54:00.000Z",
+    "created_at": "2025-06-26T15:54:00.000Z",
+    "updated_at": "2025-07-05T15:54:00.000Z"
+  },
+  {
+    "id": "inv_00003",
+    "invoice_number": "QL-1003",
+    "status": "paid",
+    "date": "2025-07-11T15:59:00.000Z",
+    "due_date": "2025-08-10T15:59:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0207"
+    },
+    "total": {
+      "amount": 200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-07-20T15:59:00.000Z",
+        "transaction_id": "txn_000073"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-07-11T15:59:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-07-12T15:59:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@pitch.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-07-20T15:59:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00003",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-07-21T15:59:00.000Z",
+    "created_at": "2025-07-11T15:59:00.000Z",
+    "updated_at": "2025-07-20T15:59:00.000Z"
+  },
+  {
+    "id": "inv_00004",
+    "invoice_number": "QL-1004",
+    "status": "paid",
+    "date": "2025-08-02T15:08:00.000Z",
+    "due_date": "2025-09-01T15:08:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 800000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 800000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 800000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-08-07T15:08:00.000Z",
+        "transaction_id": "txn_000098"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-08-02T15:08:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-08-03T15:08:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-08-07T15:08:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00004",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-08-08T15:08:00.000Z",
+    "created_at": "2025-08-02T15:08:00.000Z",
+    "updated_at": "2025-08-07T15:08:00.000Z"
+  },
+  {
+    "id": "inv_00005",
+    "invoice_number": "QL-1005",
+    "status": "paid",
+    "date": "2025-08-01T15:15:00.000Z",
+    "due_date": "2025-08-31T15:15:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-08-07T15:15:00.000Z",
+        "transaction_id": "txn_000099"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-08-01T15:15:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-08-02T15:15:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-08-07T15:15:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00005",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-08-08T15:15:00.000Z",
+    "created_at": "2025-08-01T15:15:00.000Z",
+    "updated_at": "2025-08-07T15:15:00.000Z"
+  },
+  {
+    "id": "inv_00006",
+    "invoice_number": "QL-1006",
+    "status": "paid",
+    "date": "2025-08-12T15:03:00.000Z",
+    "due_date": "2025-09-11T15:03:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0207"
+    },
+    "total": {
+      "amount": 200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-08-20T15:03:00.000Z",
+        "transaction_id": "txn_000100"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-08-12T15:03:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-08-13T15:03:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@pitch.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-08-20T15:03:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00006",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-08-21T15:03:00.000Z",
+    "created_at": "2025-08-12T15:03:00.000Z",
+    "updated_at": "2025-08-20T15:03:00.000Z"
+  },
+  {
+    "id": "inv_00007",
+    "invoice_number": "QL-1007",
+    "status": "paid",
+    "date": "2025-08-26T15:54:00.000Z",
+    "due_date": "2025-09-25T15:54:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 800000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 800000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 800000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-09-05T15:54:00.000Z",
+        "transaction_id": "txn_000126"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-08-26T15:54:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-08-27T15:54:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-09-05T15:54:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00007",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-09-06T15:54:00.000Z",
+    "created_at": "2025-08-26T15:54:00.000Z",
+    "updated_at": "2025-09-05T15:54:00.000Z"
+  },
+  {
+    "id": "inv_00008",
+    "invoice_number": "QL-1008",
+    "status": "paid",
+    "date": "2025-08-30T15:03:00.000Z",
+    "due_date": "2025-09-29T15:03:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-09-07T15:03:00.000Z",
+        "transaction_id": "txn_000127"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-08-30T15:03:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-08-31T15:03:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-09-07T15:03:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00008",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-09-08T15:03:00.000Z",
+    "created_at": "2025-08-30T15:03:00.000Z",
+    "updated_at": "2025-09-07T15:03:00.000Z"
+  },
+  {
+    "id": "inv_00009",
+    "invoice_number": "QL-1009",
+    "status": "paid",
+    "date": "2025-09-15T15:03:00.000Z",
+    "due_date": "2025-10-15T15:03:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0207"
+    },
+    "total": {
+      "amount": 200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-09-20T15:03:00.000Z",
+        "transaction_id": "txn_000128"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-09-15T15:03:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-09-16T15:03:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@pitch.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-09-20T15:03:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00009",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-09-21T15:03:00.000Z",
+    "created_at": "2025-09-15T15:03:00.000Z",
+    "updated_at": "2025-09-20T15:03:00.000Z"
+  },
+  {
+    "id": "inv_00010",
+    "invoice_number": "QL-1010",
+    "status": "paid",
+    "date": "2025-09-29T15:58:00.000Z",
+    "due_date": "2025-10-29T15:58:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 800000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 800000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 800000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-10-05T15:58:00.000Z",
+        "transaction_id": "txn_000153"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-09-29T15:58:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-09-30T15:58:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-10-05T15:58:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00010",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-10-06T15:58:00.000Z",
+    "created_at": "2025-09-29T15:58:00.000Z",
+    "updated_at": "2025-10-05T15:58:00.000Z"
+  },
+  {
+    "id": "inv_00011",
+    "invoice_number": "QL-1011",
+    "status": "paid",
+    "date": "2025-09-27T15:13:00.000Z",
+    "due_date": "2025-10-27T15:13:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-10-07T15:13:00.000Z",
+        "transaction_id": "txn_000154"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-09-27T15:13:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-09-28T15:13:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-10-07T15:13:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00011",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-10-08T15:13:00.000Z",
+    "created_at": "2025-09-27T15:13:00.000Z",
+    "updated_at": "2025-10-07T15:13:00.000Z"
+  },
+  {
+    "id": "inv_00012",
+    "invoice_number": "QL-1012",
+    "status": "paid",
+    "date": "2025-10-07T15:30:00.000Z",
+    "due_date": "2025-11-06T15:30:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0203"
+    },
+    "total": {
+      "amount": 480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-10-10T15:30:00.000Z",
+        "transaction_id": "txn_000155"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-10-07T15:30:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-10-08T15:30:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@vercel.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-10-10T15:30:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00012",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-10-11T15:30:00.000Z",
+    "created_at": "2025-10-07T15:30:00.000Z",
+    "updated_at": "2025-10-10T15:30:00.000Z"
+  },
+  {
+    "id": "inv_00013",
+    "invoice_number": "QL-1013",
+    "status": "paid",
+    "date": "2025-10-15T15:15:00.000Z",
+    "due_date": "2025-11-14T15:15:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0207"
+    },
+    "total": {
+      "amount": 200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-10-20T15:15:00.000Z",
+        "transaction_id": "txn_000156"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-10-15T15:15:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-10-16T15:15:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@pitch.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-10-20T15:15:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00013",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-10-21T15:15:00.000Z",
+    "created_at": "2025-10-15T15:15:00.000Z",
+    "updated_at": "2025-10-20T15:15:00.000Z"
+  },
+  {
+    "id": "inv_00014",
+    "invoice_number": "QL-1014",
+    "status": "paid",
+    "date": "2025-10-31T15:51:00.000Z",
+    "due_date": "2025-11-30T15:51:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 800000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 800000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 800000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-11-05T15:51:00.000Z",
+        "transaction_id": "txn_000180"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-10-31T15:51:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-01T15:51:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-11-05T15:51:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00014",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-11-06T15:51:00.000Z",
+    "created_at": "2025-10-31T15:51:00.000Z",
+    "updated_at": "2025-11-05T15:51:00.000Z"
+  },
+  {
+    "id": "inv_00015",
+    "invoice_number": "QL-1015",
+    "status": "paid",
+    "date": "2025-10-29T15:30:00.000Z",
+    "due_date": "2025-11-28T15:30:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-11-07T15:30:00.000Z",
+        "transaction_id": "txn_000181"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-10-29T15:30:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-10-30T15:30:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-11-07T15:30:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00015",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-11-08T15:30:00.000Z",
+    "created_at": "2025-10-29T15:30:00.000Z",
+    "updated_at": "2025-11-07T15:30:00.000Z"
+  },
+  {
+    "id": "inv_00016",
+    "invoice_number": "QL-1016",
+    "status": "paid",
+    "date": "2025-11-07T15:01:00.000Z",
+    "due_date": "2025-12-07T15:01:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0203"
+    },
+    "total": {
+      "amount": 480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-11-10T15:01:00.000Z",
+        "transaction_id": "txn_000182"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-11-07T15:01:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-08T15:01:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@vercel.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-11-10T15:01:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00016",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-11-11T15:01:00.000Z",
+    "created_at": "2025-11-07T15:01:00.000Z",
+    "updated_at": "2025-11-10T15:01:00.000Z"
+  },
+  {
+    "id": "inv_00017",
+    "invoice_number": "QL-1017",
+    "status": "paid",
+    "date": "2025-11-16T15:10:00.000Z",
+    "due_date": "2025-12-16T15:10:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0207"
+    },
+    "total": {
+      "amount": 200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-11-20T15:10:00.000Z",
+        "transaction_id": "txn_000183"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-11-16T15:10:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-17T15:10:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@pitch.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-11-20T15:10:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00017",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-11-21T15:10:00.000Z",
+    "created_at": "2025-11-16T15:10:00.000Z",
+    "updated_at": "2025-11-20T15:10:00.000Z"
+  },
+  {
+    "id": "inv_00018",
+    "invoice_number": "QL-1018",
+    "status": "paid",
+    "date": "2025-12-02T15:10:00.000Z",
+    "due_date": "2026-01-01T15:10:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-07T15:10:00.000Z",
+        "transaction_id": "txn_000207"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-02T15:10:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-12-03T15:10:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-07T15:10:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00018",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-08T15:10:00.000Z",
+    "created_at": "2025-12-02T15:10:00.000Z",
+    "updated_at": "2025-12-07T15:10:00.000Z"
+  },
+  {
+    "id": "inv_00019",
+    "invoice_number": "QL-1019",
+    "status": "paid",
+    "date": "2025-11-29T15:43:00.000Z",
+    "due_date": "2025-12-29T15:43:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 800000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 800000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 800000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-08T15:43:00.000Z",
+        "transaction_id": "txn_000206"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-11-29T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-30T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-08T15:43:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00019",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-09T15:43:00.000Z",
+    "created_at": "2025-11-29T15:43:00.000Z",
+    "updated_at": "2025-12-08T15:43:00.000Z"
+  },
+  {
+    "id": "inv_00020",
+    "invoice_number": "QL-1020",
+    "status": "paid",
+    "date": "2025-12-03T15:38:00.000Z",
+    "due_date": "2026-01-02T15:38:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0203"
+    },
+    "total": {
+      "amount": 480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-10T15:38:00.000Z",
+        "transaction_id": "txn_000208"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-03T15:38:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-12-04T15:38:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@vercel.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-10T15:38:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00020",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-11T15:38:00.000Z",
+    "created_at": "2025-12-03T15:38:00.000Z",
+    "updated_at": "2025-12-10T15:38:00.000Z"
+  },
+  {
+    "id": "inv_00021",
+    "invoice_number": "QL-1021",
+    "status": "paid",
+    "date": "2025-12-17T15:56:00.000Z",
+    "due_date": "2026-01-16T15:56:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0207"
+    },
+    "total": {
+      "amount": 200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-23T15:56:00.000Z",
+        "transaction_id": "txn_000210"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-17T15:56:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-12-18T15:56:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@pitch.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-23T15:56:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00021",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-24T15:56:00.000Z",
+    "created_at": "2025-12-17T15:56:00.000Z",
+    "updated_at": "2025-12-23T15:56:00.000Z"
+  },
+  {
+    "id": "inv_00022",
+    "invoice_number": "QL-1022",
+    "status": "paid",
+    "date": "2025-12-21T15:16:00.000Z",
+    "due_date": "2026-01-20T15:16:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0204"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-27T15:16:00.000Z",
+        "transaction_id": "txn_000209"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-21T15:16:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-12-22T15:16:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@retool.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-27T15:16:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00022",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-28T15:16:00.000Z",
+    "created_at": "2025-12-21T15:16:00.000Z",
+    "updated_at": "2025-12-27T15:16:00.000Z"
+  },
+  {
+    "id": "inv_00023",
+    "invoice_number": "QL-1023",
+    "status": "paid",
+    "date": "2025-12-29T15:31:00.000Z",
+    "due_date": "2026-01-28T15:31:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 800000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 800000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 800000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-05T15:31:00.000Z",
+        "transaction_id": "txn_000234"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-29T15:31:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-12-30T15:31:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-05T15:31:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00023",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-06T15:31:00.000Z",
+    "created_at": "2025-12-29T15:31:00.000Z",
+    "updated_at": "2026-01-05T15:31:00.000Z"
+  },
+  {
+    "id": "inv_00024",
+    "invoice_number": "QL-1024",
+    "status": "paid",
+    "date": "2026-01-03T15:31:00.000Z",
+    "due_date": "2026-02-02T15:31:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-07T15:31:00.000Z",
+        "transaction_id": "txn_000235"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-03T15:31:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-04T15:31:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-07T15:31:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00024",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-08T15:31:00.000Z",
+    "created_at": "2026-01-03T15:31:00.000Z",
+    "updated_at": "2026-01-07T15:31:00.000Z"
+  },
+  {
+    "id": "inv_00025",
+    "invoice_number": "QL-1025",
+    "status": "paid",
+    "date": "2026-01-01T15:21:00.000Z",
+    "due_date": "2026-01-31T15:21:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0203"
+    },
+    "total": {
+      "amount": 480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-10T15:21:00.000Z",
+        "transaction_id": "txn_000236"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-01T15:21:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-02T15:21:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@vercel.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-10T15:21:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00025",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-11T15:21:00.000Z",
+    "created_at": "2026-01-01T15:21:00.000Z",
+    "updated_at": "2026-01-10T15:21:00.000Z"
+  },
+  {
+    "id": "inv_00026",
+    "invoice_number": "QL-1026",
+    "status": "paid",
+    "date": "2026-01-12T15:28:00.000Z",
+    "due_date": "2026-02-11T15:28:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0207"
+    },
+    "total": {
+      "amount": 200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-20T15:28:00.000Z",
+        "transaction_id": "txn_000238"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-12T15:28:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-13T15:28:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@pitch.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-20T15:28:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00026",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-21T15:28:00.000Z",
+    "created_at": "2026-01-12T15:28:00.000Z",
+    "updated_at": "2026-01-20T15:28:00.000Z"
+  },
+  {
+    "id": "inv_00027",
+    "invoice_number": "QL-1027",
+    "status": "paid",
+    "date": "2026-01-17T15:43:00.000Z",
+    "due_date": "2026-02-16T15:43:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0204"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-27T15:43:00.000Z",
+        "transaction_id": "txn_000237"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-17T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-18T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@retool.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-27T15:43:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00027",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-28T15:43:00.000Z",
+    "created_at": "2026-01-17T15:43:00.000Z",
+    "updated_at": "2026-01-27T15:43:00.000Z"
+  },
+  {
+    "id": "inv_00028",
+    "invoice_number": "QL-1028",
+    "status": "paid",
+    "date": "2026-01-29T15:39:00.000Z",
+    "due_date": "2026-02-28T15:39:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 800000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 800000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 800000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-05T15:39:00.000Z",
+        "transaction_id": "txn_000262"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-29T15:39:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-30T15:39:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-05T15:39:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00028",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-06T15:39:00.000Z",
+    "created_at": "2026-01-29T15:39:00.000Z",
+    "updated_at": "2026-02-05T15:39:00.000Z"
+  },
+  {
+    "id": "inv_00029",
+    "invoice_number": "QL-1029",
+    "status": "paid",
+    "date": "2026-01-29T15:07:00.000Z",
+    "due_date": "2026-02-28T15:07:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-07T15:07:00.000Z",
+        "transaction_id": "txn_000263"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-29T15:07:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-30T15:07:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-07T15:07:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00029",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-08T15:07:00.000Z",
+    "created_at": "2026-01-29T15:07:00.000Z",
+    "updated_at": "2026-02-07T15:07:00.000Z"
+  },
+  {
+    "id": "inv_00030",
+    "invoice_number": "QL-1030",
+    "status": "paid",
+    "date": "2026-02-01T15:50:00.000Z",
+    "due_date": "2026-03-03T15:50:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0203"
+    },
+    "total": {
+      "amount": 480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-10T15:50:00.000Z",
+        "transaction_id": "txn_000264"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-01T15:50:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-02-02T15:50:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@vercel.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-10T15:50:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00030",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-11T15:50:00.000Z",
+    "created_at": "2026-02-01T15:50:00.000Z",
+    "updated_at": "2026-02-10T15:50:00.000Z"
+  },
+  {
+    "id": "inv_00031",
+    "invoice_number": "QL-1031",
+    "status": "paid",
+    "date": "2026-02-10T15:04:00.000Z",
+    "due_date": "2026-03-12T15:04:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0205"
+    },
+    "total": {
+      "amount": 320000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 320000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 320000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-13T15:04:00.000Z",
+        "transaction_id": "txn_000266"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-10T15:04:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-02-11T15:04:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@linear.app"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-13T15:04:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00031",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-14T15:04:00.000Z",
+    "created_at": "2026-02-10T15:04:00.000Z",
+    "updated_at": "2026-02-13T15:04:00.000Z"
+  },
+  {
+    "id": "inv_00032",
+    "invoice_number": "QL-1032",
+    "status": "paid",
+    "date": "2026-02-23T15:41:00.000Z",
+    "due_date": "2026-03-25T15:41:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0204"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-27T15:41:00.000Z",
+        "transaction_id": "txn_000265"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-23T15:41:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-02-24T15:41:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@retool.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-27T15:41:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00032",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-28T15:41:00.000Z",
+    "created_at": "2026-02-23T15:41:00.000Z",
+    "updated_at": "2026-02-27T15:41:00.000Z"
+  },
+  {
+    "id": "inv_00033",
+    "invoice_number": "QL-1033",
+    "status": "paid",
+    "date": "2026-02-28T15:53:00.000Z",
+    "due_date": "2026-03-30T15:53:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 800000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 800000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 800000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-05T15:53:00.000Z",
+        "transaction_id": "txn_000293"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-28T15:53:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-01T15:53:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-05T15:53:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00033",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-06T15:53:00.000Z",
+    "created_at": "2026-02-28T15:53:00.000Z",
+    "updated_at": "2026-03-05T15:53:00.000Z"
+  },
+  {
+    "id": "inv_00034",
+    "invoice_number": "QL-1034",
+    "status": "paid",
+    "date": "2026-03-01T15:35:00.000Z",
+    "due_date": "2026-03-31T15:35:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-07T15:35:00.000Z",
+        "transaction_id": "txn_000294"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-01T15:35:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-02T15:35:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-07T15:35:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00034",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-08T15:35:00.000Z",
+    "created_at": "2026-03-01T15:35:00.000Z",
+    "updated_at": "2026-03-07T15:35:00.000Z"
+  },
+  {
+    "id": "inv_00035",
+    "invoice_number": "QL-1035",
+    "status": "paid",
+    "date": "2026-03-06T15:23:00.000Z",
+    "due_date": "2026-04-05T15:23:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0203"
+    },
+    "total": {
+      "amount": 480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-10T15:23:00.000Z",
+        "transaction_id": "txn_000295"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-06T15:23:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-07T15:23:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@vercel.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-10T15:23:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00035",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-11T15:23:00.000Z",
+    "created_at": "2026-03-06T15:23:00.000Z",
+    "updated_at": "2026-03-10T15:23:00.000Z"
+  },
+  {
+    "id": "inv_00036",
+    "invoice_number": "QL-1036",
+    "status": "paid",
+    "date": "2026-03-10T15:59:00.000Z",
+    "due_date": "2026-04-09T15:59:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0205"
+    },
+    "total": {
+      "amount": 320000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 320000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 320000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-13T15:59:00.000Z",
+        "transaction_id": "txn_000297"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-10T15:59:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-11T15:59:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@linear.app"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-13T15:59:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00036",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-14T15:59:00.000Z",
+    "created_at": "2026-03-10T15:59:00.000Z",
+    "updated_at": "2026-03-13T15:59:00.000Z"
+  },
+  {
+    "id": "inv_00037",
+    "invoice_number": "QL-1037",
+    "status": "paid",
+    "date": "2026-03-23T15:34:00.000Z",
+    "due_date": "2026-04-22T15:34:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0204"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-31T15:34:00.000Z",
+        "transaction_id": "txn_000296"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-23T15:34:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-24T15:34:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@retool.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-31T15:34:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00037",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-01T15:34:00.000Z",
+    "created_at": "2026-03-23T15:34:00.000Z",
+    "updated_at": "2026-03-31T15:34:00.000Z"
+  },
+  {
+    "id": "inv_00038",
+    "invoice_number": "QL-1038",
+    "status": "paid",
+    "date": "2026-03-30T15:47:00.000Z",
+    "due_date": "2026-04-29T15:47:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 1350000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 1350000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1350000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-05T15:47:00.000Z",
+        "transaction_id": "txn_000321"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-30T15:47:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-31T15:47:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-05T15:47:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00038",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-06T15:47:00.000Z",
+    "created_at": "2026-03-30T15:47:00.000Z",
+    "updated_at": "2026-04-05T15:47:00.000Z"
+  },
+  {
+    "id": "inv_00039",
+    "invoice_number": "QL-1039",
+    "status": "paid",
+    "date": "2026-03-31T15:53:00.000Z",
+    "due_date": "2026-04-30T15:53:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-07T15:53:00.000Z",
+        "transaction_id": "txn_000322"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-31T15:53:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-01T15:53:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-07T15:53:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00039",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-08T15:53:00.000Z",
+    "created_at": "2026-03-31T15:53:00.000Z",
+    "updated_at": "2026-04-07T15:53:00.000Z"
+  },
+  {
+    "id": "inv_00040",
+    "invoice_number": "QL-1040",
+    "status": "paid",
+    "date": "2026-04-02T15:15:00.000Z",
+    "due_date": "2026-05-02T15:15:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0203"
+    },
+    "total": {
+      "amount": 480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-10T15:15:00.000Z",
+        "transaction_id": "txn_000323"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-02T15:15:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-03T15:15:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@vercel.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-10T15:15:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00040",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-11T15:15:00.000Z",
+    "created_at": "2026-04-02T15:15:00.000Z",
+    "updated_at": "2026-04-10T15:15:00.000Z"
+  },
+  {
+    "id": "inv_00041",
+    "invoice_number": "QL-1041",
+    "status": "paid",
+    "date": "2026-04-07T15:25:00.000Z",
+    "due_date": "2026-05-07T15:25:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0205"
+    },
+    "total": {
+      "amount": 320000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 320000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 320000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-13T15:25:00.000Z",
+        "transaction_id": "txn_000325"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-07T15:25:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-08T15:25:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@linear.app"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-13T15:25:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00041",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-14T15:25:00.000Z",
+    "created_at": "2026-04-07T15:25:00.000Z",
+    "updated_at": "2026-04-13T15:25:00.000Z"
+  },
+  {
+    "id": "inv_00042",
+    "invoice_number": "QL-1042",
+    "status": "paid",
+    "date": "2026-04-21T15:29:00.000Z",
+    "due_date": "2026-05-21T15:29:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0204"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-27T15:29:00.000Z",
+        "transaction_id": "txn_000324"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-21T15:29:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-22T15:29:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@retool.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-27T15:29:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00042",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-28T15:29:00.000Z",
+    "created_at": "2026-04-21T15:29:00.000Z",
+    "updated_at": "2026-04-27T15:29:00.000Z"
+  },
+  {
+    "id": "inv_00043",
+    "invoice_number": "QL-1043",
+    "status": "paid",
+    "date": "2026-04-27T15:03:00.000Z",
+    "due_date": "2026-05-27T15:03:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 1350000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 1350000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1350000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-05T15:03:00.000Z",
+        "transaction_id": "txn_000354"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-27T15:03:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-28T15:03:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-05T15:03:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00043",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-06T15:03:00.000Z",
+    "created_at": "2026-04-27T15:03:00.000Z",
+    "updated_at": "2026-05-05T15:03:00.000Z"
+  },
+  {
+    "id": "inv_00044",
+    "invoice_number": "QL-1044",
+    "status": "paid",
+    "date": "2026-05-06T15:12:00.000Z",
+    "due_date": "2026-06-05T15:12:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0203"
+    },
+    "total": {
+      "amount": 480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-10T15:12:00.000Z",
+        "transaction_id": "txn_000356"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-05-06T15:12:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-05-07T15:12:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@vercel.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-10T15:12:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00044",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-11T15:12:00.000Z",
+    "created_at": "2026-05-06T15:12:00.000Z",
+    "updated_at": "2026-05-10T15:12:00.000Z"
+  },
+  {
+    "id": "inv_00045",
+    "invoice_number": "QL-1045",
+    "status": "paid",
+    "date": "2026-05-01T15:50:00.000Z",
+    "due_date": "2026-05-31T15:50:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-10T15:50:00.000Z",
+        "transaction_id": "txn_000355"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-05-01T15:50:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-05-02T15:50:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-10T15:50:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00045",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-11T15:50:00.000Z",
+    "created_at": "2026-05-01T15:50:00.000Z",
+    "updated_at": "2026-05-10T15:50:00.000Z"
+  },
+  {
+    "id": "inv_00046",
+    "invoice_number": "QL-1046",
+    "status": "paid",
+    "date": "2026-05-09T15:15:00.000Z",
+    "due_date": "2026-06-08T15:15:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0205"
+    },
+    "total": {
+      "amount": 320000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 320000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 320000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-13T15:15:00.000Z",
+        "transaction_id": "txn_000358"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-05-09T15:15:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-05-10T15:15:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@linear.app"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-13T15:15:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00046",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-14T15:15:00.000Z",
+    "created_at": "2026-05-09T15:15:00.000Z",
+    "updated_at": "2026-05-13T15:15:00.000Z"
+  },
+  {
+    "id": "inv_00047",
+    "invoice_number": "QL-1047",
+    "status": "paid",
+    "date": "2026-05-13T15:55:00.000Z",
+    "due_date": "2026-06-12T15:55:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0206"
+    },
+    "total": {
+      "amount": 560000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 560000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 560000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-16T15:55:00.000Z",
+        "transaction_id": "txn_000359"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-05-13T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-05-14T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "accounts@canva.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-16T15:55:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00047",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-17T15:55:00.000Z",
+    "created_at": "2026-05-13T15:55:00.000Z",
+    "updated_at": "2026-05-16T15:55:00.000Z"
+  },
+  {
+    "id": "inv_00048",
+    "invoice_number": "QL-1048",
+    "status": "paid",
+    "date": "2026-05-18T15:31:00.000Z",
+    "due_date": "2026-06-17T15:31:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0204"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-27T15:31:00.000Z",
+        "transaction_id": "txn_000357"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-05-18T15:31:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-05-19T15:31:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@retool.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-27T15:31:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00048",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-28T15:31:00.000Z",
+    "created_at": "2026-05-18T15:31:00.000Z",
+    "updated_at": "2026-05-27T15:31:00.000Z"
+  },
+  {
+    "id": "inv_00049",
+    "invoice_number": "QL-1049",
+    "status": "paid",
+    "date": "2026-06-02T15:37:00.000Z",
+    "due_date": "2026-07-02T15:37:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 1350000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 1350000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1350000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-05T15:37:00.000Z",
+        "transaction_id": "txn_000387"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-02T15:37:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-03T15:37:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-05T15:37:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00049",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-06T15:37:00.000Z",
+    "created_at": "2026-06-02T15:37:00.000Z",
+    "updated_at": "2026-06-05T15:37:00.000Z"
+  },
+  {
+    "id": "inv_00050",
+    "invoice_number": "QL-1050",
+    "status": "paid",
+    "date": "2026-06-03T15:57:00.000Z",
+    "due_date": "2026-07-03T15:57:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-07T15:57:00.000Z",
+        "transaction_id": "txn_000388"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-03T15:57:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-04T15:57:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-07T15:57:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00050",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-08T15:57:00.000Z",
+    "created_at": "2026-06-03T15:57:00.000Z",
+    "updated_at": "2026-06-07T15:57:00.000Z"
+  },
+  {
+    "id": "inv_00051",
+    "invoice_number": "QL-1051",
+    "status": "paid",
+    "date": "2026-06-07T15:37:00.000Z",
+    "due_date": "2026-07-07T15:37:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0203"
+    },
+    "total": {
+      "amount": 480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-10T15:37:00.000Z",
+        "transaction_id": "txn_000389"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-07T15:37:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-08T15:37:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@vercel.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-10T15:37:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00051",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-11T15:37:00.000Z",
+    "created_at": "2026-06-07T15:37:00.000Z",
+    "updated_at": "2026-06-10T15:37:00.000Z"
+  },
+  {
+    "id": "inv_00052",
+    "invoice_number": "QL-1052",
+    "status": "paid",
+    "date": "2026-06-04T15:33:00.000Z",
+    "due_date": "2026-07-04T15:33:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0205"
+    },
+    "total": {
+      "amount": 320000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 320000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 320000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-13T15:33:00.000Z",
+        "transaction_id": "txn_000391"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-04T15:33:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-05T15:33:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@linear.app"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-13T15:33:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00052",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-14T15:33:00.000Z",
+    "created_at": "2026-06-04T15:33:00.000Z",
+    "updated_at": "2026-06-13T15:33:00.000Z"
+  },
+  {
+    "id": "inv_00053",
+    "invoice_number": "QL-1053",
+    "status": "paid",
+    "date": "2026-06-13T15:28:00.000Z",
+    "due_date": "2026-07-13T15:28:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0206"
+    },
+    "total": {
+      "amount": 560000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 560000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 560000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-16T15:28:00.000Z",
+        "transaction_id": "txn_000392"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-13T15:28:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-14T15:28:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "accounts@canva.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-16T15:28:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00053",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-17T15:28:00.000Z",
+    "created_at": "2026-06-13T15:28:00.000Z",
+    "updated_at": "2026-06-16T15:28:00.000Z"
+  },
+  {
+    "id": "inv_00054",
+    "invoice_number": "QL-1054",
+    "status": "paid",
+    "date": "2026-06-24T15:05:00.000Z",
+    "due_date": "2026-07-24T15:05:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0204"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-27T15:05:00.000Z",
+        "transaction_id": "txn_000390"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-24T15:05:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-25T15:05:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@retool.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-27T15:05:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00054",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-28T15:05:00.000Z",
+    "created_at": "2026-06-24T15:05:00.000Z",
+    "updated_at": "2026-06-27T15:05:00.000Z"
+  },
+  {
+    "id": "inv_00055",
+    "invoice_number": "QL-1055",
+    "status": "paid",
+    "date": "2026-06-25T15:12:00.000Z",
+    "due_date": "2026-07-25T15:12:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 1350000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 1350000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1350000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-05T15:12:00.000Z",
+        "transaction_id": "txn_000419"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-25T15:12:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-26T15:12:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-05T15:12:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00055",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-06T15:12:00.000Z",
+    "created_at": "2026-06-25T15:12:00.000Z",
+    "updated_at": "2026-07-05T15:12:00.000Z"
+  },
+  {
+    "id": "inv_00056",
+    "invoice_number": "QL-1056",
+    "status": "paid",
+    "date": "2026-07-01T15:25:00.000Z",
+    "due_date": "2026-07-31T15:25:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0203"
+    },
+    "total": {
+      "amount": 480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-10T15:25:00.000Z",
+        "transaction_id": "txn_000421"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-01T15:25:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-02T15:25:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@vercel.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-10T15:25:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00056",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-11T15:25:00.000Z",
+    "created_at": "2026-07-01T15:25:00.000Z",
+    "updated_at": "2026-07-10T15:25:00.000Z"
+  },
+  {
+    "id": "inv_00057",
+    "invoice_number": "QL-1057",
+    "status": "paid",
+    "date": "2026-07-07T15:35:00.000Z",
+    "due_date": "2026-08-06T15:35:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-11T15:35:00.000Z",
+        "transaction_id": "txn_000420"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-07T15:35:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-08T15:35:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-11T15:35:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00057",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-12T15:35:00.000Z",
+    "created_at": "2026-07-07T15:35:00.000Z",
+    "updated_at": "2026-07-11T15:35:00.000Z"
+  },
+  {
+    "id": "inv_00058",
+    "invoice_number": "QL-1058",
+    "status": "paid",
+    "date": "2026-07-09T15:41:00.000Z",
+    "due_date": "2026-08-08T15:41:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0205"
+    },
+    "total": {
+      "amount": 320000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 320000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 320000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-13T15:41:00.000Z",
+        "transaction_id": "txn_000423"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-09T15:41:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-10T15:41:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@linear.app"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-13T15:41:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00058",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-14T15:41:00.000Z",
+    "created_at": "2026-07-09T15:41:00.000Z",
+    "updated_at": "2026-07-13T15:41:00.000Z"
+  },
+  {
+    "id": "inv_00059",
+    "invoice_number": "QL-1059",
+    "status": "paid",
+    "date": "2026-07-09T15:22:00.000Z",
+    "due_date": "2026-08-08T15:22:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0206"
+    },
+    "total": {
+      "amount": 560000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 560000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 560000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-16T15:22:00.000Z",
+        "transaction_id": "txn_000424"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-09T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-10T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "accounts@canva.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-16T15:22:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00059",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-17T15:22:00.000Z",
+    "created_at": "2026-07-09T15:22:00.000Z",
+    "updated_at": "2026-07-16T15:22:00.000Z"
+  },
+  {
+    "id": "inv_00060",
+    "invoice_number": "QL-1060",
+    "status": "paid",
+    "date": "2026-07-21T15:56:00.000Z",
+    "due_date": "2026-08-20T15:56:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0204"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-27T15:56:00.000Z",
+        "transaction_id": "txn_000422"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-21T15:56:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-22T15:56:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@retool.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-27T15:56:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00060",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-28T15:56:00.000Z",
+    "created_at": "2026-07-21T15:56:00.000Z",
+    "updated_at": "2026-07-27T15:56:00.000Z"
+  },
+  {
+    "id": "inv_00061",
+    "invoice_number": "QL-1061",
+    "status": "paid",
+    "date": "2026-08-02T15:58:00.000Z",
+    "due_date": "2026-09-01T15:58:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 1350000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 1350000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1350000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-06T15:58:00.000Z",
+        "transaction_id": "txn_000452"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-02T15:58:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-03T15:58:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-06T15:58:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00061",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-07T15:58:00.000Z",
+    "created_at": "2026-08-02T15:58:00.000Z",
+    "updated_at": "2026-08-06T15:58:00.000Z"
+  },
+  {
+    "id": "inv_00062",
+    "invoice_number": "QL-1062",
+    "status": "paid",
+    "date": "2026-08-05T15:52:00.000Z",
+    "due_date": "2026-09-04T15:52:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-08T15:52:00.000Z",
+        "transaction_id": "txn_000453"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-05T15:52:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-06T15:52:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-08T15:52:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00062",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-09T15:52:00.000Z",
+    "created_at": "2026-08-05T15:52:00.000Z",
+    "updated_at": "2026-08-08T15:52:00.000Z"
+  },
+  {
+    "id": "inv_00063",
+    "invoice_number": "QL-1063",
+    "status": "paid",
+    "date": "2026-07-31T15:04:00.000Z",
+    "due_date": "2026-08-30T15:04:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0203"
+    },
+    "total": {
+      "amount": 480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-10T15:04:00.000Z",
+        "transaction_id": "txn_000454"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-31T15:04:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-01T15:04:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@vercel.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-10T15:04:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00063",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-11T15:04:00.000Z",
+    "created_at": "2026-07-31T15:04:00.000Z",
+    "updated_at": "2026-08-10T15:04:00.000Z"
+  },
+  {
+    "id": "inv_00064",
+    "invoice_number": "QL-1064",
+    "status": "paid",
+    "date": "2026-08-10T15:04:00.000Z",
+    "due_date": "2026-09-09T15:04:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0205"
+    },
+    "total": {
+      "amount": 320000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 320000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 320000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-13T15:04:00.000Z",
+        "transaction_id": "txn_000455"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-10T15:04:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-11T15:04:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@linear.app"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-13T15:04:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00064",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-14T15:04:00.000Z",
+    "created_at": "2026-08-10T15:04:00.000Z",
+    "updated_at": "2026-08-13T15:04:00.000Z"
+  },
+  {
+    "id": "inv_00065",
+    "invoice_number": "QL-1065",
+    "status": "paid",
+    "date": "2026-08-13T15:34:00.000Z",
+    "due_date": "2026-09-12T15:34:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0206"
+    },
+    "total": {
+      "amount": 560000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 560000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 560000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-16T15:34:00.000Z",
+        "transaction_id": "txn_000456"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-13T15:34:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-14T15:34:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "accounts@canva.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-16T15:34:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00065",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-17T15:34:00.000Z",
+    "created_at": "2026-08-13T15:34:00.000Z",
+    "updated_at": "2026-08-16T15:34:00.000Z"
+  },
+  {
+    "id": "inv_00066",
+    "invoice_number": "QL-1066",
+    "status": "paid",
+    "date": "2026-09-01T15:55:00.000Z",
+    "due_date": "2026-10-01T15:55:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0201"
+    },
+    "total": {
+      "amount": 1350000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 1350000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1350000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-09-05T15:55:00.000Z",
+        "transaction_id": "txn_000484"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-09-01T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-09-02T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@notion.so"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-09-05T15:55:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00066",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-09-06T15:55:00.000Z",
+    "created_at": "2026-09-01T15:55:00.000Z",
+    "updated_at": "2026-09-05T15:55:00.000Z"
+  },
+  {
+    "id": "inv_00067",
+    "invoice_number": "QL-1067",
+    "status": "paid",
+    "date": "2026-08-28T15:35:00.000Z",
+    "due_date": "2026-09-27T15:35:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0202"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-09-07T15:35:00.000Z",
+        "transaction_id": "txn_000485"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-28T15:35:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-29T15:35:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@figma.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-09-07T15:35:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00067",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-09-08T15:35:00.000Z",
+    "created_at": "2026-08-28T15:35:00.000Z",
+    "updated_at": "2026-09-07T15:35:00.000Z"
+  },
+  {
+    "id": "inv_00068",
+    "invoice_number": "QL-1068",
+    "status": "paid",
+    "date": "2026-09-03T15:57:00.000Z",
+    "due_date": "2026-10-03T15:57:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0203"
+    },
+    "total": {
+      "amount": 480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-09-09T15:57:00.000Z",
+        "transaction_id": "txn_000486"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-09-03T15:57:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-09-04T15:57:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@vercel.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-09-09T15:57:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00068",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-09-10T15:57:00.000Z",
+    "created_at": "2026-09-03T15:57:00.000Z",
+    "updated_at": "2026-09-09T15:57:00.000Z"
+  },
+  {
+    "id": "inv_00069",
+    "invoice_number": "QL-1069",
+    "status": "overdue",
+    "date": "2026-07-27T15:00:00.000Z",
+    "due_date": "2026-08-26T15:00:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0204"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Quiverleaf Procure — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-27T15:00:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-28T15:00:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@retool.com"
+        ]
+      }
+    ],
+    "file_id": "file_inv_00069",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-28T15:00:00.000Z",
+    "created_at": "2026-07-27T15:00:00.000Z",
+    "updated_at": "2026-07-27T15:00:00.000Z"
+  }
+]

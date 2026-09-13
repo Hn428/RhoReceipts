@@ -65,9 +65,12 @@ JavaScript, keyboard-accessible by default.
 | Runway | Burn for each of the three complete months behind the average |
 | Largest customer | Share of trailing-twelve-month revenue |
 
-Below the figures: **Worth a closer look** (related parties, inferred customers,
-aggregated payouts) and **Left out of these figures** (every excluded group,
-with why).
+Below the figures: **Paying customers**, opening with how the month's revenue splits
+across research outcomes, then **Worth a closer look** (related parties, inferred
+customers, research flags, adverse news, vendors with no web footprint, aggregated
+payouts) and **Left out of these figures** (every excluded group, with why). Net burn
+also opens to the **largest vendors** with a live web check. How research works is in
+[DEMO.md](DEMO.md#external-research).
 
 ### The burn line names what flatters it
 

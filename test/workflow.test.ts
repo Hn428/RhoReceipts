@@ -231,15 +231,70 @@ describe("demo, private delivery and frozen research", () => {
     const fetcher = vi.fn<typeof fetch>().mockImplementation(async () => new Response(JSON.stringify({ results: [{ title: "Real Widgets", url: "https://realwidgets.com", content: "Real Widgets" }] })));
     vi.stubGlobal("fetch", fetcher);
     const subject = { name: "Real Widgets", domain: "realwidgets.com", isDemo: false, relatedParty: false };
+    // One research pass is four Tavily calls: web presence, homepage, registry, news.
     const first = await cachedCustomerResearch(demo[0].connectionId, subject);
     expect(first.status).toBe("Verified");
     expect(await cachedCustomerResearch(demo[0].connectionId, subject)).toEqual(first);
-    expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(fetcher).toHaveBeenCalledTimes(4);
     await cachedCustomerResearch(demo[1].connectionId, subject);
-    expect(fetcher).toHaveBeenCalledTimes(2);
+    expect(fetcher).toHaveBeenCalledTimes(8);
     await state.db!.update(schema.customerResearchCache).set({ expiresAt: new Date(0) }).where(eq(schema.customerResearchCache.connectionId, demo[0].connectionId));
     await cachedCustomerResearch(demo[0].connectionId, subject);
-    expect(fetcher).toHaveBeenCalledTimes(3);
+    expect(fetcher).toHaveBeenCalledTimes(12);
     vi.unstubAllGlobals();
+  });
+
+  it("doesn't cache research with a failed check, so the next issuance retries it", async () => {
+    // News fails; the other checks succeed.
+    const fetcher = vi.fn<typeof fetch>().mockImplementation(async (_url, init) => JSON.parse(init!.body as string).topic === "news"
+      ? new Response("error", { status: 503 })
+      : new Response(JSON.stringify({ results: [{ title: "Partial Widgets", url: "https://partialwidgets.com", content: "Partial Widgets" }] })));
+    vi.stubGlobal("fetch", fetcher);
+    const subject = { name: "Partial Widgets", domain: "partialwidgets.com", isDemo: false, relatedParty: false };
+    const first = await cachedCustomerResearch(demo[0].connectionId, subject);
+    expect(first).toMatchObject({ status: "Verified", provider: "tavily" });
+    expect(first.signals!.news.outcome).toBe("unavailable");
+    await cachedCustomerResearch(demo[0].connectionId, subject);
+    expect(fetcher).toHaveBeenCalledTimes(8);
+    vi.unstubAllGlobals();
+  });
+
+  it("freezes coverage, wider customer research and vendor checks into the receipt", async () => {
+    const receipt = await getReceiptBySlug(demo[0].receipt.split("/").at(-1)!);
+    const s = receipt!.snapshot;
+    const researched = Object.keys(s.customerResearch!);
+    // Everyone behind this month's revenue with an id, plus the five largest over twelve months.
+    for (const customer of s.mrrCustomers.filter((c) => c.customerId)) expect(researched).toContain(customer.customerId);
+    for (const customer of s.metrics.concentration.value.customers.slice(0, 5).filter((c) => c.customerId)) {
+      expect(researched).toContain(customer.customerId);
+    }
+    expect(s.researchCoverage).toMatchObject({ simulated: true, total: s.metrics.mrr.value });
+    const c = s.researchCoverage!;
+    expect(c.verified.minor + c.needsReview.minor + c.flagged.minor + c.unresearched.minor).toBe(c.total.minor);
+    // Demo seeding keeps the network off, so vendor checks are recorded as unavailable, never as findings.
+    expect(s.vendors!.length).toBeGreaterThan(0);
+    expect(s.vendors!.every((v) => v.research.outcome === "unavailable" && v.spend.minor > 0)).toBe(true);
+    expect(s.vendors!.some((v) => /^rho\b/i.test(v.name))).toBe(false);
+
+    // Fictional customers: invoiced ones verify, uninvoiced ones have no footprint.
+    for (const [customerId, result] of Object.entries(s.customerResearch!)) {
+      expect(result.provider).toBe("simulated");
+      const invoiced = Object.values(s.transactions).some((t) => t.attribution === "invoice" && t.customerName === result.name);
+      if (!invoiced && !result.flags!.includes("related_party")) expect(result.flags, customerId).toContain("no_footprint");
+    }
+
+    // The monthly report reads the same research instead of researching again.
+    const [report] = await state.db!.select().from(schema.monthlyReports)
+      .where(eq(schema.monthlyReports.connectionId, demo[0].connectionId));
+    const r = report.snapshot as import("@/lib/reports").ReportSnapshot;
+    const issued = await getReceiptBySlug(r.receiptSlug);
+    expect(r.research).toEqual({
+      verifiedShare: issued!.snapshot.researchCoverage!.verifiedShare,
+      simulated: true,
+    });
+    const researchFlags = r.flags.filter((f) => f.kind === "research_flagged" || f.kind === "adverse_news");
+    expect(researchFlags.length).toBeGreaterThan(0);
+    expect(researchFlags.every((f) => "simulated" in f && f.simulated)).toBe(true);
+    expect(r.newCustomers.every((c) => c.researchStatus)).toBe(true);
   });
 });

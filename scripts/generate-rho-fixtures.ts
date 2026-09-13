@@ -138,6 +138,17 @@ type ProgramContext = {
 type CompanyProfile = {
   /** Directory name and the source of the mock token. */
   slug: string;
+  /**
+   * The customers are real businesses used for illustration, so research on them
+   * runs live instead of being simulated. The ledger itself is still synthetic,
+   * and no business relationship with them is implied.
+   */
+  realCustomers?: boolean;
+  /**
+   * Not offered as a sample-company button: a founder connects it by pasting its
+   * token, the way a real company would.
+   */
+  tokenOnly?: boolean;
   legalName: string;
   shortName: string;
   description: string;
@@ -744,6 +755,8 @@ function generateCompany(profile: CompanyProfile) {
     short_name: profile.shortName,
     description: profile.description,
     mock_token: mockTokenFor(profile.slug),
+    ...(profile.realCustomers ? { real_customers: true } : {}),
+    ...(profile.tokenOnly ? { token_only: true } : {}),
     period: { first_month: "2025-04", last_month: "2026-09" },
     counts: {
       accounts: accounts.length,
@@ -889,9 +902,106 @@ const ACME: CompanyProfile = {
   ],
 };
 
+/*
+ * Two fictional startups whose customers and vendors are real businesses, so live
+ * Tavily and OpenAI research has real companies to verify. Their ledgers are as
+ * synthetic as Acme's: every amount, invoice and relationship is invented.
+ */
+const QUIVERLEAF: CompanyProfile = {
+  slug: "quiverleaf-ai",
+  realCustomers: true,
+  tokenOnly: true,
+  legalName: "Quiverleaf AI, Inc.",
+  shortName: "Quiverleaf AI",
+  description: "Procurement copilot that audits software spend for product and engineering teams.",
+  seed: 20250601,
+  invoicePrefix: "QL",
+  productName: "Quiverleaf Procure",
+  users: [
+    { user_id: "usr_founder", first_name: "Imani", last_name: "Castellanos" },
+    { user_id: "usr_cofounder", first_name: "Felix", last_name: "Haugen" },
+    { user_id: "usr_ops", first_name: "Ruth", last_name: "Adeyemi" },
+    { user_id: "usr_eng", first_name: "Omar", last_name: "Lindqvist" },
+  ],
+  billingAddress: { street: "548 Market St, Suite 3100", city: "San Francisco", subdivision: "CA", postal_code: "94104" },
+  accounts: STANDARD_ACCOUNTS(["3318", "7402", "1559", "6620", "0003"], [dollars(140_000), dollars(40_000)]),
+  customers: [
+    // The concentration risk once it expands.
+    { id: "cus_0201", legal_name: "Notion Labs, Inc.", email: "billing@notion.so", city: "San Francisco", state: "CA", pay_day: 4, start_month: 2, end_month: 17, cents: dollars(8_000), expands_at: 12, expands_to: dollars(13_500), cadence: "monthly", invoiced: true },
+    { id: "cus_0202", legal_name: "Figma, Inc.", email: "ap@figma.com", city: "San Francisco", state: "CA", pay_day: 6, start_month: 4, end_month: 17, cents: dollars(6_200), cadence: "monthly", invoiced: true },
+    { id: "cus_0203", legal_name: "Vercel Inc.", email: "billing@vercel.com", city: "San Francisco", state: "CA", pay_day: 9, start_month: 6, end_month: 17, cents: dollars(4_800), cadence: "monthly", invoiced: true },
+    // August's invoice is overdue.
+    { id: "cus_0204", legal_name: "Retool, Inc.", email: "ap@retool.com", city: "San Francisco", state: "CA", pay_day: 26, start_month: 8, end_month: 17, cents: dollars(3_900), cadence: "monthly", invoiced: true, skip_months: [16] },
+    // The legal name differs from the brand on its site (Linear): a hard identity match.
+    { id: "cus_0205", legal_name: "Linear Orbit, Inc.", email: "finance@linear.app", city: "San Francisco", state: "CA", pay_day: 12, start_month: 10, end_month: 17, cents: dollars(3_200), cadence: "monthly", invoiced: true },
+    // A non-US entity.
+    { id: "cus_0206", legal_name: "Canva Pty Ltd", email: "accounts@canva.com", city: "Sydney", state: "NSW", pay_day: 15, start_month: 13, end_month: 17, cents: dollars(5_600), cadence: "monthly", invoiced: true },
+    // Churned after seven months.
+    { id: "cus_0207", legal_name: "Pitch Software GmbH", email: "billing@pitch.com", city: "Berlin", state: "BE", pay_day: 19, start_month: 3, end_month: 9, cents: dollars(2_000), cadence: "monthly", invoiced: true },
+    // Pays without invoices: counted from a name match, then researched live.
+    { id: "cus_0208", legal_name: "Webflow, Inc.", email: "finance@webflow.com", city: "San Francisco", state: "CA", pay_day: 1, start_month: 11, end_month: 17, cents: dollars(2_500), cadence: "monthly", invoiced: false, trait: "unverifiable" },
+  ],
+  selfServe: { weeklyStart: 600, weeklyGrowth: 70 },
+  financing: [
+    { month: 1, day: 14, amount: dollars(2_000_000), counterparty: "Bayrock Ridge Partners II LP", memo: "WIRE IN SEED PREFERRED CLOSING", note: "Seed round" },
+  ],
+  payroll: { base: 30_000, growth: 1_500 },
+  rent: { amount: dollars(9_200), counterparty: "WeWork", memo: "ACH DEBIT WEWORK 600 CALIFORNIA ST" },
+  cloud: { base: 5_200, growth: 380, counterparty: "Amazon Web Services", memo: "AWS CLOUD SERVICES" },
+  swipes: { min: 8, max: 12 },
+  contractor: { amount: dollars(9_500), counterparty: "Toptal", memo: "ACH DEBIT TOPTAL CONTRACT ENGINEERING" },
+  treasurySweep: { amount: dollars(150_000), fromMonth: 12 },
+  unpaidInvoices: [
+    { customerId: "cus_0204", amount: dollars(3_900), issuedAt: "2026-07-27T15:00:00.000Z", dueAt: "2026-08-26T15:00:00.000Z" },
+  ],
+};
+
+const LANTERNFISH: CompanyProfile = {
+  slug: "lanternfish-analytics",
+  realCustomers: true,
+  tokenOnly: true,
+  legalName: "Lanternfish Analytics, Inc.",
+  shortName: "Lanternfish Analytics",
+  description: "Demand forecasting for direct-to-consumer retail brands.",
+  seed: 20250815,
+  invoicePrefix: "LF",
+  productName: "Lanternfish Forecast",
+  users: [
+    { user_id: "usr_founder", first_name: "Nadia", last_name: "Brennan-Soto" },
+    { user_id: "usr_cofounder", first_name: "Kwame", last_name: "Ostrowski" },
+    { user_id: "usr_ops", first_name: "Elena", last_name: "Vasquez-Hart" },
+    { user_id: "usr_eng", first_name: "Jun", last_name: "Abernathy" },
+  ],
+  billingAddress: { street: "250 Greenwich St, Floor 46", city: "New York", subdivision: "NY", postal_code: "10007" },
+  accounts: STANDARD_ACCOUNTS(["5021", "8193", "2744", "4406", "0004"], [dollars(210_000), dollars(60_000)]),
+  customers: [
+    { id: "cus_0301", legal_name: "Allbirds, Inc.", email: "ap@allbirds.com", city: "San Francisco", state: "CA", pay_day: 3, start_month: 0, end_month: 17, cents: dollars(9_500), expands_at: 9, expands_to: dollars(12_000), cadence: "monthly", invoiced: true },
+    { id: "cus_0302", legal_name: "Warby Parker Inc.", email: "ap@warbyparker.com", city: "New York", state: "NY", pay_day: 5, start_month: 1, end_month: 17, cents: dollars(7_800), cadence: "monthly", invoiced: true },
+    { id: "cus_0303", legal_name: "Glossier, Inc.", email: "billing@glossier.com", city: "New York", state: "NY", pay_day: 8, start_month: 3, end_month: 17, cents: dollars(5_400), cadence: "monthly", invoiced: true },
+    { id: "cus_0304", legal_name: "Brooklinen, Inc.", email: "finance@brooklinen.com", city: "Brooklyn", state: "NY", pay_day: 11, start_month: 5, end_month: 17, cents: dollars(3_600), cadence: "monthly", invoiced: true },
+    // An annual prepayment, spread across twelve months.
+    { id: "cus_0305", legal_name: "Bombas LLC", email: "ap@bombas.com", city: "New York", state: "NY", pay_day: 14, start_month: 4, end_month: 17, cents: dollars(54_000), cadence: "annual", invoiced: true },
+    // Churned after six months.
+    { id: "cus_0306", legal_name: "Parachute Home, Inc.", email: "ap@parachutehome.com", city: "Los Angeles", state: "CA", pay_day: 17, start_month: 7, end_month: 12, cents: dollars(2_900), cadence: "monthly", invoiced: true },
+    { id: "cus_0307", legal_name: "Outdoor Voices, Inc.", email: "ap@outdoorvoices.com", city: "Austin", state: "TX", pay_day: 21, start_month: 14, end_month: 17, cents: dollars(2_200), cadence: "monthly", invoiced: true },
+    // Pays without invoices: counted from a name match, then researched live.
+    { id: "cus_0308", legal_name: "Rothy's, Inc.", email: "accounts@rothys.com", city: "San Francisco", state: "CA", pay_day: 1, start_month: 10, end_month: 17, cents: dollars(3_000), cadence: "monthly", invoiced: false, trait: "unverifiable" },
+  ],
+  selfServe: { weeklyStart: 900, weeklyGrowth: 110 },
+  financing: [
+    { month: 0, day: 28, amount: dollars(3_200_000), counterparty: "Greyline Ventures III LP", memo: "WIRE IN SERIES A PREFERRED CLOSING", note: "Series A" },
+  ],
+  payroll: { base: 42_000, growth: 2_000 },
+  rent: { amount: dollars(14_800), counterparty: "WeWork", memo: "ACH DEBIT WEWORK 115 BROADWAY" },
+  cloud: { base: 6_900, growth: 450, counterparty: "Google Cloud", memo: "GOOGLE CLOUD PLATFORM" },
+  swipes: { min: 10, max: 14 },
+  contractor: { amount: dollars(11_000), counterparty: "Deel", memo: "ACH DEBIT DEEL CONTRACTOR PAYROLL" },
+  treasurySweep: { amount: dollars(200_000), fromMonth: 6 },
+};
+
 // ------------------------------------------------------------------- output
 
-for (const profile of [NORTHSTAR, ACME]) {
+for (const profile of [NORTHSTAR, ACME, QUIVERLEAF, LANTERNFISH]) {
   const data = generateCompany(profile);
   const dir = join(FIXTURES_DIR, profile.slug);
   mkdirSync(dir, { recursive: true });

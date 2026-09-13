@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { money } from "@/lib/money";
-import { companyBySlug, mockCompanies } from "@/lib/rho/mock/store";
+import { companyBySlug, listedCompanies } from "@/lib/rho/mock/store";
 import type { RhoTransaction } from "@/lib/rho/types";
 import { day, signed, whole } from "@/lib/receipts/format";
 
@@ -53,6 +53,11 @@ export default async function MockRhoDashboard({ params, searchParams }: Props) 
   const { view = "all", account, all } = await searchParams;
   const company = companyBySlug(slug);
   if (!company) notFound();
+  // Token-only companies aren't in the switcher; their page is reached directly and
+  // connects to Rho Receipts by token rather than as a sample.
+  const tokenOnly = Boolean(company.meta.token_only);
+  const enrollHref = tokenOnly ? "/enroll" : `/enroll?company=${slug}`;
+  const switcher = tokenOnly ? [...listedCompanies, company] : listedCompanies;
 
   const byNewest = (a: RhoTransaction, b: RhoTransaction) =>
     Date.parse(b.initiated_at) - Date.parse(a.initiated_at);
@@ -93,7 +98,7 @@ export default async function MockRhoDashboard({ params, searchParams }: Props) 
           <nav aria-label="Mock bank" className="mt-5 flex flex-col gap-1 text-sm">
             {[["Overview","▦"],["Accounts","◫"],["Transactions","↕"],["Transfers","⇄"],["Payments","◎"],["Team","◻"]].map(([label, icon], index) => <span key={label} className={`rounded-md px-3 py-2 ${index === 0 ? "bg-[var(--bank-accent-wash)] font-medium text-[var(--bank-accent)]" : "text-[var(--bank-muted)]"}`}><span className="mr-2 inline-block w-4">{icon}</span>{label}</span>)}
           </nav>
-          <div className="mt-auto rounded-lg border border-[var(--bank-line)] bg-[var(--bank-bg)] p-4"><p className="text-xs font-semibold">Rho Receipts</p><p className="mt-1 text-xs leading-5 text-[var(--bank-muted)]">Generate a private verified receipt.</p><Link href={`/enroll?company=${slug}`} className="mt-3 block rounded-md bg-[var(--bank-accent)] px-3 py-2 text-center text-xs font-medium text-white">Generate receipt →</Link></div>
+          <div className="mt-auto rounded-lg border border-[var(--bank-line)] bg-[var(--bank-bg)] p-4"><p className="text-xs font-semibold">Rho Receipts</p><p className="mt-1 text-xs leading-5 text-[var(--bank-muted)]">Generate a private verified receipt.</p><Link href={enrollHref} className="mt-3 block rounded-md bg-[var(--bank-accent)] px-3 py-2 text-center text-xs font-medium text-white">Generate receipt →</Link></div>
         </aside>
 
         <div className="flex min-w-0 flex-1 flex-col">
@@ -103,7 +108,7 @@ export default async function MockRhoDashboard({ params, searchParams }: Props) 
           <div className="flex items-center gap-6">
             <span className="text-sm font-semibold tracking-tight">Mock Rho</span>
             <nav aria-label="Companies" className="flex gap-1">
-              {mockCompanies.map((c) => (
+              {switcher.map((c) => (
                 <Link
                   key={c.meta.slug}
                   href={`/mock-rho/${c.meta.slug}`}
@@ -120,7 +125,7 @@ export default async function MockRhoDashboard({ params, searchParams }: Props) 
               Rho Receipts
             </span>
             <Link
-              href={`/enroll?company=${slug}`}
+              href={enrollHref}
               className="rounded-md bg-[var(--bank-accent)] px-3.5 py-2 text-sm font-medium text-white hover:opacity-90 dark:text-[var(--bank-bg)]"
             >
               Enroll →
@@ -138,6 +143,22 @@ export default async function MockRhoDashboard({ params, searchParams }: Props) 
             {new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(company.meta.anchor))}
           </p>
         </div>
+
+        {tokenOnly && (
+          <section aria-labelledby="api-access" className="flex flex-col gap-3 rounded-lg border border-[var(--bank-line)] bg-[var(--bank-surface)] p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 id="api-access" className="text-sm font-semibold">API access</h2>
+              <p className="mt-1 max-w-xl text-xs leading-5 text-[var(--bank-muted)]">
+                Read-only token for this simulated ledger. Paste it into Rho Receipts under{" "}
+                <span className="font-medium text-[var(--bank-ink)]">Connect with a token</span> to enroll, as a
+                real company would.
+              </p>
+            </div>
+            <code className="figures select-all break-all rounded-md border border-[var(--bank-line)] bg-[var(--bank-bg)] px-3 py-2 text-xs">
+              {company.meta.mock_token}
+            </code>
+          </section>
+        )}
 
         {/* ---------------------------------------------------- accounts */}
         <section aria-labelledby="accounts" className="flex flex-col gap-3">
