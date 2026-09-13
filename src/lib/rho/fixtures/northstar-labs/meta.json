@@ -1,0 +1,28 @@
+{
+  "generator": "scripts/generate-rho-fixtures.ts",
+  "seed": 20260912,
+  "anchor": "2026-09-12T00:00:00.000Z",
+  "company": "Northstar Labs, Inc.",
+  "slug": "northstar-labs",
+  "short_name": "Northstar Labs",
+  "description": "Operations analytics for mid-market logistics and healthcare teams.",
+  "mock_token": "rhobat_mock_northstar_labs_dev_token",
+  "period": {
+    "first_month": "2025-04",
+    "last_month": "2026-09"
+  },
+  "counts": {
+    "accounts": 5,
+    "transactions": 674,
+    "cards": 4,
+    "customers": 15,
+    "invoices": 152
+  },
+  "opening_balances": {
+    "acc_checking_main": 18492000,
+    "acc_savings_reserve": 5000000,
+    "acc_treasury_mmf": 0,
+    "acc_credit_card": 0,
+    "acc_rewards": 0
+  }
+}

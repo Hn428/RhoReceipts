@@ -1,0 +1,518 @@
+/**
+ * Issuing and loading receipts.
+ *
+ * Issuing runs the full pipeline — ledger rows, classification, metrics — and
+ * freezes the result as a JSON snapshot. The private receipt page renders only from
+ * that snapshot. It performs no arithmetic and reads no live ledger rows, so
+ * what an investor audits is exactly what was issued.
+ */
+
+import "server-only";
+
+import { randomBytes } from "node:crypto";
+
+import { and, desc, eq } from "drizzle-orm";
+
+import { classifyLedger, type Attribution, type CashClass } from "@/lib/classify";
+import { getDb } from "@/lib/db";
+import {
+  receipts,
+  rhoAccounts,
+  rhoCustomers,
+  rhoInvoices,
+  rhoTransactions,
+  users,
+} from "@/lib/db/schema";
+import { getOwnedConnection } from "@/lib/ingest/sync";
+import {
+  buildReceipt,
+  type CustomerRevenue,
+  type ExcludedGroup,
+  type MetricValue,
+  type RelatedParty,
+} from "@/lib/metrics";
+import { abs, add, money, type Money } from "@/lib/money";
+import { formatPeriod, parsePeriodKey, periodForInstant } from "@/lib/period";
+import { companyByName } from "@/lib/rho/mock/store";
+import { cachedCustomerResearch, cachedVendorResearch } from "@/lib/research";
+import { summarizeCoverage, type ResearchCoverage } from "@/lib/research/coverage";
+import type { CustomerResearch } from "@/lib/research/customer";
+import type { VendorResearch } from "@/lib/research/vendor";
+
+/** Bump when classification or metric rules change in a way that moves numbers. */
+export const ENGINE_VERSION = "2026.09.3";
+
+const CASH_ACCOUNT_TYPES = new Set(["checking", "savings", "investment"]);
+
+export interface SnapshotTransaction {
+  id: string;
+  postedAt: string | null;
+  initiatedAt: string;
+  counterparty: string;
+  memo: string | null;
+  accountName: string;
+  type: string;
+  status: string;
+  amount: Money;
+  cashClass: CashClass;
+  attribution: Attribution;
+  customerName: string | null;
+  invoiceNumber: string | null;
+  relatedParty: boolean;
+  coversMonths: number;
+  reason: string;
+}
+
+export interface ReceiptSnapshot {
+  version: 1;
+  companyName: string;
+  profile?: { description: string; logoUrl: string | null };
+  /** Issued from the synthetic fixture company rather than a real bank. */
+  isDemo: boolean;
+  asOf: string;
+  engineVersion: string;
+  reportingPeriod: { key: string; label: string };
+  previousPeriod: { key: string; label: string; revenue: Money } | null;
+  source: {
+    accounts: {
+      name: string;
+      type: string;
+      last4: string | null;
+      balance: Money;
+      isCash: boolean;
+    }[];
+    transactionCount: number;
+    invoiceCount: number;
+    customerCount: number;
+  };
+  metrics: {
+    mrr: MetricValue<Money>;
+    arr: MetricValue<Money>;
+    netBurn: MetricValue<Money>;
+    cashOnHand: MetricValue<Money>;
+    runwayMonths: MetricValue<number | null>;
+    growthRate: MetricValue<number | null>;
+    /** Absent on receipts issued before engine 2026.09.3. */
+    growth3Month?: MetricValue<number | null>;
+    concentration: MetricValue<{
+      topCustomerShare: number | null;
+      topCustomerName: string | null;
+      topFiveShare: number | null;
+      customers: (CustomerRevenue & { share: number | null })[];
+    }>;
+  };
+  /** Absent on receipts issued before engine 2026.09.2. */
+  prepaymentsInPeriod?: MetricValue<Money>;
+  operatingIn: Money;
+  operatingOut: Money;
+  averageMonthlyBurn: Money;
+  trailingBurn: {
+    periodKey: string;
+    label: string;
+    netBurn: Money;
+    transactionIds: string[];
+  }[];
+  /** Revenue for the reporting month, broken down by customer. */
+  mrrCustomers: CustomerRevenue[];
+  /** Absent on receipts issued before external research was introduced. */
+  customerResearch?: Record<string, CustomerResearch>;
+  /**
+   * A sample company whose customers are real businesses used for illustration:
+   * research on them ran live, but the ledger and the relationships are invented.
+   */
+  illustrativeCustomers?: boolean;
+  /** Share of this month's revenue by research status. Absent before multi-signal research. */
+  researchCoverage?: ResearchCoverage;
+  /** The largest vendors in the burn months, with a live web check. Absent before vendor research. */
+  vendors?: VendorLine[];
+  /** Up to twelve months of recognised revenue, oldest first. */
+  revenueHistory: { periodKey: string; label: string; revenue: Money }[];
+  excluded: ExcludedGroup[];
+  relatedParties: RelatedParty[];
+  /** Every transaction referenced anywhere above, keyed by Rho id. */
+  transactions: Record<string, SnapshotTransaction>;
+}
+
+export interface VendorLine {
+  name: string;
+  /** Spend across the burn months, from checking and cards, as a positive amount. */
+  spend: Money;
+  transactionIds: string[];
+  research: VendorResearch;
+}
+
+const VENDORS_RESEARCHED = 8;
+
+/**
+ * How many customers or vendors are researched at once. One customer is four
+ * Tavily calls (~0.2s each) and a model call (~6s), so the model sets the pace.
+ * Eight keeps bursts well inside Tavily's and OpenAI's per-minute limits while
+ * most receipts research every customer in a single round.
+ */
+const RESEARCH_CONCURRENCY = 8;
+
+/**
+ * Runs `task` over `items`, at most `limit` at a time. Unlike fixed batches, a
+ * slot is refilled as soon as it frees up, so one slow call doesn't hold back
+ * the items queued behind it.
+ */
+async function inPool<T>(items: readonly T[], limit: number, task: (item: T) => Promise<void>): Promise<void> {
+  let next = 0;
+  const worker = async () => {
+    while (next < items.length) await task(items[next++]);
+  };
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
+}
+
+export class ReceiptError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "ReceiptError";
+  }
+}
+
+const label = (key: string) => formatPeriod(parsePeriodKey(key));
+
+/** "Northstar Labs (mock)" → "Northstar Labs". */
+export const companyNameFrom = (connectionLabel: string) =>
+  connectionLabel.replace(/\s*\(mock\)\s*$/i, "").trim();
+
+/**
+ * Loads an owned connection's imported ledger and classifies it.
+ *
+ * Enrollment and issuing both go through here, so the counts a founder reviews
+ * before generating a receipt are computed from exactly the rows the receipt
+ * will be built from.
+ */
+export async function loadClassifiedLedger(connectionId: string, ownerId: string) {
+  const db = getDb();
+  const connection = await getOwnedConnection(connectionId, ownerId, db);
+  if (!connection) throw new ReceiptError("Connection not found.");
+
+  const [accountRows, transactionRows, invoiceRows, customerRows] =
+    await Promise.all([
+      db.select().from(rhoAccounts).where(eq(rhoAccounts.connectionId, connection.id)).orderBy(rhoAccounts.rhoAccountId),
+      db
+        .select()
+        .from(rhoTransactions)
+        .where(eq(rhoTransactions.connectionId, connection.id))
+        .orderBy(rhoTransactions.rhoTransactionId, rhoTransactions.rhoAccountId),
+      db.select().from(rhoInvoices).where(eq(rhoInvoices.connectionId, connection.id)).orderBy(rhoInvoices.rhoInvoiceId),
+      db.select().from(rhoCustomers).where(eq(rhoCustomers.connectionId, connection.id)).orderBy(rhoCustomers.rhoCustomerId),
+    ]);
+
+  if (transactionRows.length === 0) {
+    throw new ReceiptError(
+      "No transactions have been imported for this account yet.",
+    );
+  }
+
+  // Stored payloads are the Rho wire objects verbatim, so the pipeline runs
+  // on exactly what the bank returned.
+  const accounts = accountRows.map((row) => row.payload);
+  const invoices = invoiceRows.map((row) => row.payload);
+  const classified = classifyLedger({
+    accounts,
+    transactions: transactionRows.map((row) => row.payload),
+    invoices,
+    customers: customerRows.map((row) => row.payload),
+  });
+
+  return { db, connection, accounts, invoices, transactionRows, invoiceRows, customerRows, ...classified };
+}
+
+export interface EnrollmentSummary {
+  connectionId: string;
+  companyName: string;
+  isDemo: boolean;
+  accountCount: number;
+  transactionCount: number;
+  firstTransactionAt: string | null;
+  lastTransactionAt: string | null;
+  /** Distinct customers whose payments count as revenue. */
+  customersIdentified: number;
+  /** Of those, how many are confirmed by a Rho invoice. */
+  customersInvoiced: number;
+  /** Bank rows linked to a paid invoice. */
+  paymentsMatchedToInvoices: number;
+  lastSyncedAt: Date | null;
+}
+
+/** What the founder reviews before choosing to generate a receipt. */
+export async function enrollmentSummary(
+  connectionId: string,
+  ownerId: string,
+): Promise<EnrollmentSummary> {
+  const ledger = await loadClassifiedLedger(connectionId, ownerId);
+  const revenue = ledger.classifications.filter(
+    (c) => c.countsAsRevenue && c.amount.minor > 0 && c.customerId,
+  );
+  const customers = new Set(revenue.map((c) => c.customerId));
+  const invoiced = new Set(
+    revenue.filter((c) => c.attribution === "invoice").map((c) => c.customerId),
+  );
+  const dates = ledger.transactionRows
+    .map((row) => row.payload.initiated_at)
+    .sort();
+
+  return {
+    connectionId: ledger.connection.id,
+    companyName: companyNameFrom(ledger.connection.label),
+    isDemo: ledger.connection.baseUrl.includes("/api/mock/rho/"),
+    accountCount: ledger.accounts.length,
+    transactionCount: ledger.transactionRows.length,
+    firstTransactionAt: dates[0] ?? null,
+    lastTransactionAt: dates.at(-1) ?? null,
+    customersIdentified: customers.size,
+    customersInvoiced: invoiced.size,
+    paymentsMatchedToInvoices: ledger.classifications.filter((c) => c.attribution === "invoice").length,
+    lastSyncedAt: ledger.connection.lastSyncedAt,
+  };
+}
+
+export async function issueReceipt(options: {
+  connectionId: string;
+  ownerId: string;
+  asOf?: Date;
+}): Promise<{ slug: string }> {
+  const {
+    db,
+    connection,
+    accounts,
+    transactionRows,
+    invoiceRows,
+    customerRows,
+    classifications,
+    byTransactionId,
+  } = await loadClassifiedLedger(options.connectionId, options.ownerId);
+
+  const currency = accounts[0]?.balance.currency ?? "USD";
+  const asOf = options.asOf ?? new Date();
+  const cashAccounts = accounts.filter((a) => CASH_ACCOUNT_TYPES.has(a.account_type));
+
+  const receipt = buildReceipt({
+    classifications,
+    cashBalances: cashAccounts.map((a) => money(a.balance.amount, a.balance.currency)),
+    asOf,
+    currency,
+  });
+
+  const reportingMonth = receipt.monthlyRevenue.find(
+    (m) => m.periodKey === receipt.reportingPeriod.key,
+  );
+  const previousIndex = receipt.monthlyRevenue.findIndex(
+    (m) => m.periodKey === receipt.reportingPeriod.key,
+  );
+  const previousMonth =
+    previousIndex > 0 ? receipt.monthlyRevenue[previousIndex - 1] : null;
+
+  const payloadById = new Map(transactionRows.map((row) => [row.payload.id, row.payload]));
+  const transactions: Record<string, SnapshotTransaction> = {};
+  for (const item of classifications) {
+    const raw = payloadById.get(item.rhoTransactionId);
+    if (!raw) continue;
+    transactions[item.rhoTransactionId] = {
+      id: raw.id,
+      postedAt: raw.posted_at,
+      initiatedAt: raw.initiated_at,
+      counterparty: raw.counterparty_name,
+      memo: raw.memo,
+      accountName: raw.account_name,
+      type: raw.transaction_type,
+      status: raw.status,
+      amount: item.amount,
+      cashClass: item.cashClass,
+      attribution: item.attribution,
+      customerName: item.customerName,
+      invoiceNumber: item.invoiceNumber,
+      relatedParty: item.relatedParty,
+      coversMonths: item.coversMonths,
+      reason: byTransactionId.get(item.rhoTransactionId)?.reason ?? item.reason,
+    };
+  }
+
+  const companyName = companyNameFrom(connection.label);
+  const isDemo = connection.baseUrl.includes("/api/mock/rho/");
+  // Some sample companies bill real businesses, so their customers can be researched
+  // live. The rest have fictional customers, whose research must be simulated.
+  const illustrativeCustomers = isDemo && Boolean(companyByName(connection.label)?.meta.real_customers);
+  const simulateResearch = isDemo && !illustrativeCustomers;
+
+  // ----------------------------------------------------------- research
+  // Everyone behind this month's revenue, the five largest over twelve months,
+  // and anyone with an overdue invoice: the customers an investor asks about.
+  const overdueCustomerIds = new Set(
+    invoiceRows
+      .filter((row) => !["paid", "cancelled"].includes(row.status) && row.dueAt && row.dueAt < asOf)
+      .map((row) => row.rhoCustomerId),
+  );
+  const researchIds = [...new Set([
+    ...(reportingMonth?.byCustomer ?? []).map((c) => c.customerId),
+    ...receipt.concentration.value.customers.slice(0, 5).map((c) => c.customerId),
+    ...overdueCustomerIds,
+  ])].filter((id): id is string => Boolean(id));
+
+  const [owner] = await db.select({ email: users.email }).from(users).where(eq(users.id, options.ownerId)).limit(1);
+  const founderDomain = owner?.email?.split("@")[1] ?? null;
+  const invoicedCustomerIds = new Set(
+    classifications.filter((c) => c.attribution === "invoice" && c.customerId).map((c) => c.customerId),
+  );
+
+  const customerResearch: Record<string, CustomerResearch> = {};
+  const researchCustomers = () => inPool(researchIds, RESEARCH_CONCURRENCY, async (customerId) => {
+    const row = customerRows.find((r) => r.rhoCustomerId === customerId);
+    if (!row) return;
+    customerResearch[customerId] = await cachedCustomerResearch(connection.id, {
+      name: row.legalName,
+      domain: row.emailDomain,
+      relatedParty: classifications.some((item) => item.customerId === customerId && item.relatedParty),
+      isDemo: simulateResearch,
+      founderDomain,
+      invoiced: invoicedCustomerIds.has(customerId),
+      overdueInvoice: overdueCustomerIds.has(customerId),
+    });
+  });
+
+  // The largest vendors behind the burn months, checked live on the web. Card
+  // purchases count too: they're outside cash burn until the bill is paid, but
+  // they're where much of the money actually goes.
+  const burnIds = new Set(receipt.trailingBurn.flatMap((month) => month.transactionIds));
+  const burnMonths = new Set(receipt.trailingBurn.map((month) => month.periodKey));
+  const cardAccountIds = new Set(accounts.filter((a) => a.account_type === "credit").map((a) => a.id));
+  const spendByVendor = new Map<string, { name: string; spend: Money; transactionIds: string[] }>();
+  for (const item of classifications) {
+    if (item.amount.minor >= 0) continue;
+    const cashSpend = burnIds.has(item.rhoTransactionId) && item.cashClass === "operating_expense";
+    const cardSpend = item.cashClass === "non_cash" && cardAccountIds.has(item.accountId) &&
+      item.postedAt !== null && burnMonths.has(periodForInstant(item.postedAt).key);
+    if (!cashSpend && !cardSpend) continue;
+    const name = payloadById.get(item.rhoTransactionId)?.counterparty_name?.trim();
+    // The bank itself (fees, card settlement) isn't a vendor worth checking.
+    if (!name || /^rho\b/i.test(name)) continue;
+    const vendor = spendByVendor.get(name) ?? { name, spend: money(0, currency), transactionIds: [] };
+    vendor.spend = add(vendor.spend, abs(item.amount));
+    vendor.transactionIds.push(item.rhoTransactionId);
+    spendByVendor.set(name, vendor);
+  }
+  const largestVendors = [...spendByVendor.values()]
+    .sort((a, b) => b.spend.minor - a.spend.minor || a.name.localeCompare(b.name))
+    .slice(0, VENDORS_RESEARCHED);
+  const vendorResearch = new Map<string, VendorResearch>();
+  const researchVendors = () => inPool(largestVendors, RESEARCH_CONCURRENCY, async (vendor) => {
+    vendorResearch.set(vendor.name, await cachedVendorResearch(connection.id, vendor.name));
+  });
+
+  // Customers and vendors are independent, so they're researched at the same time.
+  await Promise.all([researchCustomers(), researchVendors()]);
+  const researchCoverage = summarizeCoverage(reportingMonth?.byCustomer ?? [], customerResearch, currency);
+  const vendors: VendorLine[] = largestVendors.map((vendor) => ({ ...vendor, research: vendorResearch.get(vendor.name)! }));
+
+  const snapshot: ReceiptSnapshot = {
+    version: 1,
+    companyName,
+    isDemo: connection.baseUrl.includes("/api/mock/rho/"),
+    asOf: asOf.toISOString(),
+    engineVersion: ENGINE_VERSION,
+    reportingPeriod: {
+      key: receipt.reportingPeriod.key,
+      label: label(receipt.reportingPeriod.key),
+    },
+    previousPeriod: previousMonth
+      ? {
+          key: previousMonth.periodKey,
+          label: label(previousMonth.periodKey),
+          revenue: previousMonth.revenue,
+        }
+      : null,
+    source: {
+      accounts: accounts.map((a) => ({
+        name: a.account_name ?? a.account_type,
+        type: a.account_type,
+        last4: a.account_number_last_4 ?? null,
+        balance: money(a.balance.amount, a.balance.currency),
+        isCash: CASH_ACCOUNT_TYPES.has(a.account_type),
+      })),
+      transactionCount: transactionRows.length,
+      invoiceCount: invoiceRows.length,
+      customerCount: customerRows.length,
+    },
+    metrics: {
+      mrr: receipt.mrr,
+      arr: receipt.arr,
+      netBurn: receipt.netBurn,
+      cashOnHand: receipt.cashOnHand,
+      runwayMonths: receipt.runwayMonths,
+      growthRate: receipt.growthRate,
+      growth3Month: receipt.growth3Month,
+      concentration: receipt.concentration,
+    },
+    prepaymentsInPeriod: receipt.prepaymentsInPeriod,
+    operatingIn: receipt.operatingIn,
+    operatingOut: receipt.operatingOut,
+    averageMonthlyBurn: receipt.averageMonthlyBurn,
+    trailingBurn: receipt.trailingBurn.map((m) => ({ ...m, label: label(m.periodKey) })),
+    mrrCustomers: reportingMonth?.byCustomer ?? [],
+    customerResearch,
+    ...(illustrativeCustomers ? { illustrativeCustomers: true } : {}),
+    researchCoverage,
+    vendors,
+    revenueHistory: receipt.monthlyRevenue.slice(-12).map((m) => ({
+      periodKey: m.periodKey,
+      label: label(m.periodKey),
+      revenue: m.revenue,
+    })),
+    excluded: receipt.excluded,
+    relatedParties: receipt.relatedParties,
+    transactions,
+  };
+
+  const slug = randomBytes(9).toString("base64url");
+  await db.insert(receipts).values({
+    slug,
+    ownerId: options.ownerId,
+    connectionId: connection.id,
+    companyName,
+    asOf,
+    engineVersion: ENGINE_VERSION,
+    snapshot,
+  });
+
+  return { slug };
+}
+
+export async function getReceiptBySlug(slug: string) {
+  // Slugs are 12 base64url characters; reject anything else before querying.
+  if (!/^[A-Za-z0-9_-]{12}$/.test(slug)) return null;
+  const [row] = await getDb()
+    .select()
+    .from(receipts)
+    .where(eq(receipts.slug, slug))
+    .limit(1);
+  if (!row) return null;
+  return { ...row, snapshot: row.snapshot as ReceiptSnapshot };
+}
+
+export async function latestReceiptFor(connectionId: string, ownerId: string) {
+  const [row] = await getDb()
+    .select({ slug: receipts.slug, asOf: receipts.asOf, createdAt: receipts.createdAt })
+    .from(receipts)
+    .where(and(eq(receipts.connectionId, connectionId), eq(receipts.ownerId, ownerId)))
+    .orderBy(desc(receipts.createdAt))
+    .limit(1);
+  return row ?? null;
+}
+
+/** Every immutable receipt issued for the founder's single company, newest first. */
+export async function receiptsFor(connectionId: string, ownerId: string) {
+  return getDb()
+    .select({
+      slug: receipts.slug,
+      companyName: receipts.companyName,
+      asOf: receipts.asOf,
+      engineVersion: receipts.engineVersion,
+      createdAt: receipts.createdAt,
+    })
+    .from(receipts)
+    .where(and(eq(receipts.connectionId, connectionId), eq(receipts.ownerId, ownerId)))
+    .orderBy(desc(receipts.createdAt));
+}

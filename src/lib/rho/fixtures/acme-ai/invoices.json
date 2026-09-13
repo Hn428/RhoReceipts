@@ -1,0 +1,3865 @@
+[
+  {
+    "id": "inv_00001",
+    "invoice_number": "AC-1001",
+    "status": "paid",
+    "date": "2025-08-02T15:05:00.000Z",
+    "due_date": "2025-09-01T15:05:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-08-06T15:05:00.000Z",
+        "transaction_id": "txn_000101"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-08-02T15:05:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-08-03T15:05:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-08-06T15:05:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00001",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-08-07T15:05:00.000Z",
+    "created_at": "2025-08-02T15:05:00.000Z",
+    "updated_at": "2025-08-06T15:05:00.000Z"
+  },
+  {
+    "id": "inv_00002",
+    "invoice_number": "AC-1002",
+    "status": "paid",
+    "date": "2025-08-29T15:05:00.000Z",
+    "due_date": "2025-09-28T15:05:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-09-06T15:05:00.000Z",
+        "transaction_id": "txn_000128"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-08-29T15:05:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-08-30T15:05:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-09-06T15:05:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00002",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-09-07T15:05:00.000Z",
+    "created_at": "2025-08-29T15:05:00.000Z",
+    "updated_at": "2025-09-06T15:05:00.000Z"
+  },
+  {
+    "id": "inv_00003",
+    "invoice_number": "AC-1003",
+    "status": "paid",
+    "date": "2025-09-24T15:33:00.000Z",
+    "due_date": "2025-10-24T15:33:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0101"
+    },
+    "total": {
+      "amount": 900000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 900000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 900000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-10-04T15:33:00.000Z",
+        "transaction_id": "txn_000156"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-09-24T15:33:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-09-25T15:33:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@tessellatehealth.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-10-04T15:33:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00003",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-10-05T15:33:00.000Z",
+    "created_at": "2025-09-24T15:33:00.000Z",
+    "updated_at": "2025-10-04T15:33:00.000Z"
+  },
+  {
+    "id": "inv_00004",
+    "invoice_number": "AC-1004",
+    "status": "paid",
+    "date": "2025-09-26T15:26:00.000Z",
+    "due_date": "2025-10-26T15:26:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-10-06T15:26:00.000Z",
+        "transaction_id": "txn_000157"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-09-26T15:26:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-09-27T15:26:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-10-06T15:26:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00004",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-10-07T15:26:00.000Z",
+    "created_at": "2025-09-26T15:26:00.000Z",
+    "updated_at": "2025-10-06T15:26:00.000Z"
+  },
+  {
+    "id": "inv_00005",
+    "invoice_number": "AC-1005",
+    "status": "paid",
+    "date": "2025-10-30T15:58:00.000Z",
+    "due_date": "2025-11-29T15:58:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0101"
+    },
+    "total": {
+      "amount": 900000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 900000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 900000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-11-04T15:58:00.000Z",
+        "transaction_id": "txn_000182"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-10-30T15:58:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-10-31T15:58:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@tessellatehealth.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-11-04T15:58:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00005",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-11-05T15:58:00.000Z",
+    "created_at": "2025-10-30T15:58:00.000Z",
+    "updated_at": "2025-11-04T15:58:00.000Z"
+  },
+  {
+    "id": "inv_00006",
+    "invoice_number": "AC-1006",
+    "status": "paid",
+    "date": "2025-10-31T15:37:00.000Z",
+    "due_date": "2025-11-30T15:37:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-11-06T15:37:00.000Z",
+        "transaction_id": "txn_000183"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-10-31T15:37:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-01T15:37:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-11-06T15:37:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00006",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-11-07T15:37:00.000Z",
+    "created_at": "2025-10-31T15:37:00.000Z",
+    "updated_at": "2025-11-06T15:37:00.000Z"
+  },
+  {
+    "id": "inv_00007",
+    "invoice_number": "AC-1007",
+    "status": "paid",
+    "date": "2025-11-09T15:17:00.000Z",
+    "due_date": "2025-12-09T15:17:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0105"
+    },
+    "total": {
+      "amount": 200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-11-14T15:17:00.000Z",
+        "transaction_id": "txn_000184"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-11-09T15:17:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-10T15:17:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "accounts@fernhillstudios.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-11-14T15:17:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00007",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-11-15T15:17:00.000Z",
+    "created_at": "2025-11-09T15:17:00.000Z",
+    "updated_at": "2025-11-14T15:17:00.000Z"
+  },
+  {
+    "id": "inv_00008",
+    "invoice_number": "AC-1008",
+    "status": "paid",
+    "date": "2025-11-25T15:29:00.000Z",
+    "due_date": "2025-12-25T15:29:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0101"
+    },
+    "total": {
+      "amount": 900000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 900000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 900000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-04T15:29:00.000Z",
+        "transaction_id": "txn_000210"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-11-25T15:29:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-26T15:29:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@tessellatehealth.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-04T15:29:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00008",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-05T15:29:00.000Z",
+    "created_at": "2025-11-25T15:29:00.000Z",
+    "updated_at": "2025-12-04T15:29:00.000Z"
+  },
+  {
+    "id": "inv_00009",
+    "invoice_number": "AC-1009",
+    "status": "paid",
+    "date": "2025-11-28T15:32:00.000Z",
+    "due_date": "2025-12-28T15:32:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-06T15:32:00.000Z",
+        "transaction_id": "txn_000211"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-11-28T15:32:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-11-29T15:32:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-06T15:32:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00009",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-07T15:32:00.000Z",
+    "created_at": "2025-11-28T15:32:00.000Z",
+    "updated_at": "2025-12-06T15:32:00.000Z"
+  },
+  {
+    "id": "inv_00010",
+    "invoice_number": "AC-1010",
+    "status": "paid",
+    "date": "2025-12-03T15:19:00.000Z",
+    "due_date": "2026-01-02T15:19:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0103"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-08T15:19:00.000Z",
+        "transaction_id": "txn_000212"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-03T15:19:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-12-04T15:19:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@parlourcommerce.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-08T15:19:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00010",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-09T15:19:00.000Z",
+    "created_at": "2025-12-03T15:19:00.000Z",
+    "updated_at": "2025-12-08T15:19:00.000Z"
+  },
+  {
+    "id": "inv_00011",
+    "invoice_number": "AC-1011",
+    "status": "paid",
+    "date": "2025-12-10T15:46:00.000Z",
+    "due_date": "2026-01-09T15:46:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0105"
+    },
+    "total": {
+      "amount": 200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2025-12-13T15:46:00.000Z",
+        "transaction_id": "txn_000213"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-10T15:46:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-12-11T15:46:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "accounts@fernhillstudios.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2025-12-13T15:46:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00011",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2025-12-14T15:46:00.000Z",
+    "created_at": "2025-12-10T15:46:00.000Z",
+    "updated_at": "2025-12-13T15:46:00.000Z"
+  },
+  {
+    "id": "inv_00012",
+    "invoice_number": "AC-1012",
+    "status": "paid",
+    "date": "2025-12-31T15:00:00.000Z",
+    "due_date": "2026-01-30T15:00:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-06T15:00:00.000Z",
+        "transaction_id": "txn_000242"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-31T15:00:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-01T15:00:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-06T15:00:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00012",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-07T15:00:00.000Z",
+    "created_at": "2025-12-31T15:00:00.000Z",
+    "updated_at": "2026-01-06T15:00:00.000Z"
+  },
+  {
+    "id": "inv_00013",
+    "invoice_number": "AC-1013",
+    "status": "paid",
+    "date": "2025-12-28T15:31:00.000Z",
+    "due_date": "2026-01-27T15:31:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0101"
+    },
+    "total": {
+      "amount": 900000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 900000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 900000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-07T15:31:00.000Z",
+        "transaction_id": "txn_000241"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2025-12-28T15:31:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2025-12-29T15:31:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@tessellatehealth.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-07T15:31:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00013",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-08T15:31:00.000Z",
+    "created_at": "2025-12-28T15:31:00.000Z",
+    "updated_at": "2026-01-07T15:31:00.000Z"
+  },
+  {
+    "id": "inv_00014",
+    "invoice_number": "AC-1014",
+    "status": "paid",
+    "date": "2026-01-04T15:56:00.000Z",
+    "due_date": "2026-02-03T15:56:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0103"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-08T15:56:00.000Z",
+        "transaction_id": "txn_000243"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-04T15:56:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-05T15:56:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@parlourcommerce.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-08T15:56:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00014",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-09T15:56:00.000Z",
+    "created_at": "2026-01-04T15:56:00.000Z",
+    "updated_at": "2026-01-08T15:56:00.000Z"
+  },
+  {
+    "id": "inv_00015",
+    "invoice_number": "AC-1015",
+    "status": "paid",
+    "date": "2026-01-03T15:07:00.000Z",
+    "due_date": "2026-02-02T15:07:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0105"
+    },
+    "total": {
+      "amount": 200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-01-13T15:07:00.000Z",
+        "transaction_id": "txn_000244"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-03T15:07:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-04T15:07:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "accounts@fernhillstudios.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-01-13T15:07:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00015",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-01-14T15:07:00.000Z",
+    "created_at": "2026-01-03T15:07:00.000Z",
+    "updated_at": "2026-01-13T15:07:00.000Z"
+  },
+  {
+    "id": "inv_00016",
+    "invoice_number": "AC-1016",
+    "status": "paid",
+    "date": "2026-01-28T15:15:00.000Z",
+    "due_date": "2026-02-27T15:15:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0101"
+    },
+    "total": {
+      "amount": 900000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 900000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 900000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-04T15:15:00.000Z",
+        "transaction_id": "txn_000271"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-28T15:15:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-29T15:15:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@tessellatehealth.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-04T15:15:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00016",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-05T15:15:00.000Z",
+    "created_at": "2026-01-28T15:15:00.000Z",
+    "updated_at": "2026-02-04T15:15:00.000Z"
+  },
+  {
+    "id": "inv_00017",
+    "invoice_number": "AC-1017",
+    "status": "paid",
+    "date": "2026-01-28T15:49:00.000Z",
+    "due_date": "2026-02-27T15:49:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-06T15:49:00.000Z",
+        "transaction_id": "txn_000272"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-28T15:49:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-29T15:49:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-06T15:49:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00017",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-07T15:49:00.000Z",
+    "created_at": "2026-01-28T15:49:00.000Z",
+    "updated_at": "2026-02-06T15:49:00.000Z"
+  },
+  {
+    "id": "inv_00018",
+    "invoice_number": "AC-1018",
+    "status": "paid",
+    "date": "2026-01-30T15:25:00.000Z",
+    "due_date": "2026-03-01T15:25:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0103"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-08T15:25:00.000Z",
+        "transaction_id": "txn_000273"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-01-30T15:25:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-01-31T15:25:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@parlourcommerce.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-08T15:25:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00018",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-09T15:25:00.000Z",
+    "created_at": "2026-01-30T15:25:00.000Z",
+    "updated_at": "2026-02-08T15:25:00.000Z"
+  },
+  {
+    "id": "inv_00019",
+    "invoice_number": "AC-1019",
+    "status": "paid",
+    "date": "2026-02-07T15:46:00.000Z",
+    "due_date": "2026-03-09T15:46:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0105"
+    },
+    "total": {
+      "amount": 200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-14T15:46:00.000Z",
+        "transaction_id": "txn_000275"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-07T15:46:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-02-08T15:46:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "accounts@fernhillstudios.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-14T15:46:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00019",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-15T15:46:00.000Z",
+    "created_at": "2026-02-07T15:46:00.000Z",
+    "updated_at": "2026-02-14T15:46:00.000Z"
+  },
+  {
+    "id": "inv_00020",
+    "invoice_number": "AC-1020",
+    "status": "paid",
+    "date": "2026-02-18T15:22:00.000Z",
+    "due_date": "2026-03-20T15:22:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0104"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-02-27T15:22:00.000Z",
+        "transaction_id": "txn_000274"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-18T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-02-19T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@driftwoodlogistics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-02-27T15:22:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00020",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-02-28T15:22:00.000Z",
+    "created_at": "2026-02-18T15:22:00.000Z",
+    "updated_at": "2026-02-27T15:22:00.000Z"
+  },
+  {
+    "id": "inv_00021",
+    "invoice_number": "AC-1021",
+    "status": "paid",
+    "date": "2026-02-23T15:50:00.000Z",
+    "due_date": "2026-03-25T15:50:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0101"
+    },
+    "total": {
+      "amount": 900000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 900000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 900000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-04T15:50:00.000Z",
+        "transaction_id": "txn_000300"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-23T15:50:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-02-24T15:50:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@tessellatehealth.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-04T15:50:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00021",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-05T15:50:00.000Z",
+    "created_at": "2026-02-23T15:50:00.000Z",
+    "updated_at": "2026-03-04T15:50:00.000Z"
+  },
+  {
+    "id": "inv_00022",
+    "invoice_number": "AC-1022",
+    "status": "paid",
+    "date": "2026-03-02T15:07:00.000Z",
+    "due_date": "2026-04-01T15:07:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-06T15:07:00.000Z",
+        "transaction_id": "txn_000301"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-02T15:07:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-03T15:07:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-06T15:07:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00022",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-07T15:07:00.000Z",
+    "created_at": "2026-03-02T15:07:00.000Z",
+    "updated_at": "2026-03-06T15:07:00.000Z"
+  },
+  {
+    "id": "inv_00023",
+    "invoice_number": "AC-1023",
+    "status": "paid",
+    "date": "2026-02-26T15:43:00.000Z",
+    "due_date": "2026-03-28T15:43:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0103"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-08T15:43:00.000Z",
+        "transaction_id": "txn_000302"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-02-26T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-02-27T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@parlourcommerce.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-08T15:43:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00023",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-09T15:43:00.000Z",
+    "created_at": "2026-02-26T15:43:00.000Z",
+    "updated_at": "2026-03-08T15:43:00.000Z"
+  },
+  {
+    "id": "inv_00024",
+    "invoice_number": "AC-1024",
+    "status": "paid",
+    "date": "2026-03-04T15:01:00.000Z",
+    "due_date": "2026-04-03T15:01:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0105"
+    },
+    "total": {
+      "amount": 200000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 200000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 200000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-13T15:01:00.000Z",
+        "transaction_id": "txn_000304"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-04T15:01:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-05T15:01:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "accounts@fernhillstudios.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-13T15:01:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00024",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-14T15:01:00.000Z",
+    "created_at": "2026-03-04T15:01:00.000Z",
+    "updated_at": "2026-03-13T15:01:00.000Z"
+  },
+  {
+    "id": "inv_00025",
+    "invoice_number": "AC-1025",
+    "status": "paid",
+    "date": "2026-03-21T15:31:00.000Z",
+    "due_date": "2026-04-20T15:31:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0104"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-03-27T15:31:00.000Z",
+        "transaction_id": "txn_000303"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-21T15:31:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-22T15:31:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@driftwoodlogistics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-03-27T15:31:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00025",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-03-28T15:31:00.000Z",
+    "created_at": "2026-03-21T15:31:00.000Z",
+    "updated_at": "2026-03-27T15:31:00.000Z"
+  },
+  {
+    "id": "inv_00026",
+    "invoice_number": "AC-1026",
+    "status": "paid",
+    "date": "2026-03-30T15:31:00.000Z",
+    "due_date": "2026-04-29T15:31:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0101"
+    },
+    "total": {
+      "amount": 1480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 1480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-04T15:31:00.000Z",
+        "transaction_id": "txn_000332"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-03-30T15:31:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-03-31T15:31:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@tessellatehealth.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-04T15:31:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00026",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-05T15:31:00.000Z",
+    "created_at": "2026-03-30T15:31:00.000Z",
+    "updated_at": "2026-04-04T15:31:00.000Z"
+  },
+  {
+    "id": "inv_00027",
+    "invoice_number": "AC-1027",
+    "status": "paid",
+    "date": "2026-04-01T15:48:00.000Z",
+    "due_date": "2026-05-01T15:48:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-06T15:48:00.000Z",
+        "transaction_id": "txn_000333"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-01T15:48:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-02T15:48:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-06T15:48:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00027",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-07T15:48:00.000Z",
+    "created_at": "2026-04-01T15:48:00.000Z",
+    "updated_at": "2026-04-06T15:48:00.000Z"
+  },
+  {
+    "id": "inv_00028",
+    "invoice_number": "AC-1028",
+    "status": "paid",
+    "date": "2026-04-03T15:25:00.000Z",
+    "due_date": "2026-05-03T15:25:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0103"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-08T15:25:00.000Z",
+        "transaction_id": "txn_000334"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-03T15:25:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-04T15:25:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@parlourcommerce.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-08T15:25:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00028",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-09T15:25:00.000Z",
+    "created_at": "2026-04-03T15:25:00.000Z",
+    "updated_at": "2026-04-08T15:25:00.000Z"
+  },
+  {
+    "id": "inv_00029",
+    "invoice_number": "AC-1029",
+    "status": "paid",
+    "date": "2026-04-21T15:38:00.000Z",
+    "due_date": "2026-05-21T15:38:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0104"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-04-27T15:38:00.000Z",
+        "transaction_id": "txn_000335"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-21T15:38:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-22T15:38:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@driftwoodlogistics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-04-27T15:38:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00029",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-04-28T15:38:00.000Z",
+    "created_at": "2026-04-21T15:38:00.000Z",
+    "updated_at": "2026-04-27T15:38:00.000Z"
+  },
+  {
+    "id": "inv_00030",
+    "invoice_number": "AC-1030",
+    "status": "paid",
+    "date": "2026-04-26T15:48:00.000Z",
+    "due_date": "2026-05-26T15:48:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0101"
+    },
+    "total": {
+      "amount": 1480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 1480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-04T15:48:00.000Z",
+        "transaction_id": "txn_000366"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-26T15:48:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-27T15:48:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@tessellatehealth.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-04T15:48:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00030",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-05T15:48:00.000Z",
+    "created_at": "2026-04-26T15:48:00.000Z",
+    "updated_at": "2026-05-04T15:48:00.000Z"
+  },
+  {
+    "id": "inv_00031",
+    "invoice_number": "AC-1031",
+    "status": "paid",
+    "date": "2026-04-27T15:45:00.000Z",
+    "due_date": "2026-05-27T15:45:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-06T15:45:00.000Z",
+        "transaction_id": "txn_000367"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-27T15:45:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-28T15:45:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-06T15:45:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00031",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-07T15:45:00.000Z",
+    "created_at": "2026-04-27T15:45:00.000Z",
+    "updated_at": "2026-05-06T15:45:00.000Z"
+  },
+  {
+    "id": "inv_00032",
+    "invoice_number": "AC-1032",
+    "status": "paid",
+    "date": "2026-04-29T15:55:00.000Z",
+    "due_date": "2026-05-29T15:55:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0103"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-08T15:55:00.000Z",
+        "transaction_id": "txn_000368"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-04-29T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-04-30T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@parlourcommerce.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-08T15:55:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00032",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-09T15:55:00.000Z",
+    "created_at": "2026-04-29T15:55:00.000Z",
+    "updated_at": "2026-05-08T15:55:00.000Z"
+  },
+  {
+    "id": "inv_00033",
+    "invoice_number": "AC-1033",
+    "status": "paid",
+    "date": "2026-05-19T15:48:00.000Z",
+    "due_date": "2026-06-18T15:48:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0104"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-05-27T15:48:00.000Z",
+        "transaction_id": "txn_000369"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-05-19T15:48:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-05-20T15:48:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@driftwoodlogistics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-05-27T15:48:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00033",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-05-28T15:48:00.000Z",
+    "created_at": "2026-05-19T15:48:00.000Z",
+    "updated_at": "2026-05-27T15:48:00.000Z"
+  },
+  {
+    "id": "inv_00034",
+    "invoice_number": "AC-1034",
+    "status": "paid",
+    "date": "2026-06-01T15:07:00.000Z",
+    "due_date": "2026-07-01T15:07:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0101"
+    },
+    "total": {
+      "amount": 1480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 1480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-05T15:07:00.000Z",
+        "transaction_id": "txn_000398"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-01T15:07:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-02T15:07:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@tessellatehealth.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-05T15:07:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00034",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-06T15:07:00.000Z",
+    "created_at": "2026-06-01T15:07:00.000Z",
+    "updated_at": "2026-06-05T15:07:00.000Z"
+  },
+  {
+    "id": "inv_00035",
+    "invoice_number": "AC-1035",
+    "status": "paid",
+    "date": "2026-05-30T15:49:00.000Z",
+    "due_date": "2026-06-29T15:49:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-06T15:49:00.000Z",
+        "transaction_id": "txn_000399"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-05-30T15:49:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-05-31T15:49:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-06T15:49:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00035",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-07T15:49:00.000Z",
+    "created_at": "2026-05-30T15:49:00.000Z",
+    "updated_at": "2026-06-06T15:49:00.000Z"
+  },
+  {
+    "id": "inv_00036",
+    "invoice_number": "AC-1036",
+    "status": "paid",
+    "date": "2026-06-01T15:24:00.000Z",
+    "due_date": "2026-07-01T15:24:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0103"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-08T15:24:00.000Z",
+        "transaction_id": "txn_000400"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-01T15:24:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-02T15:24:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@parlourcommerce.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-08T15:24:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00036",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-09T15:24:00.000Z",
+    "created_at": "2026-06-01T15:24:00.000Z",
+    "updated_at": "2026-06-08T15:24:00.000Z"
+  },
+  {
+    "id": "inv_00037",
+    "invoice_number": "AC-1037",
+    "status": "paid",
+    "date": "2026-06-08T15:58:00.000Z",
+    "due_date": "2026-07-08T15:58:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0106"
+    },
+    "total": {
+      "amount": 280000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 280000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 280000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-15T15:58:00.000Z",
+        "transaction_id": "txn_000402"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-08T15:58:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-09T15:58:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@saltmarshenergy.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-15T15:58:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00037",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-16T15:58:00.000Z",
+    "created_at": "2026-06-08T15:58:00.000Z",
+    "updated_at": "2026-06-15T15:58:00.000Z"
+  },
+  {
+    "id": "inv_00038",
+    "invoice_number": "AC-1038",
+    "status": "paid",
+    "date": "2026-06-22T15:22:00.000Z",
+    "due_date": "2026-07-22T15:22:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0104"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-06-27T15:22:00.000Z",
+        "transaction_id": "txn_000401"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-22T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-23T15:22:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@driftwoodlogistics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-06-27T15:22:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00038",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-06-28T15:22:00.000Z",
+    "created_at": "2026-06-22T15:22:00.000Z",
+    "updated_at": "2026-06-27T15:22:00.000Z"
+  },
+  {
+    "id": "inv_00039",
+    "invoice_number": "AC-1039",
+    "status": "paid",
+    "date": "2026-06-30T15:52:00.000Z",
+    "due_date": "2026-07-30T15:52:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0101"
+    },
+    "total": {
+      "amount": 1480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 1480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-05T15:52:00.000Z",
+        "transaction_id": "txn_000433"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-30T15:52:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-01T15:52:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@tessellatehealth.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-05T15:52:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00039",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-06T15:52:00.000Z",
+    "created_at": "2026-06-30T15:52:00.000Z",
+    "updated_at": "2026-07-05T15:52:00.000Z"
+  },
+  {
+    "id": "inv_00040",
+    "invoice_number": "AC-1040",
+    "status": "paid",
+    "date": "2026-06-26T15:27:00.000Z",
+    "due_date": "2026-07-26T15:27:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 840000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 840000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 840000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-06T15:27:00.000Z",
+        "transaction_id": "txn_000434"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-26T15:27:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-27T15:27:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-06T15:27:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00040",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-07T15:27:00.000Z",
+    "created_at": "2026-06-26T15:27:00.000Z",
+    "updated_at": "2026-07-06T15:27:00.000Z"
+  },
+  {
+    "id": "inv_00041",
+    "invoice_number": "AC-1041",
+    "status": "paid",
+    "date": "2026-06-29T15:28:00.000Z",
+    "due_date": "2026-07-29T15:28:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0103"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-08T15:28:00.000Z",
+        "transaction_id": "txn_000435"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-06-29T15:28:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-06-30T15:28:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@parlourcommerce.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-08T15:28:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00041",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-09T15:28:00.000Z",
+    "created_at": "2026-06-29T15:28:00.000Z",
+    "updated_at": "2026-07-08T15:28:00.000Z"
+  },
+  {
+    "id": "inv_00042",
+    "invoice_number": "AC-1042",
+    "status": "paid",
+    "date": "2026-07-07T15:52:00.000Z",
+    "due_date": "2026-08-06T15:52:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0106"
+    },
+    "total": {
+      "amount": 280000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 280000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 280000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-15T15:52:00.000Z",
+        "transaction_id": "txn_000437"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-07T15:52:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-08T15:52:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@saltmarshenergy.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-15T15:52:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00042",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-16T15:52:00.000Z",
+    "created_at": "2026-07-07T15:52:00.000Z",
+    "updated_at": "2026-07-15T15:52:00.000Z"
+  },
+  {
+    "id": "inv_00043",
+    "invoice_number": "AC-1043",
+    "status": "paid",
+    "date": "2026-07-12T15:42:00.000Z",
+    "due_date": "2026-08-11T15:42:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0107"
+    },
+    "total": {
+      "amount": 340000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 340000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 340000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-22T15:42:00.000Z",
+        "transaction_id": "txn_000438"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-12T15:42:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-13T15:42:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@copperlineretail.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-22T15:42:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00043",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-23T15:42:00.000Z",
+    "created_at": "2026-07-12T15:42:00.000Z",
+    "updated_at": "2026-07-22T15:42:00.000Z"
+  },
+  {
+    "id": "inv_00044",
+    "invoice_number": "AC-1044",
+    "status": "paid",
+    "date": "2026-07-14T15:55:00.000Z",
+    "due_date": "2026-08-13T15:55:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0108"
+    },
+    "total": {
+      "amount": 260000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 260000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 260000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-22T15:55:00.000Z",
+        "transaction_id": "txn_000439"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-14T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-15T15:55:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@lumenfoldins.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-22T15:55:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00044",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-23T15:55:00.000Z",
+    "created_at": "2026-07-14T15:55:00.000Z",
+    "updated_at": "2026-07-22T15:55:00.000Z"
+  },
+  {
+    "id": "inv_00045",
+    "invoice_number": "AC-1045",
+    "status": "paid",
+    "date": "2026-07-18T15:43:00.000Z",
+    "due_date": "2026-08-17T15:43:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0104"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-07-27T15:43:00.000Z",
+        "transaction_id": "txn_000436"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-18T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-19T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@driftwoodlogistics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-07-27T15:43:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00045",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-28T15:43:00.000Z",
+    "created_at": "2026-07-18T15:43:00.000Z",
+    "updated_at": "2026-07-27T15:43:00.000Z"
+  },
+  {
+    "id": "inv_00046",
+    "invoice_number": "AC-1046",
+    "status": "paid",
+    "date": "2026-07-29T15:54:00.000Z",
+    "due_date": "2026-08-28T15:54:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0101"
+    },
+    "total": {
+      "amount": 1480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 1480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-04T15:54:00.000Z",
+        "transaction_id": "txn_000468"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-29T15:54:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-30T15:54:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@tessellatehealth.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-04T15:54:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00046",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-05T15:54:00.000Z",
+    "created_at": "2026-07-29T15:54:00.000Z",
+    "updated_at": "2026-08-04T15:54:00.000Z"
+  },
+  {
+    "id": "inv_00047",
+    "invoice_number": "AC-1047",
+    "status": "paid",
+    "date": "2026-07-31T15:08:00.000Z",
+    "due_date": "2026-08-30T15:08:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 840000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 840000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 840000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-06T15:08:00.000Z",
+        "transaction_id": "txn_000469"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-31T15:08:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-01T15:08:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-06T15:08:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00047",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-07T15:08:00.000Z",
+    "created_at": "2026-07-31T15:08:00.000Z",
+    "updated_at": "2026-08-06T15:08:00.000Z"
+  },
+  {
+    "id": "inv_00048",
+    "invoice_number": "AC-1048",
+    "status": "paid",
+    "date": "2026-08-04T15:43:00.000Z",
+    "due_date": "2026-09-03T15:43:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0103"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-08T15:43:00.000Z",
+        "transaction_id": "txn_000470"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-04T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-05T15:43:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@parlourcommerce.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-08T15:43:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00048",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-09T15:43:00.000Z",
+    "created_at": "2026-08-04T15:43:00.000Z",
+    "updated_at": "2026-08-08T15:43:00.000Z"
+  },
+  {
+    "id": "inv_00049",
+    "invoice_number": "AC-1049",
+    "status": "paid",
+    "date": "2026-08-05T15:56:00.000Z",
+    "due_date": "2026-09-04T15:56:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0109"
+    },
+    "total": {
+      "amount": 450000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 450000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 450000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-10T15:56:00.000Z",
+        "transaction_id": "txn_000474"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-05T15:56:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-06T15:56:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@kittiwakesystems.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-10T15:56:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00049",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-11T15:56:00.000Z",
+    "created_at": "2026-08-05T15:56:00.000Z",
+    "updated_at": "2026-08-10T15:56:00.000Z"
+  },
+  {
+    "id": "inv_00050",
+    "invoice_number": "AC-1050",
+    "status": "paid",
+    "date": "2026-08-07T15:40:00.000Z",
+    "due_date": "2026-09-06T15:40:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0106"
+    },
+    "total": {
+      "amount": 280000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 280000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 280000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-15T15:40:00.000Z",
+        "transaction_id": "txn_000471"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-07T15:40:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-08T15:40:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@saltmarshenergy.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-15T15:40:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00050",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-16T15:40:00.000Z",
+    "created_at": "2026-08-07T15:40:00.000Z",
+    "updated_at": "2026-08-15T15:40:00.000Z"
+  },
+  {
+    "id": "inv_00051",
+    "invoice_number": "AC-1051",
+    "status": "paid",
+    "date": "2026-08-10T15:13:00.000Z",
+    "due_date": "2026-09-09T15:13:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0107"
+    },
+    "total": {
+      "amount": 340000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 340000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 340000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-19T15:13:00.000Z",
+        "transaction_id": "txn_000472"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-10T15:13:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-11T15:13:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@copperlineretail.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-19T15:13:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00051",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-20T15:13:00.000Z",
+    "created_at": "2026-08-10T15:13:00.000Z",
+    "updated_at": "2026-08-19T15:13:00.000Z"
+  },
+  {
+    "id": "inv_00052",
+    "invoice_number": "AC-1052",
+    "status": "paid",
+    "date": "2026-08-19T15:12:00.000Z",
+    "due_date": "2026-09-18T15:12:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0108"
+    },
+    "total": {
+      "amount": 260000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 260000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 260000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-08-22T15:12:00.000Z",
+        "transaction_id": "txn_000473"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-19T15:12:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-20T15:12:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@lumenfoldins.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-08-22T15:12:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00052",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-08-23T15:12:00.000Z",
+    "created_at": "2026-08-19T15:12:00.000Z",
+    "updated_at": "2026-08-22T15:12:00.000Z"
+  },
+  {
+    "id": "inv_00053",
+    "invoice_number": "AC-1053",
+    "status": "paid",
+    "date": "2026-08-31T15:08:00.000Z",
+    "due_date": "2026-09-30T15:08:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0101"
+    },
+    "total": {
+      "amount": 1480000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 1480000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 1480000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-09-04T15:08:00.000Z",
+        "transaction_id": "txn_000500"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-31T15:08:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-09-01T15:08:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@tessellatehealth.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-09-04T15:08:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00053",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-09-05T15:08:00.000Z",
+    "created_at": "2026-08-31T15:08:00.000Z",
+    "updated_at": "2026-09-04T15:08:00.000Z"
+  },
+  {
+    "id": "inv_00054",
+    "invoice_number": "AC-1054",
+    "status": "paid",
+    "date": "2026-09-02T15:58:00.000Z",
+    "due_date": "2026-10-02T15:58:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0102"
+    },
+    "total": {
+      "amount": 840000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 840000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 840000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-09-06T15:58:00.000Z",
+        "transaction_id": "txn_000501"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-09-02T15:58:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-09-03T15:58:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "finance@halberdgenomics.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-09-06T15:58:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00054",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-09-07T15:58:00.000Z",
+    "created_at": "2026-09-02T15:58:00.000Z",
+    "updated_at": "2026-09-06T15:58:00.000Z"
+  },
+  {
+    "id": "inv_00055",
+    "invoice_number": "AC-1055",
+    "status": "paid",
+    "date": "2026-09-02T15:11:00.000Z",
+    "due_date": "2026-10-02T15:11:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0103"
+    },
+    "total": {
+      "amount": 620000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 620000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 620000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-09-08T15:11:00.000Z",
+        "transaction_id": "txn_000502"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-09-02T15:11:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-09-03T15:11:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "billing@parlourcommerce.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-09-08T15:11:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00055",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-09-09T15:11:00.000Z",
+    "created_at": "2026-09-02T15:11:00.000Z",
+    "updated_at": "2026-09-08T15:11:00.000Z"
+  },
+  {
+    "id": "inv_00056",
+    "invoice_number": "AC-1056",
+    "status": "paid",
+    "date": "2026-08-30T15:24:00.000Z",
+    "due_date": "2026-09-29T15:24:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0109"
+    },
+    "total": {
+      "amount": 450000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 450000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 450000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [
+      {
+        "type": "received_in_account",
+        "external_method": null,
+        "paid_at": "2026-09-09T15:24:00.000Z",
+        "transaction_id": "txn_000503"
+      }
+    ],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-08-30T15:24:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-08-31T15:24:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@kittiwakesystems.com"
+        ]
+      },
+      {
+        "activity_type": "paid",
+        "created_at": "2026-09-09T15:24:00.000Z",
+        "user_id": null,
+        "emails": []
+      }
+    ],
+    "file_id": "file_inv_00056",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-09-10T15:24:00.000Z",
+    "created_at": "2026-08-30T15:24:00.000Z",
+    "updated_at": "2026-09-09T15:24:00.000Z"
+  },
+  {
+    "id": "inv_00057",
+    "invoice_number": "AC-1057",
+    "status": "overdue",
+    "date": "2026-07-26T15:00:00.000Z",
+    "due_date": "2026-08-25T15:00:00.000Z",
+    "note": "Thanks for your business.",
+    "customer": {
+      "id": "cus_0104"
+    },
+    "total": {
+      "amount": 390000,
+      "currency": "USD"
+    },
+    "tax_rate": 0,
+    "discount_rate": 0,
+    "line_items": [
+      {
+        "name": "Acme Extract — Monthly Subscription",
+        "unit_price": {
+          "amount": 390000,
+          "currency": "USD"
+        },
+        "quantity": 1,
+        "discount_rate": null,
+        "tax_rate": null,
+        "total": {
+          "amount": 390000,
+          "currency": "USD"
+        }
+      }
+    ],
+    "payments": [],
+    "activities": [
+      {
+        "activity_type": "created",
+        "created_at": "2026-07-26T15:00:00.000Z",
+        "user_id": "usr_ops",
+        "emails": []
+      },
+      {
+        "activity_type": "sent",
+        "created_at": "2026-07-27T15:00:00.000Z",
+        "user_id": "usr_ops",
+        "emails": [
+          "ap@driftwoodlogistics.com"
+        ]
+      }
+    ],
+    "file_id": "file_inv_00057",
+    "accounting_sync_status": "synced",
+    "accounting_synced_at": "2026-07-27T15:00:00.000Z",
+    "created_at": "2026-07-26T15:00:00.000Z",
+    "updated_at": "2026-07-26T15:00:00.000Z"
+  }
+]

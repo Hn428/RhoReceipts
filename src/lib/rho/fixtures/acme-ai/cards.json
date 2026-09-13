@@ -1,0 +1,166 @@
+[
+  {
+    "id": "card_0001",
+    "name": "Leah Okonkwo — Corporate",
+    "last_4": "4200",
+    "type": "physical",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_founder",
+      "first_name": "Leah",
+      "last_name": "Okonkwo"
+    },
+    "spending_limit": {
+      "amount": 2500000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 149000,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 16000,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "535 Mission St, Floor 14",
+      "city": "San Francisco",
+      "subdivision": "CA",
+      "postal_code": "94105",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  },
+  {
+    "id": "card_0002",
+    "name": "Tomas Reyes — Corporate",
+    "last_4": "4337",
+    "type": "virtual",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_cofounder",
+      "first_name": "Tomas",
+      "last_name": "Reyes"
+    },
+    "spending_limit": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 233400,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 87600,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "535 Mission St, Floor 14",
+      "city": "San Francisco",
+      "subdivision": "CA",
+      "postal_code": "94105",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  },
+  {
+    "id": "card_0003",
+    "name": "Hana Mori — Corporate",
+    "last_4": "4474",
+    "type": "virtual",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_ops",
+      "first_name": "Hana",
+      "last_name": "Mori"
+    },
+    "spending_limit": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 523700,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 44700,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "535 Mission St, Floor 14",
+      "city": "San Francisco",
+      "subdivision": "CA",
+      "postal_code": "94105",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  },
+  {
+    "id": "card_0004",
+    "name": "Devin Clarke — Corporate",
+    "last_4": "4611",
+    "type": "virtual",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_eng",
+      "first_name": "Devin",
+      "last_name": "Clarke"
+    },
+    "spending_limit": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 779300,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 34400,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "535 Mission St, Floor 14",
+      "city": "San Francisco",
+      "subdivision": "CA",
+      "postal_code": "94105",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  }
+]
