@@ -1,0 +1,54 @@
+[
+  {
+    "id": "acc_checking_main",
+    "account_type": "checking",
+    "balance": {
+      "amount": 39917000,
+      "currency": "USD"
+    },
+    "account_name": "Lanternfish Analytics — Operating",
+    "account_number_last_4": "5021",
+    "routing_number_last_4": "0021"
+  },
+  {
+    "id": "acc_savings_reserve",
+    "account_type": "savings",
+    "balance": {
+      "amount": 6381600,
+      "currency": "USD"
+    },
+    "account_name": "Lanternfish Analytics — Reserve",
+    "account_number_last_4": "8193",
+    "routing_number_last_4": "0021"
+  },
+  {
+    "id": "acc_treasury_mmf",
+    "account_type": "investment",
+    "balance": {
+      "amount": 81949974,
+      "currency": "USD"
+    },
+    "account_name": "Lanternfish Analytics — Treasury",
+    "account_number_last_4": "2744"
+  },
+  {
+    "id": "acc_credit_card",
+    "account_type": "credit",
+    "balance": {
+      "amount": -1666100,
+      "currency": "USD"
+    },
+    "account_name": "Lanternfish Analytics — Corporate Card",
+    "account_number_last_4": "4406"
+  },
+  {
+    "id": "acc_rewards",
+    "account_type": "rewards",
+    "balance": {
+      "amount": 722000,
+      "currency": "USD"
+    },
+    "account_name": "Lanternfish Analytics — Rewards",
+    "account_number_last_4": "0004"
+  }
+]

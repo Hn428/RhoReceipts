@@ -1,0 +1,232 @@
+[
+  {
+    "id": "cus_0101",
+    "legal_name": "Tessellate Health, Inc.",
+    "email": "ap@tessellatehealth.com",
+    "address": {
+      "address1": "6531 Harbor St",
+      "address2": "",
+      "city": "Nashville",
+      "state": "TN",
+      "zip_code": "48875",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 14280000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00053",
+    "created_at": "2025-09-24T15:33:00.000Z",
+    "updated_at": "2026-09-04T15:08:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0102",
+    "legal_name": "Halberd Genomics",
+    "email": "finance@halberdgenomics.com",
+    "address": {
+      "address1": "6204 Harbor St",
+      "address2": "Suite 368",
+      "city": "Cambridge",
+      "state": "MA",
+      "zip_code": "17835",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 9340000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00054",
+    "created_at": "2025-08-02T15:05:00.000Z",
+    "updated_at": "2026-09-06T15:58:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0103",
+    "legal_name": "Parlour Commerce Co.",
+    "email": "billing@parlourcommerce.com",
+    "address": {
+      "address1": "7674 Oak St",
+      "address2": "",
+      "city": "Chicago",
+      "state": "IL",
+      "zip_code": "34341",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 6200000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00055",
+    "created_at": "2025-12-03T15:19:00.000Z",
+    "updated_at": "2026-09-08T15:11:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0104",
+    "legal_name": "Driftwood Logistics",
+    "email": "ap@driftwoodlogistics.com",
+    "address": {
+      "address1": "625 Chestnut St",
+      "address2": "",
+      "city": "Savannah",
+      "state": "GA",
+      "zip_code": "44021",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 2340000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00045",
+    "created_at": "2026-02-18T15:22:00.000Z",
+    "updated_at": "2026-07-27T15:43:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0105",
+    "legal_name": "Fernhill Studios",
+    "email": "accounts@fernhillstudios.com",
+    "address": {
+      "address1": "4844 Chestnut St",
+      "address2": "Suite 105",
+      "city": "Austin",
+      "state": "TX",
+      "zip_code": "53769",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00024",
+    "created_at": "2025-11-09T15:17:00.000Z",
+    "updated_at": "2026-03-13T15:01:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0106",
+    "legal_name": "Saltmarsh Energy",
+    "email": "ap@saltmarshenergy.com",
+    "address": {
+      "address1": "4331 Oak St",
+      "address2": "",
+      "city": "Houston",
+      "state": "TX",
+      "zip_code": "24677",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 840000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00050",
+    "created_at": "2026-06-08T15:58:00.000Z",
+    "updated_at": "2026-08-15T15:40:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0107",
+    "legal_name": "Copperline Retail",
+    "email": "finance@copperlineretail.com",
+    "address": {
+      "address1": "8633 Harbor St",
+      "address2": "",
+      "city": "Denver",
+      "state": "CO",
+      "zip_code": "49616",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 680000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00051",
+    "created_at": "2026-07-12T15:42:00.000Z",
+    "updated_at": "2026-08-19T15:13:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0108",
+    "legal_name": "Lumenfold Insurance",
+    "email": "ap@lumenfoldins.com",
+    "address": {
+      "address1": "4416 Grand St",
+      "address2": "",
+      "city": "Hartford",
+      "state": "CT",
+      "zip_code": "24011",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 520000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00052",
+    "created_at": "2026-07-14T15:55:00.000Z",
+    "updated_at": "2026-08-22T15:12:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0109",
+    "legal_name": "Kittiwake Systems",
+    "email": "ap@kittiwakesystems.com",
+    "address": {
+      "address1": "9652 Grand St",
+      "address2": "Suite 665",
+      "city": "Portland",
+      "state": "ME",
+      "zip_code": "53598",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 900000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00056",
+    "created_at": "2026-08-05T15:56:00.000Z",
+    "updated_at": "2026-09-09T15:24:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0110",
+    "legal_name": "Greyfield Trading LLC",
+    "email": "office@greyfieldtrading.net",
+    "address": {
+      "address1": "9066 Oak St",
+      "address2": "",
+      "city": "Wilmington",
+      "state": "DE",
+      "zip_code": "21826",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 0,
+      "currency": "USD"
+    },
+    "last_invoice_id": null,
+    "created_at": "2026-09-12T00:00:00.000Z",
+    "updated_at": "2026-09-12T00:00:00.000Z",
+    "deleted_at": null
+  }
+]

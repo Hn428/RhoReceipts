@@ -1,26 +1,153 @@
 @import "tailwindcss";
 
+/*
+ * Rho Receipts — design tokens.
+ *
+ * The receipt is a document of record sitting on a desk: a cool grey ground,
+ * paper on top, ink, and three evidence states an auditor would recognise —
+ * verified (a tick), inferred (a pencil note), flagged (a red query). Neutrals
+ * lean slightly toward the verified teal so the palette reads as one system.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --desk: #f4f4f3;
+  --paper: #ffffff;
+  --sunken: #f9f9f8;
+  --ink: #18181b;
+  --ink-soft: #52525b;
+  --ink-faint: #71717a;
+  --rule: #e4e4e7;
+  --rule-strong: #d4d4d8;
+  --verified: #16a34a;
+  --verified-wash: #f0fdf4;
+  --inferred: #a16207;
+  --inferred-wash: #fffbeb;
+  --flagged: #dc2626;
+  --flagged-wash: #fef2f2;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-desk: var(--desk);
+  --color-paper: var(--paper);
+  --color-sunken: var(--sunken);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-verified: var(--verified);
+  --color-verified-wash: var(--verified-wash);
+  --color-inferred: var(--inferred);
+  --color-inferred-wash: var(--inferred-wash);
+  --color-flagged: var(--flagged);
+  --color-flagged-wash: var(--flagged-wash);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", monospace;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--desk);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+  transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease,
+    opacity 150ms ease;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid var(--verified);
+  outline-offset: 2px;
+}
+
+/* Figures line up in columns everywhere they appear. */
+.figures {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Perforated edges. Small circles in the desk colour overlap the paper's top
+ * and bottom edges — the one deliberate flourish on the page.
+ */
+.perforated {
+  position: relative;
+}
+.perforated::before,
+.perforated::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: radial-gradient(circle, var(--desk) 5px, transparent 5.5px) 0 0 /
+    18px 12px repeat-x;
+  pointer-events: none;
+}
+.perforated::before {
+  top: -6px;
+}
+.perforated::after {
+  bottom: -6px;
+}
+
+/* Disclosure rows: a custom chevron replaces the browser's marker. */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details > summary .chevron {
+  transition: transform 160ms ease;
+}
+details[open] > summary .chevron {
+  transform: rotate(90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  details > summary .chevron {
+    transition: none;
+  }
+}
+
+/*
+ * The mock bank. A deliberately different product: a generic banking app, so
+ * the demo reads as "data source" and "verification layer" being separate
+ * systems. It borrows no Rho branding.
+ */
+.bank {
+  --bank-bg: #f4f6f9;
+  --bank-surface: #ffffff;
+  --bank-ink: #18212d;
+  --bank-muted: #5d6978;
+  --bank-faint: #8a95a3;
+  --bank-line: #e2e6ec;
+  --bank-accent: #2c55c9;
+  --bank-accent-wash: #e8eefc;
+  --bank-in: #147a4b;
+  --bank-warn: #b45309;
+  --bank-warn-wash: #fdf3e2;
+  background: var(--bank-bg);
+  color: var(--bank-ink);
+}
+
+.bank-banner {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--bank-warn-wash) 0 10px,
+    transparent 10px 20px
+  );
 }

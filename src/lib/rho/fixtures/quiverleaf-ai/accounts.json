@@ -1,0 +1,54 @@
+[
+  {
+    "id": "acc_checking_main",
+    "account_type": "checking",
+    "balance": {
+      "amount": 19290700,
+      "currency": "USD"
+    },
+    "account_name": "Quiverleaf AI — Operating",
+    "account_number_last_4": "3318",
+    "routing_number_last_4": "0021"
+  },
+  {
+    "id": "acc_savings_reserve",
+    "account_type": "savings",
+    "balance": {
+      "amount": 4369000,
+      "currency": "USD"
+    },
+    "account_name": "Quiverleaf AI — Reserve",
+    "account_number_last_4": "7402",
+    "routing_number_last_4": "0021"
+  },
+  {
+    "id": "acc_treasury_mmf",
+    "account_type": "investment",
+    "balance": {
+      "amount": 30390765,
+      "currency": "USD"
+    },
+    "account_name": "Quiverleaf AI — Treasury",
+    "account_number_last_4": "1559"
+  },
+  {
+    "id": "acc_credit_card",
+    "account_type": "credit",
+    "balance": {
+      "amount": -1359500,
+      "currency": "USD"
+    },
+    "account_name": "Quiverleaf AI — Corporate Card",
+    "account_number_last_4": "6620"
+  },
+  {
+    "id": "acc_rewards",
+    "account_type": "rewards",
+    "balance": {
+      "amount": 678700,
+      "currency": "USD"
+    },
+    "account_name": "Quiverleaf AI — Rewards",
+    "account_number_last_4": "0003"
+  }
+]

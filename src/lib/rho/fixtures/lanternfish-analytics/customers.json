@@ -1,0 +1,186 @@
+[
+  {
+    "id": "cus_0301",
+    "legal_name": "Allbirds, Inc.",
+    "email": "ap@allbirds.com",
+    "address": {
+      "address1": "5458 Oak St",
+      "address2": "",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip_code": "97888",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 19350000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00071",
+    "created_at": "2025-03-26T15:59:00.000Z",
+    "updated_at": "2026-09-04T15:14:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0302",
+    "legal_name": "Warby Parker Inc.",
+    "email": "ap@warbyparker.com",
+    "address": {
+      "address1": "4830 Market St",
+      "address2": "",
+      "city": "New York",
+      "state": "NY",
+      "zip_code": "38165",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 13260000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00072",
+    "created_at": "2025-04-28T15:02:00.000Z",
+    "updated_at": "2026-09-06T15:18:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0303",
+    "legal_name": "Glossier, Inc.",
+    "email": "billing@glossier.com",
+    "address": {
+      "address1": "7255 Grand St",
+      "address2": "",
+      "city": "New York",
+      "state": "NY",
+      "zip_code": "44952",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 8100000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00073",
+    "created_at": "2025-07-05T15:10:00.000Z",
+    "updated_at": "2026-09-08T15:55:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0304",
+    "legal_name": "Brooklinen, Inc.",
+    "email": "finance@brooklinen.com",
+    "address": {
+      "address1": "3036 Chestnut St",
+      "address2": "",
+      "city": "Brooklyn",
+      "state": "NY",
+      "zip_code": "38620",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 4680000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00074",
+    "created_at": "2025-09-06T15:37:00.000Z",
+    "updated_at": "2026-09-11T15:30:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0305",
+    "legal_name": "Bombas LLC",
+    "email": "ap@bombas.com",
+    "address": {
+      "address1": "1138 Harbor St",
+      "address2": "Suite 173",
+      "city": "New York",
+      "state": "NY",
+      "zip_code": "41270",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 10800000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00069",
+    "created_at": "2025-08-07T15:47:00.000Z",
+    "updated_at": "2026-08-15T15:15:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0306",
+    "legal_name": "Parachute Home, Inc.",
+    "email": "ap@parachutehome.com",
+    "address": {
+      "address1": "2741 Oak St",
+      "address2": "",
+      "city": "Los Angeles",
+      "state": "CA",
+      "zip_code": "47169",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 1740000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00050",
+    "created_at": "2025-11-12T15:22:00.000Z",
+    "updated_at": "2026-04-18T15:23:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0307",
+    "legal_name": "Outdoor Voices, Inc.",
+    "email": "ap@outdoorvoices.com",
+    "address": {
+      "address1": "6933 Chestnut St",
+      "address2": "",
+      "city": "Austin",
+      "state": "TX",
+      "zip_code": "94796",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 660000,
+      "currency": "USD"
+    },
+    "last_invoice_id": "inv_00070",
+    "created_at": "2026-06-12T15:41:00.000Z",
+    "updated_at": "2026-08-22T15:34:00.000Z",
+    "deleted_at": null
+  },
+  {
+    "id": "cus_0308",
+    "legal_name": "Rothy's, Inc.",
+    "email": "accounts@rothys.com",
+    "address": {
+      "address1": "9327 Lincoln St",
+      "address2": "Suite 135",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip_code": "34804",
+      "country": "US"
+    },
+    "note": "",
+    "cc_emails": [],
+    "total_revenue": {
+      "amount": 0,
+      "currency": "USD"
+    },
+    "last_invoice_id": null,
+    "created_at": "2026-09-12T00:00:00.000Z",
+    "updated_at": "2026-09-12T00:00:00.000Z",
+    "deleted_at": null
+  }
+]

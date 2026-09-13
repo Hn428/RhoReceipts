@@ -1,0 +1,166 @@
+[
+  {
+    "id": "card_0001",
+    "name": "Nadia Brennan-Soto — Corporate",
+    "last_4": "4200",
+    "type": "physical",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_founder",
+      "first_name": "Nadia",
+      "last_name": "Brennan-Soto"
+    },
+    "spending_limit": {
+      "amount": 2500000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 623300,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 67100,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "250 Greenwich St, Floor 46",
+      "city": "New York",
+      "subdivision": "NY",
+      "postal_code": "10007",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  },
+  {
+    "id": "card_0002",
+    "name": "Kwame Ostrowski — Corporate",
+    "last_4": "4337",
+    "type": "virtual",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_cofounder",
+      "first_name": "Kwame",
+      "last_name": "Ostrowski"
+    },
+    "spending_limit": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 235300,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 61100,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "250 Greenwich St, Floor 46",
+      "city": "New York",
+      "subdivision": "NY",
+      "postal_code": "10007",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  },
+  {
+    "id": "card_0003",
+    "name": "Elena Vasquez-Hart — Corporate",
+    "last_4": "4474",
+    "type": "virtual",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_ops",
+      "first_name": "Elena",
+      "last_name": "Vasquez-Hart"
+    },
+    "spending_limit": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 193500,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 42200,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "250 Greenwich St, Floor 46",
+      "city": "New York",
+      "subdivision": "NY",
+      "postal_code": "10007",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  },
+  {
+    "id": "card_0004",
+    "name": "Jun Abernathy — Corporate",
+    "last_4": "4611",
+    "type": "virtual",
+    "status": "active",
+    "cardholder": {
+      "user_id": "usr_eng",
+      "first_name": "Jun",
+      "last_name": "Abernathy"
+    },
+    "spending_limit": {
+      "amount": 1000000,
+      "currency": "USD"
+    },
+    "spending_limit_type": "monthly",
+    "current_spend": {
+      "amount": 643700,
+      "currency": "USD"
+    },
+    "pending_spend": {
+      "amount": 80500,
+      "currency": "USD"
+    },
+    "spend_period_start": "2026-09-01T00:00:00.000Z",
+    "spend_period_end": "2026-09-30T23:59:59.000Z",
+    "usage_starts_at": null,
+    "usage_ends_at": null,
+    "billing_address": {
+      "street": "250 Greenwich St, Floor 46",
+      "city": "New York",
+      "subdivision": "NY",
+      "postal_code": "10007",
+      "country_code": "US"
+    },
+    "shipping_address": null,
+    "blocked_categories": [],
+    "allowed_categories": [],
+    "blocked_merchants": [],
+    "allowed_merchants": []
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "generator": "scripts/generate-rho-fixtures.ts",
+  "seed": 20240417,
+  "anchor": "2026-09-12T00:00:00.000Z",
+  "company": "Acme AI, Inc.",
+  "slug": "acme-ai",
+  "short_name": "Acme AI",
+  "description": "Document intelligence models for insurance and healthcare claims.",
+  "mock_token": "rhobat_mock_acme_ai_dev_token",
+  "period": {
+    "first_month": "2025-04",
+    "last_month": "2026-09"
+  },
+  "counts": {
+    "accounts": 5,
+    "transactions": 523,
+    "cards": 4,
+    "customers": 10,
+    "invoices": 57
+  },
+  "opening_balances": {
+    "acc_checking_main": 9600000,
+    "acc_savings_reserve": 2500000,
+    "acc_treasury_mmf": 0,
+    "acc_credit_card": 0,
+    "acc_rewards": 0
+  }
+}
